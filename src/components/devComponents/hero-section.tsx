@@ -91,7 +91,7 @@ export function HeroSection({
                     size="lg"
                     className={cn(
                       isGlow &&
-                        "relative overflow-hidden bg-gradient-to-r from-primary to-primary/60 shadow-[0_0_30px_rgba(99,102,241,0.5)]"
+                      "relative overflow-hidden bg-gradient-to-r from-primary to-primary/60 shadow-[0_0_30px_rgba(99,102,241,0.5)]"
                     )}
                     asChild
                   >

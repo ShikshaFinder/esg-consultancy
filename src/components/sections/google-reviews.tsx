@@ -77,7 +77,7 @@ export default function GoogleReviewsSection() {
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-[#F7F8F0] to-transparent z-10" />
           <Marquee pauseOnHover className="[--duration:45s] [--gap:1.25rem]">
             {reviews.map((r, i) => (
-              <div key={r.name}
+              <div key={`${r.name}-${i}`}
                 className="rounded-2xl bg-white border border-[#355872]/[0.08] p-6 flex flex-col gap-4 group hover:border-[#355872]/20 hover:shadow-lg transition-all duration-300 min-w-[320px] max-w-[360px]"
               >
                 <div className="flex items-center justify-between">

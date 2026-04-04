@@ -7,7 +7,6 @@ import Footer from "@/components/layout/footer"
 import WhatsAppFAB from "@/components/layout/whatsapp-fab"
 import { BouncingBalls } from "@/components/devComponents/bouncing-balls"
 import { MetalButton } from "@/components/devComponents/liquid-glass-button"
-import { cn } from "@/lib/utils"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -94,15 +93,10 @@ export default function ServicesPage() {
         {/* Services Grid */}
         <section className="py-20 px-6 bg-[#F7F8F0]">
           <motion.div className="max-w-7xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.05 }} variants={stagger}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#355872]/[0.06] relative z-10">
               {services.map((s, i) => (
                 <motion.div key={s.title} custom={i} variants={fadeUp}
-                  className={cn(
-                    "group/feature p-7 relative border-[#355872]/[0.06] transition-all duration-300",
-                    (i % 2 === 0) && "md:border-r",
-                    i < services.length - 2 && "md:border-b",
-                    i < services.length - 1 && "border-b md:border-b",
-                  )}
+                  className="group/feature p-7 relative bg-[#F7F8F0] transition-all duration-300"
                 >
                   {/* 21st.dev hover gradient */}
                   <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-t from-[#355872]/[0.06] to-transparent pointer-events-none" />

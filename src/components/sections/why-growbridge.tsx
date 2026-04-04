@@ -81,13 +81,13 @@ export default function WhyGrowBridge() {
             <motion.div key={f.title} custom={i} variants={fadeUp}
               className={cn(
                 "flex flex-col py-8 px-7 relative group/feature border-[#355872]/[0.06]",
-                (i === 0 || i === 2) && "lg:border-l",
+                i % 4 === 0 && "lg:border-l",
                 "lg:border-r",
-                i < 2 && "lg:border-b",
+                i < 4 && "lg:border-b",
               )}
             >
               {/* Gradient hover overlay (21st.dev feature hover pattern) */}
-              {i < 2 ? (
+              {i < 4 ? (
                 <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-t from-[#355872]/[0.06] to-transparent pointer-events-none" />
               ) : (
                 <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-b from-[#355872]/[0.06] to-transparent pointer-events-none" />

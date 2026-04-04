@@ -2,6 +2,7 @@
 import { motion, type Variants } from "framer-motion"
 import { ExternalLink } from "lucide-react"
 import Link from "next/link"
+import { Marquee } from "@/components/devComponents/3d-testimonails"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -61,15 +62,17 @@ export default function SchemesSection() {
           </motion.div>
         </div>
 
-        {/* Ticker */}
-        <motion.div variants={fadeUp} className="mb-10 rounded-2xl border border-white/[0.06] bg-white/[0.02] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 divide-x divide-white/[0.06] overflow-hidden">
-          {ticker.map((t) => (
-            <div key={t.label} className="flex flex-col items-center py-4 px-3 gap-1">
-              <span className="text-lg">{t.icon}</span>
-              <p className="text-white font-bold text-sm">{t.val}</p>
-              <p className="text-white/40 text-[10px] text-center leading-snug">{t.label}</p>
-            </div>
-          ))}
+        {/* Ticker with Marquee */}
+        <motion.div variants={fadeUp} className="mb-10 rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden">
+          <Marquee pauseOnHover className="[--duration:22s] [--gap:0rem]">
+            {ticker.map((t) => (
+              <div key={t.label} className="flex flex-col items-center py-4 px-8 gap-1 border-r border-white/[0.06]">
+                <span className="text-lg">{t.icon}</span>
+                <p className="text-white font-bold text-sm whitespace-nowrap">{t.val}</p>
+                <p className="text-white/40 text-[10px] text-center leading-snug whitespace-nowrap">{t.label}</p>
+              </div>
+            ))}
+          </Marquee>
         </motion.div>
 
         {/* Cards */}

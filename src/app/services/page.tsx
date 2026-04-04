@@ -5,6 +5,8 @@ import Link from "next/link"
 import Navbar from "@/components/layout/navbar"
 import Footer from "@/components/layout/footer"
 import WhatsAppFAB from "@/components/layout/whatsapp-fab"
+import { BouncingBalls } from "@/components/devComponents/bouncing-balls"
+import { MetalButton } from "@/components/devComponents/liquid-glass-button"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -63,6 +65,18 @@ export default function ServicesPage() {
         {/* Hero */}
         <section className="relative pt-32 pb-20 px-6 bg-[#060e1a] overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(53,88,114,0.15)_0%,transparent_60%)] pointer-events-none" />
+          {/* 21st.dev BouncingBalls */}
+          <div className="absolute inset-0 z-[1] pointer-events-none opacity-30">
+            <BouncingBalls
+              numBalls={45}
+              colors={["#355872", "#7AAACE", "#9CD5FF"]}
+              opacity={0.25}
+              minRadius={0.2}
+              maxRadius={1.2}
+              speed={0.15}
+              interactive={false}
+            />
+          </div>
 
           <motion.div className="max-w-4xl mx-auto text-center relative z-10" initial="hidden" animate="show" variants={stagger}>
             <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-4">Our Services</motion.span>
@@ -79,34 +93,39 @@ export default function ServicesPage() {
         {/* Services Grid */}
         <section className="py-20 px-6 bg-[#F7F8F0]">
           <motion.div className="max-w-7xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.05 }} variants={stagger}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#355872]/[0.06] relative z-10">
               {services.map((s, i) => (
                 <motion.div key={s.title} custom={i} variants={fadeUp}
-                  className="group rounded-2xl border border-[#355872]/[0.08] bg-white p-7 hover:border-[#355872]/20 hover:shadow-xl hover:shadow-[#355872]/5 transition-all duration-300"
-                  whileHover={{ y: -4 }}
+                  className="group/feature p-7 relative bg-[#F7F8F0] transition-all duration-300"
                 >
-                  <div className="flex items-start gap-4 mb-5">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${s.gradient} flex items-center justify-center shrink-0`}>
-                      <s.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-[#0a1628] font-bold text-lg">{s.title}</h3>
-                      <p className="text-[#0a1628]/50 text-sm mt-1">{s.desc}</p>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2 mb-5">
-                    {s.items.map(item => (
-                      <div key={item} className="flex items-center gap-2 text-sm text-[#0a1628]/70">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#7AAACE] shrink-0" />
-                        <span>{item}</span>
+                  {/* 21st.dev hover gradient */}
+                  <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-t from-[#355872]/[0.06] to-transparent pointer-events-none" />
+                  <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-10 w-1 rounded-tr-full rounded-br-full bg-[#355872]/15 group-hover/feature:bg-[#7AAACE] transition-all duration-300 origin-center top-1/2 -translate-y-1/2" />
+
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-5">
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${s.gradient} flex items-center justify-center shrink-0 group-hover/feature:scale-110 transition-transform duration-300`}>
+                        <s.icon className="w-6 h-6 text-white" />
                       </div>
-                    ))}
+                      <div>
+                        <h3 className="text-[#0a1628] font-bold text-lg group-hover/feature:translate-x-1 transition duration-200">{s.title}</h3>
+                        <p className="text-[#0a1628]/50 text-sm mt-1">{s.desc}</p>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 mb-5">
+                      {s.items.map(item => (
+                        <div key={item} className="flex items-center gap-2 text-sm text-[#0a1628]/70">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#7AAACE] shrink-0" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <Link href="/contact"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#355872] hover:text-[#7AAACE] transition-colors"
+                    >
+                      Learn More <ChevronRight className="w-4 h-4" />
+                    </Link>
                   </div>
-                  <Link href="/contact"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#355872] hover:text-[#7AAACE] transition-colors"
-                  >
-                    Learn More <ChevronRight className="w-4 h-4" />
-                  </Link>
                 </motion.div>
               ))}
             </div>
@@ -121,10 +140,12 @@ export default function ServicesPage() {
               Talk to our experts and get a personalized recommendation based on your business stage and goals.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <Link href="/contact"
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-white text-[#355872] font-semibold text-sm hover:shadow-lg transition-all"
-              >
-                Get Free Consultation <ArrowRight className="w-4 h-4" />
+              <Link href="/contact">
+                <MetalButton variant="default">
+                  <span className="flex items-center gap-2">
+                    Get Free Consultation <ArrowRight className="w-4 h-4" />
+                  </span>
+                </MetalButton>
               </Link>
             </motion.div>
           </motion.div>

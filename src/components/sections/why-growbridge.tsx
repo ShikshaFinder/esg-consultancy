@@ -2,6 +2,8 @@
 import { motion, type Variants } from "framer-motion"
 import { Brain, UserCheck, BarChart3, BadgePercent, ArrowRight, Sparkles, Shield, Zap, Clock } from "lucide-react"
 import Link from "next/link"
+import { cn } from "@/lib/utils"
+import { MetalButton } from "@/components/devComponents/liquid-glass-button"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -73,20 +75,27 @@ export default function WhyGrowBridge() {
           </motion.p>
         </div>
 
-        {/* Feature cards — 2x2 grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+        {/* Feature cards — 2x2 grid with 21st.dev hover effects */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 mb-12">
           {features.map((f, i) => (
             <motion.div key={f.title} custom={i} variants={fadeUp}
-              className="group rounded-2xl border border-[#355872]/[0.08] bg-white p-7 hover:border-[#355872]/20 hover:shadow-xl hover:shadow-[#355872]/5 transition-all duration-300 relative overflow-hidden"
-              whileHover={{ y: -4 }}
+              className={cn(
+                "flex flex-col py-8 px-7 relative group/feature border-[#355872]/[0.06]",
+                i % 4 === 0 && "lg:border-l",
+                "lg:border-r",
+                i < 4 && "lg:border-b",
+              )}
             >
-              {/* Corner glow */}
-              <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: `radial-gradient(circle, ${f.accent}12 0%, transparent 70%)` }} />
+              {/* Gradient hover overlay (21st.dev feature hover pattern) */}
+              {i < 4 ? (
+                <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-t from-[#355872]/[0.06] to-transparent pointer-events-none" />
+              ) : (
+                <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-b from-[#355872]/[0.06] to-transparent pointer-events-none" />
+              )}
 
-              <div className="relative z-10 flex flex-col h-full">
+              <div className="relative z-10">
                 <div className="flex items-start justify-between mb-5">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${f.gradient} flex items-center justify-center`}>
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${f.gradient} flex items-center justify-center group-hover/feature:scale-110 transition-transform duration-300`}>
                     <f.icon className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-right">
@@ -94,8 +103,12 @@ export default function WhyGrowBridge() {
                     <p className="text-[10px] text-[#355872]/50 font-medium">{f.statLabel}</p>
                   </div>
                 </div>
-                <h3 className="text-[#0a1628] font-bold text-lg mb-2">{f.title}</h3>
-                <p className="text-[#0a1628]/55 text-sm leading-relaxed flex-1">{f.desc}</p>
+
+                {/* Animated accent bar (21st.dev style) */}
+                <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-10 w-1 rounded-tr-full rounded-br-full bg-[#355872]/20 group-hover/feature:bg-[#7AAACE] transition-all duration-300 origin-center top-1/2 -translate-y-1/2" />
+
+                <h3 className="text-[#0a1628] font-bold text-lg mb-2 group-hover/feature:translate-x-1 transition duration-200">{f.title}</h3>
+                <p className="text-[#0a1628]/55 text-sm leading-relaxed">{f.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -113,10 +126,12 @@ export default function WhyGrowBridge() {
 
         {/* CTA */}
         <motion.div variants={fadeUp} className="text-center">
-          <Link href="/contact"
-            className="inline-flex items-center gap-2 h-12 px-8 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] text-white font-semibold text-sm hover:shadow-lg hover:shadow-[#355872]/25 transition-all duration-300"
-          >
-            Start Your Free Consultation <ArrowRight className="w-4 h-4" />
+          <Link href="/contact">
+            <MetalButton variant="primary">
+              <span className="flex items-center gap-2">
+                Start Your Free Consultation <ArrowRight className="w-4 h-4" />
+              </span>
+            </MetalButton>
           </Link>
         </motion.div>
       </motion.div>

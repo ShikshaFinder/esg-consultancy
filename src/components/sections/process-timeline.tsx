@@ -2,6 +2,8 @@
 import { motion, type Variants } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { BouncingBalls } from "@/components/devComponents/bouncing-balls"
+import { MetalButton } from "@/components/devComponents/liquid-glass-button"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -23,6 +25,18 @@ export default function ProcessTimeline() {
   return (
     <section id="process" className="py-24 px-6 bg-[#0a1628] relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      {/* 21st.dev BouncingBalls ambient decoration */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-25">
+        <BouncingBalls
+          numBalls={40}
+          colors={["#355872", "#7AAACE", "#9CD5FF"]}
+          opacity={0.2}
+          minRadius={0.2}
+          maxRadius={1}
+          speed={0.15}
+          interactive={false}
+        />
+      </div>
       <motion.div className="max-w-5xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.06 }} variants={stagger}>
         <div className="text-center mb-16">
           <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-3">Our 7-Step Process</motion.span>
@@ -84,8 +98,12 @@ export default function ProcessTimeline() {
         </div>
 
         <motion.div variants={fadeUp} className="mt-14 text-center">
-          <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#355872] via-[#7AAACE] to-[#9CD5FF] px-10 py-4 text-sm font-semibold text-white shadow-lg">
-            Start Your Application <ArrowRight className="w-4 h-4" />
+          <Link href="/contact">
+            <MetalButton variant="primary">
+              <span className="flex items-center gap-2">
+                Start Your Application <ArrowRight className="w-4 h-4" />
+              </span>
+            </MetalButton>
           </Link>
         </motion.div>
       </motion.div>

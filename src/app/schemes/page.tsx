@@ -5,6 +5,9 @@ import Link from "next/link"
 import Navbar from "@/components/layout/navbar"
 import Footer from "@/components/layout/footer"
 import WhatsAppFAB from "@/components/layout/whatsapp-fab"
+import { BouncingBalls } from "@/components/devComponents/bouncing-balls"
+import { Marquee } from "@/components/devComponents/3d-testimonails"
+import { MetalButton } from "@/components/devComponents/liquid-glass-button"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -77,6 +80,18 @@ export default function SchemesPage() {
         {/* Hero */}
         <section className="relative pt-32 pb-20 px-6 bg-[#060e1a] overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(53,88,114,0.15)_0%,transparent_60%)] pointer-events-none" />
+          {/* 21st.dev BouncingBalls */}
+          <div className="absolute inset-0 z-[1] pointer-events-none opacity-30">
+            <BouncingBalls
+              numBalls={50}
+              colors={["#355872", "#7AAACE", "#9CD5FF"]}
+              opacity={0.25}
+              minRadius={0.2}
+              maxRadius={1.2}
+              speed={0.15}
+              interactive={false}
+            />
+          </div>
 
           <motion.div className="max-w-4xl mx-auto text-center relative z-10" initial="hidden" animate="show" variants={stagger}>
             <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-4">Government Schemes</motion.span>
@@ -88,15 +103,19 @@ export default function SchemesPage() {
               Explore all major central and state government schemes for MSMEs and startups. We handle the entire application process end to end.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-3 mt-8">
-              {[
-                { label: "30+ Schemes", icon: Building2 },
-                { label: "95% Success Rate", icon: TrendingUp },
-                { label: "₹110Cr+ Funded", icon: IndianRupee },
-              ].map(b => (
-                <div key={b.label} className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
-                  <b.icon className="w-4 h-4 text-[#9CD5FF]" />{b.label}
-                </div>
-              ))}
+              <Marquee pauseOnHover className="[--duration:20s] [--gap:1rem]">
+                {[
+                  { label: "30+ Schemes", icon: Building2 },
+                  { label: "95% Success Rate", icon: TrendingUp },
+                  { label: "₹110Cr+ Funded", icon: IndianRupee },
+                  { label: "Pan India Service", icon: Shield },
+                  { label: "Expert Consultants", icon: Users },
+                ].map(b => (
+                  <div key={b.label} className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70 whitespace-nowrap">
+                    <b.icon className="w-4 h-4 text-[#9CD5FF]" />{b.label}
+                  </div>
+                ))}
+              </Marquee>
             </motion.div>
           </motion.div>
         </section>
@@ -200,10 +219,12 @@ export default function SchemesPage() {
               Our eligibility engine checks your profile against 30+ schemes in seconds. Get your personalized report for free.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <Link href="/contact"
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-white text-[#355872] font-semibold text-sm hover:shadow-lg transition-all"
-              >
-                Get Free Eligibility Check <ArrowRight className="w-4 h-4" />
+              <Link href="/contact">
+                <MetalButton variant="default">
+                  <span className="flex items-center gap-2">
+                    Get Free Eligibility Check <ArrowRight className="w-4 h-4" />
+                  </span>
+                </MetalButton>
               </Link>
             </motion.div>
           </motion.div>

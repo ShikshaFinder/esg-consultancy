@@ -7,6 +7,8 @@ import {
 import {
   useMotionTemplate, useMotionValue, motion, animate,
 } from "framer-motion"
+import { BouncingBalls } from "@/components/devComponents/bouncing-balls"
+import { MetalButton } from "@/components/devComponents/liquid-glass-button"
 
 const AURORA_COLORS = ["#355872", "#7AAACE", "#9CD5FF", "#F7F8F0"]
 
@@ -52,6 +54,19 @@ export default function HeroSection() {
       <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-[#355872]/[0.06] blur-[130px] pointer-events-none" />
       <div className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] rounded-full bg-[#F7F8F0]/[0.04] blur-[130px] pointer-events-none" />
       <div className="absolute top-2/3 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#9CD5FF]/[0.04] blur-[100px] pointer-events-none" />
+
+      {/* 21st.dev BouncingBalls ambient particles */}
+      <div className="absolute inset-0 z-[1] pointer-events-none opacity-40">
+        <BouncingBalls
+          numBalls={60}
+          colors={["#355872", "#7AAACE", "#9CD5FF", "#F7F8F0"]}
+          opacity={0.3}
+          minRadius={0.3}
+          maxRadius={1.5}
+          speed={0.2}
+          interactive={false}
+        />
+      </div>
 
       {/* Dot grid */}
       <div
@@ -120,12 +135,13 @@ export default function HeroSection() {
               className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8"
             >
               <motion.div style={{ boxShadow: btnShadow }}>
-                <Link
-                  href="/schemes"
-                  className="group flex items-center gap-2 rounded-full bg-gradient-to-r from-[#355872] via-[#7AAACE] to-[#9CD5FF] px-7 py-3 text-sm font-semibold text-white shadow-lg"
-                >
-                  Explore Schemes
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                <Link href="/schemes">
+                  <MetalButton variant="primary">
+                    <span className="flex items-center gap-2">
+                      Explore Schemes
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                    </span>
+                  </MetalButton>
                 </Link>
               </motion.div>
               <Link

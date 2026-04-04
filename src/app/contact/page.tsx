@@ -4,6 +4,8 @@ import { Mail, Phone, MapPin, Clock, Send, MessageCircle, Calendar, ArrowRight, 
 import Navbar from "@/components/layout/navbar"
 import Footer from "@/components/layout/footer"
 import WhatsAppFAB from "@/components/layout/whatsapp-fab"
+import { BouncingBalls } from "@/components/devComponents/bouncing-balls"
+import { MetalButton } from "@/components/devComponents/liquid-glass-button"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -26,6 +28,18 @@ export default function ContactPage() {
         {/* Hero */}
         <section className="relative pt-32 pb-20 px-6 bg-[#060e1a] overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(53,88,114,0.15)_0%,transparent_60%)] pointer-events-none" />
+          {/* 21st.dev BouncingBalls */}
+          <div className="absolute inset-0 z-[1] pointer-events-none opacity-30">
+            <BouncingBalls
+              numBalls={45}
+              colors={["#355872", "#7AAACE", "#9CD5FF"]}
+              opacity={0.25}
+              minRadius={0.2}
+              maxRadius={1.2}
+              speed={0.15}
+              interactive={false}
+            />
+          </div>
 
           <motion.div className="max-w-4xl mx-auto text-center relative z-10" initial="hidden" animate="show" variants={stagger}>
             <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-4">Contact Us</motion.span>
@@ -115,11 +129,11 @@ export default function ContactPage() {
                       className="w-full px-4 py-3 rounded-xl border border-[#355872]/10 bg-[#F7F8F0] text-[#0a1628] text-sm placeholder:text-[#0a1628]/25 focus:border-[#355872]/30 focus:ring-2 focus:ring-[#355872]/10 outline-none transition-all resize-none" />
                   </div>
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <button type="submit"
-                      className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] text-white font-semibold text-sm hover:shadow-lg hover:shadow-[#355872]/25 transition-all"
-                    >
-                      <Send className="w-4 h-4" /> Send Message
-                    </button>
+                    <MetalButton variant="primary" type="submit">
+                      <span className="flex items-center gap-2">
+                        <Send className="w-4 h-4" /> Send Message
+                      </span>
+                    </MetalButton>
                     <a href="https://wa.me/918487828752" target="_blank" rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full border border-green-500/20 text-green-600 font-semibold text-sm hover:bg-green-50 transition-all"
                     >

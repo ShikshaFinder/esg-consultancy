@@ -2,6 +2,7 @@
 import { motion, type Variants } from "framer-motion"
 import { Mail, Phone, MapPin, Clock, Send, ArrowRight, MessageCircle, Calendar } from "lucide-react"
 import Link from "next/link"
+import { MetalButton } from "@/components/devComponents/liquid-glass-button"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -94,11 +95,11 @@ export default function ContactSection() {
                   className="w-full px-4 py-3 rounded-xl border border-white/[0.08] bg-white/[0.04] text-white text-sm placeholder:text-white/20 focus:border-[#355872]/40 focus:ring-1 focus:ring-[#355872]/30 outline-none transition-all resize-none" />
               </div>
               <div className="sm:col-span-2 flex flex-col sm:flex-row gap-3 pt-2">
-                <button type="submit"
-                  className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] text-white font-semibold text-sm hover:shadow-lg hover:shadow-[#355872]/25 transition-all duration-300"
-                >
-                  <Send className="w-4 h-4" /> Send Request
-                </button>
+                <MetalButton variant="primary" type="submit">
+                  <span className="flex items-center gap-2">
+                    <Send className="w-4 h-4" /> Send Request
+                  </span>
+                </MetalButton>
                 <a href="https://wa.me/918487828752" target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full border border-green-500/30 text-green-400 font-semibold text-sm hover:bg-green-500/10 transition-all duration-300"
                 >

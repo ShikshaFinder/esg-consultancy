@@ -5,6 +5,9 @@ import Link from "next/link"
 import Navbar from "@/components/layout/navbar"
 import Footer from "@/components/layout/footer"
 import WhatsAppFAB from "@/components/layout/whatsapp-fab"
+import { BouncingBalls } from "@/components/devComponents/bouncing-balls"
+import { MetalButton } from "@/components/devComponents/liquid-glass-button"
+import { cn } from "@/lib/utils"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -35,6 +38,18 @@ export default function AboutPage() {
         <section className="relative pt-32 pb-20 px-6 bg-[#060e1a] overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(53,88,114,0.15)_0%,transparent_60%)] pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(156,213,255,0.06)_0%,transparent_50%)] pointer-events-none" />
+          {/* 21st.dev BouncingBalls ambient particles */}
+          <div className="absolute inset-0 z-[1] pointer-events-none opacity-30">
+            <BouncingBalls
+              numBalls={50}
+              colors={["#355872", "#7AAACE", "#9CD5FF"]}
+              opacity={0.25}
+              minRadius={0.2}
+              maxRadius={1.2}
+              speed={0.15}
+              interactive={false}
+            />
+          </div>
 
           <motion.div className="max-w-4xl mx-auto text-center relative z-10" initial="hidden" animate="show" variants={stagger}>
             <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-4">About Us</motion.span>
@@ -109,16 +124,24 @@ export default function AboutPage() {
         <section className="py-20 px-6 bg-[#F7F8F0]">
           <motion.div className="max-w-5xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-[#0a1628] text-center mb-12">Our Core Values</motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 relative z-10">
               {values.map((v, i) => (
                 <motion.div key={v.title} custom={i} variants={fadeUp}
-                  className="rounded-2xl border border-[#355872]/[0.08] bg-white p-6 flex items-start gap-4 hover:border-[#355872]/20 hover:shadow-lg transition-all duration-300"
+                  className={cn(
+                    "flex items-start gap-4 p-6 relative group/feature border-[#355872]/[0.06]",
+                    (i === 0 || i === 2) && "md:border-l",
+                    "md:border-r",
+                    i < 2 && "md:border-b",
+                  )}
                 >
-                  <div className="w-10 h-10 rounded-xl bg-[#355872]/10 flex items-center justify-center shrink-0">
+                  {/* 21st.dev feature hover gradient */}
+                  <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-t from-[#355872]/[0.06] to-transparent pointer-events-none" />
+                  <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-10 w-1 rounded-tr-full rounded-br-full bg-[#355872]/15 group-hover/feature:bg-[#7AAACE] transition-all duration-300 origin-center top-1/2 -translate-y-1/2" />
+                  <div className="w-10 h-10 rounded-xl bg-[#355872]/10 flex items-center justify-center shrink-0 group-hover/feature:scale-110 transition-transform duration-300">
                     <v.icon className="w-5 h-5 text-[#355872]" />
                   </div>
-                  <div>
-                    <h3 className="text-[#0a1628] font-bold text-base mb-1">{v.title}</h3>
+                  <div className="relative z-10">
+                    <h3 className="text-[#0a1628] font-bold text-base mb-1 group-hover/feature:translate-x-1 transition duration-200">{v.title}</h3>
                     <p className="text-[#0a1628]/50 text-sm leading-relaxed">{v.desc}</p>
                   </div>
                 </motion.div>
@@ -155,10 +178,12 @@ export default function AboutPage() {
               Join 500+ businesses who trusted Grow Bridge to navigate their funding journey.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/contact"
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-white text-[#355872] font-semibold text-sm hover:shadow-lg transition-all"
-              >
-                Get Free Consultation <ArrowRight className="w-4 h-4" />
+              <Link href="/contact">
+                <MetalButton variant="default">
+                  <span className="flex items-center gap-2">
+                    Get Free Consultation <ArrowRight className="w-4 h-4" />
+                  </span>
+                </MetalButton>
               </Link>
               <Link href="/schemes"
                 className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full border border-white/30 text-white font-semibold text-sm hover:bg-white/10 transition-all"

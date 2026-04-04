@@ -3,6 +3,7 @@ import { useState } from "react"
 import { motion, AnimatePresence, type Variants } from "framer-motion"
 import { ChevronDown, HelpCircle, MessageCircle } from "lucide-react"
 import Link from "next/link"
+import { MetalButton } from "@/components/devComponents/liquid-glass-button"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -128,10 +129,10 @@ export default function FAQSection() {
             <p className="text-[#0a1628] font-semibold text-lg mb-2">Still have questions?</p>
             <p className="text-[#0a1628]/50 text-sm mb-5">Our experts are always happy to help. Get in touch for a free consultation.</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/contact"
-                className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full bg-[#355872] text-white font-semibold text-sm hover:bg-[#355872]/90 transition-colors"
-              >
-                Contact Us
+              <Link href="/contact">
+                <MetalButton variant="primary">
+                  Contact Us
+                </MetalButton>
               </Link>
               <a href="https://wa.me/918487828752" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full border border-[#355872]/20 text-[#355872] font-semibold text-sm hover:bg-[#355872]/5 transition-colors"

@@ -2,6 +2,7 @@
 import { motion, type Variants, useInView } from "framer-motion"
 import { Star, ExternalLink, MapPin, Shield, Quote } from "lucide-react"
 import { useRef } from "react"
+import { Marquee } from "@/components/devComponents/3d-testimonails"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -70,84 +71,51 @@ export default function GoogleReviewsSection() {
           </motion.div>
         </div>
 
-        {/* Review cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {reviews.slice(0, 3).map((r, i) => (
-            <motion.div key={r.name} custom={i} variants={fadeUp}
-              className="rounded-2xl bg-white border border-[#355872]/[0.08] p-6 flex flex-col gap-4 group hover:border-[#355872]/20 hover:shadow-lg transition-all duration-300"
-              whileHover={{ y: -4 }}
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className={`w-3.5 h-3.5 ${j < r.stars ? "text-amber-400 fill-amber-400" : "text-gray-200"}`} />
-                  ))}
-                </div>
-                <GoogleLogo size={16} />
-              </div>
-
-              <div className="relative">
-                <Quote className="absolute -top-1 -left-1 w-5 h-5 text-[#9CD5FF]/30" />
-                <p className="text-[#0a1628]/70 text-sm leading-relaxed pl-5">{r.text}</p>
-              </div>
-
-              <div className="flex items-center gap-3 pt-4 border-t border-[#355872]/[0.06] mt-auto">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#355872] to-[#7AAACE] flex items-center justify-center text-white font-bold text-sm shrink-0">
-                  {r.name.split(" ").map(n => n[0]).join("")}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-[#0a1628] font-semibold text-sm truncate">{r.name}</p>
-                  <div className="flex items-center gap-1.5 text-[11px] text-[#355872]/50">
-                    <MapPin className="w-3 h-3" />
-                    <span>{r.location}</span>
-                    <span>·</span>
-                    <span>{r.time}</span>
+        {/* Review cards with Marquee */}
+        <div className="relative">
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-[#F7F8F0] to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-[#F7F8F0] to-transparent z-10" />
+          <Marquee pauseOnHover className="[--duration:45s] [--gap:1.25rem]">
+            {reviews.map((r, i) => (
+              <div key={r.name}
+                className="rounded-2xl bg-white border border-[#355872]/[0.08] p-6 flex flex-col gap-4 group hover:border-[#355872]/20 hover:shadow-lg transition-all duration-300 min-w-[320px] max-w-[360px]"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} className={`w-3.5 h-3.5 ${j < r.stars ? "text-amber-400 fill-amber-400" : "text-gray-200"}`} />
+                    ))}
                   </div>
+                  <GoogleLogo size={16} />
                 </div>
-                {r.verified && (
-                  <span className="flex items-center gap-1 text-[9px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-1 rounded-full shrink-0">
-                    <Shield className="w-3 h-3" /> Verified
-                  </span>
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </div>
 
-        {/* Bottom 2 (wider) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
-          {reviews.slice(3).map((r, i) => (
-            <motion.div key={r.name} custom={i + 3} variants={fadeUp}
-              className="rounded-2xl bg-white border border-[#355872]/[0.08] p-6 flex flex-col gap-4 group hover:border-[#355872]/20 hover:shadow-lg transition-all duration-300"
-              whileHover={{ y: -4 }}
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className={`w-3.5 h-3.5 ${j < r.stars ? "text-amber-400 fill-amber-400" : "text-gray-200"}`} />
-                  ))}
+                <div className="relative">
+                  <Quote className="absolute -top-1 -left-1 w-5 h-5 text-[#9CD5FF]/30" />
+                  <p className="text-[#0a1628]/70 text-sm leading-relaxed pl-5 line-clamp-4">{r.text}</p>
                 </div>
-                <GoogleLogo size={16} />
-              </div>
-              <p className="text-[#0a1628]/70 text-sm leading-relaxed">&ldquo;{r.text}&rdquo;</p>
-              <div className="flex items-center gap-3 pt-4 border-t border-[#355872]/[0.06] mt-auto">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#7AAACE] to-[#9CD5FF] flex items-center justify-center text-white font-bold text-sm shrink-0">
-                  {r.name.split(" ").map(n => n[0]).join("")}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-[#0a1628] font-semibold text-sm truncate">{r.name}</p>
-                  <div className="flex items-center gap-1.5 text-[11px] text-[#355872]/50">
-                    <MapPin className="w-3 h-3" /><span>{r.location}</span><span>·</span><span>{r.time}</span>
+
+                <div className="flex items-center gap-3 pt-4 border-t border-[#355872]/[0.06] mt-auto">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#355872] to-[#7AAACE] flex items-center justify-center text-white font-bold text-sm shrink-0">
+                    {r.name.split(" ").map(n => n[0]).join("")}
                   </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[#0a1628] font-semibold text-sm truncate">{r.name}</p>
+                    <div className="flex items-center gap-1.5 text-[11px] text-[#355872]/50">
+                      <MapPin className="w-3 h-3" />
+                      <span>{r.location}</span>
+                      <span>·</span>
+                      <span>{r.time}</span>
+                    </div>
+                  </div>
+                  {r.verified && (
+                    <span className="flex items-center gap-1 text-[9px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-1 rounded-full shrink-0">
+                      <Shield className="w-3 h-3" /> Verified
+                    </span>
+                  )}
                 </div>
-                {r.verified && (
-                  <span className="flex items-center gap-1 text-[9px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-1 rounded-full shrink-0">
-                    <Shield className="w-3 h-3" /> Verified
-                  </span>
-                )}
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </Marquee>
         </div>
 
         {/* CTA */}

@@ -3,6 +3,8 @@ import { useState, useRef, useEffect } from "react"
 import { motion, useInView, type Variants } from "framer-motion"
 import { Star, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { TestimonialsColumn } from "@/components/devComponents/testimonials-columns-1"
+import { Marquee } from "@/components/devComponents/3d-testimonails"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -35,28 +37,40 @@ const testimonials = [
 ]
 
 export default function TestimonialsSection() {
+  // Data for vertical scrolling testimonials columns
+  const columnTestimonials = [
+    { text: "Grow Bridge simplified the PMEGP process completely. From documentation to disbursement, they handled everything.", image: "", name: "Rahul K.", role: "Founder, Agro Industries" },
+    { text: "CGTMSE guarantee plus MSME registration completed in under 3 weeks. Their knowledge is genuinely unmatched.", image: "", name: "Priya S.", role: "MD, Textiles Ltd" },
+    { text: "As a first-time founder, navigating MUDRA felt overwhelming. Grow Bridge simplified the entire journey.", image: "", name: "Arjun P.", role: "Co-Founder, TechNest" },
+    { text: "The team understood our requirements perfectly and secured ₹30L PMEGP funding within 25 days. Incredible!", image: "", name: "Meera D.", role: "Owner, Craft Studio" },
+    { text: "Professional, transparent, and result-oriented. They handled our Startup India registration seamlessly.", image: "", name: "Vikash T.", role: "CEO, FinTech Pvt" },
+    { text: "From company registration to GST filing, they made everything hassle-free. Truly a one-stop solution.", image: "", name: "Anjali R.", role: "Director, Exports" },
+  ]
+
   return (
     <section id="results" className="py-24 px-6 bg-[#060e1a] relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(53,88,114,0.04)_0%,transparent_70%)] pointer-events-none" />
 
       <motion.div className="max-w-7xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.08 }} variants={stagger}>
-        {/* Stats */}
-        <motion.div variants={fadeUp} className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
-          {[
-            { val: 110, suffix: "Cr+", prefix: "₹", label: "Total Funded", sub: "Across all schemes", color: "#355872" },
-            { val: 95, suffix: "%", prefix: "", label: "Success Rate", sub: "Industry-leading", color: "#22c55e" },
-            { val: 500, suffix: "+", prefix: "", label: "Businesses", sub: "Funded pan India", color: "#F7F8F0" },
-            { val: 24, suffix: "/7", prefix: "", label: "Expert Support", sub: "Always available", color: "#9CD5FF" },
-          ].map((s) => (
-            <div key={s.label} className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 text-center group hover:border-white/15 transition-all duration-300" style={{ boxShadow: `inset 0 1px 0 ${s.color}18` }}>
-              <p className="text-3xl md:text-4xl font-black mb-1" style={{ background: `linear-gradient(135deg,${s.color},${s.color}aa)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                <AnimatedCounter target={s.val} suffix={s.suffix} prefix={s.prefix} />
-              </p>
-              <p className="text-white font-semibold text-sm mb-0.5">{s.label}</p>
-              <p className="text-white/35 text-[11px]">{s.sub}</p>
-            </div>
-          ))}
+        {/* Stats with Marquee */}
+        <motion.div variants={fadeUp} className="mb-20 overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+          <Marquee pauseOnHover className="[--duration:25s] [--gap:0rem] py-2">
+            {[
+              { val: 110, suffix: "Cr+", prefix: "₹", label: "Total Funded", sub: "Across all schemes", color: "#355872" },
+              { val: 95, suffix: "%", prefix: "", label: "Success Rate", sub: "Industry-leading", color: "#22c55e" },
+              { val: 500, suffix: "+", prefix: "", label: "Businesses", sub: "Funded pan India", color: "#F7F8F0" },
+              { val: 24, suffix: "/7", prefix: "", label: "Expert Support", sub: "Always available", color: "#9CD5FF" },
+            ].map((s) => (
+              <div key={s.label} className="px-8 py-4 text-center group" style={{ boxShadow: `inset 0 1px 0 ${s.color}18` }}>
+                <p className="text-3xl md:text-4xl font-black mb-1" style={{ background: `linear-gradient(135deg,${s.color},${s.color}aa)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  <AnimatedCounter target={s.val} suffix={s.suffix} prefix={s.prefix} />
+                </p>
+                <p className="text-white font-semibold text-sm mb-0.5">{s.label}</p>
+                <p className="text-white/35 text-[11px]">{s.sub}</p>
+              </div>
+            ))}
+          </Marquee>
         </motion.div>
 
         {/* Testimonials header */}
@@ -71,8 +85,8 @@ export default function TestimonialsSection() {
           </motion.p>
         </div>
 
-        {/* Testimonial cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {/* Main testimonial cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
           {testimonials.map((t, i) => (
             <motion.div key={t.name} custom={i} variants={fadeUp}
               className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 flex flex-col gap-4 group hover:border-[#355872]/20 transition-all duration-300"
@@ -96,6 +110,24 @@ export default function TestimonialsSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Vertical scrolling testimonials columns (21st.dev) */}
+        <motion.div variants={fadeUp} className="flex justify-center gap-6 max-h-[350px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]">
+          <TestimonialsColumn
+            testimonials={columnTestimonials.slice(0, 3)}
+            duration={15}
+            className="hidden md:block"
+          />
+          <TestimonialsColumn
+            testimonials={columnTestimonials.slice(3, 6)}
+            duration={18}
+          />
+          <TestimonialsColumn
+            testimonials={[...columnTestimonials.slice(1, 3), columnTestimonials[4]]}
+            duration={20}
+            className="hidden lg:block"
+          />
+        </motion.div>
       </motion.div>
     </section>
   )

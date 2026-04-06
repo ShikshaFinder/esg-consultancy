@@ -76,8 +76,8 @@ export default function PremiumHero() {
   }, [])
 
   /* stats counters */
-  const stat1 = useCounter(500, 2.4, 0.8)
-  const stat2 = useCounter(10000, 2.4, 1.0)
+  const stat1 = useCounter(110, 2.4, 0.8)
+  const stat2 = useCounter(500, 2.4, 1.0)
   const stat3 = useCounter(95, 2.0, 1.2)
   const stat4 = useCounter(28, 1.6, 1.4)
 
@@ -221,7 +221,7 @@ export default function PremiumHero() {
                 <span className="animate-ping absolute h-full w-full rounded-full bg-emerald-400 opacity-60" />
                 <span className="relative rounded-full h-2 w-2 bg-emerald-400" />
               </span>
-              Trusted by 10,000+ Indian MSMEs & Startups
+              Trusted by 500+ Businesses Across 28+ States
             </span>
           </motion.div>
 
@@ -230,13 +230,13 @@ export default function PremiumHero() {
             variants={fadeUp} custom={0.15}
             className="mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]"
           >
-            <span className="text-[#DDE6ED]">The Growth Engine for</span>
+            <span className="text-[#DDE6ED]">GROW BRIDGE:</span>
             <br />
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(135deg, #DDE6ED 0%, #9DB2BF 45%, #526D82 100%)" }}
             >
-              Indian Businesses
+              Where Indian Businesses Scale.
             </span>
           </motion.h1>
 
@@ -245,7 +245,7 @@ export default function PremiumHero() {
             variants={fadeUp} custom={0.3}
             className="mt-6 text-base sm:text-lg text-[#9DB2BF]/90 max-w-2xl mx-auto leading-relaxed"
           >
-            Government schemes, business registration, financial planning & digital transformation — every tool your business needs to grow, unified in one intelligent platform.
+            The complete growth ecosystem for startups and MSMEs across India. From MSME funding & government schemes to business registration, compliance, and digital transformation — everything in one platform.
           </motion.p>
 
           {/* CTAs */}
@@ -257,7 +257,7 @@ export default function PremiumHero() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82] bg-[length:200%_100%] group-hover:animate-[shimmer_2s_ease-in-out_infinite]" />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-300 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.4),transparent_70%)]" />
-                <span className="relative">Start Growing — It&apos;s Free</span>
+                <span className="relative">Get Free Growth Assessment</span>
                 <ArrowRight className="relative w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </motion.div>
@@ -268,7 +268,7 @@ export default function PremiumHero() {
               <div className="w-8 h-8 rounded-full bg-[#526D82]/30 flex items-center justify-center group-hover:bg-[#526D82]/40 transition-colors">
                 <Play className="w-3.5 h-3.5 ml-0.5 text-[#DDE6ED]" />
               </div>
-              Watch Platform Demo
+              Check Eligibility Now
             </motion.button>
           </motion.div>
         </motion.div>
@@ -329,9 +329,9 @@ export default function PremiumHero() {
                 {/* Top stat cards */}
                 <div className="grid grid-cols-3 gap-3 mb-5">
                   {[
-                    { label: "Total Revenue", value: "₹24.8L", change: "+18.2%", color: "text-emerald-500" },
-                    { label: "Active Schemes", value: "12", change: "+3 new", color: "text-[#9DB2BF]" },
-                    { label: "Growth Score", value: "94/100", change: "+7pts", color: "text-amber-500" },
+                    { label: "Funding Enabled", value: "₹110Cr+", change: "+₹18Cr this quarter", color: "text-emerald-500" },
+                    { label: "Active Schemes", value: "50+", change: "PMEGP, MUDRA, CGTMSE", color: "text-[#9DB2BF]" },
+                    { label: "Success Rate", value: "95%", change: "scheme approvals", color: "text-amber-500" },
                   ].map((s, i) => (
                     <motion.div
                       key={s.label}
@@ -352,8 +352,8 @@ export default function PremiumHero() {
                   {/* Bar chart */}
                   <div className="flex-1 rounded-xl border border-[#526D82] bg-[#27374D]/50 p-4">
                     <div className="flex items-center justify-between mb-3">
-                      <p className="text-[11px] font-semibold text-[#9DB2BF]">Revenue Overview</p>
-                      <span className="text-[10px] text-[#9DB2BF] border border-[#526D82] rounded px-2 py-0.5 bg-[#526D82]/30">2024</span>
+                      <p className="text-[11px] font-semibold text-[#9DB2BF]">Funding Disbursed</p>
+                      <span className="text-[10px] text-[#9DB2BF] border border-[#526D82] rounded px-2 py-0.5 bg-[#526D82]/30">FY 2025-26</span>
                     </div>
                     <div className="flex items-end gap-[6px] h-[calc(100%-32px)]">
                       {BAR_HEIGHTS.map((h, i) => (
@@ -375,11 +375,11 @@ export default function PremiumHero() {
                     <p className="text-[11px] font-semibold text-[#9DB2BF] mb-3">Recent Activity</p>
                     <div className="space-y-2.5">
                       {[
-                        { text: "PMEGP Application Approved", time: "2m ago", color: "bg-emerald-500" },
-                        { text: "GST Return Filed — Q3", time: "1hr ago", color: "bg-[#9DB2BF]" },
-                        { text: "ISO 9001 Certification", time: "3hr ago", color: "bg-amber-500" },
-                        { text: "Business Loan ₹15L", time: "1d ago", color: "bg-violet-500" },
-                        { text: "Trademark Registered", time: "2d ago", color: "bg-pink-500" },
+                        { text: "PMEGP Subsidy ₹25L Approved", time: "2m ago", color: "bg-emerald-500" },
+                        { text: "Udyam Registration Complete", time: "1hr ago", color: "bg-[#9DB2BF]" },
+                        { text: "CGTMSE Guarantee ₹2Cr", time: "3hr ago", color: "bg-amber-500" },
+                        { text: "ISO 9001 Certification Filed", time: "1d ago", color: "bg-violet-500" },
+                        { text: "MUDRA Loan ₹10L Disbursed", time: "2d ago", color: "bg-pink-500" },
                       ].map((a, i) => (
                         <motion.div
                           key={i}
@@ -415,8 +415,8 @@ export default function PremiumHero() {
         >
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { ref: stat1.ref, value: stat1.value, suffix: "Cr+", prefix: "₹", label: "Total Funded" },
-              { ref: stat2.ref, value: stat2.value, suffix: "+", prefix: "", label: "MSMEs Served" },
+              { ref: stat1.ref, value: stat1.value, suffix: "Cr+", prefix: "₹", label: "Funding Enabled" },
+              { ref: stat2.ref, value: stat2.value, suffix: "+", prefix: "", label: "Businesses Served" },
               { ref: stat3.ref, value: stat3.value, suffix: "%", prefix: "", label: "Success Rate" },
               { ref: stat4.ref, value: stat4.value, suffix: "+", prefix: "", label: "States Covered" },
             ].map((s) => (

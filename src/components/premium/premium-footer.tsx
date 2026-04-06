@@ -14,39 +14,39 @@ const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0
 
 const CTA_FEATURES = [
   "Free eligibility assessment",
-  "Dedicated growth advisor",
+  "95% scheme approval rate",
   "No hidden charges",
-  "Cancel anytime",
+  "Results in 7–15 days",
 ]
 
 const FOOTER_LINKS = {
-  Platform: [
-    { label: "Government Schemes", href: "/services/grants" },
-    { label: "Business Registration", href: "/services/business-registration" },
-    { label: "Loans & Finance", href: "/services/loans" },
-    { label: "Tax & Compliance", href: "/services/tax-compliance" },
-    { label: "Certifications", href: "/services/certifications" },
-    { label: "Growth Strategy", href: "/services/growth-strategy" },
+  Services: [
+    { label: "MSME & Startup Funding", href: "/services/funding" },
+    { label: "Business Registration", href: "/services/registration" },
+    { label: "Certifications & IP", href: "/services/certifications" },
+    { label: "Tax & Compliance", href: "/services/compliance" },
+    { label: "CIBIL Assistance", href: "/services/cibil" },
+    { label: "Marketing & Branding", href: "/services/marketing" },
   ],
   Company: [
     { label: "About Us", href: "/about" },
     { label: "Contact", href: "/contact" },
-    { label: "Careers", href: "#" },
-    { label: "Blog", href: "#" },
-    { label: "Press Kit", href: "#" },
+    { label: "Success Stories", href: "/success-stories" },
+    { label: "Blog", href: "/blog" },
+    { label: "Careers", href: "/careers" },
   ],
-  Resources: [
-    { label: "MSME Schemes Guide", href: "/schemes" },
-    { label: "Success Stories", href: "#" },
-    { label: "Documentation", href: "#" },
-    { label: "API Reference", href: "#" },
-    { label: "Partner Program", href: "#" },
+  Schemes: [
+    { label: "PMEGP Subsidy", href: "/schemes/pmegp" },
+    { label: "MUDRA Loans", href: "/schemes/mudra" },
+    { label: "Startup India Seed Fund", href: "/schemes/seed-fund" },
+    { label: "CGTMSE", href: "/schemes/cgtmse" },
+    { label: "Stand-Up India", href: "/schemes/stand-up-india" },
   ],
   Legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-    { label: "Cookie Policy", href: "#" },
-    { label: "Refund Policy", href: "#" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Refund Policy", href: "/refund-policy" },
+    { label: "Disclaimer", href: "/disclaimer" },
   ],
 }
 
@@ -86,18 +86,18 @@ export default function PremiumFooter() {
           <motion.h2 variants={fadeUp} custom={0.1}
             className="text-4xl font-bold leading-[1.08] tracking-tight text-[#DDE6ED] sm:text-5xl md:text-6xl"
           >
-            Start Growing Your
+            Your Growth Journey
             <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82]">
-              Business Today
+              Starts Here
             </span>
           </motion.h2>
 
           <motion.p variants={fadeUp} custom={0.2}
             className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#9DB2BF]/92"
           >
-            Join 10,000+ Indian entrepreneurs who are scaling faster with GrowBridge.
-            No credit card required — start with a free growth assessment.
+            Join 500+ Indian entrepreneurs who scaled their business with GrowBridge.
+            Free eligibility check — know your funding options in under 5 minutes.
           </motion.p>
 
           {/* CTA buttons */}
@@ -164,7 +164,7 @@ export default function PremiumFooter() {
                 </span>
               </Link>
               <p className="text-[#9DB2BF]/70 text-sm leading-relaxed max-w-xs mb-6">
-                India&apos;s trusted MSME growth platform. Government funding, business registration, compliance support & digital transformation.
+                India&apos;s complete MSME growth ecosystem. Government funding, business registration, compliance, certifications & digital transformation — all under one roof.
               </p>
               <div className="space-y-2.5">
                 <a href="mailto:abhay@growbridge.org" className="flex items-center gap-2.5 text-sm text-[#9DB2BF] hover:text-[#DDE6ED] transition-colors">
@@ -174,7 +174,7 @@ export default function PremiumFooter() {
                   <Phone className="w-4 h-4" /> +91 84878 28752
                 </a>
                 <span className="flex items-center gap-2.5 text-sm text-[#9DB2BF]">
-                  <MapPin className="w-4 h-4" /> Ahmedabad, Gujarat
+                  <MapPin className="w-4 h-4" /> B-304/2, Nehru Nagar, Ahmedabad 380015
                 </span>
               </div>
             </div>

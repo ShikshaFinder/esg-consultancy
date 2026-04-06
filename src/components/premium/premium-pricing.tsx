@@ -13,46 +13,48 @@ const PLANS = [
     popular: false,
     cta: "Get Started Free",
     features: [
-      "Udyam Registration Assistance",
-      "Basic Scheme Matching",
-      "1 Consultation / month",
-      "Email Support",
-      "Knowledge Base Access",
+      "Free Eligibility Assessment",
+      "Udyam / MSME Registration",
+      "Basic Scheme Matching (up to 3)",
+      "GST Registration Assistance",
+      "Email Support \u2014 48hr response",
+      "Knowledge Base & Guides Access",
     ],
   },
   {
     name: "Growth",
-    monthlyPrice: 2999,
-    annualPrice: 29990,
-    tagline: "For scaling MSMEs",
+    monthlyPrice: 4999,
+    annualPrice: 49990,
+    tagline: "For scaling MSMEs & startups",
     popular: true,
     cta: "Start 14-Day Free Trial",
     features: [
       "Everything in Starter",
-      "Unlimited Scheme Matching",
-      "Priority Application Filing",
-      "Dedicated Relationship Manager",
-      "Loan & Grant Assistance",
-      "CIBIL Monitoring & Repair",
-      "Quarterly Business Review",
+      "Unlimited Scheme Matching & Filing",
+      "PMEGP / MUDRA / Seed Fund Applications",
+      "DPR Preparation & Submission",
+      "CIBIL Score Repair & Monitoring",
+      "Dedicated Growth Advisor",
+      "Trademark & DPIIT Registration",
+      "Priority Processing \u2014 7\u201315 days",
     ],
   },
   {
     name: "Enterprise",
-    monthlyPrice: 9999,
-    annualPrice: 99990,
-    tagline: "For established businesses",
+    monthlyPrice: 14999,
+    annualPrice: 149990,
+    tagline: "For established businesses & exporters",
     popular: false,
     cta: "Contact Sales",
     features: [
       "Everything in Growth",
-      "ISO / ZED Certification Support",
-      "Export Documentation",
-      "Custom Compliance Workflows",
-      "Multi-Branch Support",
-      "API & ERP Integration",
-      "Dedicated Legal Counsel",
-      "24/7 Priority Support",
+      "CGTMSE / Stand-Up India Facilitation",
+      "ISO 9001 & ZED Certification Support",
+      "FSSAI, BIS & Import-Export Licensing",
+      "Legal: Company Formation & Compliance",
+      "Marketing & Branding Strategy",
+      "GeM Portal Registration & Bidding",
+      "Dedicated Team + Monthly Reviews",
     ],
   },
 ]
@@ -80,13 +82,13 @@ export default function PremiumPricing() {
         >
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-[#9DB2BF]">Pricing</p>
           <h2 className="mb-4 text-3xl font-bold text-[#DDE6ED] md:text-5xl">
-            Simple, transparent{" "}
+            Invest in Your{" "}
             <span className="bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82] bg-clip-text text-transparent">
-              pricing
+              Business Growth
             </span>
           </h2>
           <p className="mx-auto max-w-lg text-[#9DB2BF]/90">
-            Start free, upgrade when you&apos;re ready. All plans include core MSME support.
+            Start free, upgrade when you&apos;re ready. Every plan includes core MSME registration & scheme eligibility check.
           </p>
         </motion.div>
 

@@ -1,7 +1,7 @@
 "use client"
 import { useRef, useEffect, useState } from "react"
 import { motion, type Variants, useInView } from "framer-motion"
-import { Star, Quote, Zap, Shield, Clock, HeartHandshake } from "lucide-react"
+import { Star, Quote, Zap, Shield, Clock, HeartHandshake, Search, PenTool, Users, RefreshCcw, FileCheck, Truck } from "lucide-react"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -37,28 +37,31 @@ function AnimatedNumber({ target, suffix = "", prefix = "" }: { target: number; 
 
 /* ─── Process Steps ─── */
 const STEPS = [
-  { icon: Zap, num: "01", title: "Quick Onboarding", desc: "Tell us about your business in 2 minutes. Our AI analyzes your profile instantly.", gradient: "from-[#526D82] to-[#9DB2BF]" },
-  { icon: Shield, num: "02", title: "Smart Matching", desc: "We match you with eligible schemes, services, and growth opportunities automatically.", gradient: "from-[#9DB2BF] to-[#DDE6ED]" },
-  { icon: Clock, num: "03", title: "Expert Execution", desc: "Dedicated advisors handle paperwork, applications, and compliance — you focus on business.", gradient: "from-[#526D82] to-[#DDE6ED]" },
-  { icon: HeartHandshake, num: "04", title: "Continuous Growth", desc: "Ongoing monitoring, new opportunity alerts, and strategic recommendations to keep growing.", gradient: "from-[#9DB2BF] to-[#526D82]" },
+  { icon: Zap, num: "01", title: "Initial Information", desc: "Share your business details in a quick consultation. We gather all necessary information to understand your needs.", gradient: "from-[#526D82] to-[#9DB2BF]" },
+  { icon: Search, num: "02", title: "Analysts' Deep Dive", desc: "Our expert analysts research eligible schemes, funding options, and compliance requirements specific to your business.", gradient: "from-[#9DB2BF] to-[#DDE6ED]" },
+  { icon: PenTool, num: "03", title: "Design Phase", desc: "We design a custom growth roadmap — DPR preparation, application strategy, and compliance blueprint.", gradient: "from-[#526D82] to-[#DDE6ED]" },
+  { icon: Users, num: "04", title: "Client Collaboration", desc: "Review the proposed plan together. Your feedback shapes the final approach — no surprises, full transparency.", gradient: "from-[#9DB2BF] to-[#526D82]" },
+  { icon: RefreshCcw, num: "05", title: "Refinement & Research", desc: "Fine-tune every detail based on your inputs. Additional research ensures maximum approval probability.", gradient: "from-[#526D82] to-[#9DB2BF]" },
+  { icon: FileCheck, num: "06", title: "Draft Finalization", desc: "All documents, applications, and filings are finalized with precision before submission.", gradient: "from-[#9DB2BF] to-[#DDE6ED]" },
+  { icon: Truck, num: "07", title: "Delivery & Support", desc: "Applications submitted, approvals tracked, and ongoing support until your funding or certification is secured.", gradient: "from-[#526D82] to-[#DDE6ED]" },
 ]
 
 /* ─── Testimonials ─── */
 const TESTIMONIALS = [
   {
-    quote: "GrowBridge helped us secure a ₹25L PMEGP grant within 45 days. The process was completely seamless — they handled everything from documentation to final approval.",
-    name: "Rajesh Patel", role: "Founder, TechnoFab Industries", location: "Ahmedabad, Gujarat",
-    rating: 5, avatar: "RP",
+    quote: "GrowBridge helped us secure Startup India Seed Fund worth ₹50L for our renewable energy venture. The documentation and portal submission was handled end-to-end — we just focused on building.",
+    name: "Scion Renewable Pvt Ltd", role: "Clean Energy Startup", location: "Rajkot, Gujarat",
+    rating: 5, avatar: "SR",
   },
   {
-    quote: "From company registration to GST filing, their platform automates everything. We saved 120+ hours in our first quarter alone. Best investment for our startup.",
-    name: "Priya Sharma", role: "CEO, NexGen Solutions", location: "Mumbai, Maharashtra",
-    rating: 5, avatar: "PS",
+    quote: "From trademark registration to DPIIT certification, GrowBridge handled everything for our production company. Their team’s expertise with government portals saved us months of effort.",
+    name: "Pruthveek Raval Production", role: "Media & Entertainment", location: "Gandhidham, Gujarat",
+    rating: 5, avatar: "PR",
   },
   {
-    quote: "The growth intelligence feature identified 8 government schemes we were eligible for but didn't know about. Already secured 3 of them — ₹40L in total funding.",
-    name: "Arjun Mehta", role: "Director, GreenLeaf Exports", location: "Surat, Gujarat",
-    rating: 5, avatar: "AM",
+    quote: "As a forensic consultancy LLP, we needed specialized compliance support. GrowBridge matched us with the right seed fund scheme and got our application approved within 45 days.",
+    name: "Saroj Jagdish Forensic LLP", role: "Forensic Consultancy", location: "Surat, Gujarat",
+    rating: 5, avatar: "SJ",
   },
 ]
 
@@ -81,11 +84,11 @@ export default function PremiumProof() {
             </motion.span>
             <motion.h2 variants={fadeUp} custom={0.1} className="text-3xl font-bold tracking-tight text-[#DDE6ED] sm:text-4xl md:text-5xl">
               From Signup to Growth{" "}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82]">in 4 Steps</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82]">in 7 Steps</span>
             </motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {STEPS.map((s, i) => (
               <motion.div
                 key={s.num} variants={fadeUp} custom={i * 0.08}
@@ -108,11 +111,6 @@ export default function PremiumProof() {
 
                 <h3 className="text-[#DDE6ED] font-bold text-base mb-2">{s.title}</h3>
                 <p className="text-[#9DB2BF]/70 text-sm leading-relaxed">{s.desc}</p>
-
-                {/* Connector line (hidden on last) */}
-                {i < 3 && (
-                  <div className="absolute top-1/2 -right-3 hidden w-6 border-t border-dashed border-[#526D82]/50 lg:block" />
-                )}
               </motion.div>
             ))}
           </div>
@@ -130,10 +128,10 @@ export default function PremiumProof() {
           {/* Big stats row */}
           <motion.div variants={fadeUp} className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-24">
             {[
-              { target: 500, prefix: "₹", suffix: "Cr+", label: "Capital Facilitated", sublabel: "across MSMEs" },
-              { target: 10000, prefix: "", suffix: "+", label: "Businesses Served", sublabel: "pan India" },
+              { target: 110, prefix: "₹", suffix: "Cr+", label: "Funding Enabled", sublabel: "across MSMEs & startups" },
+              { target: 500, prefix: "", suffix: "+", label: "Businesses Served", sublabel: "across 28+ states" },
               { target: 95, prefix: "", suffix: "%", label: "Success Rate", sublabel: "scheme approvals" },
-              { target: 120, prefix: "", suffix: "+", label: "Hours Saved", sublabel: "per business/quarter" },
+              { target: 50, prefix: "", suffix: "+", label: "Active Schemes", sublabel: "matched & filed" },
             ].map((s, i) => (
               <motion.div
                 key={s.label}

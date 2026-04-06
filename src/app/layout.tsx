@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
+import ClientPopupWrapper from "@/components/layout/client-popup-wrapper"
 import "./globals.css"
 
 const geistSans = localFont({
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ClientPopupWrapper />
         {children}
       </body>
     </html>

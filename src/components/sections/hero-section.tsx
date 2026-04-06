@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import {
-  ArrowRight, CheckCircle, TrendingUp, Shield, Zap, ChevronDown,
+  ArrowRight, CheckCircle, TrendingUp, Shield, Zap, ChevronDown, MapPin, Phone, Mail, User, Lock,
 } from "lucide-react"
 import {
   useMotionTemplate, useMotionValue, motion, animate,
@@ -190,90 +190,132 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right — Consultation Card */}
+          {/* Right — Consultation Card (Ewolyn-style two-column) */}
           <motion.div
             initial={{ opacity: 0, y: 40, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1.1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative hidden sm:block"
           >
-            <div className="overflow-hidden rounded-[1.75rem] border border-[#7AAACE]/20 bg-[#0a1628]/60 shadow-2xl backdrop-blur-2xl">
-              {/* Image banner */}
-              <div className="relative h-[170px] overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: "url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80')",
-                  }}
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,22,40,0.35)_0%,rgba(10,22,40,0.75)_60%,rgba(10,22,40,0.95)_100%)]" />
-                <div className="absolute inset-0 bg-[#355872]/[0.08] mix-blend-screen" />
-                <div className="relative z-10 flex h-full flex-col justify-between p-5">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.08] px-3 py-1.5 text-[11px] font-medium text-white/90 backdrop-blur-md w-fit">
-                    <span className="h-2 w-2 rounded-full bg-[#9CD5FF]" />
-                    Grow Bridge · Active Now
-                  </span>
-                  <div>
-                    <p className="mb-1 text-[10px] font-semibold tracking-[0.22em] text-[#9CD5FF]/90 uppercase">
-                      Premium Advisory Desk
-                    </p>
-                    <h3 className="text-xl font-bold leading-tight text-white">
-                      Talk to a Growth Expert
-                    </h3>
+            <div className="overflow-hidden rounded-[1.5rem] border border-[#7AAACE]/25 shadow-2xl backdrop-blur-2xl">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                {/* Left — Team Photo + Contact Info */}
+                <div className="relative min-h-[420px] overflow-hidden">
+                  <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80')" }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/60 via-[#0a1628]/75 to-[#0a1628]/92" />
+                  <div className="relative z-10 flex flex-col justify-between h-full p-6">
+                    {/* Top badge */}
+                    <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.15] bg-white/[0.08] px-3 py-1.5 text-[11px] font-medium text-white/90 backdrop-blur-md w-fit">
+                      <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
+                      Grow Bridge · Active Now
+                    </span>
+
+                    {/* Middle content */}
+                    <div className="my-auto py-6">
+                      <h3 className="text-2xl font-bold text-white leading-tight mb-1.5">
+                        Talk to a Growth Expert
+                      </h3>
+                      <p className="text-white/50 text-sm mb-8">Free consultation for your business</p>
+
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <div className="w-9 h-9 rounded-full bg-[#9CD5FF]/15 flex items-center justify-center shrink-0">
+                            <MapPin className="w-4 h-4 text-[#9CD5FF]" />
+                          </div>
+                          <div>
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">Location</p>
+                            <p className="text-white text-sm font-medium">Ahmedabad, Gujarat</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <div className="w-9 h-9 rounded-full bg-[#9CD5FF]/15 flex items-center justify-center shrink-0">
+                            <Phone className="w-4 h-4 text-[#9CD5FF]" />
+                          </div>
+                          <div>
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">Phone</p>
+                            <p className="text-white text-sm font-medium">+91 84878 28752</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <div className="w-9 h-9 rounded-full bg-[#9CD5FF]/15 flex items-center justify-center shrink-0">
+                            <Mail className="w-4 h-4 text-[#9CD5FF]" />
+                          </div>
+                          <div>
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">Email</p>
+                            <p className="text-white text-sm font-medium">abhay@growbridge.org</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom trust badges */}
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        { icon: "✓", label: "1000+ Clients" },
+                        { icon: "✓", label: "Pan India" },
+                        { icon: "✓", label: "7+ Years" },
+                      ].map((b) => (
+                        <span key={b.label} className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-[11px] text-white/75 backdrop-blur-sm">
+                          <span className="text-[#9CD5FF]">{b.icon}</span> {b.label}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Form */}
-              <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0.92)_0%,rgba(248,250,252,0.98)_100%)] p-5 lg:p-6">
-                <div className="mb-4">
-                  <span className="inline-flex rounded-full bg-[#355872]/15 px-3 py-1 text-xs font-semibold text-[#355872]">
+                {/* Right — Form */}
+                <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(248,250,252,1)_100%)] p-6">
+                  <span className="inline-flex rounded-full bg-[#355872]/12 px-3 py-1 text-xs font-semibold text-[#355872] mb-3">
                     Free Consultation
                   </span>
-                </div>
-                <h3 className="mb-1.5 text-xl font-bold leading-tight text-slate-900">
-                  Check Your Growth Fit
-                </h3>
-                <p className="mb-5 text-sm leading-relaxed text-slate-600">
-                  Share your details and our team will map the right path for your business.
-                </p>
-                <div className="space-y-3">
-                  <div>
-                    <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">Full Name</label>
-                    <input type="text" placeholder="Enter your name" className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400 focus:border-[#355872] focus:ring-4 focus:ring-[#355872]/15" />
-                  </div>
-                  <div>
-                    <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">Phone Number</label>
-                    <input type="tel" placeholder="10-digit mobile" className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400 focus:border-[#355872] focus:ring-4 focus:ring-[#355872]/15" />
-                  </div>
-                  <div>
-                    <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">Service Needed</label>
-                    <select className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition-all focus:border-[#355872] focus:ring-4 focus:ring-[#355872]/15">
-                      <option>Choose service category</option>
-                      <option>Registration & Compliance</option>
-                      <option>Government Funding</option>
-                      <option>Growth & Marketing</option>
-                    </select>
-                  </div>
-                  <button className="mt-1 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#355872] via-[#7AAACE] to-[#9CD5FF] px-5 py-3.5 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(53,88,114,0.25)] cursor-pointer hover:opacity-90 transition-opacity">
-                    Get Free Consultation
-                    <ArrowRight className="h-4 w-4" />
-                  </button>
-                  <p className="pt-0.5 text-center text-xs text-slate-500">
-                    🔒 100% private. No spam guaranteed.
+                  <h3 className="text-xl font-bold text-slate-900 mb-1">
+                    Check Your Eligibility
+                  </h3>
+                  <p className="text-sm text-slate-500 mb-5">
+                    Our expert will contact you within 2 hours.
                   </p>
-                </div>
-                <div className="mt-5 grid grid-cols-3 gap-3 border-t border-slate-200 pt-4">
-                  {[
-                    { value: "1000+", label: "Funded" },
-                    { value: "95%", label: "Success" },
-                    { value: "24hr", label: "Response" },
-                  ].map((stat) => (
-                    <div key={stat.label} className="text-center">
-                      <p className="text-lg font-black text-slate-900">{stat.value}</p>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">{stat.label}</p>
+                  <div className="space-y-3.5">
+                    <div>
+                      <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                        Full Name <span className="text-red-400">*</span>
+                      </label>
+                      <div className="relative">
+                        <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                        <input type="text" placeholder="Enter your name" className="w-full rounded-xl border border-slate-200 bg-white pl-10 pr-4 py-3 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400 focus:border-[#355872] focus:ring-4 focus:ring-[#355872]/10" />
+                      </div>
                     </div>
-                  ))}
+                    <div>
+                      <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                        Phone Number <span className="text-red-400">*</span>
+                      </label>
+                      <div className="relative">
+                        <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                        <input type="tel" placeholder="10-digit mobile" className="w-full rounded-xl border border-slate-200 bg-white pl-10 pr-4 py-3 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400 focus:border-[#355872] focus:ring-4 focus:ring-[#355872]/10" />
+                      </div>
+                    </div>
+                    <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#355872] via-[#5a8fad] to-[#7AAACE] px-5 py-3.5 text-sm font-bold text-white shadow-[0_8px_24px_rgba(53,88,114,0.3)] cursor-pointer hover:shadow-[0_12px_32px_rgba(53,88,114,0.4)] hover:scale-[1.01] active:scale-[0.99] transition-all duration-200">
+                      Get Free Consultation
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+                    <p className="text-center text-xs text-slate-500 flex items-center justify-center gap-1.5">
+                      <Lock className="w-3 h-3" /> 100% Private. No spam guaranteed.
+                    </p>
+                  </div>
+                  <div className="mt-5 grid grid-cols-3 gap-3 border-t border-slate-200 pt-4">
+                    {[
+                      { value: "1000+", label: "Funded" },
+                      { value: "95%", label: "Success" },
+                      { value: "24hr", label: "Response" },
+                    ].map((stat) => (
+                      <div key={stat.label} className="text-center">
+                        <p className="text-lg font-black text-slate-900">{stat.value}</p>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">{stat.label}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

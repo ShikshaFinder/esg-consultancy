@@ -16,42 +16,42 @@ const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0
 
 const services = [
   {
-    icon: FileText, title: "Business Registration", gradient: "from-[#355872] to-[#7AAACE]",
+    icon: FileText, title: "Business Registration", gradient: "from-[#355872] to-[#7AAACE]", slug: "business-registration",
     desc: "Complete business setup and registration services to get your venture off the ground legally and efficiently.",
     items: ["MSME / Udyam Registration", "Company Incorporation (Pvt Ltd, LLP, OPC)", "GST Registration & Filing", "FSSAI License", "Shop & Establishment Act", "Import/Export Code (IEC)"],
   },
   {
-    icon: Building2, title: "Tax & Compliance", gradient: "from-[#7AAACE] to-[#9CD5FF]",
+    icon: Building2, title: "Tax & Compliance", gradient: "from-[#7AAACE] to-[#9CD5FF]", slug: "tax-compliance",
     desc: "Stay compliant with all regulatory requirements. We handle the complexity so you can focus on business.",
     items: ["Income Tax Filing (ITR)", "GST Return Filing", "TDS Compliance", "ROC Annual Filing", "Payroll & PF/ESI", "Tax Planning & Advisory"],
   },
   {
-    icon: Shield, title: "Certifications & IP", gradient: "from-[#9CD5FF] to-[#355872]",
+    icon: Shield, title: "Certifications & IP", gradient: "from-[#9CD5FF] to-[#355872]", slug: "certifications",
     desc: "Protect your intellectual property and get certifications that open doors to new business opportunities.",
     items: ["ISO Certification", "Trademark Registration", "Patent Filing", "Copyright Registration", "DPIIT / Startup India", "ZED Certification"],
   },
   {
-    icon: Megaphone, title: "Marketing & Branding", gradient: "from-[#355872] to-[#9CD5FF]",
+    icon: Megaphone, title: "Marketing & Branding", gradient: "from-[#355872] to-[#9CD5FF]", slug: "marketing",
     desc: "Build a strong brand presence and reach your target audience with our comprehensive marketing solutions.",
     items: ["Brand Identity Design", "Logo & Visual Design", "Marketing Strategy", "Content Marketing", "PR & Media Coverage", "Event Marketing"],
   },
   {
-    icon: Banknote, title: "Grants & Funding", gradient: "from-[#7AAACE] to-[#355872]",
+    icon: Banknote, title: "Grants & Funding", gradient: "from-[#7AAACE] to-[#355872]", slug: "grants",
     desc: "Navigate the complex world of government grants and subsidies with expert guidance at every step.",
     items: ["PMEGP Loan", "MUDRA Yojana", "CGTMSE Guarantee", "Stand-Up India", "State Subsidies", "Angel/VC Pitch Prep"],
   },
   {
-    icon: CreditCard, title: "CIBIL & Finance", gradient: "from-[#9CD5FF] to-[#7AAACE]",
+    icon: CreditCard, title: "CIBIL & Finance", gradient: "from-[#9CD5FF] to-[#7AAACE]", slug: "cibil-assistance",
     desc: "Improve your credit score and financial standing to unlock better funding opportunities.",
     items: ["CIBIL Score Improvement", "Credit Report Analysis", "Debt Restructuring", "Financial Statement Prep", "Business Plan Writing", "Project Report Creation"],
   },
   {
-    icon: Globe, title: "Website Development", gradient: "from-[#355872] to-[#7AAACE]",
+    icon: Globe, title: "Website Development", gradient: "from-[#355872] to-[#7AAACE]", slug: "growth-strategy",
     desc: "Professional web presence that converts visitors into customers with modern, responsive designs.",
     items: ["Business Website", "E-commerce Store", "Landing Pages", "CMS Development", "Website Maintenance", "UI/UX Design"],
   },
   {
-    icon: Smartphone, title: "Digital Marketing", gradient: "from-[#7AAACE] to-[#9CD5FF]",
+    icon: Smartphone, title: "Digital Marketing", gradient: "from-[#7AAACE] to-[#9CD5FF]", slug: "marketing",
     desc: "Data-driven digital marketing to grow your online presence and generate quality leads.",
     items: ["Social Media Marketing", "Google Ads (PPC)", "SEO Optimization", "Email Marketing", "WhatsApp Marketing", "CRM Setup & Management"],
   },
@@ -120,7 +120,7 @@ export default function ServicesPage() {
                         </div>
                       ))}
                     </div>
-                    <Link href="/contact"
+                    <Link href={`/services/${s.slug}`}
                       className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#355872] hover:text-[#7AAACE] transition-colors"
                     >
                       Learn More <ChevronRight className="w-4 h-4" />

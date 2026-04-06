@@ -36,13 +36,19 @@ export const TestimonialsColumn = (props: {
                 <div className="p-10 rounded-3xl border shadow-lg shadow-primary/10 max-w-xs w-full" key={i}>
                   <div>{text}</div>
                   <div className="flex items-center gap-2 mt-5">
-                    <img
-                      width={40}
-                      height={40}
-                      src={image}
-                      alt={name}
-                      className="h-10 w-10 rounded-full"
-                    />
+                    {image ? (
+                      <img
+                        width={40}
+                        height={40}
+                        src={image}
+                        alt={name}
+                        className="h-10 w-10 rounded-full"
+                      />
+                    ) : (
+                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[#415E72] to-[#C5B0CD] flex items-center justify-center text-white font-bold text-sm shrink-0">
+                        {name.split(" ").map(n => n[0]).join("").slice(0, 2)}
+                      </div>
+                    )}
                     <div className="flex flex-col">
                       <div className="font-medium tracking-tight leading-5">{name}</div>
                       <div className="leading-5 opacity-60 tracking-tight">{role}</div>

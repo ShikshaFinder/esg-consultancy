@@ -3,11 +3,11 @@ import Link from "next/link"
 import { motion, type Variants } from "framer-motion"
 import { ArrowRight, CheckCircle2, Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Youtube, ExternalLink } from "lucide-react"
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
+const blurFadeUp: Variants = {
+  hidden: { opacity: 0, filter: "blur(8px)", y: 24 },
   show: (d: number = 0) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.6, delay: d, ease: [0.22, 1, 0.36, 1] },
+    opacity: 1, filter: "blur(0px)", y: 0,
+    transition: { duration: 0.7, delay: d, ease: [0.22, 1, 0.36, 1] },
   }),
 }
 const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
@@ -77,13 +77,13 @@ export default function PremiumFooter() {
           className="max-w-4xl mx-auto text-center relative z-10"
           initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}
         >
-          <motion.span variants={fadeUp} custom={0}
+          <motion.span variants={blurFadeUp} custom={0}
             className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#526D82]/50 bg-[#526D82]/25 px-5 py-2 text-sm font-medium text-[#DDE6ED] backdrop-blur-sm"
           >
             🚀 Ready to Accelerate?
           </motion.span>
 
-          <motion.h2 variants={fadeUp} custom={0.1}
+          <motion.h2 variants={blurFadeUp} custom={0.1}
             className="text-4xl font-bold leading-[1.08] tracking-tight text-[#DDE6ED] sm:text-5xl md:text-6xl"
           >
             Your Growth Journey
@@ -93,7 +93,7 @@ export default function PremiumFooter() {
             </span>
           </motion.h2>
 
-          <motion.p variants={fadeUp} custom={0.2}
+          <motion.p variants={blurFadeUp} custom={0.2}
             className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#9DB2BF]/92"
           >
             Join 500+ Indian entrepreneurs who scaled their business with GrowBridge.
@@ -101,7 +101,7 @@ export default function PremiumFooter() {
           </motion.p>
 
           {/* CTA buttons */}
-          <motion.div variants={fadeUp} custom={0.3}
+          <motion.div variants={blurFadeUp} custom={0.3}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
@@ -126,7 +126,7 @@ export default function PremiumFooter() {
           </motion.div>
 
           {/* Feature pills */}
-          <motion.div variants={fadeUp} custom={0.4}
+          <motion.div variants={blurFadeUp} custom={0.4}
             className="mt-10 flex flex-wrap items-center justify-center gap-4"
           >
             {CTA_FEATURES.map((f) => (
@@ -140,7 +140,9 @@ export default function PremiumFooter() {
       </section>
 
       {/* ━━━ FOOTER ━━━ */}
-      <footer className="relative border-t border-[#526D82] bg-[#1e2d3d]">
+      <footer className="relative border-t border-[#526D82]/50 bg-[#1e2d3d]">
+        {/* Subtle top glow line */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-[#9DB2BF]/30 to-transparent" />
         <div className="max-w-7xl mx-auto px-6 pt-20 pb-10">
           {/* Top section */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-10 mb-16">
@@ -186,8 +188,9 @@ export default function PremiumFooter() {
                 <ul className="space-y-2.5">
                   {links.map((l) => (
                     <li key={l.label}>
-                      <Link href={l.href} className="text-[#9DB2BF]/70 text-sm hover:text-[#DDE6ED] transition-colors duration-200">
+                      <Link href={l.href} className="group/link relative text-[#9DB2BF]/70 text-sm hover:text-[#DDE6ED] transition-colors duration-200 inline-block">
                         {l.label}
+                        <span className="absolute left-0 -bottom-0.5 w-0 h-[1px] bg-[#9DB2BF] group-hover/link:w-full transition-all duration-300" />
                       </Link>
                     </li>
                   ))}
@@ -211,10 +214,10 @@ export default function PremiumFooter() {
                 <motion.a
                   key={i}
                   href={href}
-                  whileHover={{ scale: 1.15, rotate: 5 }}
+                  whileHover={{ scale: 1.2, rotate: 8, boxShadow: "0 0 15px rgba(157,178,191,0.3)" }}
                   whileTap={{ scale: 0.9 }}
                   transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-[#526D82] bg-[#27374D]/60 text-[#9DB2BF] transition-all duration-300 hover:border-[#9DB2BF]/20 hover:bg-[#526D82]/40 hover:text-[#DDE6ED]"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-[#526D82] bg-[#27374D]/60 text-[#9DB2BF] transition-all duration-300 hover:border-[#9DB2BF]/30 hover:bg-[#526D82]/40 hover:text-[#DDE6ED]"
                 >
                   <Icon className="w-4 h-4" />
                 </motion.a>

@@ -1,16 +1,25 @@
 "use client"
 import { useRef, useEffect, useState } from "react"
-import { motion, type Variants, useInView } from "framer-motion"
-import { Star, Quote, Zap, Shield, Clock, HeartHandshake, Search, PenTool, Users, RefreshCcw, FileCheck, Truck } from "lucide-react"
+import { motion, type Variants, useInView, useScroll, useTransform } from "framer-motion"
+import { Star, Quote, Zap, Shield, Clock, Search, PenTool, Users, RefreshCcw, FileCheck, Truck } from "lucide-react"
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
+const blurFadeUp: Variants = {
+  hidden: { opacity: 0, filter: "blur(8px)", y: 24 },
   show: (d: number = 0) => ({
-    opacity: 1, y: 0,
+    opacity: 1, filter: "blur(0px)", y: 0,
+    transition: { duration: 0.7, delay: d, ease: [0.22, 1, 0.36, 1] },
+  }),
+}
+
+const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
+
+const scaleIn: Variants = {
+  hidden: { opacity: 0, scale: 0.88, y: 24, filter: "blur(6px)" },
+  show: (d: number = 0) => ({
+    opacity: 1, scale: 1, y: 0, filter: "blur(0px)",
     transition: { duration: 0.6, delay: d, ease: [0.22, 1, 0.36, 1] },
   }),
 }
-const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
 
 /* ─── Animated Counter ─── */
 function AnimatedNumber({ target, suffix = "", prefix = "" }: { target: number; suffix?: string; prefix?: string }) {
@@ -35,6 +44,37 @@ function AnimatedNumber({ target, suffix = "", prefix = "" }: { target: number; 
   return <span ref={ref}>{prefix}{val.toLocaleString()}{suffix}</span>
 }
 
+/* ─── Animated SVG Progress Ring ─── */
+function ProgressRing({ value, size = 80, strokeWidth = 6, color = "#9DB2BF" }: {
+  value: number; size?: number; strokeWidth?: number; color?: string
+}) {
+  const ref = useRef<SVGSVGElement>(null)
+  const inView = useInView(ref, { once: true, amount: 0.5 })
+  const radius = (size - strokeWidth) / 2
+  const circumference = 2 * Math.PI * radius
+  const offset = circumference - (value / 100) * circumference
+
+  return (
+    <svg ref={ref} width={size} height={size} className="transform -rotate-90">
+      {/* Background circle */}
+      <circle
+        cx={size / 2} cy={size / 2} r={radius}
+        fill="none" stroke="rgba(82,109,130,0.15)" strokeWidth={strokeWidth}
+      />
+      {/* Animated progress circle */}
+      <motion.circle
+        cx={size / 2} cy={size / 2} r={radius}
+        fill="none" stroke={color} strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeDasharray={circumference}
+        initial={{ strokeDashoffset: circumference }}
+        animate={inView ? { strokeDashoffset: offset } : {}}
+        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+      />
+    </svg>
+  )
+}
+
 /* ─── Process Steps ─── */
 const STEPS = [
   { icon: Zap, num: "01", title: "Initial Information", desc: "Share your business details in a quick consultation. We gather all necessary information to understand your needs.", gradient: "from-[#526D82] to-[#9DB2BF]" },
@@ -54,7 +94,7 @@ const TESTIMONIALS = [
     rating: 5, avatar: "SR",
   },
   {
-    quote: "From trademark registration to DPIIT certification, GrowBridge handled everything for our production company. Their team’s expertise with government portals saved us months of effort.",
+    quote: "From trademark registration to DPIIT certification, GrowBridge handled everything for our production company. Their team's expertise with government portals saved us months of effort.",
     name: "Pruthveek Raval Production", role: "Media & Entertainment", location: "Gandhidham, Gujarat",
     rating: 5, avatar: "PR",
   },
@@ -66,6 +106,10 @@ const TESTIMONIALS = [
 ]
 
 export default function PremiumProof() {
+  const timelineRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: timelineRef, offset: ["start 0.8", "end 0.4"] })
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
+
   return (
     <>
       {/* ━━━ HOW IT WORKS ━━━ */}
@@ -77,42 +121,78 @@ export default function PremiumProof() {
           initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.1 }} variants={stagger}
         >
           <div className="text-center mb-16">
-            <motion.span variants={fadeUp} custom={0}
+            <motion.span variants={blurFadeUp} custom={0}
               className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#526D82] bg-[#526D82]/30 px-4 py-1.5 text-xs font-medium text-[#9DB2BF]"
             >
               ⚡ How It Works
             </motion.span>
-            <motion.h2 variants={fadeUp} custom={0.1} className="text-3xl font-bold tracking-tight text-[#DDE6ED] sm:text-4xl md:text-5xl">
+            <motion.h2 variants={blurFadeUp} custom={0.1} className="text-3xl font-bold tracking-tight text-[#DDE6ED] sm:text-4xl md:text-5xl">
               From Signup to Growth{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82]">in 7 Steps</span>
             </motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {STEPS.map((s, i) => (
+          {/* Timeline grid with animated connector */}
+          <div ref={timelineRef} className="relative">
+            {/* Animated vertical connector line (visible on lg+) */}
+            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2">
+              <div className="absolute inset-0 bg-[#526D82]/30" />
               <motion.div
-                key={s.num} variants={fadeUp} custom={i * 0.08}
-                className="group relative rounded-2xl border border-[#526D82] bg-[#27374D]/60 p-6 hover:bg-[#526D82]/30 hover:border-[#9DB2BF]/20 hover:shadow-lg hover:shadow-[#9DB2BF]/10 transition-all duration-500"
-                whileHover={{ y: -8, transition: { type: "spring", stiffness: 300, damping: 20 } }}
-              >
-                {/* Step number */}
-                <span className="absolute top-2 right-4 select-none text-[64px] font-black leading-none text-[#526D82]/30 transition-colors duration-500 group-hover:text-[#9DB2BF]/20">
-                  {s.num}
-                </span>
+                className="absolute top-0 left-0 right-0 bg-gradient-to-b from-[#9DB2BF] to-[#DDE6ED]"
+                style={{ height: lineHeight }}
+              />
+            </div>
 
-                {/* Icon with hover animation */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+              {STEPS.map((s, i) => (
                 <motion.div
-                  className={`w-11 h-11 rounded-xl bg-gradient-to-br ${s.gradient} flex items-center justify-center mb-5 shadow-md`}
-                  whileHover={{ rotate: -8, scale: 1.15 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                  key={s.num} variants={scaleIn} custom={i * 0.08}
+                  className="group relative rounded-2xl border border-[#526D82]/60 bg-[#27374D]/40 backdrop-blur-md p-6
+                    hover:bg-[#526D82]/25 hover:border-[#9DB2BF]/25 hover:shadow-xl hover:shadow-[#9DB2BF]/8 transition-all duration-500
+                    shadow-[inset_0_1px_0_rgba(157,178,191,0.08)]"
+                  whileHover={{ y: -8, transition: { type: "spring", stiffness: 300, damping: 20 } }}
                 >
-                  <s.icon className="w-5 h-5 text-white" />
-                </motion.div>
+                  {/* Step number watermark */}
+                  <span className="absolute top-2 right-4 select-none text-[64px] font-black leading-none text-[#526D82]/30 transition-colors duration-500 group-hover:text-[#9DB2BF]/20">
+                    {s.num}
+                  </span>
 
-                <h3 className="text-[#DDE6ED] font-bold text-base mb-2">{s.title}</h3>
-                <p className="text-[#9DB2BF]/70 text-sm leading-relaxed">{s.desc}</p>
-              </motion.div>
-            ))}
+                  {/* Icon with gradient + animated ring */}
+                  <motion.div
+                    className={`relative w-11 h-11 rounded-xl bg-gradient-to-br ${s.gradient} flex items-center justify-center mb-5 shadow-md`}
+                    whileHover={{ rotate: -8, scale: 1.15 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                  >
+                    <s.icon className="w-5 h-5 text-white relative z-10" />
+                    {/* Breathe ring */}
+                    <motion.div
+                      className="absolute inset-0 rounded-xl"
+                      animate={{ boxShadow: ["0 0 0 0 rgba(157,178,191,0.3)", "0 0 0 6px rgba(157,178,191,0)", "0 0 0 0 rgba(157,178,191,0)"] }}
+                      transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.3 }}
+                    />
+                  </motion.div>
+
+                  <h3 className="text-[#DDE6ED] font-bold text-base mb-2">{s.title}</h3>
+                  <p className="text-[#9DB2BF]/70 text-sm leading-relaxed">{s.desc}</p>
+
+                  {/* Bottom progress indicator */}
+                  <motion.div
+                    className="mt-4 h-0.5 rounded-full bg-[#526D82]/40 overflow-hidden"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                  >
+                    <motion.div
+                      className={`h-full rounded-full bg-gradient-to-r ${s.gradient}`}
+                      initial={{ width: "0%" }}
+                      whileInView={{ width: "100%" }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.2, delay: i * 0.1, ease: "easeOut" }}
+                    />
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </section>
@@ -125,35 +205,42 @@ export default function PremiumProof() {
           className="max-w-6xl mx-auto relative z-10"
           initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.1 }} variants={stagger}
         >
-          {/* Big stats row */}
-          <motion.div variants={fadeUp} className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-24">
+          {/* Stats with animated progress rings */}
+          <motion.div variants={blurFadeUp} className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-24">
             {[
-              { target: 110, prefix: "₹", suffix: "Cr+", label: "Funding Enabled", sublabel: "across MSMEs & startups" },
-              { target: 500, prefix: "", suffix: "+", label: "Businesses Served", sublabel: "across 28+ states" },
-              { target: 95, prefix: "", suffix: "%", label: "Success Rate", sublabel: "scheme approvals" },
-              { target: 50, prefix: "", suffix: "+", label: "Active Schemes", sublabel: "matched & filed" },
+              { target: 110, prefix: "₹", suffix: "Cr+", label: "Funding Enabled", sublabel: "across MSMEs & startups", pct: 92, color: "#27374D" },
+              { target: 500, prefix: "", suffix: "+", label: "Businesses Served", sublabel: "across 28+ states", pct: 88, color: "#526D82" },
+              { target: 95, prefix: "", suffix: "%", label: "Success Rate", sublabel: "scheme approvals", pct: 95, color: "#27374D" },
+              { target: 50, prefix: "", suffix: "+", label: "Active Schemes", sublabel: "matched & filed", pct: 82, color: "#526D82" },
             ].map((s, i) => (
               <motion.div
                 key={s.label}
-                variants={fadeUp} custom={i * 0.1}
-                className="group rounded-2xl border border-[#9DB2BF]/30 bg-white/70 px-4 py-8 text-center backdrop-blur-sm transition-all duration-500 hover:border-[#526D82]/25 hover:bg-white hover:shadow-lg hover:shadow-[#526D82]/10"
+                variants={scaleIn} custom={i * 0.1}
+                className="group relative rounded-2xl border border-[#9DB2BF]/20 bg-white/60 backdrop-blur-sm px-4 py-8 text-center
+                  transition-all duration-500 hover:border-[#526D82]/30 hover:bg-white/90 hover:shadow-xl hover:shadow-[#526D82]/8
+                  shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_2px_10px_rgba(82,109,130,0.06)] overflow-hidden"
                 whileHover={{ scale: 1.04, y: -4, transition: { type: "spring", stiffness: 300, damping: 20 } }}
               >
-                <p className="text-3xl sm:text-4xl font-black text-[#27374D] tabular-nums mb-1">
+                {/* Background progress ring */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.12] group-hover:opacity-[0.18] transition-opacity duration-500">
+                  <ProgressRing value={s.pct} size={120} strokeWidth={4} color={s.color} />
+                </div>
+
+                <p className="relative text-3xl sm:text-4xl font-black text-[#27374D] tabular-nums mb-1">
                   <AnimatedNumber target={s.target} prefix={s.prefix} suffix={s.suffix} />
                 </p>
-                <p className="text-sm font-semibold text-[#526D82]">{s.label}</p>
-                <p className="mt-0.5 text-xs text-[#9DB2BF]">{s.sublabel}</p>
+                <p className="relative text-sm font-semibold text-[#526D82]">{s.label}</p>
+                <p className="relative mt-0.5 text-xs text-[#9DB2BF]">{s.sublabel}</p>
               </motion.div>
             ))}
           </motion.div>
 
           {/* Testimonials */}
           <div className="text-center mb-14">
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-[#27374D] tracking-tight">
+            <motion.h2 variants={blurFadeUp} className="text-3xl sm:text-4xl font-bold text-[#27374D] tracking-tight">
               Loved by <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#526D82] to-[#27374D]">Business Owners</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="mt-4 text-[#526D82] text-base max-w-xl mx-auto">
+            <motion.p variants={blurFadeUp} className="mt-4 text-[#526D82] text-base max-w-xl mx-auto">
               Real stories from real entrepreneurs who accelerated their growth with GrowBridge.
             </motion.p>
           </div>
@@ -162,38 +249,70 @@ export default function PremiumProof() {
             {TESTIMONIALS.map((t, i) => (
               <motion.div
                 key={t.name}
-                variants={fadeUp} custom={i * 0.1}
-                className="group relative rounded-2xl border border-[#9DB2BF]/25 bg-white/75 p-7 backdrop-blur-sm transition-all duration-500 hover:border-[#526D82]/25 hover:bg-white hover:shadow-xl hover:shadow-[#526D82]/8"
-                whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+                variants={scaleIn} custom={i * 0.1}
+                className="group relative rounded-2xl border border-[#9DB2BF]/15 bg-white/60 backdrop-blur-sm p-7
+                  transition-all duration-500 hover:border-[#526D82]/25 hover:bg-white/90 hover:shadow-2xl hover:shadow-[#526D82]/10
+                  shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_2px_8px_rgba(82,109,130,0.04)] overflow-hidden"
+                whileHover={{ y: -8, transition: { type: "spring", stiffness: 300, damping: 18 } }}
               >
-                {/* Quote icon */}
-                <Quote className="mb-4 h-8 w-8 text-[#9DB2BF]/50" />
+                {/* Hover gradient border top */}
+                <motion.div
+                  className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#526D82] to-transparent opacity-0 group-hover:opacity-100"
+                  initial={{ scaleX: 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  transition={{ duration: 0.4 }}
+                />
 
-                {/* Stars */}
+                {/* Quote icon with animation */}
+                <motion.div
+                  initial={{ scale: 0, rotate: -20 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + i * 0.1, type: "spring", stiffness: 300 }}
+                >
+                  <Quote className="mb-4 h-8 w-8 text-[#9DB2BF]/50 group-hover:text-[#526D82]/60 transition-colors duration-300" />
+                </motion.div>
+
+                {/* Stars with stagger */}
                 <div className="flex gap-1 mb-4">
                   {[...Array(t.rating)].map((_, j) => (
-                    <motion.div key={j} whileHover={{ scale: 1.3, rotate: 15 }} transition={{ type: "spring", stiffness: 400 }}>
+                    <motion.div
+                      key={j}
+                      initial={{ opacity: 0, scale: 0 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 + j * 0.05 + i * 0.1, type: "spring", stiffness: 400 }}
+                      whileHover={{ scale: 1.3, rotate: 15 }}
+                    >
                       <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
                     </motion.div>
                   ))}
                 </div>
 
-                {/* Quote text */}
                 <p className="text-[#526D82] text-sm leading-relaxed mb-6 group-hover:text-[#27374D] transition-colors">
                   &ldquo;{t.quote}&rdquo;
                 </p>
 
-                {/* Author */}
-                <div className="flex items-center gap-3 border-t border-[#9DB2BF]/25 pt-5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#27374D] to-[#526D82] text-xs font-bold text-white">
+                {/* Author with slide-in */}
+                <motion.div
+                  className="flex items-center gap-3 border-t border-[#9DB2BF]/25 pt-5"
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 + i * 0.1 }}
+                >
+                  <motion.div
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#27374D] to-[#526D82] text-xs font-bold text-white"
+                    whileHover={{ scale: 1.15, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
                     {t.avatar}
-                  </div>
+                  </motion.div>
                   <div>
                     <p className="text-[#27374D] font-semibold text-sm">{t.name}</p>
-                    <p className="text-xs text-[#526D82]">{t.role}</p>
-                    <p className="text-[10px] text-[#9DB2BF]">{t.location}</p>
+                    <p className="text-[#9DB2BF] text-xs">{t.role} · {t.location}</p>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>

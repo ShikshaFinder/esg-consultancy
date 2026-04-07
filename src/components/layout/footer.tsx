@@ -52,7 +52,11 @@ export default function Footer() {
               {[
                 { label: "About Us", href: "/about" },
                 { label: "Services", href: "/services" },
+                { label: "Funding", href: "/funding" },
                 { label: "Schemes", href: "/schemes" },
+                { label: "Blogs", href: "/blogs" },
+                { label: "Impact", href: "/impact" },
+                { label: "Success Stories", href: "/success-stories" },
                 { label: "Contact", href: "/contact" },
               ].map((l) => (
                 <li key={l.label}>
@@ -74,24 +78,24 @@ export default function Footer() {
             </p>
             <ul className="space-y-3">
               {[
-                "PMEGP Scheme",
-                "PM MUDRA Yojana",
-                "CGTMSE Guarantee",
-                "Startup India Seed Fund",
-                "NAIF Scheme",
+                { label: "PMEGP Scheme", href: "/funding/pmegp" },
+                { label: "PM MUDRA Yojana", href: "/funding/pm-mudra-yojana" },
+                { label: "CGTMSE Guarantee", href: "/funding/cgtmse" },
+                { label: "Startup India", href: "/funding/startup-india" },
+                { label: "NAIF Scheme", href: "/funding/naif-scheme" },
               ].map((l) => (
-                <li key={l}>
+                <li key={l.label}>
                   <Link
-                    href="/schemes"
+                    href={l.href}
                     className="text-white/45 text-sm hover:text-white transition-colors"
                   >
-                    {l}
+                    {l.label}
                   </Link>
                 </li>
               ))}
               <li>
                 <Link
-                  href="/schemes"
+                  href="/funding"
                   className="text-[#9CD5FF] text-sm hover:text-white transition-colors inline-flex items-center gap-1"
                 >
                   View All Schemes <ArrowRight className="w-3 h-3" />
@@ -143,17 +147,19 @@ export default function Footer() {
             © 2026 Grow Bridge Services. All rights reserved.
           </p>
           <div className="flex gap-5">
-            {["Privacy Policy", "Terms & Conditions", "Refund Policy"].map(
-              (l) => (
-                <a
-                  key={l}
-                  href="#"
-                  className="text-white/35 text-xs hover:text-white/65 transition-colors"
-                >
-                  {l}
-                </a>
-              )
-            )}
+            {[
+              { label: "Privacy Policy", href: "/privacy-policy" },
+              { label: "Terms & Conditions", href: "/terms-conditions" },
+              { label: "Refund Policy", href: "/refund-policy" },
+            ].map((l) => (
+              <Link
+                key={l.label}
+                href={l.href}
+                className="text-white/35 text-xs hover:text-white/65 transition-colors"
+              >
+                {l.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

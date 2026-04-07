@@ -1,8 +1,56 @@
 "use client"
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useRef } from "react"
+import { motion, AnimatePresence, useInView, type Variants } from "framer-motion"
 import { Rocket, TrendingUp, Shield, CheckCircle2, ArrowRight } from "lucide-react"
 import Link from "next/link"
+
+/* ─── Variants ─── */
+const blurFadeUp: Variants = {
+  hidden: { opacity: 0, filter: "blur(8px)", y: 20 },
+  show: (d: number = 0) => ({
+    opacity: 1, filter: "blur(0px)", y: 0,
+    transition: { duration: 0.7, delay: d, ease: [0.22, 1, 0.36, 1] },
+  }),
+}
+
+/* ─── Animated Ring Chart ─── */
+function RingChart({ value, label, color, delay = 0 }: {
+  value: number; label: string; color: string; delay?: number
+}) {
+  const ref = useRef<SVGSVGElement>(null)
+  const inView = useInView(ref, { once: true, amount: 0.5 })
+  const size = 64
+  const strokeWidth = 5
+  const radius = (size - strokeWidth) / 2
+  const circumference = 2 * Math.PI * radius
+  const offset = circumference - (value / 100) * circumference
+
+  return (
+    <div className="flex flex-col items-center gap-1.5">
+      <div className="relative">
+        <svg ref={ref} width={size} height={size} className="transform -rotate-90">
+          <circle
+            cx={size / 2} cy={size / 2} r={radius}
+            fill="none" stroke="rgba(157,178,191,0.2)" strokeWidth={strokeWidth}
+          />
+          <motion.circle
+            cx={size / 2} cy={size / 2} r={radius}
+            fill="none" stroke={color} strokeWidth={strokeWidth}
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            initial={{ strokeDashoffset: circumference }}
+            animate={inView ? { strokeDashoffset: offset } : {}}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay }}
+          />
+        </svg>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-xs font-bold text-[#DDE6ED]">{value}%</span>
+        </div>
+      </div>
+      <span className="text-[10px] text-[#9DB2BF] text-center">{label}</span>
+    </div>
+  )
+}
 
 const TABS = [
   {
@@ -28,9 +76,9 @@ const TABS = [
       "GST, PAN & Compliance Setup",
       "Pvt Ltd / LLP / OPC Formation",
     ],
-    progress: [
+    rings: [
       { label: "Registration", pct: 95 },
-      { label: "Seed Fund Matching", pct: 91 },
+      { label: "Seed Fund", pct: 91 },
       { label: "Compliance", pct: 92 },
     ],
   },
@@ -57,7 +105,7 @@ const TABS = [
       "NAIF — 3% Interest Subvention",
       "Working Capital & Export Schemes",
     ],
-    progress: [
+    rings: [
       { label: "Loan Approval", pct: 91 },
       { label: "Subsidy Claims", pct: 85 },
       { label: "Export Docs", pct: 93 },
@@ -86,10 +134,10 @@ const TABS = [
       "ZED Certification (80% subsidy)",
       "FSSAI, BIS & IEC Licensing",
     ],
-    progress: [
+    rings: [
       { label: "Filing Accuracy", pct: 99 },
       { label: "Certification", pct: 91 },
-      { label: "Score Improvement", pct: 88 },
+      { label: "Score Boost", pct: 88 },
     ],
   },
 ]
@@ -115,12 +163,12 @@ export default function PremiumSolutions() {
       />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* heading */}
+        {/* heading with blur-fade */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          variants={blurFadeUp}
           className="text-center mb-14"
         >
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-[#9DB2BF]">Solutions</p>
@@ -132,7 +180,7 @@ export default function PremiumSolutions() {
           </h2>
         </motion.div>
 
-        {/* tab buttons */}
+        {/* tab buttons with animated indicator */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {TABS.map((t, i) => {
             const Icon = t.icon
@@ -143,13 +191,19 @@ export default function PremiumSolutions() {
                 onClick={() => setActive(i)}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
-                className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer
+                className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-400 cursor-pointer
                   ${isActive
-                    ? "border border-[#9DB2BF]/30 bg-[#526D82]/40 text-[#DDE6ED] shadow-md shadow-[#9DB2BF]/8"
-                    : "border border-transparent text-[#9DB2BF] hover:border-[#526D82] hover:bg-[#526D82]/25 hover:text-[#DDE6ED]"
+                    ? "border border-[#9DB2BF]/30 bg-[#526D82]/35 backdrop-blur-md text-[#DDE6ED] shadow-lg shadow-[#9DB2BF]/10"
+                    : "border border-transparent text-[#9DB2BF] hover:border-[#526D82]/40 hover:bg-[#526D82]/20 hover:text-[#DDE6ED]"
                   }`}
+                style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
               >
-                <Icon size={16} style={{ color: isActive ? t.accent : undefined }} />
+                <motion.div
+                  animate={isActive ? { rotate: [0, -10, 10, 0] } : {}}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Icon size={16} style={{ color: isActive ? t.accent : undefined }} />
+                </motion.div>
                 {t.label}
                 {isActive && (
                   <motion.div
@@ -167,74 +221,94 @@ export default function PremiumSolutions() {
         <AnimatePresence mode="wait">
           <motion.div
             key={tab.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-            className={`rounded-2xl border ${tab.border} bg-gradient-to-br ${tab.color} backdrop-blur-sm p-8 md:p-12 shadow-sm`}
+            initial={{ opacity: 0, y: 24, scale: 0.97, filter: "blur(6px)" }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -20, scale: 0.97, filter: "blur(4px)" }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className={`rounded-2xl border ${tab.border} bg-gradient-to-br ${tab.color} backdrop-blur-lg p-8 md:p-12
+              shadow-[0_8px_40px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(157,178,191,0.08)]`}
           >
             <div className="grid md:grid-cols-2 gap-10">
               {/* left */}
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-[#DDE6ED] mb-4">{tab.heading}</h3>
-                <p className="text-[#9DB2BF] leading-relaxed mb-8">{tab.description}</p>
+                <motion.h3
+                  className="text-2xl md:text-3xl font-bold text-[#DDE6ED] mb-4"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  {tab.heading}
+                </motion.h3>
+                <motion.p
+                  className="text-[#9DB2BF] leading-relaxed mb-8"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  {tab.description}
+                </motion.p>
 
                 {/* stats row */}
                 <div className="grid grid-cols-3 gap-4 mb-8">
-                  {tab.stats.map((s) => (
-                    <div key={s.label}>
+                  {tab.stats.map((s, si) => (
+                    <motion.div
+                      key={s.label}
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 + si * 0.08 }}
+                    >
                       <p className="text-xl font-bold" style={{ color: tab.accent }}>{s.value}</p>
                       <p className="text-xs text-[#9DB2BF] mt-1">{s.label}</p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
 
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                   <Link
                     href="/services"
-                    className="inline-flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all"
+                    className="inline-flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all group"
                     style={{ color: tab.accent }}
                   >
-                    Explore this plan <ArrowRight size={14} />
+                    Explore this plan
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </motion.div>
               </div>
 
-              {/* right — features + progress */}
+              {/* right — features + ring charts */}
               <div className="space-y-8">
                 <div className="space-y-3">
                   {tab.features.map((f, fi) => (
                     <motion.div
                       key={f}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: fi * 0.08 }}
-                      className="flex items-center gap-3 text-sm text-[#9DB2BF]"
+                      initial={{ opacity: 0, x: 20, filter: "blur(4px)" }}
+                      animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                      transition={{ delay: fi * 0.08 + 0.1 }}
+                      className="flex items-center gap-3 text-sm text-[#9DB2BF] group/feature"
                     >
-                      <CheckCircle2 size={16} style={{ color: tab.accent }} className="shrink-0" />
-                      {f}
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: fi * 0.08 + 0.2, type: "spring", stiffness: 400 }}
+                      >
+                        <CheckCircle2 size={16} style={{ color: tab.accent }} className="shrink-0" />
+                      </motion.div>
+                      <span className="group-hover/feature:text-[#DDE6ED] transition-colors duration-200">{f}</span>
                     </motion.div>
                   ))}
                 </div>
 
-                {/* progress bars */}
-                <div className="space-y-4">
-                  {tab.progress.map((p) => (
-                    <div key={p.label}>
-                      <div className="flex justify-between text-xs mb-1.5">
-                        <span className="text-[#9DB2BF]">{p.label}</span>
-                        <span style={{ color: tab.accent }} className="font-semibold">{p.pct}%</span>
-                      </div>
-                      <div className="h-2 rounded-full bg-[#526D82]/60 overflow-hidden">
-                        <motion.div
-                          className="h-full rounded-full"
-                          style={{ background: tab.accent }}
-                          initial={{ width: 0 }}
-                          animate={{ width: `${p.pct}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut" }}
-                        />
-                      </div>
-                    </div>
+                {/* Ring charts instead of progress bars */}
+                <div className="flex justify-around pt-4">
+                  {tab.rings.map((r, ri) => (
+                    <motion.div
+                      key={r.label}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.3 + ri * 0.1, type: "spring" }}
+                    >
+                      <RingChart value={r.pct} label={r.label} color={tab.accent} delay={ri * 0.15} />
+                    </motion.div>
                   ))}
                 </div>
               </div>

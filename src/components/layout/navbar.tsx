@@ -14,6 +14,7 @@ const SERVICE_ITEMS = [
   { icon: Scale, title: "Legal Services", desc: "Contracts & compliance", href: "/services/legal" },
   { icon: BadgePercent, title: "CIBIL Assistance", desc: "Credit score improvement", href: "/services/cibil-assistance" },
   { icon: Megaphone, title: "Marketing & Branding", desc: "Digital marketing & brand building", href: "/services/marketing" },
+  { icon: Building2, title: "Tax Exemption & Benefits", desc: "GST, ITR & startup tax holidays", href: "/services/tax-exemption-benefits" },
 ]
 
 export default function Navbar() {
@@ -43,20 +44,21 @@ export default function Navbar() {
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 right-0 z-50"
       style={{
         background: scrolled
-          ? "linear-gradient(135deg, rgba(255,255,255,0.97) 0%, rgba(230,244,255,0.97) 50%, rgba(255,255,255,0.97) 100%)"
-          : "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(230,244,255,0.92) 50%, rgba(255,255,255,0.95) 100%)",
-        backdropFilter: "blur(20px) saturate(1.8)",
+          ? "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(230,244,255,0.95) 50%, rgba(255,255,255,0.95) 100%)"
+          : "linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(230,244,255,0.85) 50%, rgba(255,255,255,0.88) 100%)",
+        backdropFilter: scrolled ? "blur(24px) saturate(1.9)" : "blur(16px) saturate(1.6)",
         boxShadow: scrolled
-          ? "0 2px 24px rgba(53,88,114,0.1), 0 1px 3px rgba(0,0,0,0.05)"
-          : "0 1px 12px rgba(53,88,114,0.06)",
-        borderBottom: "1px solid rgba(53,88,114,0.08)",
+          ? "0 4px 30px rgba(53,88,114,0.12), 0 1px 3px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.6)"
+          : "0 1px 12px rgba(53,88,114,0.06), inset 0 1px 0 rgba(255,255,255,0.4)",
+        borderBottom: scrolled ? "1px solid rgba(53,88,114,0.1)" : "1px solid rgba(53,88,114,0.05)",
+        transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 h-[68px] flex items-center justify-between">
+      <div className={`max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-400 ${scrolled ? "h-[56px]" : "h-[68px]"}`} style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}>
         {/* Logo + Tagline */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
           <svg viewBox="0 0 40 40" className="w-9 h-9">
@@ -130,7 +132,9 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
+          <Link href="/blogs" className="px-4 py-2 rounded-lg text-sm font-semibold text-[#355872] hover:text-[#7AAACE] hover:bg-[#355872]/[0.04] transition-all duration-200">Blogs</Link>
           <Link href="/schemes" className="px-4 py-2 rounded-lg text-sm font-semibold text-[#355872] hover:text-[#7AAACE] hover:bg-[#355872]/[0.04] transition-all duration-200">Schemes</Link>
+          <Link href="/success-stories" className="px-4 py-2 rounded-lg text-sm font-semibold text-[#355872] hover:text-[#7AAACE] hover:bg-[#355872]/[0.04] transition-all duration-200">Success Stories</Link>
           <Link href="/about" className="px-4 py-2 rounded-lg text-sm font-semibold text-[#355872] hover:text-[#7AAACE] hover:bg-[#355872]/[0.04] transition-all duration-200">About Us</Link>
           <Link href="/contact" className="px-4 py-2 rounded-lg text-sm font-semibold text-[#355872] hover:text-[#7AAACE] hover:bg-[#355872]/[0.04] transition-all duration-200">Contact</Link>
         </nav>
@@ -224,7 +228,9 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
 
+              <Link href="/blogs" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-[#355872] hover:text-[#7AAACE] border-b border-[#355872]/[0.05] transition-colors">Blogs</Link>
               <Link href="/schemes" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-[#355872] hover:text-[#7AAACE] border-b border-[#355872]/[0.05] transition-colors">Schemes</Link>
+              <Link href="/success-stories" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-[#355872] hover:text-[#7AAACE] border-b border-[#355872]/[0.05] transition-colors">Success Stories</Link>
               <Link href="/about" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-[#355872] hover:text-[#7AAACE] border-b border-[#355872]/[0.05] transition-colors">About Us</Link>
               <Link href="/contact" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-[#355872] hover:text-[#7AAACE] border-b border-[#355872]/[0.05] transition-colors">Contact</Link>
 

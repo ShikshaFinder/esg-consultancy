@@ -2,11 +2,11 @@
 import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 import {
-  motion, useMotionValue, useSpring, useTransform, useMotionTemplate, animate, type Variants,
+  motion, useMotionValue, useSpring, useTransform, useScroll, type Variants, useInView,
 } from "framer-motion"
 import {
-  ArrowRight, Play, Menu, X, TrendingUp, Users, Shield, Zap,
-  BarChart3, FileText, Wallet, Bell, Search, Settings, Home, PieChart, CreditCard, Receipt,
+  ArrowRight, Play, TrendingUp, Users, Shield, Zap, Wallet,
+  BarChart3, FileText, Bell, Search, Settings, Home, PieChart, CreditCard, Receipt,
 } from "lucide-react"
 
 /* ─── animation variants ─── */
@@ -17,6 +17,16 @@ const fadeUp: Variants = {
     transition: { duration: 0.7, delay: d, ease: [0.22, 1, 0.36, 1] },
   }),
 }
+
+/* Blur-fade — items appear blurry and sharpen */
+const blurFade: Variants = {
+  hidden: { opacity: 0, filter: "blur(10px)", y: 20 },
+  show: (d: number = 0) => ({
+    opacity: 1, filter: "blur(0px)", y: 0,
+    transition: { duration: 0.8, delay: d, ease: [0.22, 1, 0.36, 1] },
+  }),
+}
+
 const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
 
 const float: Variants = {
@@ -24,6 +34,33 @@ const float: Variants = {
     y: [0, -12, 0],
     transition: { duration: 3 + i * 0.5, repeat: Infinity, ease: "easeInOut" },
   }),
+}
+
+/* ─── Word-by-word text reveal ─── */
+function AnimatedWords({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const inView = useInView(ref, { once: true, amount: 0.5 })
+  const words = text.split(" ")
+
+  return (
+    <span ref={ref} className={className}>
+      {words.map((word, i) => (
+        <motion.span
+          key={`${word}-${i}`}
+          className="inline-block mr-[0.3em]"
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+          animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+          transition={{
+            duration: 0.5,
+            delay: delay + i * 0.06,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          {word}
+        </motion.span>
+      ))}
+    </span>
+  )
 }
 
 /* ─── animated counter hook ─── */
@@ -60,34 +97,85 @@ function useCounter(target: number, duration = 2, delay = 0) {
   return { value, ref }
 }
 
+/* ─── Magnetic Button wrapper ─── */
+function MagneticButton({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const springX = useSpring(x, { stiffness: 200, damping: 20 })
+  const springY = useSpring(y, { stiffness: 200, damping: 20 })
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ x: springX, y: springY }}
+      onMouseMove={(e) => {
+        if (!ref.current) return
+        const rect = ref.current.getBoundingClientRect()
+        const cx = rect.left + rect.width / 2
+        const cy = rect.top + rect.height / 2
+        x.set((e.clientX - cx) * 0.15)
+        y.set((e.clientY - cy) * 0.15)
+      }}
+      onMouseLeave={() => { x.set(0); y.set(0) }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
 /* ─── sidebar icons for dashboard mockup ─── */
 const SIDEBAR = [Home, BarChart3, FileText, Wallet, CreditCard, Receipt, PieChart, Settings]
 const BAR_HEIGHTS = [42, 58, 35, 72, 50, 85, 65]
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"]
 
 export default function PremiumHero() {
-  const [scrolled, setScrolled] = useState(false)
-  const [mobileNav, setMobileNav] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 32)
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
-
   /* stats counters */
   const stat1 = useCounter(110, 2.4, 0.8)
   const stat2 = useCounter(500, 2.4, 1.0)
   const stat3 = useCounter(95, 2.0, 1.2)
   const stat4 = useCounter(28, 1.6, 1.4)
 
+  /* parallax on dashboard */
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] })
+  const dashboardY = useTransform(scrollYProgress, [0, 1], [0, 80])
+  const dashboardScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.96])
+  const statsY = useTransform(scrollYProgress, [0, 1], [0, 40])
+
+  /* 3D tilt for dashboard */
+  const tiltX = useMotionValue(0)
+  const tiltY = useMotionValue(0)
+  const springTiltX = useSpring(tiltX, { stiffness: 100, damping: 20 })
+  const springTiltY = useSpring(tiltY, { stiffness: 100, damping: 20 })
+  const rotateX = useTransform(springTiltY, [-0.5, 0.5], [6, -6])
+  const rotateY = useTransform(springTiltX, [-0.5, 0.5], [-6, 6])
+
+  /* Typing animation for dashboard URL */
+  const [typedUrl, setTypedUrl] = useState("")
+  const fullUrl = "app.growbridge.org/dashboard"
+  useEffect(() => {
+    let cancelled = false
+    let i = 0
+    const timer = setTimeout(() => {
+      const interval = setInterval(() => {
+        if (cancelled) return
+        i++
+        setTypedUrl(fullUrl.slice(0, i))
+        if (i >= fullUrl.length) clearInterval(interval)
+      }, 45)
+    }, 2000)
+    return () => { cancelled = true; clearTimeout(timer) }
+  }, [])
+
   return (
     <section
+      ref={sectionRef}
       className="relative min-h-screen overflow-hidden bg-[#27374D]"
       style={{ backgroundImage: "linear-gradient(180deg, #27374D 0%, #27374D 38%, #2d3f56 100%)" }}
     >
       {/* ── Background effects ── */}
-      {/* Soft gradient orbs */}
       <motion.div
         className="absolute w-[700px] h-[700px] rounded-full opacity-[0.35] blur-[160px]"
         style={{ background: "radial-gradient(circle, #526D82, transparent 70%)", top: "-15%", left: "-10%" }}
@@ -122,154 +210,90 @@ export default function PremiumHero() {
       <motion.div custom={2} variants={float} animate="animate" className="absolute top-[60%] left-[15%] w-2 h-2 rounded-full bg-[#526D82]/55 z-[2]" />
       <motion.div custom={3} variants={float} animate="animate" className="absolute bottom-[25%] right-[8%] w-5 h-5 rounded-full border border-[#DDE6ED]/30 z-[2]" />
       <motion.div custom={1} variants={float} animate="animate" className="absolute top-[45%] right-[25%] w-2.5 h-2.5 rotate-45 bg-[#9DB2BF]/30 z-[2]" />
-
-      {/* ── Glassmorphic Navbar ── */}
-      <motion.nav
-        initial={{ y: -30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-        style={{
-          backdropFilter: scrolled ? "blur(24px) saturate(1.6)" : "blur(12px)",
-          backgroundColor: scrolled ? "rgba(39,55,77,0.92)" : "rgba(39,55,77,0.32)",
-          borderBottom: `1px solid rgba(157,178,191,${scrolled ? 0.2 : 0.1})`,
-          boxShadow: scrolled ? "0 4px 32px rgba(0,0,0,0.15)" : "none",
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/premium" className="flex items-center gap-2.5 shrink-0 group">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-lg bg-[#9DB2BF]/25 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <svg viewBox="0 0 32 32" className="w-8 h-8 relative">
-                <defs>
-                  <linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#9DB2BF" />
-                    <stop offset="100%" stopColor="#DDE6ED" />
-                  </linearGradient>
-                </defs>
-                <rect x="2" y="2" width="12" height="12" rx="3" fill="url(#logo-grad)" />
-                <rect x="18" y="2" width="12" height="12" rx="3" fill="#526D82" opacity="0.7" />
-                <rect x="2" y="18" width="12" height="12" rx="3" fill="#526D82" opacity="0.75" />
-                <rect x="18" y="18" width="12" height="12" rx="3" fill="url(#logo-grad)" />
-              </svg>
-            </div>
-            <span className="font-bold text-lg text-[#DDE6ED] tracking-tight">
-              Grow<span className="text-[#9DB2BF]">Bridge</span>
-            </span>
-          </Link>
-
-          <div className="hidden md:flex items-center gap-1">
-            {["Platform", "Features", "Solutions", "Pricing"].map((l) => (
-              <Link
-                key={l}
-                href={`#${l.toLowerCase()}`}
-                className="px-4 py-2 text-sm text-[#9DB2BF] hover:text-[#DDE6ED] rounded-lg hover:bg-[#9DB2BF]/[0.12] transition-all duration-200"
-              >
-                {l}
-              </Link>
-            ))}
-          </div>
-
-          <div className="hidden md:flex items-center gap-3">
-            <Link href="/contact" className="text-sm text-[#9DB2BF] hover:text-[#DDE6ED] transition-colors">
-              Sign In
-            </Link>
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-              <Link
-                href="/contact"
-                className="relative group px-5 py-2.5 rounded-full text-sm font-semibold text-white overflow-hidden inline-flex items-center gap-1.5"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#9DB2BF] to-[#526D82] transition-all duration-300 group-hover:scale-105" />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-[#DDE6ED] to-[#9DB2BF]" />
-                <span className="relative">Start Free</span>
-                <ArrowRight className="relative w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </motion.div>
-          </div>
-
-          <button className="md:hidden p-2 text-[#9DB2BF] hover:text-[#DDE6ED] cursor-pointer" onClick={() => setMobileNav(!mobileNav)}>
-            {mobileNav ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-
-        {/* Mobile nav */}
-        {mobileNav && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="md:hidden border-t border-[#526D82]/35 bg-[#27374D]/92 backdrop-blur-xl px-6 py-4 space-y-2"
-          >
-            {["Platform", "Features", "Solutions", "Pricing"].map((l) => (
-              <Link key={l} href={`#${l.toLowerCase()}`} className="block py-2 text-[#9DB2BF] hover:text-[#DDE6ED] text-sm">
-                {l}
-              </Link>
-            ))}
-            <Link href="/contact" className="block mt-3 text-center py-2.5 rounded-full bg-[#9DB2BF] text-[#27374D] text-sm font-semibold">
-              Start Free
-            </Link>
-          </motion.div>
-        )}
-      </motion.nav>
+      {/* Decorative SVG shapes */}
+      <motion.div custom={2} variants={float} animate="animate" className="absolute top-[15%] right-[35%] w-6 h-6 z-[2]">
+        <svg viewBox="0 0 24 24" className="w-full h-full text-[#9DB2BF]/20" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+      </motion.div>
+      <motion.div custom={4} variants={float} animate="animate" className="absolute bottom-[35%] left-[5%] w-8 h-8 z-[2]">
+        <svg viewBox="0 0 24 24" className="w-full h-full text-[#526D82]/25" fill="none" stroke="currentColor" strokeWidth="1">
+          <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5" />
+        </svg>
+      </motion.div>
 
       {/* ── Hero Content ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-40 pb-8">
         <motion.div className="text-center max-w-4xl mx-auto" initial="hidden" animate="show" variants={stagger}>
-          {/* Badge */}
-          <motion.div variants={fadeUp} custom={0}>
-            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#526D82]/50 bg-[#526D82]/25 backdrop-blur-sm px-5 py-2 text-sm text-[#DDE6ED] shadow-sm">
-              <span className="flex h-2 w-2 relative">
+          {/* Badge with animated gradient border */}
+          <motion.div variants={blurFade} custom={0}>
+            <span className="relative inline-flex items-center gap-2.5 rounded-full px-5 py-2 text-sm text-[#DDE6ED] shadow-sm overflow-hidden">
+              <span className="absolute inset-0 rounded-full p-[1px]">
+                <span
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background: "linear-gradient(90deg, #526D82, #9DB2BF, #DDE6ED, #9DB2BF, #526D82)",
+                    backgroundSize: "200% 100%",
+                    animation: "gradient-x 4s linear infinite",
+                  }}
+                />
+                <span className="absolute inset-[1px] rounded-full bg-[#526D82]/60 backdrop-blur-sm" />
+              </span>
+              <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute h-full w-full rounded-full bg-emerald-400 opacity-60" />
                 <span className="relative rounded-full h-2 w-2 bg-emerald-400" />
               </span>
-              Trusted by 500+ Businesses Across 28+ States
+              <span className="relative">Trusted by 500+ Businesses Across 28+ States</span>
             </span>
           </motion.div>
 
-          {/* Headline */}
-          <motion.h1
-            variants={fadeUp} custom={0.15}
-            className="mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]"
-          >
-            <span className="text-[#DDE6ED]">GROW BRIDGE:</span>
-            <br />
-            <span
-              className="bg-clip-text text-transparent"
-              style={{ backgroundImage: "linear-gradient(135deg, #DDE6ED 0%, #9DB2BF 45%, #526D82 100%)" }}
-            >
-              Where Indian Businesses Scale.
+          {/* Headline with word-by-word blur reveal */}
+          <div className="mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
+            <AnimatedWords text="GROW BRIDGE:" className="text-[#DDE6ED] block" delay={0.3} />
+            <span className="block bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #DDE6ED 0%, #9DB2BF 45%, #526D82 100%)" }}>
+              <AnimatedWords text="Where Indian Businesses Scale." delay={0.6} />
             </span>
-          </motion.h1>
+          </div>
 
-          {/* Subtitle */}
+          {/* Subtitle with blur-fade */}
           <motion.p
-            variants={fadeUp} custom={0.3}
+            variants={blurFade} custom={0.5}
             className="mt-6 text-base sm:text-lg text-[#9DB2BF]/90 max-w-2xl mx-auto leading-relaxed"
           >
             The complete growth ecosystem for startups and MSMEs across India. From MSME funding & government schemes to business registration, compliance, and digital transformation — everything in one platform.
           </motion.p>
 
           {/* CTAs */}
-          <motion.div variants={fadeUp} custom={0.45} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
-              <Link
-                href="/contact"
-                className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white overflow-hidden shadow-[0_8px_30px_rgba(157,178,191,0.22)]"
+          <motion.div variants={blurFade} custom={0.65} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <MagneticButton>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
+                <Link
+                  href="/contact"
+                  className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white overflow-hidden shadow-[0_8px_30px_rgba(157,178,191,0.22)]"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82] bg-[length:200%_100%] group-hover:animate-[shimmer_2s_ease-in-out_infinite]" />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-300 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.4),transparent_70%)]" />
+                  <span className="relative">Get Free Growth Assessment</span>
+                  <ArrowRight className="relative w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+              </motion.div>
+            </MagneticButton>
+            <MagneticButton>
+              <motion.button
+                whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
+                className="group inline-flex items-center gap-2.5 px-7 py-4 rounded-full text-sm font-medium text-[#DDE6ED] border border-[#526D82]/50 bg-[#526D82]/15 hover:bg-[#526D82]/30 hover:text-white hover:border-[#9DB2BF]/40 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82] bg-[length:200%_100%] group-hover:animate-[shimmer_2s_ease-in-out_infinite]" />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-300 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.4),transparent_70%)]" />
-                <span className="relative">Get Free Growth Assessment</span>
-                <ArrowRight className="relative w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
-            </motion.div>
-            <motion.button
-              whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-              className="group inline-flex items-center gap-2.5 px-7 py-4 rounded-full text-sm font-medium text-[#DDE6ED] border border-[#526D82]/50 bg-[#526D82]/15 hover:bg-[#526D82]/30 hover:text-white hover:border-[#9DB2BF]/40 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
-            >
-              <div className="w-8 h-8 rounded-full bg-[#526D82]/30 flex items-center justify-center group-hover:bg-[#526D82]/40 transition-colors">
-                <Play className="w-3.5 h-3.5 ml-0.5 text-[#DDE6ED]" />
-              </div>
-              Check Eligibility Now
-            </motion.button>
+                <motion.div
+                  className="w-8 h-8 rounded-full bg-[#526D82]/30 flex items-center justify-center group-hover:bg-[#526D82]/40 transition-colors"
+                  whileHover={{ scale: 1.15 }}
+                  animate={{ boxShadow: ["0 0 0 0 rgba(157,178,191,0.3)", "0 0 0 10px rgba(157,178,191,0)", "0 0 0 0 rgba(157,178,191,0)"] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <Play className="w-3.5 h-3.5 ml-0.5 text-[#DDE6ED]" />
+                </motion.div>
+                Check Eligibility Now
+              </motion.button>
+            </MagneticButton>
           </motion.div>
         </motion.div>
 
@@ -279,37 +303,50 @@ export default function PremiumHero() {
           animate={{ opacity: 1, y: 0, rotateX: 4 }}
           transition={{ duration: 1.6, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="relative mx-auto max-w-5xl mt-20"
-          style={{ perspective: "1400px" }}
+          style={{ perspective: "1400px", y: dashboardY, scale: dashboardScale }}
         >
-          {/* Glow behind */}
           <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[70%] rounded-full bg-[#9DB2BF]/15 blur-[80px] pointer-events-none" />
 
-          <div
+          <motion.div
+            onMouseMove={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect()
+              tiltX.set((e.clientX - rect.left) / rect.width - 0.5)
+              tiltY.set((e.clientY - rect.top) / rect.height - 0.5)
+            }}
+            onMouseLeave={() => { tiltX.set(0); tiltY.set(0) }}
+            style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
             className="relative rounded-2xl border border-[#526D82] bg-[#27374D]/80 shadow-[0_32px_80px_rgba(0,0,0,0.3)] backdrop-blur-xl overflow-hidden"
-            style={{ transform: "rotateX(4deg)", transformOrigin: "center 80%" }}
           >
-            {/* Browser chrome */}
+            {/* Browser chrome with interactive elements */}
             <div className="h-11 border-b border-[#526D82] flex items-center px-4 gap-3 bg-[#27374D]/80">
               <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-[#ff5f57]/70" />
-                <div className="w-3 h-3 rounded-full bg-[#febc2e]/70" />
-                <div className="w-3 h-3 rounded-full bg-[#28c840]/70" />
+                <motion.div className="w-3 h-3 rounded-full bg-[#ff5f57]/70" whileHover={{ scale: 1.4 }} />
+                <motion.div className="w-3 h-3 rounded-full bg-[#febc2e]/70" whileHover={{ scale: 1.4 }} />
+                <motion.div className="w-3 h-3 rounded-full bg-[#28c840]/70" whileHover={{ scale: 1.4 }} />
               </div>
               <div className="flex-1 flex justify-center">
                 <div className="rounded-lg bg-[#526D82]/40 border border-[#526D82] px-6 py-1.5 text-[11px] text-[#9DB2BF] font-mono flex items-center gap-2">
                   <Search className="w-3 h-3" />
-                  app.growbridge.org/dashboard
+                  <span>{typedUrl}</span>
+                  <motion.span
+                    className="w-[1px] h-3.5 bg-[#9DB2BF]"
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 0.8, repeat: Infinity }}
+                  />
                 </div>
               </div>
               <div className="flex gap-2">
-                <Bell className="w-3.5 h-3.5 text-[#526D82]" />
-                <Settings className="w-3.5 h-3.5 text-[#526D82]" />
+                <motion.div whileHover={{ scale: 1.3, rotate: 15 }} transition={{ type: "spring" }}>
+                  <Bell className="w-3.5 h-3.5 text-[#526D82] cursor-pointer" />
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.3, rotate: 90 }} transition={{ type: "spring", duration: 0.4 }}>
+                  <Settings className="w-3.5 h-3.5 text-[#526D82] cursor-pointer" />
+                </motion.div>
               </div>
             </div>
 
-            {/* Dashboard body */}
             <div className="flex h-[340px] sm:h-[380px]">
-              {/* Sidebar */}
+              {/* Sidebar with hover effects */}
               <div className="hidden sm:flex w-14 border-r border-[#526D82] bg-[#27374D]/60 flex-col items-center py-4 gap-1">
                 {SIDEBAR.map((Icon, i) => (
                   <motion.div
@@ -317,7 +354,8 @@ export default function PremiumHero() {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1.2 + i * 0.06 }}
-                    className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors ${i === 1 ? "bg-[#9DB2BF]/15 text-[#9DB2BF]" : "text-[#526D82] hover:text-[#9DB2BF]"}`}
+                    whileHover={{ scale: 1.2, backgroundColor: "rgba(157,178,191,0.15)" }}
+                    className={`w-9 h-9 rounded-lg flex items-center justify-center cursor-pointer transition-colors ${i === 1 ? "bg-[#9DB2BF]/15 text-[#9DB2BF]" : "text-[#526D82] hover:text-[#9DB2BF]"}`}
                   >
                     <Icon className="w-4 h-4" />
                   </motion.div>
@@ -326,30 +364,32 @@ export default function PremiumHero() {
 
               {/* Main content */}
               <div className="flex-1 p-4 sm:p-5 overflow-hidden bg-[#2d3f56]/50">
-                {/* Top stat cards */}
                 <div className="grid grid-cols-3 gap-3 mb-5">
                   {[
-                    { label: "Funding Enabled", value: "₹110Cr+", change: "+₹18Cr this quarter", color: "text-emerald-500" },
-                    { label: "Active Schemes", value: "50+", change: "PMEGP, MUDRA, CGTMSE", color: "text-[#9DB2BF]" },
-                    { label: "Success Rate", value: "95%", change: "scheme approvals", color: "text-amber-500" },
+                    { label: "Funding Enabled", value: "₹110Cr+", change: "+₹18Cr this quarter", color: "text-emerald-500", icon: TrendingUp },
+                    { label: "Active Schemes", value: "50+", change: "PMEGP, MUDRA, CGTMSE", color: "text-[#9DB2BF]", icon: Shield },
+                    { label: "Success Rate", value: "95%", change: "scheme approvals", color: "text-amber-500", icon: Zap },
                   ].map((s, i) => (
                     <motion.div
                       key={s.label}
                       initial={{ opacity: 0, y: 16 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 1.4 + i * 0.1 }}
-                      className="rounded-xl border border-[#526D82] bg-[#27374D]/65 p-3"
+                      whileHover={{ scale: 1.03, borderColor: "rgba(157,178,191,0.4)" }}
+                      className="rounded-xl border border-[#526D82] bg-[#27374D]/65 p-3 cursor-default transition-all duration-300"
                     >
-                      <p className="text-[10px] text-[#9DB2BF] font-medium">{s.label}</p>
+                      <div className="flex items-center justify-between">
+                        <p className="text-[10px] text-[#9DB2BF] font-medium">{s.label}</p>
+                        <s.icon className="w-3 h-3 text-[#526D82]" />
+                      </div>
                       <p className="text-lg font-bold text-[#DDE6ED] mt-0.5">{s.value}</p>
                       <p className={`text-[10px] font-semibold mt-1 ${s.color}`}>{s.change}</p>
                     </motion.div>
                   ))}
                 </div>
 
-                {/* Chart area */}
                 <div className="flex gap-4 h-[calc(100%-100px)]">
-                  {/* Bar chart */}
+                  {/* Bar chart with hover tooltips */}
                   <div className="flex-1 rounded-xl border border-[#526D82] bg-[#27374D]/50 p-4">
                     <div className="flex items-center justify-between mb-3">
                       <p className="text-[11px] font-semibold text-[#9DB2BF]">Funding Disbursed</p>
@@ -357,20 +397,25 @@ export default function PremiumHero() {
                     </div>
                     <div className="flex items-end gap-[6px] h-[calc(100%-32px)]">
                       {BAR_HEIGHTS.map((h, i) => (
-                        <div key={i} className="flex-1 flex flex-col items-center gap-1 h-full justify-end">
+                        <div key={i} className="flex-1 flex flex-col items-center gap-1 h-full justify-end group/bar">
                           <motion.div
                             initial={{ height: 0 }}
                             animate={{ height: `${h}%` }}
                             transition={{ duration: 1, delay: 1.6 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                            className="w-full rounded-md bg-gradient-to-t from-[#526D82] to-[#9DB2BF]"
-                          />
+                            whileHover={{ filter: "brightness(1.3)", scale: 1.05 }}
+                            className="w-full rounded-md bg-gradient-to-t from-[#526D82] to-[#9DB2BF] cursor-pointer transition-all duration-200 relative origin-bottom"
+                          >
+                            <div className="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 transition-opacity text-[8px] text-[#DDE6ED] bg-[#27374D] border border-[#526D82] rounded px-1.5 py-0.5 whitespace-nowrap pointer-events-none">
+                              ₹{Math.round(h * 1.57)}L
+                            </div>
+                          </motion.div>
                           <span className="text-[8px] text-[#9DB2BF]">{MONTHS[i]}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Activity feed */}
+                  {/* Activity feed with hover effects */}
                   <div className="hidden lg:block w-[200px] rounded-xl border border-[#526D82] bg-[#27374D]/50 p-4">
                     <p className="text-[11px] font-semibold text-[#9DB2BF] mb-3">Recent Activity</p>
                     <div className="space-y-2.5">
@@ -386,9 +431,14 @@ export default function PremiumHero() {
                           initial={{ opacity: 0, x: 12 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 2.0 + i * 0.12 }}
-                          className="flex items-start gap-2"
+                          whileHover={{ x: 4 }}
+                          className="flex items-start gap-2 cursor-default"
                         >
-                          <div className={`w-1.5 h-1.5 rounded-full ${a.color} mt-1.5 shrink-0`} />
+                          <motion.div
+                            className={`w-1.5 h-1.5 rounded-full ${a.color} mt-1.5 shrink-0`}
+                            animate={i === 0 ? { scale: [1, 1.5, 1] } : {}}
+                            transition={i === 0 ? { duration: 1.5, repeat: Infinity } : {}}
+                          />
                           <div>
                             <p className="text-[10px] text-[#9DB2BF] leading-snug">{a.text}</p>
                             <p className="text-[9px] text-[#526D82]">{a.time}</p>
@@ -400,36 +450,42 @@ export default function PremiumHero() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Reflection glow */}
           <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[80%] h-20 bg-[#9DB2BF]/10 blur-[60px] rounded-full pointer-events-none" />
         </motion.div>
 
-        {/* ── Trust Stats Row ── */}
+        {/* ── Trust Stats Row with enhanced hover ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
           className="mt-20 max-w-3xl mx-auto"
+          style={{ y: statsY }}
         >
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { ref: stat1.ref, value: stat1.value, suffix: "Cr+", prefix: "₹", label: "Funding Enabled" },
-              { ref: stat2.ref, value: stat2.value, suffix: "+", prefix: "", label: "Businesses Served" },
-              { ref: stat3.ref, value: stat3.value, suffix: "%", prefix: "", label: "Success Rate" },
-              { ref: stat4.ref, value: stat4.value, suffix: "+", prefix: "", label: "States Covered" },
-            ].map((s) => (
+              { ref: stat1.ref, value: stat1.value, suffix: "Cr+", prefix: "₹", label: "Funding Enabled", icon: Wallet },
+              { ref: stat2.ref, value: stat2.value, suffix: "+", prefix: "", label: "Businesses Served", icon: Users },
+              { ref: stat3.ref, value: stat3.value, suffix: "%", prefix: "", label: "Success Rate", icon: TrendingUp },
+              { ref: stat4.ref, value: stat4.value, suffix: "+", prefix: "", label: "States Covered", icon: Shield },
+            ].map((s, i) => (
               <motion.div
                 key={s.label}
                 ref={s.ref}
-                className="text-center rounded-2xl border border-[#526D82] bg-[#27374D]/70 py-5 px-3 backdrop-blur-sm shadow-sm"
-                whileHover={{ scale: 1.04, y: -4, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+                initial={{ opacity: 0, scale: 0.92, filter: "blur(8px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                transition={{ duration: 0.6, delay: 1.4 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="group text-center rounded-2xl border border-[#526D82]/60 bg-[#27374D]/50 py-5 px-3 backdrop-blur-md shadow-sm
+                           hover:border-[#9DB2BF]/30 hover:bg-[#526D82]/25 hover:shadow-lg hover:shadow-[#9DB2BF]/10 transition-all duration-500 relative overflow-hidden"
+                whileHover={{ scale: 1.06, y: -6, transition: { type: "spring", stiffness: 300, damping: 18 } }}
               >
-                <p className="text-2xl sm:text-3xl font-black text-[#DDE6ED] tabular-nums">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#9DB2BF]/0 to-[#526D82]/0 group-hover:from-[#9DB2BF]/5 group-hover:to-[#526D82]/10 transition-all duration-500 rounded-2xl" />
+                <s.icon className="absolute top-2 right-2 w-6 h-6 text-[#526D82]/20 group-hover:text-[#9DB2BF]/25 transition-colors duration-500" />
+                <p className="relative text-2xl sm:text-3xl font-black text-[#DDE6ED] tabular-nums">
                   {s.prefix}{s.value.toLocaleString()}{s.suffix}
                 </p>
-                <p className="text-xs text-[#9DB2BF] font-medium mt-1">{s.label}</p>
+                <p className="relative text-xs text-[#9DB2BF] font-medium mt-1">{s.label}</p>
               </motion.div>
             ))}
           </div>

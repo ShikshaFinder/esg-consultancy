@@ -1,12 +1,14 @@
 "use client"
 import { useEffect, useState } from "react"
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion"
+import Navbar from "@/components/layout/navbar"
 import PremiumHero from "../../components/premium/premium-hero"
 import PremiumMarquee from "../../components/premium/premium-marquee"
 import PremiumFeatures from "../../components/premium/premium-features"
 import PremiumSolutions from "../../components/premium/premium-solutions"
 import PremiumProof from "../../components/premium/premium-proof"
 import PremiumPricing from "../../components/premium/premium-pricing"
+import PremiumConsultation from "../../components/premium/premium-consultation"
 import PremiumFooter from "../../components/premium/premium-footer"
 
 /* ─── Custom Loading Animation ─── */
@@ -66,8 +68,8 @@ export default function PremiumPage() {
   const [loading, setLoading] = useState(true)
   const cursorX = useMotionValue(-500)
   const cursorY = useMotionValue(-500)
-  const smoothX = useSpring(cursorX, { stiffness: 80, damping: 40 })
-  const smoothY = useSpring(cursorY, { stiffness: 80, damping: 40 })
+  const smoothX = useSpring(cursorX, { stiffness: 60, damping: 30 })
+  const smoothY = useSpring(cursorY, { stiffness: 60, damping: 30 })
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1800)
@@ -76,8 +78,8 @@ export default function PremiumPage() {
 
   useEffect(() => {
     const move = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 125)
-      cursorY.set(e.clientY - 125)
+      cursorX.set(e.clientX - 175)
+      cursorY.set(e.clientY - 175)
     }
     window.addEventListener("mousemove", move)
     return () => window.removeEventListener("mousemove", move)
@@ -85,27 +87,41 @@ export default function PremiumPage() {
 
   return (
     <div
-      className="relative overflow-x-hidden text-[#DDE6ED] selection:bg-[#9DB2BF]/40 selection:text-[#27374D]"
+      className="noise-overlay relative overflow-x-hidden text-[#DDE6ED] selection:bg-[#9DB2BF]/40 selection:text-[#27374D]"
       style={{
         background: "linear-gradient(180deg, #27374D 0%, #27374D 22%, #2d3f56 54%, #526D82 100%)",
       }}
     >
       <AnimatePresence>{loading && <LoadingScreen />}</AnimatePresence>
 
+      {/* Enhanced cursor spotlight — larger, dual-layer glow */}
       <motion.div
-        className="fixed z-[60] h-[250px] w-[250px] rounded-full pointer-events-none"
+        className="fixed z-[60] h-[350px] w-[350px] rounded-full pointer-events-none hidden md:block"
         style={{
           x: smoothX,
           y: smoothY,
-          background: "radial-gradient(circle, rgba(157,178,191,0.10) 0%, rgba(82,109,130,0.07) 40%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(157,178,191,0.08) 0%, rgba(82,109,130,0.05) 30%, transparent 65%)",
+        }}
+      />
+      <motion.div
+        className="fixed z-[60] h-[120px] w-[120px] rounded-full pointer-events-none hidden md:block"
+        style={{
+          x: smoothX,
+          y: smoothY,
+          marginLeft: 115,
+          marginTop: 115,
+          background: "radial-gradient(circle, rgba(221,230,237,0.06) 0%, transparent 70%)",
+          filter: "blur(2px)",
         }}
       />
 
+      <Navbar />
       <PremiumHero />
       <PremiumMarquee />
       <PremiumFeatures />
       <PremiumSolutions />
       <PremiumProof />
+      <PremiumConsultation />
       <PremiumPricing />
       <PremiumFooter />
     </div>

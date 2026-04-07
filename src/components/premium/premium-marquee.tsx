@@ -1,59 +1,45 @@
 "use client"
-import { motion } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 
-const LOGOS = [
-  "SIDBI", "MUDRA", "NSIC", "MSME Udyam", "Startup India",
-  "GeM Portal", "CGTMSE", "PMEGP", "Make in India", "Digital India",
-  "Stand-Up India", "KVIC",
-]
-
-function MarqueeRow({ reverse = false, speed = 30 }: { reverse?: boolean; speed?: number }) {
-  const items = [...LOGOS, ...LOGOS]
-  return (
-    <div className="relative flex overflow-hidden group">
-      {/* gradient masks */}
-      <div className="absolute left-0 top-0 bottom-0 z-10 w-32 bg-gradient-to-r from-[#526D82] via-[#526D82]/90 to-transparent" />
-      <div className="absolute right-0 top-0 bottom-0 z-10 w-32 bg-gradient-to-l from-[#526D82] via-[#526D82]/90 to-transparent" />
-
-      <motion.div
-        className="flex gap-6 shrink-0"
-        animate={{ x: reverse ? ["0%", "-50%"] : ["-50%", "0%"] }}
-        transition={{ duration: speed, repeat: Infinity, ease: "linear" }}
-      >
-        {items.map((name, i) => (
-          <motion.div
-            key={`${name}-${i}`}
-            whileHover={{ scale: 1.06, y: -2 }}
-            transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="flex-shrink-0 px-6 py-3.5 rounded-xl border border-[#9DB2BF]/20 bg-[#27374D]/55
-                       hover:bg-[#27374D]/75 hover:border-[#9DB2BF]/35 hover:shadow-md hover:shadow-[#27374D]/20 transition-all duration-300
-                       flex items-center gap-3 group/logo cursor-default backdrop-blur-sm"
-          >
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#9DB2BF]/25 to-[#526D82]/35 flex items-center justify-center
-                            text-[10px] font-bold text-[#9DB2BF] group-hover/logo:from-[#9DB2BF]/35 group-hover/logo:to-[#526D82]/45 transition-colors">
-              {name.slice(0, 2).toUpperCase()}
-            </div>
-            <span className="text-sm text-[#9DB2BF] group-hover/logo:text-[#DDE6ED] whitespace-nowrap transition-colors font-medium">
-              {name}
-            </span>
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
-  )
+const blurFadeUp: Variants = {
+  hidden: { opacity: 0, filter: "blur(8px)", y: 20 },
+  show: {
+    opacity: 1, filter: "blur(0px)", y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
 }
 
+const LOGOS: { name: string; logo?: string }[] = [
+  { name: "SIDBI", logo: "/logos/sidbi.png" },
+  { name: "MUDRA", logo: "/logos/mudra.png" },
+  { name: "NSIC" },
+  { name: "MSME Udyam" },
+  { name: "Startup India", logo: "/logos/startup-india.png" },
+  { name: "GeM Portal" },
+  { name: "CGTMSE", logo: "/logos/cgtmse.png" },
+  { name: "PMEGP" },
+  { name: "Make in India" },
+  { name: "Digital India" },
+  { name: "Stand-Up India" },
+  { name: "NABARD", logo: "/logos/nabard.png" },
+  { name: "SBI", logo: "/logos/sbi.png" },
+  { name: "HDFC Bank", logo: "/logos/hdfc-bank.png" },
+  { name: "Bank of Baroda", logo: "/logos/bank-of-baroda.png" },
+]
+
 export default function PremiumMarquee() {
+  const items = [...LOGOS, ...LOGOS]
+
   return (
     <section
       className="relative overflow-hidden py-20"
       style={{ background: "linear-gradient(180deg, #526D82 0%, #476078 100%)" }}
     >
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial="hidden"
+        whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
+        variants={blurFadeUp}
         className="text-center mb-12"
       >
         <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-[#9DB2BF]">Trusted Ecosystem</p>
@@ -62,9 +48,50 @@ export default function PremiumMarquee() {
         </h2>
       </motion.div>
 
-      <div className="space-y-5">
-        <MarqueeRow speed={35} />
-        <MarqueeRow reverse speed={40} />
+      {/* Single scrollable row */}
+      <div className="relative flex overflow-hidden group/marquee">
+        {/* Gradient edge masks */}
+        <div className="absolute left-0 top-0 bottom-0 z-10 w-40 bg-gradient-to-r from-[#526D82] via-[#526D82]/95 to-transparent" />
+        <div className="absolute right-0 top-0 bottom-0 z-10 w-40 bg-gradient-to-l from-[#526D82] via-[#526D82]/95 to-transparent" />
+
+        <motion.div
+          className="flex gap-6 shrink-0 group-hover/marquee:[animation-play-state:paused]"
+          animate={{ x: ["-50%", "0%"] }}
+          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+        >
+          {items.map((item, i) => (
+            <motion.div
+              key={`${item.name}-${i}`}
+              whileHover={{ scale: 1.1, y: -6 }}
+              transition={{ type: "spring", stiffness: 400, damping: 18 }}
+              className="flex-shrink-0 px-5 py-3 rounded-xl border border-[#9DB2BF]/15 bg-[#27374D]/40 backdrop-blur-md
+                         hover:bg-[#27374D]/70 hover:border-[#9DB2BF]/40 hover:shadow-lg hover:shadow-[#9DB2BF]/15 transition-all duration-300
+                         flex items-center gap-3 group/logo cursor-default relative overflow-hidden
+                         shadow-[inset_0_1px_0_rgba(157,178,191,0.08)]"
+            >
+              {/* Hover glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#9DB2BF]/0 via-[#9DB2BF]/5 to-[#9DB2BF]/0 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300" />
+
+              {item.logo ? (
+                <div className="relative w-9 h-9 rounded-lg bg-white/90 flex items-center justify-center overflow-hidden p-1 shrink-0">
+                  <img
+                    src={item.logo}
+                    alt={item.name}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              ) : (
+                <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-[#9DB2BF]/25 to-[#526D82]/35 flex items-center justify-center
+                                text-[10px] font-bold text-[#9DB2BF] group-hover/logo:from-[#9DB2BF]/35 group-hover/logo:to-[#526D82]/45 transition-colors shrink-0">
+                  {item.name.slice(0, 2).toUpperCase()}
+                </div>
+              )}
+              <span className="relative text-sm text-[#9DB2BF] group-hover/logo:text-[#DDE6ED] whitespace-nowrap transition-colors font-medium">
+                {item.name}
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   )

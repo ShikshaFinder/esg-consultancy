@@ -126,7 +126,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
                   <div className="absolute -inset-3 rounded-2xl bg-gradient-to-tr from-[#355872] via-[#9CD5FF] to-[#7AAACE] opacity-40 blur-xl group-hover:opacity-60 transition-opacity duration-700 animate-pulse" />
                   <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-tr from-[#355872] via-[#9CD5FF] to-[#7AAACE] opacity-30" />
                   {/* Square image */}
-                  <div className="relative w-[380px] h-[380px] rounded-2xl overflow-hidden border-2 border-white/[0.12] shadow-2xl shadow-[#9CD5FF]/20">
+                  <div className="relative w-[480px] h-[480px] rounded-2xl overflow-hidden border-2 border-white/[0.12] shadow-2xl shadow-[#9CD5FF]/20">
                     <img src={data.heroImage} alt={data.breadcrumbLabel} className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/30 via-transparent to-transparent" />
                   </div>

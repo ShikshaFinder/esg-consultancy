@@ -4,9 +4,14 @@ import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motio
 import Navbar from "@/components/layout/navbar"
 import PremiumHero from "../../components/premium/premium-hero"
 import PremiumMarquee from "../../components/premium/premium-marquee"
+import PremiumSchemes from "../../components/premium/premium-schemes"
+import PremiumFunding from "../../components/premium/premium-funding"
 import PremiumFeatures from "../../components/premium/premium-features"
 import PremiumSolutions from "../../components/premium/premium-solutions"
+import PremiumDigital from "../../components/premium/premium-digital"
 import PremiumProof from "../../components/premium/premium-proof"
+import PremiumReviews from "../../components/premium/premium-reviews"
+import PremiumFAQ from "../../components/premium/premium-faq"
 import PremiumPricing from "../../components/premium/premium-pricing"
 import PremiumConsultation from "../../components/premium/premium-consultation"
 import PremiumFooter from "../../components/premium/premium-footer"
@@ -118,9 +123,14 @@ export default function PremiumPage() {
       <Navbar />
       <PremiumHero />
       <PremiumMarquee />
+      <PremiumSchemes />
+      <PremiumFunding />
       <PremiumFeatures />
       <PremiumSolutions />
+      <PremiumDigital />
       <PremiumProof />
+      <PremiumReviews />
+      <PremiumFAQ />
       <PremiumConsultation />
       <PremiumPricing />
       <PremiumFooter />

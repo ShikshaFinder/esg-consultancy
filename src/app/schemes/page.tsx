@@ -8,6 +8,7 @@ import WhatsAppFAB from "@/components/layout/whatsapp-fab"
 import { BouncingBalls } from "@/components/devComponents/bouncing-balls"
 import { Marquee } from "@/components/devComponents/3d-testimonails"
 import { MetalButton } from "@/components/devComponents/liquid-glass-button"
+import PremiumConsultation from "@/components/premium/premium-consultation"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -230,6 +231,7 @@ export default function SchemesPage() {
           </motion.div>
         </section>
       </main>
+      <PremiumConsultation />
       <Footer />
       <WhatsAppFAB />
     </>

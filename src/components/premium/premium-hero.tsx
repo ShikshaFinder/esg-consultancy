@@ -7,6 +7,7 @@ import {
 import {
   ArrowRight, Play, TrendingUp, Users, Shield, Zap, Wallet,
   BarChart3, FileText, Bell, Search, Settings, Home, PieChart, CreditCard, Receipt,
+  CheckCircle2, Phone, Mail, MapPin, Send, Sparkles, Lock, User,
 } from "lucide-react"
 
 /* ─── animation variants ─── */
@@ -223,79 +224,312 @@ export default function PremiumHero() {
       </motion.div>
 
       {/* ── Hero Content ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-40 pb-8">
-        <motion.div className="text-center max-w-4xl mx-auto" initial="hidden" animate="show" variants={stagger}>
-          {/* Badge with animated gradient border */}
-          <motion.div variants={blurFade} custom={0}>
-            <span className="relative inline-flex items-center gap-2.5 rounded-full px-5 py-2 text-sm text-[#DDE6ED] shadow-sm overflow-hidden">
-              <span className="absolute inset-0 rounded-full p-[1px]">
-                <span
-                  className="absolute inset-0 rounded-full"
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-8">
+        {/* Two-column hero layout */}
+        <div className="grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-12 items-start">
+          {/* ─ LEFT: Headline + Tagline + CTAs + Trust Chips ─ */}
+          <motion.div initial="hidden" animate="show" variants={stagger}>
+            {/* Badge with animated gradient border */}
+            <motion.div variants={blurFade} custom={0}>
+              <span className="relative inline-flex items-center gap-2.5 rounded-full px-5 py-2 text-sm text-[#DDE6ED] shadow-sm overflow-hidden">
+                <span className="absolute inset-0 rounded-full p-[1px]">
+                  <span
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      background: "linear-gradient(90deg, #526D82, #9DB2BF, #DDE6ED, #9DB2BF, #526D82)",
+                      backgroundSize: "200% 100%",
+                      animation: "gradient-x 4s linear infinite",
+                    }}
+                  />
+                  <span className="absolute inset-[1px] rounded-full bg-[#526D82]/60 backdrop-blur-sm" />
+                </span>
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute h-full w-full rounded-full bg-emerald-400 opacity-60" />
+                  <span className="relative rounded-full h-2 w-2 bg-emerald-400" />
+                </span>
+                <span className="relative">Trusted by 500+ Businesses Across 28+ States</span>
+              </span>
+            </motion.div>
+
+            {/* Headline with word-by-word blur reveal */}
+            <div className="mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
+              <AnimatedWords text="GROW BRIDGE" className="text-[#DDE6ED] block" delay={0.3} />
+              <motion.span
+                variants={blurFade}
+                custom={0.4}
+                className="mt-3 block text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold"
+                style={{
+                  backgroundImage: "linear-gradient(135deg, #DDE6ED 0%, #9DB2BF 50%, #526D82 100%)",
+                  backgroundSize: "200% 100%",
+                  animation: "gradient-x 5s linear infinite",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Where Business Growth Begins
+              </motion.span>
+            </div>
+
+            {/* Subtitle */}
+            <motion.p
+              variants={blurFade} custom={0.5}
+              className="mt-6 text-base text-[#9DB2BF]/90 max-w-xl leading-relaxed"
+            >
+              The complete growth ecosystem for startups and MSMEs across India. From MSME funding & government schemes to business registration, compliance, and digital transformation.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div variants={blurFade} custom={0.65} className="mt-8 flex flex-col sm:flex-row items-start gap-4">
+              <MagneticButton>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
+                  <Link
+                    href="/contact"
+                    className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white overflow-hidden shadow-[0_8px_30px_rgba(157,178,191,0.22)]"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82] bg-[length:200%_100%] group-hover:animate-[shimmer_2s_ease-in-out_infinite]" />
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-300 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.4),transparent_70%)]" />
+                    <span className="relative">Get Free Growth Assessment</span>
+                    <ArrowRight className="relative w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                </motion.div>
+              </MagneticButton>
+              <MagneticButton>
+                <motion.button
+                  whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
+                  className="group inline-flex items-center gap-2.5 px-7 py-4 rounded-full text-sm font-medium text-[#DDE6ED] border border-[#526D82]/50 bg-[#526D82]/15 hover:bg-[#526D82]/30 hover:text-white hover:border-[#9DB2BF]/40 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
+                >
+                  <motion.div
+                    className="w-8 h-8 rounded-full bg-[#526D82]/30 flex items-center justify-center group-hover:bg-[#526D82]/40 transition-colors"
+                    whileHover={{ scale: 1.15 }}
+                    animate={{ boxShadow: ["0 0 0 0 rgba(157,178,191,0.3)", "0 0 0 10px rgba(157,178,191,0)", "0 0 0 0 rgba(157,178,191,0)"] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <Play className="w-3.5 h-3.5 ml-0.5 text-[#DDE6ED]" />
+                  </motion.div>
+                  Check Eligibility Now
+                </motion.button>
+              </MagneticButton>
+            </motion.div>
+
+            {/* Trust Chips */}
+            <motion.div variants={blurFade} custom={0.85} className="mt-8 flex flex-wrap gap-2.5">
+              {[
+                { label: "PMEGP Subsidies", icon: Sparkles },
+                { label: "CGTMSE Guarantee", icon: Shield },
+                { label: "Expert Support", icon: Users },
+                { label: "Fast Processing", icon: Zap },
+              ].map((chip) => (
+                <motion.span
+                  key={chip.label}
+                  whileHover={{ scale: 1.06, y: -2 }}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-medium text-[#DDE6ED] border border-[#526D82]/50 bg-[#526D82]/20 backdrop-blur-sm"
+                >
+                  <chip.icon className="w-3.5 h-3.5 text-[#9DB2BF]" />
+                  {chip.label}
+                </motion.span>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* ─ RIGHT: Eligibility Card ─ */}
+          <motion.div
+            initial={{ opacity: 0, x: 40, scale: 0.96 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
+          >
+            {/* ── Concentric animated circles behind the card ── */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+              {[1, 2, 3, 4, 5].map((ring) => (
+                <motion.div
+                  key={ring}
+                  className="absolute rounded-full border"
                   style={{
-                    background: "linear-gradient(90deg, #526D82, #9DB2BF, #DDE6ED, #9DB2BF, #526D82)",
-                    backgroundSize: "200% 100%",
-                    animation: "gradient-x 4s linear infinite",
+                    width: `${ring * 120 + 60}px`,
+                    height: `${ring * 120 + 60}px`,
+                    borderColor: `rgba(157,178,191,${0.18 - ring * 0.03})`,
+                  }}
+                  animate={{
+                    scale: [1, 1.04, 1],
+                    opacity: [0.15 - ring * 0.02, 0.25 - ring * 0.03, 0.15 - ring * 0.02],
+                    rotate: ring % 2 === 0 ? [0, 360] : [360, 0],
+                  }}
+                  transition={{
+                    duration: 12 + ring * 4,
+                    repeat: Infinity,
+                    ease: "linear",
                   }}
                 />
-                <span className="absolute inset-[1px] rounded-full bg-[#526D82]/60 backdrop-blur-sm" />
-              </span>
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute h-full w-full rounded-full bg-emerald-400 opacity-60" />
-                <span className="relative rounded-full h-2 w-2 bg-emerald-400" />
-              </span>
-              <span className="relative">Trusted by 500+ Businesses Across 28+ States</span>
-            </span>
-          </motion.div>
+              ))}
+              <motion.div
+                className="absolute w-32 h-32 rounded-full bg-[#9DB2BF]/15 blur-[50px]"
+                animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.55, 0.3] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </div>
 
-          {/* Headline with word-by-word blur reveal */}
-          <div className="mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
-            <AnimatedWords text="GROW BRIDGE:" className="text-[#DDE6ED] block" delay={0.3} />
-            <span className="block bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #DDE6ED 0%, #9DB2BF 45%, #526D82 100%)" }}>
-              <AnimatedWords text="Where Indian Businesses Scale." delay={0.6} />
-            </span>
-          </div>
+            {/* Animated glow behind card */}
+            <motion.div
+              className="absolute -inset-6 rounded-3xl opacity-40 blur-[50px] pointer-events-none"
+              style={{ background: "linear-gradient(135deg, #526D82, #9DB2BF, #526D82)" }}
+              animate={{ opacity: [0.25, 0.45, 0.25], scale: [1, 1.04, 1] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
 
-          {/* Subtitle with blur-fade */}
-          <motion.p
-            variants={blurFade} custom={0.5}
-            className="mt-6 text-base sm:text-lg text-[#9DB2BF]/90 max-w-2xl mx-auto leading-relaxed"
-          >
-            The complete growth ecosystem for startups and MSMEs across India. From MSME funding & government schemes to business registration, compliance, and digital transformation — everything in one platform.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div variants={blurFade} custom={0.65} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <MagneticButton>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
-                <Link
-                  href="/contact"
-                  className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white overflow-hidden shadow-[0_8px_30px_rgba(157,178,191,0.22)]"
+            <div className="relative z-10 rounded-[1.5rem] overflow-hidden border border-[#526D82]/30 shadow-[0_24px_80px_rgba(0,0,0,0.4)] backdrop-blur-sm">
+              <div className="flex flex-col lg:flex-row">
+                {/* ── Left Panel — Contact Info ── */}
+                <div className="lg:w-[42%] relative overflow-hidden flex flex-col justify-between p-7 lg:p-8"
+                  style={{ background: "linear-gradient(160deg, #27374D 0%, #1e2f42 60%, #192a3c 100%)" }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82] bg-[length:200%_100%] group-hover:animate-[shimmer_2s_ease-in-out_infinite]" />
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-300 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.4),transparent_70%)]" />
-                  <span className="relative">Get Free Growth Assessment</span>
-                  <ArrowRight className="relative w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
-              </motion.div>
-            </MagneticButton>
-            <MagneticButton>
-              <motion.button
-                whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-                className="group inline-flex items-center gap-2.5 px-7 py-4 rounded-full text-sm font-medium text-[#DDE6ED] border border-[#526D82]/50 bg-[#526D82]/15 hover:bg-[#526D82]/30 hover:text-white hover:border-[#9DB2BF]/40 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
-              >
-                <motion.div
-                  className="w-8 h-8 rounded-full bg-[#526D82]/30 flex items-center justify-center group-hover:bg-[#526D82]/40 transition-colors"
-                  whileHover={{ scale: 1.15 }}
-                  animate={{ boxShadow: ["0 0 0 0 rgba(157,178,191,0.3)", "0 0 0 10px rgba(157,178,191,0)", "0 0 0 0 rgba(157,178,191,0)"] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <Play className="w-3.5 h-3.5 ml-0.5 text-[#DDE6ED]" />
-                </motion.div>
-                Check Eligibility Now
-              </motion.button>
-            </MagneticButton>
+                  {/* Dot grid */}
+                  <div
+                    className="absolute inset-0 opacity-[0.04]"
+                    style={{
+                      backgroundImage: "radial-gradient(circle at 1px 1px, #9DB2BF 1px, transparent 0)",
+                      backgroundSize: "20px 20px",
+                    }}
+                  />
+                  {/* Glow blobs */}
+                  <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-[#526D82]/25 rounded-full blur-[60px]" />
+                  <div className="absolute -top-10 -left-10 w-36 h-36 bg-[#9DB2BF]/15 rounded-full blur-[50px]" />
+                  {/* Floating dots */}
+                  <div className="absolute top-[30%] right-[10%] w-2 h-2 rounded-full bg-[#9DB2BF]/30 animate-[float_4s_ease-in-out_infinite]" />
+                  <div className="absolute bottom-[40%] left-[20%] w-1.5 h-1.5 rounded-full bg-[#DDE6ED]/20 animate-[float_5s_ease-in-out_infinite_0.5s]" />
+
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <div className="inline-flex items-center gap-2 bg-[#526D82]/25 rounded-full px-3 py-1.5 border border-[#526D82]/40 mb-4 backdrop-blur-sm">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="text-[#DDE6ED]/90 text-xs font-semibold">Grow Bridge · Active Now</span>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-[#DDE6ED] mb-1">Talk to an Expert</h3>
+                    <p className="text-[#9DB2BF]/70 text-sm mb-6">Free consultation for your business</p>
+
+                    <div className="space-y-4">
+                      {[
+                        { icon: MapPin, label: "LOCATION", value: "Surat, Gujarat, India", color: "text-rose-400", bg: "bg-rose-500/15 border-rose-500/20" },
+                        { icon: Phone, label: "PHONE", value: "+91 84878 28752", color: "text-emerald-400", bg: "bg-emerald-500/15 border-emerald-500/20" },
+                        { icon: Mail, label: "EMAIL", value: "info@growbridge.org", color: "text-violet-400", bg: "bg-violet-500/15 border-violet-500/20" },
+                      ].map((item) => (
+                        <div key={item.label} className="flex items-start gap-3">
+                          <div className={`w-9 h-9 rounded-xl ${item.bg} border flex items-center justify-center shrink-0 backdrop-blur-sm`}>
+                            <item.icon className={`w-4 h-4 ${item.color}`} />
+                          </div>
+                          <div>
+                            <p className="text-[#9DB2BF]/60 text-[10px] uppercase tracking-widest font-bold">{item.label}</p>
+                            <p className="text-[#DDE6ED] text-sm font-semibold mt-0.5 leading-tight">{item.value}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Trust badges */}
+                  <div className="relative z-10 mt-6 flex flex-wrap gap-2">
+                    {["500+ Clients", "Pan India", "5+ Years"].map((badge) => (
+                      <motion.span
+                        key={badge}
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        className="text-xs text-[#DDE6ED]/70 bg-[#526D82]/25 border border-[#526D82]/40 rounded-full px-3 py-1.5 font-medium flex items-center gap-1.5 cursor-default"
+                      >
+                        <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                        {badge}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* ── Right Panel — White Form ── */}
+                <div className="lg:w-[58%] bg-[#DDE6ED] p-7 lg:p-8 flex flex-col justify-center">
+                  <span className="inline-block text-[10px] font-bold text-[#526D82] bg-[#9DB2BF]/25 rounded-full px-3 py-1 mb-3 w-fit border border-[#9DB2BF]/30">
+                    Free Consultation
+                  </span>
+                  <h4 className="text-xl font-bold text-[#27374D] mb-1">Check Your Eligibility</h4>
+                  <p className="text-sm text-[#526D82] mb-5 font-medium">Our expert will contact you within 2 hours.</p>
+
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault()
+                      const fd = new FormData(e.currentTarget)
+                      const name = fd.get("name") as string
+                      const phone = fd.get("phone") as string
+                      if (name && phone) {
+                        const msg = encodeURIComponent(`Hi, I'm ${name}. I'd like to check my MSME scheme eligibility.`)
+                        window.open(`https://wa.me/918487828752?text=${msg}`, "_blank")
+                      }
+                    }}
+                    className="space-y-4"
+                  >
+                    <div>
+                      <label className="text-[10px] font-bold text-[#526D82] uppercase tracking-wider mb-1.5 block">Full Name <span className="text-rose-400">*</span></label>
+                      <div className="relative">
+                        <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#9DB2BF]">
+                          <User className="w-4 h-4" />
+                        </div>
+                        <input
+                          type="text"
+                          name="name"
+                          required
+                          placeholder="Enter your name"
+                          className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#9DB2BF]/40 bg-white text-sm text-[#27374D] font-medium focus:outline-none focus:border-[#526D82] focus:ring-2 focus:ring-[#526D82]/20 transition-all placeholder:text-[#9DB2BF]"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-[10px] font-bold text-[#526D82] uppercase tracking-wider mb-1.5 block">Phone Number <span className="text-rose-400">*</span></label>
+                      <div className="relative">
+                        <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#9DB2BF]">
+                          <Phone className="w-4 h-4" />
+                        </div>
+                        <input
+                          type="tel"
+                          name="phone"
+                          required
+                          placeholder="10-digit mobile"
+                          className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#9DB2BF]/40 bg-white text-sm text-[#27374D] font-medium focus:outline-none focus:border-[#526D82] focus:ring-2 focus:ring-[#526D82]/20 transition-all placeholder:text-[#9DB2BF]"
+                        />
+                      </div>
+                    </div>
+
+                    <motion.button
+                      type="submit"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.97 }}
+                      className="group/btn relative w-full py-3.5 rounded-xl text-white font-bold text-sm tracking-wide transition-all duration-500 hover:shadow-xl hover:shadow-[#526D82]/30 cursor-pointer overflow-hidden mt-1"
+                      style={{ background: "linear-gradient(135deg, #526D82 0%, #27374D 100%)", boxShadow: "0 4px 16px rgba(82,109,130,0.30)" }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
+                      <span className="flex items-center justify-center gap-2">
+                        Get Free Consultation <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </motion.button>
+                  </form>
+
+                  <p className="text-center text-xs text-[#526D82]/70 font-medium flex items-center justify-center gap-1.5 mt-3">
+                    <Lock className="w-3 h-3" /> 100% Private. No spam guaranteed.
+                  </p>
+
+                  {/* Stats row */}
+                  <div className="mt-5 pt-4 border-t border-[#9DB2BF]/25 flex justify-around text-center">
+                    {[
+                      ["500+", "FUNDED"],
+                      ["95%", "SUCCESS"],
+                      ["24hr", "RESPONSE"],
+                    ].map(([val, label]) => (
+                      <div key={label}>
+                        <p className="text-base font-bold text-[#27374D]">{val}</p>
+                        <p className="text-[9px] text-[#526D82] uppercase tracking-wider font-semibold">{label}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* ── Floating Dashboard Mockup ── */}
         <motion.div

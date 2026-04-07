@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import ClientPopupWrapper from "@/components/layout/client-popup-wrapper"
+import SiteAnimations from "@/components/layout/site-animations"
 import "./globals.css"
 
 const geistSans = localFont({
@@ -29,10 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased noise-overlay bg-[#27374D] text-[#DDE6ED]`}
       >
         <ClientPopupWrapper />
-        {children}
+        <SiteAnimations />
+        <div className="relative z-10">{children}</div>
       </body>
     </html>
   )

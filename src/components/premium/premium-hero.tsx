@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useState, useRef } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import {
   motion, useMotionValue, useSpring, useTransform, useScroll, type Variants, useInView,
@@ -400,6 +401,18 @@ export default function PremiumHero() {
 
                   {/* Content */}
                   <div className="relative z-10">
+                    <div className="relative mb-5 overflow-hidden rounded-2xl border border-[#526D82]/35 aspect-[16/10]">
+                      <Image
+                        src="/hero3.png"
+                        alt="GrowBridge consultation support"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 32vw"
+                        className="object-cover"
+                        priority
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#192a3c]/70 via-transparent to-transparent" />
+                    </div>
+
                     <div className="inline-flex items-center gap-2 bg-[#526D82]/25 rounded-full px-3 py-1.5 border border-[#526D82]/40 mb-4 backdrop-blur-sm">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                       <span className="text-[#DDE6ED]/90 text-xs font-semibold">Grow Bridge · Active Now</span>

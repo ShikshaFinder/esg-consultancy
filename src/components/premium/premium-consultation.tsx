@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+import Image from "next/image"
 import { motion, type Variants } from "framer-motion"
 import { MapPin, Phone, Mail, Lock, ArrowRight, CheckCircle2 } from "lucide-react"
 
@@ -83,6 +84,17 @@ export default function PremiumConsultation() {
 
               {/* Content */}
               <div className="relative z-10">
+                <div className="relative mb-6 overflow-hidden rounded-2xl border border-[#526D82]/35 aspect-[16/10]">
+                  <Image
+                    src="/hero3.png"
+                    alt="GrowBridge expert consultation"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 28vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#192a3c]/70 via-transparent to-transparent" />
+                </div>
+
                 <div className="inline-flex items-center gap-2 bg-[#526D82]/25 rounded-full px-3.5 py-1.5 border border-[#526D82]/40 mb-5 backdrop-blur-sm">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   <span className="text-[#DDE6ED]/90 text-xs font-semibold">

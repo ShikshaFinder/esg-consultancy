@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 import {
@@ -9,7 +9,7 @@ import {
   BarChart3, FileText, Bell, Search, Settings, Home, PieChart, CreditCard, Receipt,
 } from "lucide-react"
 
-/* ─── animation variants ─── */
+/* â”€â”€â”€ animation variants â”€â”€â”€ */
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
   show: (d: number = 0) => ({
@@ -18,7 +18,7 @@ const fadeUp: Variants = {
   }),
 }
 
-/* Blur-fade — items appear blurry and sharpen */
+/* Blur-fade â€” items appear blurry and sharpen */
 const blurFade: Variants = {
   hidden: { opacity: 0, filter: "blur(10px)", y: 20 },
   show: (d: number = 0) => ({
@@ -36,7 +36,7 @@ const float: Variants = {
   }),
 }
 
-/* ─── Word-by-word text reveal ─── */
+/* â”€â”€â”€ Word-by-word text reveal â”€â”€â”€ */
 function AnimatedWords({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) {
   const ref = useRef<HTMLSpanElement>(null)
   const inView = useInView(ref, { once: true, amount: 0.5 })
@@ -63,7 +63,7 @@ function AnimatedWords({ text, className, delay = 0 }: { text: string; className
   )
 }
 
-/* ─── animated counter hook ─── */
+/* â”€â”€â”€ animated counter hook â”€â”€â”€ */
 function useCounter(target: number, duration = 2, delay = 0) {
   const [value, setValue] = useState(0)
   const ref = useRef<HTMLDivElement>(null)
@@ -97,7 +97,7 @@ function useCounter(target: number, duration = 2, delay = 0) {
   return { value, ref }
 }
 
-/* ─── Magnetic Button wrapper ─── */
+/* â”€â”€â”€ Magnetic Button wrapper â”€â”€â”€ */
 function MagneticButton({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null)
   const x = useMotionValue(0)
@@ -125,7 +125,7 @@ function MagneticButton({ children, className = "" }: { children: React.ReactNod
   )
 }
 
-/* ─── sidebar icons for dashboard mockup ─── */
+/* â”€â”€â”€ sidebar icons for dashboard mockup â”€â”€â”€ */
 const SIDEBAR = [Home, BarChart3, FileText, Wallet, CreditCard, Receipt, PieChart, Settings]
 const BAR_HEIGHTS = [42, 58, 35, 72, 50, 85, 65]
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"]
@@ -172,25 +172,25 @@ export default function PremiumHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-[#27374D]"
-      style={{ backgroundImage: "linear-gradient(180deg, #27374D 0%, #27374D 38%, #2d3f56 100%)" }}
+      className="relative min-h-screen overflow-hidden bg-[#1e3a5c]"
+      style={{ backgroundImage: "linear-gradient(180deg, #1e3a5c 0%, #1e3a5c 38%, #234466 100%)" }}
     >
-      {/* ── Background effects ── */}
+      {/* â”€â”€ Background effects â”€â”€ */}
       <motion.div
         className="absolute w-[700px] h-[700px] rounded-full opacity-[0.35] blur-[160px]"
-        style={{ background: "radial-gradient(circle, #526D82, transparent 70%)", top: "-15%", left: "-10%" }}
+        style={{ background: "radial-gradient(circle, #2e5278, transparent 70%)", top: "-15%", left: "-10%" }}
         animate={{ x: [0, 60, -30, 0], y: [0, -40, 30, 0] }}
         transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         className="absolute w-[500px] h-[500px] rounded-full opacity-[0.25] blur-[140px]"
-        style={{ background: "radial-gradient(circle, #9DB2BF, transparent 70%)", bottom: "10%", right: "-5%" }}
+        style={{ background: "radial-gradient(circle, #e9edc9, transparent 70%)", bottom: "10%", right: "-5%" }}
         animate={{ x: [0, -50, 25, 0], y: [0, 40, -25, 0] }}
         transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         className="absolute w-[400px] h-[400px] rounded-full opacity-[0.2] blur-[120px]"
-        style={{ background: "radial-gradient(circle, #DDE6ED, transparent 70%)", top: "35%", left: "55%" }}
+        style={{ background: "radial-gradient(circle, #fefae0, transparent 70%)", top: "35%", left: "55%" }}
         animate={{ x: [0, 35, -45, 0], y: [0, -30, 20, 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -199,45 +199,45 @@ export default function PremiumHero() {
       <div
         className="absolute inset-0 z-[1] opacity-[0.04]"
         style={{
-          backgroundImage: "linear-gradient(#9DB2BF 1px, transparent 1px), linear-gradient(90deg, #9DB2BF 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(#e9edc9 1px, transparent 1px), linear-gradient(90deg, #e9edc9 1px, transparent 1px)",
           backgroundSize: "64px 64px",
         }}
       />
 
       {/* Floating decorative elements */}
-      <motion.div custom={0} variants={float} animate="animate" className="absolute top-[20%] left-[8%] w-3 h-3 rounded-full bg-[#DDE6ED]/35 z-[2]" />
-      <motion.div custom={1} variants={float} animate="animate" className="absolute top-[30%] right-[12%] w-4 h-4 rounded-full bg-[#9DB2BF]/45 z-[2]" />
-      <motion.div custom={2} variants={float} animate="animate" className="absolute top-[60%] left-[15%] w-2 h-2 rounded-full bg-[#526D82]/55 z-[2]" />
-      <motion.div custom={3} variants={float} animate="animate" className="absolute bottom-[25%] right-[8%] w-5 h-5 rounded-full border border-[#DDE6ED]/30 z-[2]" />
-      <motion.div custom={1} variants={float} animate="animate" className="absolute top-[45%] right-[25%] w-2.5 h-2.5 rotate-45 bg-[#9DB2BF]/30 z-[2]" />
+      <motion.div custom={0} variants={float} animate="animate" className="absolute top-[20%] left-[8%] w-3 h-3 rounded-full bg-[#fefae0]/35 z-[2]" />
+      <motion.div custom={1} variants={float} animate="animate" className="absolute top-[30%] right-[12%] w-4 h-4 rounded-full bg-[#e9edc9]/45 z-[2]" />
+      <motion.div custom={2} variants={float} animate="animate" className="absolute top-[60%] left-[15%] w-2 h-2 rounded-full bg-[#2e5278]/55 z-[2]" />
+      <motion.div custom={3} variants={float} animate="animate" className="absolute bottom-[25%] right-[8%] w-5 h-5 rounded-full border border-[#fefae0]/30 z-[2]" />
+      <motion.div custom={1} variants={float} animate="animate" className="absolute top-[45%] right-[25%] w-2.5 h-2.5 rotate-45 bg-[#e9edc9]/30 z-[2]" />
       {/* Decorative SVG shapes */}
       <motion.div custom={2} variants={float} animate="animate" className="absolute top-[15%] right-[35%] w-6 h-6 z-[2]">
-        <svg viewBox="0 0 24 24" className="w-full h-full text-[#9DB2BF]/20" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <svg viewBox="0 0 24 24" className="w-full h-full text-[#e9edc9]/20" fill="none" stroke="currentColor" strokeWidth="1.5">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
         </svg>
       </motion.div>
       <motion.div custom={4} variants={float} animate="animate" className="absolute bottom-[35%] left-[5%] w-8 h-8 z-[2]">
-        <svg viewBox="0 0 24 24" className="w-full h-full text-[#526D82]/25" fill="none" stroke="currentColor" strokeWidth="1">
+        <svg viewBox="0 0 24 24" className="w-full h-full text-[#2e5278]/25" fill="none" stroke="currentColor" strokeWidth="1">
           <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5" />
         </svg>
       </motion.div>
 
-      {/* ── Hero Content ── */}
+      {/* â”€â”€ Hero Content â”€â”€ */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-40 pb-8">
         <motion.div className="text-center max-w-4xl mx-auto" initial="hidden" animate="show" variants={stagger}>
           {/* Badge with animated gradient border */}
           <motion.div variants={blurFade} custom={0}>
-            <span className="relative inline-flex items-center gap-2.5 rounded-full px-5 py-2 text-sm text-[#DDE6ED] shadow-sm overflow-hidden">
+            <span className="relative inline-flex items-center gap-2.5 rounded-full px-5 py-2 text-sm text-[#fefae0] shadow-sm overflow-hidden">
               <span className="absolute inset-0 rounded-full p-[1px]">
                 <span
                   className="absolute inset-0 rounded-full"
                   style={{
-                    background: "linear-gradient(90deg, #526D82, #9DB2BF, #DDE6ED, #9DB2BF, #526D82)",
+                    background: "linear-gradient(90deg, #2e5278, #e9edc9, #fefae0, #e9edc9, #2e5278)",
                     backgroundSize: "200% 100%",
                     animation: "gradient-x 4s linear infinite",
                   }}
                 />
-                <span className="absolute inset-[1px] rounded-full bg-[#526D82]/60 backdrop-blur-sm" />
+                <span className="absolute inset-[1px] rounded-full bg-[#2e5278]/60 backdrop-blur-sm" />
               </span>
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute h-full w-full rounded-full bg-emerald-400 opacity-60" />
@@ -249,8 +249,8 @@ export default function PremiumHero() {
 
           {/* Headline with word-by-word blur reveal */}
           <div className="mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
-            <AnimatedWords text="GROW BRIDGE:" className="text-[#DDE6ED] block" delay={0.3} />
-            <span className="block bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #DDE6ED 0%, #9DB2BF 45%, #526D82 100%)" }}>
+            <AnimatedWords text="GROW BRIDGE:" className="text-[#fefae0] block" delay={0.3} />
+            <span className="block bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #fefae0 0%, #e9edc9 45%, #2e5278 100%)" }}>
               <AnimatedWords text="Where Indian Businesses Scale." delay={0.6} />
             </span>
           </div>
@@ -258,9 +258,9 @@ export default function PremiumHero() {
           {/* Subtitle with blur-fade */}
           <motion.p
             variants={blurFade} custom={0.5}
-            className="mt-6 text-base sm:text-lg text-[#9DB2BF]/90 max-w-2xl mx-auto leading-relaxed"
+            className="mt-6 text-base sm:text-lg text-[#e9edc9]/90 max-w-2xl mx-auto leading-relaxed"
           >
-            The complete growth ecosystem for startups and MSMEs across India. From MSME funding & government schemes to business registration, compliance, and digital transformation — everything in one platform.
+            The complete growth ecosystem for startups and MSMEs across India. From MSME funding & government schemes to business registration, compliance, and digital transformation â€” everything in one platform.
           </motion.p>
 
           {/* CTAs */}
@@ -271,7 +271,7 @@ export default function PremiumHero() {
                   href="/contact"
                   className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white overflow-hidden shadow-[0_8px_30px_rgba(157,178,191,0.22)]"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82] bg-[length:200%_100%] group-hover:animate-[shimmer_2s_ease-in-out_infinite]" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#fefae0] via-[#e9edc9] to-[#2e5278] bg-[length:200%_100%] group-hover:animate-[shimmer_2s_ease-in-out_infinite]" />
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-300 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.4),transparent_70%)]" />
                   <span className="relative">Get Free Growth Assessment</span>
                   <ArrowRight className="relative w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -281,15 +281,15 @@ export default function PremiumHero() {
             <MagneticButton>
               <motion.button
                 whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-                className="group inline-flex items-center gap-2.5 px-7 py-4 rounded-full text-sm font-medium text-[#DDE6ED] border border-[#526D82]/50 bg-[#526D82]/15 hover:bg-[#526D82]/30 hover:text-white hover:border-[#9DB2BF]/40 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
+                className="group inline-flex items-center gap-2.5 px-7 py-4 rounded-full text-sm font-medium text-[#fefae0] border border-[#2e5278]/50 bg-[#2e5278]/15 hover:bg-[#2e5278]/30 hover:text-white hover:border-[#e9edc9]/40 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
               >
                 <motion.div
-                  className="w-8 h-8 rounded-full bg-[#526D82]/30 flex items-center justify-center group-hover:bg-[#526D82]/40 transition-colors"
+                  className="w-8 h-8 rounded-full bg-[#2e5278]/30 flex items-center justify-center group-hover:bg-[#2e5278]/40 transition-colors"
                   whileHover={{ scale: 1.15 }}
                   animate={{ boxShadow: ["0 0 0 0 rgba(157,178,191,0.3)", "0 0 0 10px rgba(157,178,191,0)", "0 0 0 0 rgba(157,178,191,0)"] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <Play className="w-3.5 h-3.5 ml-0.5 text-[#DDE6ED]" />
+                  <Play className="w-3.5 h-3.5 ml-0.5 text-[#fefae0]" />
                 </motion.div>
                 Check Eligibility Now
               </motion.button>
@@ -297,7 +297,7 @@ export default function PremiumHero() {
           </motion.div>
         </motion.div>
 
-        {/* ── Floating Dashboard Mockup ── */}
+        {/* â”€â”€ Floating Dashboard Mockup â”€â”€ */}
         <motion.div
           initial={{ opacity: 0, y: 80, rotateX: 12 }}
           animate={{ opacity: 1, y: 0, rotateX: 4 }}
@@ -305,7 +305,7 @@ export default function PremiumHero() {
           className="relative mx-auto max-w-5xl mt-20"
           style={{ perspective: "1400px", y: dashboardY, scale: dashboardScale }}
         >
-          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[70%] rounded-full bg-[#9DB2BF]/15 blur-[80px] pointer-events-none" />
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[70%] rounded-full bg-[#e9edc9]/15 blur-[80px] pointer-events-none" />
 
           <motion.div
             onMouseMove={(e) => {
@@ -315,21 +315,21 @@ export default function PremiumHero() {
             }}
             onMouseLeave={() => { tiltX.set(0); tiltY.set(0) }}
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-            className="relative rounded-2xl border border-[#526D82] bg-[#27374D]/80 shadow-[0_32px_80px_rgba(0,0,0,0.3)] backdrop-blur-xl overflow-hidden"
+            className="relative rounded-2xl border border-[#2e5278] bg-[#1e3a5c]/80 shadow-[0_32px_80px_rgba(0,0,0,0.3)] backdrop-blur-xl overflow-hidden"
           >
             {/* Browser chrome with interactive elements */}
-            <div className="h-11 border-b border-[#526D82] flex items-center px-4 gap-3 bg-[#27374D]/80">
+            <div className="h-11 border-b border-[#2e5278] flex items-center px-4 gap-3 bg-[#1e3a5c]/80">
               <div className="flex gap-2">
                 <motion.div className="w-3 h-3 rounded-full bg-[#ff5f57]/70" whileHover={{ scale: 1.4 }} />
                 <motion.div className="w-3 h-3 rounded-full bg-[#febc2e]/70" whileHover={{ scale: 1.4 }} />
                 <motion.div className="w-3 h-3 rounded-full bg-[#28c840]/70" whileHover={{ scale: 1.4 }} />
               </div>
               <div className="flex-1 flex justify-center">
-                <div className="rounded-lg bg-[#526D82]/40 border border-[#526D82] px-6 py-1.5 text-[11px] text-[#9DB2BF] font-mono flex items-center gap-2">
+                <div className="rounded-lg bg-[#2e5278]/40 border border-[#2e5278] px-6 py-1.5 text-[11px] text-[#e9edc9] font-mono flex items-center gap-2">
                   <Search className="w-3 h-3" />
                   <span>{typedUrl}</span>
                   <motion.span
-                    className="w-[1px] h-3.5 bg-[#9DB2BF]"
+                    className="w-[1px] h-3.5 bg-[#e9edc9]"
                     animate={{ opacity: [1, 0, 1] }}
                     transition={{ duration: 0.8, repeat: Infinity }}
                   />
@@ -337,17 +337,17 @@ export default function PremiumHero() {
               </div>
               <div className="flex gap-2">
                 <motion.div whileHover={{ scale: 1.3, rotate: 15 }} transition={{ type: "spring" }}>
-                  <Bell className="w-3.5 h-3.5 text-[#526D82] cursor-pointer" />
+                  <Bell className="w-3.5 h-3.5 text-[#2e5278] cursor-pointer" />
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.3, rotate: 90 }} transition={{ type: "spring", duration: 0.4 }}>
-                  <Settings className="w-3.5 h-3.5 text-[#526D82] cursor-pointer" />
+                  <Settings className="w-3.5 h-3.5 text-[#2e5278] cursor-pointer" />
                 </motion.div>
               </div>
             </div>
 
             <div className="flex h-[340px] sm:h-[380px]">
               {/* Sidebar with hover effects */}
-              <div className="hidden sm:flex w-14 border-r border-[#526D82] bg-[#27374D]/60 flex-col items-center py-4 gap-1">
+              <div className="hidden sm:flex w-14 border-r border-[#2e5278] bg-[#1e3a5c]/60 flex-col items-center py-4 gap-1">
                 {SIDEBAR.map((Icon, i) => (
                   <motion.div
                     key={i}
@@ -355,7 +355,7 @@ export default function PremiumHero() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1.2 + i * 0.06 }}
                     whileHover={{ scale: 1.2, backgroundColor: "rgba(157,178,191,0.15)" }}
-                    className={`w-9 h-9 rounded-lg flex items-center justify-center cursor-pointer transition-colors ${i === 1 ? "bg-[#9DB2BF]/15 text-[#9DB2BF]" : "text-[#526D82] hover:text-[#9DB2BF]"}`}
+                    className={`w-9 h-9 rounded-lg flex items-center justify-center cursor-pointer transition-colors ${i === 1 ? "bg-[#e9edc9]/15 text-[#e9edc9]" : "text-[#2e5278] hover:text-[#e9edc9]"}`}
                   >
                     <Icon className="w-4 h-4" />
                   </motion.div>
@@ -363,11 +363,11 @@ export default function PremiumHero() {
               </div>
 
               {/* Main content */}
-              <div className="flex-1 p-4 sm:p-5 overflow-hidden bg-[#2d3f56]/50">
+              <div className="flex-1 p-4 sm:p-5 overflow-hidden bg-[#234466]/50">
                 <div className="grid grid-cols-3 gap-3 mb-5">
                   {[
-                    { label: "Funding Enabled", value: "₹110Cr+", change: "+₹18Cr this quarter", color: "text-emerald-500", icon: TrendingUp },
-                    { label: "Active Schemes", value: "50+", change: "PMEGP, MUDRA, CGTMSE", color: "text-[#9DB2BF]", icon: Shield },
+                    { label: "Funding Enabled", value: "â‚¹110Cr+", change: "+â‚¹18Cr this quarter", color: "text-emerald-500", icon: TrendingUp },
+                    { label: "Active Schemes", value: "50+", change: "PMEGP, MUDRA, CGTMSE", color: "text-[#e9edc9]", icon: Shield },
                     { label: "Success Rate", value: "95%", change: "scheme approvals", color: "text-amber-500", icon: Zap },
                   ].map((s, i) => (
                     <motion.div
@@ -376,13 +376,13 @@ export default function PremiumHero() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 1.4 + i * 0.1 }}
                       whileHover={{ scale: 1.03, borderColor: "rgba(157,178,191,0.4)" }}
-                      className="rounded-xl border border-[#526D82] bg-[#27374D]/65 p-3 cursor-default transition-all duration-300"
+                      className="rounded-xl border border-[#2e5278] bg-[#1e3a5c]/65 p-3 cursor-default transition-all duration-300"
                     >
                       <div className="flex items-center justify-between">
-                        <p className="text-[10px] text-[#9DB2BF] font-medium">{s.label}</p>
-                        <s.icon className="w-3 h-3 text-[#526D82]" />
+                        <p className="text-[10px] text-[#e9edc9] font-medium">{s.label}</p>
+                        <s.icon className="w-3 h-3 text-[#2e5278]" />
                       </div>
-                      <p className="text-lg font-bold text-[#DDE6ED] mt-0.5">{s.value}</p>
+                      <p className="text-lg font-bold text-[#fefae0] mt-0.5">{s.value}</p>
                       <p className={`text-[10px] font-semibold mt-1 ${s.color}`}>{s.change}</p>
                     </motion.div>
                   ))}
@@ -390,10 +390,10 @@ export default function PremiumHero() {
 
                 <div className="flex gap-4 h-[calc(100%-100px)]">
                   {/* Bar chart with hover tooltips */}
-                  <div className="flex-1 rounded-xl border border-[#526D82] bg-[#27374D]/50 p-4">
+                  <div className="flex-1 rounded-xl border border-[#2e5278] bg-[#1e3a5c]/50 p-4">
                     <div className="flex items-center justify-between mb-3">
-                      <p className="text-[11px] font-semibold text-[#9DB2BF]">Funding Disbursed</p>
-                      <span className="text-[10px] text-[#9DB2BF] border border-[#526D82] rounded px-2 py-0.5 bg-[#526D82]/30">FY 2025-26</span>
+                      <p className="text-[11px] font-semibold text-[#e9edc9]">Funding Disbursed</p>
+                      <span className="text-[10px] text-[#e9edc9] border border-[#2e5278] rounded px-2 py-0.5 bg-[#2e5278]/30">FY 2025-26</span>
                     </div>
                     <div className="flex items-end gap-[6px] h-[calc(100%-32px)]">
                       {BAR_HEIGHTS.map((h, i) => (
@@ -403,28 +403,28 @@ export default function PremiumHero() {
                             animate={{ height: `${h}%` }}
                             transition={{ duration: 1, delay: 1.6 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                             whileHover={{ filter: "brightness(1.3)", scale: 1.05 }}
-                            className="w-full rounded-md bg-gradient-to-t from-[#526D82] to-[#9DB2BF] cursor-pointer transition-all duration-200 relative origin-bottom"
+                            className="w-full rounded-md bg-gradient-to-t from-[#2e5278] to-[#e9edc9] cursor-pointer transition-all duration-200 relative origin-bottom"
                           >
-                            <div className="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 transition-opacity text-[8px] text-[#DDE6ED] bg-[#27374D] border border-[#526D82] rounded px-1.5 py-0.5 whitespace-nowrap pointer-events-none">
-                              ₹{Math.round(h * 1.57)}L
+                            <div className="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 transition-opacity text-[8px] text-[#fefae0] bg-[#1e3a5c] border border-[#2e5278] rounded px-1.5 py-0.5 whitespace-nowrap pointer-events-none">
+                              â‚¹{Math.round(h * 1.57)}L
                             </div>
                           </motion.div>
-                          <span className="text-[8px] text-[#9DB2BF]">{MONTHS[i]}</span>
+                          <span className="text-[8px] text-[#e9edc9]">{MONTHS[i]}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   {/* Activity feed with hover effects */}
-                  <div className="hidden lg:block w-[200px] rounded-xl border border-[#526D82] bg-[#27374D]/50 p-4">
-                    <p className="text-[11px] font-semibold text-[#9DB2BF] mb-3">Recent Activity</p>
+                  <div className="hidden lg:block w-[200px] rounded-xl border border-[#2e5278] bg-[#1e3a5c]/50 p-4">
+                    <p className="text-[11px] font-semibold text-[#e9edc9] mb-3">Recent Activity</p>
                     <div className="space-y-2.5">
                       {[
-                        { text: "PMEGP Subsidy ₹25L Approved", time: "2m ago", color: "bg-emerald-500" },
-                        { text: "Udyam Registration Complete", time: "1hr ago", color: "bg-[#9DB2BF]" },
-                        { text: "CGTMSE Guarantee ₹2Cr", time: "3hr ago", color: "bg-amber-500" },
+                        { text: "PMEGP Subsidy â‚¹25L Approved", time: "2m ago", color: "bg-emerald-500" },
+                        { text: "Udyam Registration Complete", time: "1hr ago", color: "bg-[#e9edc9]" },
+                        { text: "CGTMSE Guarantee â‚¹2Cr", time: "3hr ago", color: "bg-amber-500" },
                         { text: "ISO 9001 Certification Filed", time: "1d ago", color: "bg-violet-500" },
-                        { text: "MUDRA Loan ₹10L Disbursed", time: "2d ago", color: "bg-pink-500" },
+                        { text: "MUDRA Loan â‚¹10L Disbursed", time: "2d ago", color: "bg-pink-500" },
                       ].map((a, i) => (
                         <motion.div
                           key={i}
@@ -440,8 +440,8 @@ export default function PremiumHero() {
                             transition={i === 0 ? { duration: 1.5, repeat: Infinity } : {}}
                           />
                           <div>
-                            <p className="text-[10px] text-[#9DB2BF] leading-snug">{a.text}</p>
-                            <p className="text-[9px] text-[#526D82]">{a.time}</p>
+                            <p className="text-[10px] text-[#e9edc9] leading-snug">{a.text}</p>
+                            <p className="text-[9px] text-[#2e5278]">{a.time}</p>
                           </div>
                         </motion.div>
                       ))}
@@ -452,10 +452,10 @@ export default function PremiumHero() {
             </div>
           </motion.div>
 
-          <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[80%] h-20 bg-[#9DB2BF]/10 blur-[60px] rounded-full pointer-events-none" />
+          <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[80%] h-20 bg-[#e9edc9]/10 blur-[60px] rounded-full pointer-events-none" />
         </motion.div>
 
-        {/* ── Trust Stats Row with enhanced hover ── */}
+        {/* â”€â”€ Trust Stats Row with enhanced hover â”€â”€ */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -465,7 +465,7 @@ export default function PremiumHero() {
         >
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { ref: stat1.ref, value: stat1.value, suffix: "Cr+", prefix: "₹", label: "Funding Enabled", icon: Wallet },
+              { ref: stat1.ref, value: stat1.value, suffix: "Cr+", prefix: "â‚¹", label: "Funding Enabled", icon: Wallet },
               { ref: stat2.ref, value: stat2.value, suffix: "+", prefix: "", label: "Businesses Served", icon: Users },
               { ref: stat3.ref, value: stat3.value, suffix: "%", prefix: "", label: "Success Rate", icon: TrendingUp },
               { ref: stat4.ref, value: stat4.value, suffix: "+", prefix: "", label: "States Covered", icon: Shield },
@@ -476,16 +476,16 @@ export default function PremiumHero() {
                 initial={{ opacity: 0, scale: 0.92, filter: "blur(8px)" }}
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                 transition={{ duration: 0.6, delay: 1.4 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="group text-center rounded-2xl border border-[#526D82]/60 bg-[#27374D]/50 py-5 px-3 backdrop-blur-md shadow-sm
-                           hover:border-[#9DB2BF]/30 hover:bg-[#526D82]/25 hover:shadow-lg hover:shadow-[#9DB2BF]/10 transition-all duration-500 relative overflow-hidden"
+                className="group text-center rounded-2xl border border-[#2e5278]/60 bg-[#1e3a5c]/50 py-5 px-3 backdrop-blur-md shadow-sm
+                           hover:border-[#e9edc9]/30 hover:bg-[#2e5278]/25 hover:shadow-lg hover:shadow-[#e9edc9]/10 transition-all duration-500 relative overflow-hidden"
                 whileHover={{ scale: 1.06, y: -6, transition: { type: "spring", stiffness: 300, damping: 18 } }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#9DB2BF]/0 to-[#526D82]/0 group-hover:from-[#9DB2BF]/5 group-hover:to-[#526D82]/10 transition-all duration-500 rounded-2xl" />
-                <s.icon className="absolute top-2 right-2 w-6 h-6 text-[#526D82]/20 group-hover:text-[#9DB2BF]/25 transition-colors duration-500" />
-                <p className="relative text-2xl sm:text-3xl font-black text-[#DDE6ED] tabular-nums">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#e9edc9]/0 to-[#2e5278]/0 group-hover:from-[#e9edc9]/5 group-hover:to-[#2e5278]/10 transition-all duration-500 rounded-2xl" />
+                <s.icon className="absolute top-2 right-2 w-6 h-6 text-[#2e5278]/20 group-hover:text-[#e9edc9]/25 transition-colors duration-500" />
+                <p className="relative text-2xl sm:text-3xl font-black text-[#fefae0] tabular-nums">
                   {s.prefix}{s.value.toLocaleString()}{s.suffix}
                 </p>
-                <p className="relative text-xs text-[#9DB2BF] font-medium mt-1">{s.label}</p>
+                <p className="relative text-xs text-[#e9edc9] font-medium mt-1">{s.label}</p>
               </motion.div>
             ))}
           </div>
@@ -493,7 +493,7 @@ export default function PremiumHero() {
       </div>
 
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#27374D] to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1e3a5c] to-transparent pointer-events-none z-10" />
     </section>
   )
 }

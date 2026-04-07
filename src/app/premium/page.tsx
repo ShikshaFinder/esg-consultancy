@@ -15,7 +15,7 @@ import PremiumFooter from "../../components/premium/premium-footer"
 function LoadingScreen() {
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#27374D]"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#1e3a5c]"
       style={{
         backgroundImage: "radial-gradient(circle at top, rgba(82,109,130,0.55), transparent 35%), radial-gradient(circle at bottom, rgba(157,178,191,0.35), transparent 42%)",
       }}
@@ -25,7 +25,7 @@ function LoadingScreen() {
       <div className="flex flex-col items-center gap-6">
         <motion.div className="relative">
           <motion.svg viewBox="0 0 48 48" className="w-16 h-16">
-            <motion.rect x="3" y="3" width="18" height="18" rx="4" fill="#27374D"
+            <motion.rect x="3" y="3" width="18" height="18" rx="4" fill="#1e3a5c"
               initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0, duration: 0.5, type: "spring" }} />
             <motion.rect x="27" y="3" width="18" height="18" rx="4" fill="#526D82"
@@ -87,9 +87,9 @@ export default function PremiumPage() {
 
   return (
     <div
-      className="noise-overlay relative overflow-x-hidden text-[#DDE6ED] selection:bg-[#9DB2BF]/40 selection:text-[#27374D]"
+      className="noise-overlay relative overflow-x-hidden text-[#DDE6ED] selection:bg-[#9DB2BF]/40 selection:text-[#1e3a5c]"
       style={{
-        background: "linear-gradient(180deg, #27374D 0%, #27374D 22%, #2d3f56 54%, #526D82 100%)",
+        background: "linear-gradient(180deg, #1e3a5c 0%, #234466 22%, #2e5278 54%, #3d6b90 100%)",
       }}
     >
       <AnimatePresence>{loading && <LoadingScreen />}</AnimatePresence>

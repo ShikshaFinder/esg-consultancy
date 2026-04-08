@@ -30,7 +30,7 @@ function CreativePricing({
                     {tag}
                 </div>
                 <div className="relative">
-                    <h2 className="text-4xl md:text-5xl font-bold font-handwritten text-zinc-900 dark:text-white rotate-[-1deg]">
+                    <h2 className="text-4xl md:text-5xl font-bold font-handwritten text-zinc-900 dark:text-black rotate-[-1deg]">
                         {title}
                         <div className="absolute -right-12 top-0 text-amber-500 rotate-12">
                             ✨
@@ -94,7 +94,7 @@ function CreativePricing({
                                 >
                                     {tier.icon}
                                 </div>
-                                <h3 className="font-handwritten text-2xl text-zinc-900 dark:text-white">
+                                <h3 className="font-handwritten text-2xl text-zinc-900 dark:text-black">
                                     {tier.name}
                                 </h3>
                                 <p className="font-handwritten text-zinc-600 dark:text-zinc-400">
@@ -104,7 +104,7 @@ function CreativePricing({
 
                             {/* Price */}
                             <div className="mb-6 font-handwritten">
-                                <span className="text-4xl font-bold text-zinc-900 dark:text-white">
+                                <span className="text-4xl font-bold text-zinc-900 dark:text-black">
                                     ${tier.price}
                                 </span>
                                 <span className="text-zinc-600 dark:text-zinc-400">
@@ -124,7 +124,7 @@ function CreativePricing({
                                         >
                                             <Check className="w-3 h-3" />
                                         </div>
-                                        <span className="font-handwritten text-lg text-zinc-900 dark:text-white">
+                                        <span className="font-handwritten text-lg text-zinc-900 dark:text-black">
                                             {feature}
                                         </span>
                                     </div>
@@ -149,7 +149,7 @@ function CreativePricing({
                                           ]
                                         : [
                                               "bg-zinc-50 dark:bg-zinc-800",
-                                              "text-zinc-900 dark:text-white",
+                                              "text-zinc-900 dark:text-black",
                                               "hover:bg-white dark:hover:bg-zinc-700",
                                               "active:bg-zinc-50 dark:active:bg-zinc-800",
                                           ]

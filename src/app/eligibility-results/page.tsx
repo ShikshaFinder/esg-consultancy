@@ -117,16 +117,16 @@ function EligibilityForm() {
     router.push(`/eligibility-results?${params.toString()}`)
   }
 
-  const selectClass = "w-full h-12 rounded-xl border border-[#355872]/15 bg-white px-4 text-sm text-[#0a1628] focus:outline-none focus:ring-2 focus:ring-[#7AAACE]/40 focus:border-[#7AAACE] transition-all appearance-none"
-  const labelClass = "text-sm font-semibold text-[#0a1628] mb-1.5 block"
+  const selectClass = "w-full h-12 rounded-xl border border-[#355872]/15 bg-white px-4 text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#7AAACE]/40 focus:border-[#7AAACE] transition-all appearance-none"
+  const labelClass = "text-sm font-semibold text-black mb-1.5 block"
 
   return (
     <section className="py-20 px-6 bg-[#F7F8F0]">
       <motion.div className="max-w-2xl mx-auto" initial="hidden" animate="show" variants={stagger}>
         <motion.div variants={fadeUp} className="text-center mb-10">
-          <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#7AAACE] block mb-3">Eligibility Checker</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0a1628]">Check Your Scheme Eligibility</h2>
-          <p className="text-[#0a1628]/50 text-sm mt-3">Fill in your details and we&apos;ll match you with the best government schemes.</p>
+          <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Eligibility Checker</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-black">Check Your Scheme Eligibility</h2>
+          <p className="text-black/50 text-sm mt-3">Fill in your details and we&apos;ll match you with the best government schemes.</p>
         </motion.div>
 
         <motion.form variants={fadeUp} onSubmit={handleSubmit}
@@ -185,7 +185,7 @@ function EligibilityForm() {
             </div>
           </div>
           <button type="submit"
-            className="w-full h-12 rounded-xl bg-gradient-to-r from-[#355872] to-[#7AAACE] text-white font-semibold text-sm flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-[#355872]/25 transition-all"
+            className="w-full h-12 rounded-xl bg-gradient-to-r from-[#355872] to-[#7AAACE] text-black font-semibold text-sm flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-[#355872]/25 transition-all"
           >
             <Search className="w-4 h-4" /> Check My Eligibility
           </button>
@@ -222,7 +222,7 @@ function ResultsView() {
 
   function getScoreColor(score: number) {
     if (score >= 80) return { bar: "from-emerald-500 to-emerald-400", text: "text-emerald-600", bg: "bg-emerald-500", label: "Excellent Match" }
-    if (score >= 60) return { bar: "from-[#7AAACE] to-[#9CD5FF]", text: "text-[#355872]", bg: "bg-[#7AAACE]", label: "Good Match" }
+    if (score >= 60) return { bar: "from-[#7AAACE] to-[#9CD5FF]", text: "text-black", bg: "bg-[#7AAACE]", label: "Good Match" }
     if (score >= 40) return { bar: "from-amber-500 to-amber-400", text: "text-amber-600", bg: "bg-amber-500", label: "Partial Match" }
     return { bar: "from-gray-400 to-gray-300", text: "text-gray-500", bg: "bg-gray-400", label: "Low Match" }
   }
@@ -241,12 +241,12 @@ function ResultsView() {
         </div>
 
         <motion.div className="max-w-4xl mx-auto text-center relative z-10" initial="hidden" animate="show" variants={stagger}>
-          <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-4">Eligibility Results</motion.span>
-          <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+          <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-4">Eligibility Results</motion.span>
+          <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-bold text-black leading-tight mb-6">
             Your Eligibility{" "}
-            <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Results</span>
+            <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Results</span>
           </motion.h1>
-          <motion.p variants={fadeUp} className="text-white/50 text-lg max-w-2xl mx-auto">
+          <motion.p variants={fadeUp} className="text-black/50 text-lg max-w-2xl mx-auto">
             We matched your profile against 30+ government schemes. Here are your best options.
           </motion.p>
 
@@ -259,8 +259,8 @@ function ResultsView() {
               { label: "State", val: state },
               { label: "Category", val: category },
             ].filter(p => p.val && p.val !== "₹L").map((p) => (
-              <span key={p.label} className="flex items-center gap-1.5 text-xs font-semibold bg-white/[0.08] border border-white/10 text-white/70 px-3 py-1.5 rounded-full">
-                <span className="text-white/40">{p.label}:</span> <span className="text-[#9CD5FF]">{p.val}</span>
+              <span key={p.label} className="flex items-center gap-1.5 text-xs font-semibold bg-white/[0.08] border border-white/10 text-black/70 px-3 py-1.5 rounded-full">
+                <span className="text-black/40">{p.label}:</span> <span className="text-black">{p.val}</span>
               </span>
             ))}
           </motion.div>
@@ -273,10 +273,10 @@ function ResultsView() {
               { icon: Filter, label: "Partial Match", value: medMatches.toString() },
             ].map(s => (
               <div key={s.label} className="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3">
-                <s.icon className="w-4 h-4 text-[#9CD5FF]" />
+                <s.icon className="w-4 h-4 text-black" />
                 <div className="text-left">
-                  <p className="text-white font-bold text-sm">{s.value}</p>
-                  <p className="text-white/30 text-[10px] font-medium">{s.label}</p>
+                  <p className="text-black font-bold text-sm">{s.value}</p>
+                  <p className="text-black/30 text-[10px] font-medium">{s.label}</p>
                 </div>
               </div>
             ))}
@@ -288,17 +288,17 @@ function ResultsView() {
       <section className="py-20 px-6 bg-[#F7F8F0]">
         <motion.div className="max-w-6xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.05 }} variants={stagger}>
           <motion.div variants={fadeUp} className="text-center mb-12">
-            <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#7AAACE] block mb-3">Personalized Results</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0a1628]">Your Matched Schemes</h2>
-            <p className="text-[#0a1628]/50 text-sm mt-3 max-w-xl mx-auto">Sorted by relevance to your business profile. Higher score = better fit.</p>
+            <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Personalized Results</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-black">Your Matched Schemes</h2>
+            <p className="text-black/50 text-sm mt-3 max-w-xl mx-auto">Sorted by relevance to your business profile. Higher score = better fit.</p>
           </motion.div>
 
           {scoredSchemes.length === 0 ? (
             <motion.div variants={fadeUp} className="text-center py-16 rounded-2xl border border-[#355872]/[0.08] bg-white">
-              <AlertCircle className="w-12 h-12 text-[#355872]/30 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-[#0a1628] mb-2">No Strong Matches Found</h3>
-              <p className="text-[#0a1628]/50 text-sm mb-6 max-w-md mx-auto">Try adjusting your inputs or contact our team for a personalized assessment.</p>
-              <Link href="/contact" className="inline-flex items-center gap-2 h-11 px-6 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] text-white font-semibold text-sm">
+              <AlertCircle className="w-12 h-12 text-black/30 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-black mb-2">No Strong Matches Found</h3>
+              <p className="text-black/50 text-sm mb-6 max-w-md mx-auto">Try adjusting your inputs or contact our team for a personalized assessment.</p>
+              <Link href="/contact" className="inline-flex items-center gap-2 h-11 px-6 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] text-black font-semibold text-sm">
                 Talk to an Expert <ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>
@@ -324,15 +324,15 @@ function ResultsView() {
                         {scheme.icon}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h3 className="text-[#0a1628] font-bold text-lg leading-tight">{scheme.title}</h3>
-                        <p className="text-[#0a1628]/40 text-xs mt-0.5">{scheme.category} · {scheme.timeline}</p>
+                        <h3 className="text-black font-bold text-lg leading-tight">{scheme.title}</h3>
+                        <p className="text-black/40 text-xs mt-0.5">{scheme.category} · {scheme.timeline}</p>
                       </div>
                     </div>
 
                     {/* Score bar */}
                     <div className="mb-4">
                       <div className="flex items-center justify-between mb-1.5">
-                        <span className="text-[11px] font-semibold text-[#0a1628]/50">Eligibility Score</span>
+                        <span className="text-[11px] font-semibold text-black/50">Eligibility Score</span>
                         <span className={`text-sm font-bold ${sc.text}`}>{scheme.matchScore}%</span>
                       </div>
                       <div className="w-full h-2.5 rounded-full bg-[#355872]/[0.06] overflow-hidden">
@@ -349,20 +349,20 @@ function ResultsView() {
                     {/* Highlight */}
                     <div className="flex items-center gap-3 mb-4 p-3 rounded-xl bg-[#F7F8F0] border border-[#355872]/[0.06]">
                       <div className="text-center">
-                        <p className="text-xl font-black text-[#355872]">{scheme.highlight}</p>
-                        <p className="text-[9px] font-bold text-[#0a1628]/40 uppercase tracking-wider">{scheme.highlightLabel}</p>
+                        <p className="text-xl font-black text-black">{scheme.highlight}</p>
+                        <p className="text-[9px] font-bold text-black/40 uppercase tracking-wider">{scheme.highlightLabel}</p>
                       </div>
                       <div className="h-8 w-px bg-[#355872]/10" />
-                      <p className="text-xs text-[#0a1628]/60 leading-relaxed flex-1">{scheme.shortDesc}</p>
+                      <p className="text-xs text-black/60 leading-relaxed flex-1">{scheme.shortDesc}</p>
                     </div>
 
                     {/* Why eligible */}
                     <div className="mb-4">
-                      <p className="text-[10px] font-bold text-[#355872] uppercase tracking-wider mb-2">Why You&apos;re Eligible</p>
+                      <p className="text-[10px] font-bold text-black uppercase tracking-wider mb-2">Why You&apos;re Eligible</p>
                       <ul className="space-y-1.5">
                         {scheme.matchReasons.map((r, ri) => (
-                          <li key={ri} className="flex items-start gap-2 text-xs text-[#0a1628]/60">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#7AAACE] shrink-0 mt-0.5" />{r}
+                          <li key={ri} className="flex items-start gap-2 text-xs text-black/60">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-black shrink-0 mt-0.5" />{r}
                           </li>
                         ))}
                       </ul>
@@ -370,10 +370,10 @@ function ResultsView() {
 
                     {/* CTA */}
                     <div className="flex items-center gap-2 pt-3 border-t border-[#355872]/[0.06]">
-                      <Link href="/contact" className="flex-1 inline-flex items-center justify-center gap-2 h-10 rounded-xl bg-gradient-to-r from-[#355872] to-[#7AAACE] text-white font-semibold text-xs hover:shadow-lg hover:shadow-[#355872]/25 transition-all">
+                      <Link href="/contact" className="flex-1 inline-flex items-center justify-center gap-2 h-10 rounded-xl bg-gradient-to-r from-[#355872] to-[#7AAACE] text-black font-semibold text-xs hover:shadow-lg hover:shadow-[#355872]/25 transition-all">
                         Book Consultation <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
-                      <Link href={`/funding/${scheme.slug}`} className="inline-flex items-center justify-center gap-1 h-10 px-4 rounded-xl border border-[#355872]/10 text-[#355872] font-semibold text-xs hover:bg-[#355872]/5 transition-all">
+                      <Link href={`/funding/${scheme.slug}`} className="inline-flex items-center justify-center gap-1 h-10 px-4 rounded-xl border border-[#355872]/10 text-black font-semibold text-xs hover:bg-[#355872]/5 transition-all">
                         Details <ChevronRight className="w-3.5 h-3.5" />
                       </Link>
                     </div>
@@ -385,7 +385,7 @@ function ResultsView() {
 
           {/* Re-check link */}
           <motion.div variants={fadeUp} className="text-center mt-10">
-            <Link href="/eligibility-results" className="inline-flex items-center gap-2 text-sm font-semibold text-[#355872] hover:text-[#7AAACE] transition-colors">
+            <Link href="/eligibility-results" className="inline-flex items-center gap-2 text-sm font-semibold text-black hover:text-black transition-colors">
               <Search className="w-4 h-4" /> Check Again with Different Details
             </Link>
           </motion.div>
@@ -396,13 +396,13 @@ function ResultsView() {
       <section className="py-20 px-6 bg-gradient-to-r from-[#355872] to-[#7AAACE]">
         <motion.div className="max-w-3xl mx-auto text-center" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
           <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 mb-4">
-            <Shield className="w-5 h-5 text-white/80" />
-            <span className="text-white/80 text-sm font-medium">Expert assistance at every step</span>
+            <Shield className="w-5 h-5 text-black/80" />
+            <span className="text-black/80 text-sm font-medium">Expert assistance at every step</span>
           </motion.div>
-          <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black mb-4">
             Need Help Applying?
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-white/70 text-base mb-8">
+          <motion.p variants={fadeUp} className="text-black/70 text-base mb-8">
             Our team has helped 500+ businesses secure government funding with a 95% success rate. Let us handle the paperwork while you focus on growth.
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -414,7 +414,7 @@ function ResultsView() {
               </MetalButton>
             </Link>
             <Link href="/schemes"
-              className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full border border-white/30 text-white font-semibold text-sm hover:bg-white/10 transition-all"
+              className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full border border-white/30 text-black font-semibold text-sm hover:bg-white/10 transition-all"
             >
               Explore All Schemes
             </Link>
@@ -437,7 +437,7 @@ export default function EligibilityResultsPage() {
               <div className="absolute inset-0 border-4 border-white/10 rounded-full" />
               <div className="absolute inset-0 border-4 border-[#9CD5FF] border-t-transparent rounded-full animate-spin" />
             </div>
-            <p className="text-white/60 text-sm font-medium">Analyzing your eligibility…</p>
+            <p className="text-black/60 text-sm font-medium">Analyzing your eligibility…</p>
           </div>
         }>
           <ResultsView />

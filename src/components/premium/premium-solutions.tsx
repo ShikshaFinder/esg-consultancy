@@ -31,7 +31,7 @@ function RingChart({ value, label, color, delay = 0 }: {
         <svg ref={ref} width={size} height={size} className="transform -rotate-90">
           <circle
             cx={size / 2} cy={size / 2} r={radius}
-            fill="none" stroke="rgba(157,178,191,0.2)" strokeWidth={strokeWidth}
+            fill="none" stroke="rgba(30,58,92,0.2)" strokeWidth={strokeWidth}
           />
           <motion.circle
             cx={size / 2} cy={size / 2} r={radius}
@@ -44,10 +44,10 @@ function RingChart({ value, label, color, delay = 0 }: {
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-xs font-bold text-[#DDE6ED]">{value}%</span>
+          <span className="text-xs font-bold text-black">{value}%</span>
         </div>
       </div>
-      <span className="text-[10px] text-[#9DB2BF] text-center">{label}</span>
+      <span className="text-[10px] text-black text-center">{label}</span>
     </div>
   )
 }
@@ -57,10 +57,10 @@ const TABS = [
     id: "startup",
     label: "Early-Stage Startups",
     icon: Rocket,
-    color: "from-[#27374D]/60 to-[#526D82]/55",
-    border: "border-[#526D82]/75",
-    accent: "#9DB2BF",
-    accentBg: "bg-[#9DB2BF]",
+    color: "from-[#1B4F8A] to-[#2E7DD9]/80",
+    border: "border-[#1B4F8A]/70",
+    accent: "#1e3a5c",
+    accentBg: "bg-[#EBF4FF]",
     heading: "Launch with confidence",
     description:
       "From Udyam & DPIIT registration to Startup India Seed Fund up to ₹50L — we handle the paperwork so you can focus on building your product.",
@@ -86,10 +86,10 @@ const TABS = [
     id: "growth",
     label: "Growth-Stage MSMEs",
     icon: TrendingUp,
-    color: "from-[#526D82]/30 to-[#9DB2BF]/20",
-    border: "border-[#9DB2BF]/40",
-    accent: "#9DB2BF",
-    accentBg: "bg-[#9DB2BF]",
+    color: "from-[#1B4F8A] to-[#2E7DD9]/80",
+    border: "border-[#1B4F8A]/70",
+    accent: "#1e3a5c",
+    accentBg: "bg-[#EBF4FF]",
     heading: "Scale without limits",
     description:
       "Access MUDRA loans up to ₹10L, CGTMSE guarantee up to ₹5Cr, Stand-Up India up to ₹1Cr, and NAIF with 3% interest subvention — designed for growing businesses.",
@@ -115,10 +115,10 @@ const TABS = [
     id: "compliance",
     label: "Compliance & Certifications",
     icon: Shield,
-    color: "from-[#27374D]/50 to-[#526D82]/40",
-    border: "border-[#526D82]/60",
-    accent: "#9DB2BF",
-    accentBg: "bg-[#9DB2BF]",
+    color: "from-[#1B4F8A] to-[#2E7DD9]/80",
+    border: "border-[#1B4F8A]/70",
+    accent: "#1e3a5c",
+    accentBg: "bg-[#EBF4FF]",
     heading: "Stay audit-ready, always",
     description:
       "GST & ITR filing, CIBIL score repair (+85 pts avg), ISO/ZED certification with 80% subsidy, and FSSAI/BIS licensing — compliance handled end-to-end.",
@@ -150,7 +150,7 @@ export default function PremiumSolutions() {
     <section
       id="solutions"
       className="relative px-6 py-28"
-      style={{ background: "linear-gradient(180deg, #27374D 0%, #2d3f56 100%)" }}
+      style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #FFF8F0 100%)" }}
     >
       {/* subtle grid */}
       <div
@@ -171,10 +171,10 @@ export default function PremiumSolutions() {
           variants={blurFadeUp}
           className="text-center mb-14"
         >
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-[#9DB2BF]">Solutions</p>
-          <h2 className="text-3xl font-bold text-[#DDE6ED] md:text-5xl">
+          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-black">Solutions</p>
+          <h2 className="text-3xl font-bold text-black md:text-5xl">
             Tailored for every{" "}
-            <span className="bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A] text-black">
               stage of growth
             </span>
           </h2>
@@ -193,8 +193,8 @@ export default function PremiumSolutions() {
                 whileTap={{ scale: 0.97 }}
                 className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-400 cursor-pointer
                   ${isActive
-                    ? "border border-[#9DB2BF]/30 bg-[#526D82]/35 backdrop-blur-md text-[#DDE6ED] shadow-lg shadow-[#9DB2BF]/10"
-                    : "border border-transparent text-[#9DB2BF] hover:border-[#526D82]/40 hover:bg-[#526D82]/20 hover:text-[#DDE6ED]"
+                    ? "border border-white/25 bg-[#526D82]/35 backdrop-blur-md text-black shadow-lg shadow-[#9DB2BF]/10"
+                    : "border border-transparent text-black hover:border-white/20 hover:bg-[#526D82]/20 hover:text-black"
                   }`}
                 style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
               >
@@ -208,7 +208,7 @@ export default function PremiumSolutions() {
                 {isActive && (
                   <motion.div
                     layoutId="activeSolutionTab"
-                    className="absolute inset-0 rounded-full border border-[#9DB2BF]/20"
+                    className="absolute inset-0 rounded-full border border-white/25"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -226,13 +226,13 @@ export default function PremiumSolutions() {
             exit={{ opacity: 0, y: -20, scale: 0.97, filter: "blur(4px)" }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className={`rounded-2xl border ${tab.border} bg-gradient-to-br ${tab.color} backdrop-blur-lg p-8 md:p-12
-              shadow-[0_8px_40px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(157,178,191,0.08)]`}
+              shadow-[0_8px_40px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(30,58,92,0.08)]`}
           >
             <div className="grid md:grid-cols-2 gap-10">
               {/* left */}
               <div>
                 <motion.h3
-                  className="text-2xl md:text-3xl font-bold text-[#DDE6ED] mb-4"
+                  className="text-2xl md:text-3xl font-bold text-black mb-4"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 }}
@@ -240,7 +240,7 @@ export default function PremiumSolutions() {
                   {tab.heading}
                 </motion.h3>
                 <motion.p
-                  className="text-[#9DB2BF] leading-relaxed mb-8"
+                  className="text-black leading-relaxed mb-8"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
@@ -258,7 +258,7 @@ export default function PremiumSolutions() {
                       transition={{ delay: 0.2 + si * 0.08 }}
                     >
                       <p className="text-xl font-bold" style={{ color: tab.accent }}>{s.value}</p>
-                      <p className="text-xs text-[#9DB2BF] mt-1">{s.label}</p>
+                      <p className="text-xs text-black mt-1">{s.label}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -284,7 +284,7 @@ export default function PremiumSolutions() {
                       initial={{ opacity: 0, x: 20, filter: "blur(4px)" }}
                       animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                       transition={{ delay: fi * 0.08 + 0.1 }}
-                      className="flex items-center gap-3 text-sm text-[#9DB2BF] group/feature"
+                      className="flex items-center gap-3 text-sm text-black group/feature"
                     >
                       <motion.div
                         initial={{ scale: 0 }}
@@ -293,7 +293,7 @@ export default function PremiumSolutions() {
                       >
                         <CheckCircle2 size={16} style={{ color: tab.accent }} className="shrink-0" />
                       </motion.div>
-                      <span className="group-hover/feature:text-[#DDE6ED] transition-colors duration-200">{f}</span>
+                      <span className="group-hover/feature:text-black transition-colors duration-200">{f}</span>
                     </motion.div>
                   ))}
                 </div>

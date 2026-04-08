@@ -28,18 +28,18 @@ export default function DigitalServices() {
       <motion.div className="max-w-7xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.04 }} variants={stagger}>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
           <div>
-            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-3">Digital Transformation</motion.span>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-white leading-tight">
+            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Digital Transformation</motion.span>
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-black leading-tight">
               Scale Your Business{" "}
-              <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Digitally</span>
+              <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Digitally</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-white/50 text-base mt-3 max-w-xl">
+            <motion.p variants={fadeUp} className="text-black/50 text-base mt-3 max-w-xl">
               End-to-end digital solutions designed to improve brand visibility and customer acquisition for MSMEs.
             </motion.p>
           </div>
-          <motion.span variants={fadeUp} className="flex items-center gap-2 text-sm text-white/50">
+          <motion.span variants={fadeUp} className="flex items-center gap-2 text-sm text-black/50">
             <span className="text-2xl">⚡</span>
-            <span><span className="text-[#9CD5FF] font-bold">3x</span> Faster Sales Growth</span>
+            <span><span className="text-black font-bold">3x</span> Faster Sales Growth</span>
           </motion.span>
         </div>
 
@@ -53,15 +53,15 @@ export default function DigitalServices() {
                 <div className="w-11 h-11 rounded-xl flex items-center justify-center text-xl border" style={{ backgroundColor: `${ds.color}12`, borderColor: `${ds.color}25` }}>{ds.icon}</div>
                 <div className="text-right">
                   <p className="font-black text-lg leading-none" style={{ color: ds.color }}>{ds.stat}</p>
-                  <p className="text-white/35 text-[9px] uppercase tracking-wider">{ds.statLabel}</p>
+                  <p className="text-black/35 text-[9px] uppercase tracking-wider">{ds.statLabel}</p>
                 </div>
               </div>
               <span className="text-[9px] font-bold tracking-widest" style={{ color: ds.color }}>{ds.sub}</span>
-              <h3 className="text-white font-bold text-sm">{ds.title}</h3>
-              <p className="text-white/50 text-xs leading-relaxed line-clamp-3">{ds.desc}</p>
+              <h3 className="text-black font-bold text-sm">{ds.title}</h3>
+              <p className="text-black/50 text-xs leading-relaxed line-clamp-3">{ds.desc}</p>
               <div className="flex flex-wrap gap-1 mt-auto">
                 {ds.tags.map((t) => (
-                  <span key={t} className="text-[8px] font-semibold text-white/50 bg-white/[0.05] px-1.5 py-0.5 rounded border border-white/[0.06]">{t}</span>
+                  <span key={t} className="text-[8px] font-semibold text-black/50 bg-white/[0.05] px-1.5 py-0.5 rounded border border-white/[0.06]">{t}</span>
                 ))}
               </div>
               <button className="flex items-center gap-1 text-xs font-semibold transition-colors group/btn cursor-pointer pt-2 border-t border-white/[0.05]" style={{ color: ds.color }}>

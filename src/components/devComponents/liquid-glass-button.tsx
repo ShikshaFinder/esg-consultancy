@@ -65,7 +65,7 @@ const liquidbuttonVariants = cva(
       variant: {
         default: "bg-transparent hover:scale-105 duration-300 transition text-primary",
         destructive:
-          "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
+          "bg-destructive text-black hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
         outline:
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary:
@@ -113,9 +113,9 @@ function LiquidButton({
         {...props}
       >
         <div className="absolute top-0 left-0 z-0 h-full w-full rounded-full 
-            shadow-[0_0_6px_rgba(0,0,0,0.03),0_2px_6px_rgba(0,0,0,0.08),inset_3px_3px_0.5px_-3px_rgba(0,0,0,0.9),inset_-3px_-3px_0.5px_-3px_rgba(0,0,0,0.85),inset_1px_1px_1px_-0.5px_rgba(0,0,0,0.6),inset_-1px_-1px_1px_-0.5px_rgba(0,0,0,0.6),inset_0_0_6px_6px_rgba(0,0,0,0.12),inset_0_0_2px_2px_rgba(0,0,0,0.06),0_0_12px_rgba(255,255,255,0.15)] 
+            shadow-[0_0_6px_rgba(0,0,0,0.03),0_2px_6px_rgba(0,0,0,0.08),inset_3px_3px_0.5px_-3px_rgba(0,0,0,0.9),inset_-3px_-3px_0.5px_-3px_rgba(0,0,0,0.85),inset_1px_1px_1px_-0.5px_rgba(0,0,0,0.6),inset_-1px_-1px_1px_-0.5px_rgba(0,0,0,0.6),inset_0_0_6px_6px_rgba(0,0,0,0.12),inset_0_0_2px_2px_rgba(0,0,0,0.06),0_0_12px_rgba(0,0,0,0.15)] 
         transition-all 
-        dark:shadow-[0_0_8px_rgba(0,0,0,0.03),0_2px_6px_rgba(0,0,0,0.08),inset_3px_3px_0.5px_-3.5px_rgba(255,255,255,0.09),inset_-3px_-3px_0.5px_-3.5px_rgba(255,255,255,0.85),inset_1px_1px_1px_-0.5px_rgba(255,255,255,0.6),inset_-1px_-1px_1px_-0.5px_rgba(255,255,255,0.6),inset_0_0_6px_6px_rgba(255,255,255,0.12),inset_0_0_2px_2px_rgba(255,255,255,0.06),0_0_12px_rgba(0,0,0,0.15)]" />
+        dark:shadow-[0_0_8px_rgba(0,0,0,0.03),0_2px_6px_rgba(0,0,0,0.08),inset_3px_3px_0.5px_-3.5px_rgba(0,0,0,0.09),inset_-3px_-3px_0.5px_-3.5px_rgba(0,0,0,0.85),inset_1px_1px_1px_-0.5px_rgba(0,0,0,0.6),inset_-1px_-1px_1px_-0.5px_rgba(0,0,0,0.6),inset_0_0_6px_6px_rgba(0,0,0,0.12),inset_0_0_2px_2px_rgba(0,0,0,0.06),0_0_12px_rgba(0,0,0,0.15)]" />
         <div
           className="absolute top-0 left-0 isolate -z-10 h-full w-full overflow-hidden rounded-md"
           style={{ backdropFilter: 'url("#container-glass")' }}
@@ -203,28 +203,28 @@ const colorVariants: Record<
     outer: "bg-gradient-to-b from-[#000] to-[#A0A0A0]",
     inner: "bg-gradient-to-b from-[#FAFAFA] via-[#3E3E3E] to-[#E5E5E5]",
     button: "bg-gradient-to-b from-[#B9B9B9] to-[#969696]",
-    textColor: "text-white",
+    textColor: "text-black",
     textShadow: "[text-shadow:_0_-1px_0_rgb(80_80_80_/_100%)]",
   },
   primary: {
     outer: "bg-gradient-to-b from-[#000] to-[#A0A0A0]",
     inner: "bg-gradient-to-b from-primary via-secondary to-muted",
     button: "bg-gradient-to-b from-primary to-primary/40",
-    textColor: "text-white",
+    textColor: "text-black",
     textShadow: "[text-shadow:_0_-1px_0_rgb(30_58_138_/_100%)]",
   },
   success: {
     outer: "bg-gradient-to-b from-[#005A43] to-[#7CCB9B]",
     inner: "bg-gradient-to-b from-[#E5F8F0] via-[#00352F] to-[#D1F0E6]",
     button: "bg-gradient-to-b from-[#9ADBC8] to-[#3E8F7C]",
-    textColor: "text-[#FFF7F0]",
+    textColor: "text-black",
     textShadow: "[text-shadow:_0_-1px_0_rgb(6_78_59_/_100%)]",
   },
   error: {
     outer: "bg-gradient-to-b from-[#5A0000] to-[#FFAEB0]",
     inner: "bg-gradient-to-b from-[#FFDEDE] via-[#680002] to-[#FFE9E9]",
     button: "bg-gradient-to-b from-[#F08D8F] to-[#A45253]",
-    textColor: "text-[#FFF7F0]",
+    textColor: "text-black",
     textShadow: "[text-shadow:_0_-1px_0_rgb(146_64_14_/_100%)]",
   },
   gold: {
@@ -238,7 +238,7 @@ const colorVariants: Record<
     outer: "bg-gradient-to-b from-[#864813] to-[#E9B486]",
     inner: "bg-gradient-to-b from-[#EDC5A1] via-[#5F2D01] to-[#FFDEC1]",
     button: "bg-gradient-to-b from-[#FFE3C9] to-[#A36F3D]",
-    textColor: "text-[#FFF7F0]",
+    textColor: "text-black",
     textShadow: "[text-shadow:_0_-1px_0_rgb(124_45_18_/_100%)]",
   },
 };

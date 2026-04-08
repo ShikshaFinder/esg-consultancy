@@ -45,7 +45,7 @@ export const TestimonialsColumn = (props: {
                         className="h-10 w-10 rounded-full"
                       />
                     ) : (
-                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[#415E72] to-[#C5B0CD] flex items-center justify-center text-white font-bold text-sm shrink-0">
+                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[#415E72] to-[#C5B0CD] flex items-center justify-center text-black font-bold text-sm shrink-0">
                         {name.split(" ").map(n => n[0]).join("").slice(0, 2)}
                       </div>
                     )}

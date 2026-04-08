@@ -53,18 +53,18 @@ export default function PremiumFAQ() {
         >
           <motion.span
             variants={blurFade} custom={0}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#9DB2BF] mb-3"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-black mb-3"
           >
             <HelpCircle className="w-4 h-4" />
             Common Queries
           </motion.span>
-          <motion.h2 variants={blurFade} custom={0.1} className="text-3xl md:text-5xl font-bold text-[#DDE6ED]">
+          <motion.h2 variants={blurFade} custom={0.1} className="text-3xl md:text-5xl font-bold text-black">
             Frequently Asked{" "}
-            <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #DDE6ED, #9DB2BF)" }}>
+            <span className="text-black" style={{ backgroundImage: "linear-gradient(135deg, #EBF4FF, #2E7DD9)" }}>
               Questions
             </span>
           </motion.h2>
-          <motion.p variants={blurFade} custom={0.2} className="mt-4 text-[#9DB2BF]/80 max-w-lg mx-auto">
+          <motion.p variants={blurFade} custom={0.2} className="mt-4 text-black/80 max-w-lg mx-auto">
             Everything you need to know about our services, funding process, and eligibility criteria. Can&apos;t find the answer? Feel free to contact us.
           </motion.p>
         </motion.div>
@@ -85,14 +85,14 @@ export default function PremiumFAQ() {
               className={`rounded-xl border transition-all duration-300 ${
                 openIndex === idx
                   ? "border-[#9DB2BF]/30 bg-[#526D82]/15 shadow-lg shadow-[#9DB2BF]/5"
-                  : "border-[#526D82]/40 bg-[#27374D]/40 hover:border-[#526D82]/60"
+                  : "border-white/20 blue-card hover:border-[#526D82]/60"
               }`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? -1 : idx)}
                 className="w-full flex items-center justify-between p-5 text-left cursor-pointer"
               >
-                <span className={`text-sm font-semibold ${openIndex === idx ? "text-[#DDE6ED]" : "text-[#9DB2BF]"}`}>
+                <span className={`text-sm font-semibold ${openIndex === idx ? "text-black" : "text-black"}`}>
                   {faq.q}
                 </span>
                 <motion.div
@@ -100,8 +100,8 @@ export default function PremiumFAQ() {
                   transition={{ duration: 0.2 }}
                   className={`shrink-0 ml-4 w-7 h-7 rounded-full flex items-center justify-center transition-colors ${
                     openIndex === idx
-                      ? "bg-[#9DB2BF] text-[#27374D]"
-                      : "bg-[#526D82]/30 text-[#9DB2BF]"
+                      ? "bg-[#9DB2BF] text-black"
+                      : "bg-[#526D82]/30 text-black"
                   }`}
                 >
                   <Plus className="w-4 h-4" />
@@ -116,7 +116,7 @@ export default function PremiumFAQ() {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <p className="px-5 pb-5 text-sm text-[#9DB2BF]/80 leading-relaxed">
+                    <p className="px-5 pb-5 text-sm text-black/80 leading-relaxed">
                       {faq.a}
                     </p>
                   </motion.div>
@@ -133,10 +133,10 @@ export default function PremiumFAQ() {
           transition={{ delay: 0.8 }}
           className="mt-10 text-center"
         >
-          <p className="text-sm text-[#9DB2BF]/60 mb-4">Still have questions? We&apos;re here to help!</p>
+          <p className="text-sm text-black/60 mb-4">Still have questions? We&apos;re here to help!</p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full border border-[#526D82]/50 bg-[#526D82]/20 text-[#DDE6ED] px-6 py-3 text-sm font-semibold
+            className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#526D82]/20 text-black px-6 py-3 text-sm font-semibold
                        hover:bg-[#526D82]/35 hover:border-[#9DB2BF]/40 transition-all backdrop-blur-sm"
           >
             Contact Support

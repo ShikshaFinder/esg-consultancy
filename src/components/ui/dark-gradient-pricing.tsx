@@ -65,7 +65,7 @@ export const PricingCard = ({
           <span className="mb-3 inline-block text-4xl font-medium">
             {price}
           </span>
-          <span className="dark:bg-gradient-to-br dark:from-zinc-200 dark:to-zinc-500 bg-gradient-to-br from-zinc-700 to-zinc-900 bg-clip-text text-center text-transparent">
+          <span className="dark:bg-gradient-to-br dark:from-zinc-200 dark:to-zinc-500 bg-gradient-to-br from-zinc-700 to-zinc-900 bg-clip-text text-center text-black">
             {bestFor}
           </span>
         </div>

@@ -46,8 +46,8 @@ export default function GoogleReviewsSection() {
         {/* Header row */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
-            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#7AAACE] block mb-3">Verified Reviews</motion.span>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-[#0a1628] leading-tight">
+            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Verified Reviews</motion.span>
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-black leading-tight">
               What Our Clients Say on{" "}
               <span className="inline-flex items-center gap-2"><GoogleLogo size={32} /> Google</span>
             </motion.h2>
@@ -56,7 +56,7 @@ export default function GoogleReviewsSection() {
           {/* Aggregate */}
           <motion.div variants={fadeUp} className="flex items-center gap-4 bg-white rounded-2xl border border-[#355872]/10 p-5 shadow-sm">
             <div className="text-center">
-              <p className="text-4xl font-black text-[#355872]">{avgRating}</p>
+              <p className="text-4xl font-black text-black">{avgRating}</p>
               <div className="flex gap-0.5 mt-1">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className={`w-4 h-4 ${i < Math.round(Number(avgRating)) ? "text-amber-400 fill-amber-400" : "text-gray-300"}`} />
@@ -65,8 +65,8 @@ export default function GoogleReviewsSection() {
             </div>
             <div className="h-10 w-px bg-[#355872]/10" />
             <div>
-              <p className="text-lg font-bold text-[#0a1628]">{reviews.length * 43}+</p>
-              <p className="text-xs text-[#355872]/60">Google Reviews</p>
+              <p className="text-lg font-bold text-black">{reviews.length * 43}+</p>
+              <p className="text-xs text-black/60">Google Reviews</p>
             </div>
           </motion.div>
         </div>
@@ -90,17 +90,17 @@ export default function GoogleReviewsSection() {
                 </div>
 
                 <div className="relative">
-                  <Quote className="absolute -top-1 -left-1 w-5 h-5 text-[#9CD5FF]/30" />
-                  <p className="text-[#0a1628]/70 text-sm leading-relaxed pl-5 line-clamp-4">{r.text}</p>
+                  <Quote className="absolute -top-1 -left-1 w-5 h-5 text-black/30" />
+                  <p className="text-black/70 text-sm leading-relaxed pl-5 line-clamp-4">{r.text}</p>
                 </div>
 
                 <div className="flex items-center gap-3 pt-4 border-t border-[#355872]/[0.06] mt-auto">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#355872] to-[#7AAACE] flex items-center justify-center text-white font-bold text-sm shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#355872] to-[#7AAACE] flex items-center justify-center text-black font-bold text-sm shrink-0">
                     {r.name.split(" ").map(n => n[0]).join("")}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-[#0a1628] font-semibold text-sm truncate">{r.name}</p>
-                    <div className="flex items-center gap-1.5 text-[11px] text-[#355872]/50">
+                    <p className="text-black font-semibold text-sm truncate">{r.name}</p>
+                    <div className="flex items-center gap-1.5 text-[11px] text-black/50">
                       <MapPin className="w-3 h-3" />
                       <span>{r.location}</span>
                       <span>·</span>
@@ -122,7 +122,7 @@ export default function GoogleReviewsSection() {
         <motion.div variants={fadeUp} className="mt-10 text-center">
           <a
             href="https://g.page/growbridge/review" target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#355872] hover:text-[#7AAACE] transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-black hover:text-black transition-colors"
           >
             See all reviews on Google <ExternalLink className="w-4 h-4" />
           </a>

@@ -135,7 +135,7 @@ export default function PremiumSchemes() {
   return (
     <section ref={sectionRef} className="relative py-24 overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#526D82]/30 to-[#27374D]/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1B4F8A]/10 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* ── Header ── */}
@@ -145,16 +145,16 @@ export default function PremiumSchemes() {
           variants={stagger}
           className="text-center mb-14"
         >
-          <motion.p variants={blurFade} custom={0} className="text-sm font-bold text-[#9DB2BF] uppercase tracking-widest mb-3">
+          <motion.p variants={blurFade} custom={0} className="text-sm font-bold text-black uppercase tracking-widest mb-3">
             Government Schemes We Facilitate
           </motion.p>
-          <motion.h2 variants={blurFade} custom={0.1} className="text-3xl md:text-5xl font-bold text-[#DDE6ED]">
+          <motion.h2 variants={blurFade} custom={0.1} className="text-3xl md:text-5xl font-bold text-black">
             Helping MSMEs Access{" "}
-            <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #DDE6ED, #9DB2BF)" }}>
+            <span className="text-black" style={{ backgroundImage: "linear-gradient(135deg, #EBF4FF, #2E7DD9)" }}>
               Government Support
             </span>
           </motion.h2>
-          <motion.p variants={blurFade} custom={0.2} className="mt-4 text-[#9DB2BF]/80 max-w-xl mx-auto">
+          <motion.p variants={blurFade} custom={0.2} className="mt-4 text-black/80 max-w-xl mx-auto">
             Expert guidance for PMEGP, CGTMSE, Mudra & other MSME schemes across India
           </motion.p>
         </motion.div>
@@ -172,15 +172,15 @@ export default function PremiumSchemes() {
               variants={blurFade}
               custom={0.1 + i * 0.08}
               whileHover={{ scale: 1.04, y: -4 }}
-              className="rounded-2xl border border-[#526D82]/50 bg-[#27374D]/60 backdrop-blur-md p-6 text-center group
-                         hover:border-[#9DB2BF]/30 hover:shadow-lg hover:shadow-[#9DB2BF]/10 transition-all duration-500"
+              className="rounded-2xl border border-white/25 blue-card p-6 text-center group
+                         hover:border-[#1B4F8A]/80 hover:shadow-lg hover:shadow-[#1B4F8A]/20 transition-all duration-500"
             >
-              <div className="w-10 h-10 rounded-full bg-[#526D82]/30 flex items-center justify-center text-lg font-bold text-[#DDE6ED] mx-auto mb-3 group-hover:bg-[#526D82]/50 transition-colors">
+              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-lg font-bold text-black mx-auto mb-3 group-hover:bg-white/35 transition-colors">
                 {s.icon}
               </div>
-              <p className="text-2xl font-black text-[#DDE6ED]">{s.value}</p>
-              <p className="text-xs font-semibold text-[#9DB2BF] mt-1">{s.label}</p>
-              <p className="text-[11px] text-[#526D82] italic">{s.sub}</p>
+              <p className="text-2xl font-black text-black">{s.value}</p>
+              <p className="text-xs font-semibold text-black mt-1">{s.label}</p>
+              <p className="text-[11px] text-black/70 italic">{s.sub}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -190,7 +190,7 @@ export default function PremiumSchemes() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.5 }}
-          className="text-center text-xl font-bold text-[#DDE6ED] mb-10"
+          className="text-center text-xl font-bold text-black mb-10"
         >
           Government Schemes We Support
         </motion.h3>
@@ -208,38 +208,38 @@ export default function PremiumSchemes() {
               variants={blurFade}
               custom={0.15 + i * 0.06}
               whileHover={{ y: -6, scale: 1.02 }}
-              className="group rounded-2xl border border-[#526D82]/50 bg-[#27374D]/50 backdrop-blur-md p-6 flex flex-col
-                         hover:border-[#9DB2BF]/35 hover:shadow-xl hover:shadow-[#9DB2BF]/10 transition-all duration-500 relative overflow-hidden"
+              className="group rounded-2xl border border-white/25 blue-card p-6 flex flex-col
+                         hover:border-[#1B4F8A]/80 hover:shadow-xl hover:shadow-[#1B4F8A]/20 transition-all duration-500 relative overflow-hidden"
             >
               {/* Hover glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#9DB2BF]/0 to-[#526D82]/0 group-hover:from-[#9DB2BF]/5 group-hover:to-[#526D82]/10 transition-all duration-500 rounded-2xl" />
 
               <div className="relative z-10 flex flex-col h-full">
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-[#526D82]/25 flex items-center justify-center mb-4 group-hover:bg-[#526D82]/40 transition-colors">
-                  <sc.Icon className="w-6 h-6 text-[#9DB2BF] group-hover:text-[#DDE6ED] transition-colors" />
+                <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-4 group-hover:bg-white/35 transition-colors">
+                  <sc.Icon className="w-6 h-6 text-black group-hover:text-black transition-colors" />
                 </div>
 
                 {/* Stat label + big value */}
-                <p className="text-[10px] font-black uppercase tracking-widest text-[#9DB2BF] mb-1">
+                <p className="text-[10px] font-black uppercase tracking-widest text-black mb-1">
                   {sc.loanLabel}
                 </p>
-                <p className="text-3xl font-black text-[#DDE6ED] mb-1">{sc.loanAmount}</p>
+                <p className="text-3xl font-black text-black mb-1">{sc.loanAmount}</p>
 
                 {/* Title */}
-                <h4 className="text-base font-bold text-[#9DB2BF] mb-2">{sc.title}</h4>
+                <h4 className="text-base font-bold text-black mb-2">{sc.title}</h4>
 
                 {/* Description */}
-                <p className="text-xs text-[#9DB2BF]/70 leading-relaxed flex-grow mb-4">{sc.full}</p>
+                <p className="text-xs text-black/70 leading-relaxed flex-grow mb-4">{sc.full}</p>
 
                 {/* Footer: type + view link */}
-                <div className="flex items-center justify-between pt-3 border-t border-[#526D82]/40">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-[#526D82]">
+                <div className="flex items-center justify-between pt-3 border-t border-white/25">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-black">
                     {sc.type}
                   </span>
                   <Link
                     href={sc.href}
-                    className="text-xs font-semibold text-[#9DB2BF] hover:text-[#DDE6ED] transition-colors flex items-center gap-1"
+                    className="text-xs font-semibold text-black hover:text-black transition-colors flex items-center gap-1"
                   >
                     View <ArrowRight className="w-3 h-3" />
                   </Link>
@@ -254,17 +254,17 @@ export default function PremiumSchemes() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-12 rounded-xl border border-[#526D82]/30 bg-[#27374D]/40 backdrop-blur-md py-4 px-6"
+          className="mt-12 rounded-xl border border-white/25 blue-card backdrop-blur-md py-4 px-6"
         >
           <div className="flex flex-wrap justify-center gap-8">
             {trustBadges.map((b) => (
               <div key={b.label} className="flex items-center gap-2">
-                <b.Icon className="w-5 h-5 text-[#9DB2BF]" />
-                <span className="text-sm font-medium text-[#DDE6ED]/80">{b.label}</span>
+                <b.Icon className="w-5 h-5 text-black" />
+                <span className="text-sm font-medium text-black/80">{b.label}</span>
               </div>
             ))}
           </div>
-          <p className="mt-3 text-center text-xs text-[#526D82]">
+          <p className="mt-3 text-center text-xs text-black">
             Serving MSMEs across 28+ States in India
           </p>
         </motion.div>
@@ -280,7 +280,7 @@ export default function PremiumSchemes() {
             <motion.span
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 border border-[#526D82]/50 text-[#DDE6ED] font-semibold py-3 px-8 rounded-full
+              className="inline-flex items-center gap-2 border border-white/25 text-black font-semibold py-3 px-8 rounded-full
                          hover:bg-[#526D82]/25 hover:border-[#9DB2BF]/40 transition-all cursor-pointer text-sm backdrop-blur-sm"
             >
               View More Government Schemes

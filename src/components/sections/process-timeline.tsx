@@ -39,12 +39,12 @@ export default function ProcessTimeline() {
       </div>
       <motion.div className="max-w-5xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.06 }} variants={stagger}>
         <div className="text-center mb-16">
-          <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-3">Our 7-Step Process</motion.span>
-          <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Our 7-Step Process</motion.span>
+          <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-black leading-tight">
             Grow Bridge&apos;s{" "}
-            <span style={{ background: "linear-gradient(90deg,#355872,#F7F8F0)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Process</span>
+            <span style={{ background: "linear-gradient(90deg,#355872,#F7F8F0)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Process</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-white/50 text-base mt-3 max-w-xl mx-auto">
+          <motion.p variants={fadeUp} className="text-black/50 text-base mt-3 max-w-xl mx-auto">
             A structured journey from understanding your needs to delivering tangible results.
           </motion.p>
         </div>
@@ -77,17 +77,17 @@ export default function ProcessTimeline() {
                       <span className="text-xl">{step.icon}</span>
                     </motion.div>
                     <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#0a1628] border border-white/10 flex items-center justify-center">
-                      <span className="text-[8px] font-black text-[#9CD5FF]">{step.step}</span>
+                      <span className="text-[8px] font-black text-black">{step.step}</span>
                     </div>
                   </div>
                   <div className={`flex-1 ${isRight ? "md:text-right md:mr-6" : "md:ml-6"} ml-0`}>
                     <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 group hover:border-[#355872]/25 transition-all duration-300">
                       <div className={`flex items-center gap-2 mb-2 ${isRight ? "md:flex-row-reverse md:justify-start" : ""}`}>
-                        <span className="text-[9px] font-bold tracking-widest text-[#9CD5FF] bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-2 py-0.5 rounded-full">{step.tag}</span>
-                        <span className="text-[10px] text-white/25">STEP {step.step}</span>
+                        <span className="text-[9px] font-bold tracking-widest text-black bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-2 py-0.5 rounded-full">{step.tag}</span>
+                        <span className="text-[10px] text-black/25">STEP {step.step}</span>
                       </div>
-                      <h3 className="text-white font-bold text-base mb-1.5">{step.title}</h3>
-                      <p className="text-white/55 text-sm leading-relaxed">{step.desc}</p>
+                      <h3 className="text-black font-bold text-base mb-1.5">{step.title}</h3>
+                      <p className="text-black/55 text-sm leading-relaxed">{step.desc}</p>
                     </div>
                   </div>
                   <div className="hidden md:block flex-1" />

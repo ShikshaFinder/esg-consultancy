@@ -92,21 +92,21 @@ export default function FundingPage() {
           >
             <motion.span
               variants={fadeUp}
-              className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-4"
+              className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-4"
             >
               Funding & Schemes
             </motion.span>
 
             <motion.h1
               variants={fadeUp}
-              className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6"
+              className="text-4xl md:text-6xl font-bold text-black leading-tight mb-6"
             >
               {fundingContent.introTitle.split("&")[0]}&amp;{" "}
               <span
                 style={{
                   background: "linear-gradient(90deg,#9CD5FF,#355872)",
                   WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
+                  WebkitTextFillColor: "#000000",
                   backgroundClip: "text",
                 }}
               >
@@ -116,7 +116,7 @@ export default function FundingPage() {
 
             <motion.p
               variants={fadeUp}
-              className="text-white/50 text-lg max-w-2xl mx-auto mb-8"
+              className="text-black/50 text-lg max-w-2xl mx-auto mb-8"
             >
               {fundingContent.introBody}
             </motion.p>
@@ -129,9 +129,9 @@ export default function FundingPage() {
               {fundingContent.bullets.map((b) => (
                 <span
                   key={b}
-                  className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70"
+                  className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-black/70"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-[#9CD5FF] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-black shrink-0" />
                   {b}
                 </span>
               ))}
@@ -148,11 +148,11 @@ export default function FundingPage() {
                 className="flex items-center gap-3 whitespace-nowrap"
               >
                 <div className="w-9 h-9 rounded-lg bg-[#355872]/20 flex items-center justify-center">
-                  <s.icon className="w-4 h-4 text-[#9CD5FF]" />
+                  <s.icon className="w-4 h-4 text-black" />
                 </div>
                 <div>
-                  <p className="text-white font-bold text-sm">{s.value}</p>
-                  <p className="text-white/40 text-[10px] uppercase tracking-wider">
+                  <p className="text-black font-bold text-sm">{s.value}</p>
+                  <p className="text-black/40 text-[10px] uppercase tracking-wider">
                     {s.label}
                   </p>
                 </div>
@@ -176,13 +176,13 @@ export default function FundingPage() {
                 variants={fadeUp}
                 className="relative w-full md:w-80"
               >
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#355872]/40" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40" />
                 <input
                   type="text"
                   placeholder="Search schemes..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#355872]/10 bg-white text-sm text-[#0a1628] placeholder:text-[#0a1628]/30 focus:outline-none focus:ring-2 focus:ring-[#7AAACE]/30 focus:border-[#7AAACE]/40 transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#355872]/10 bg-white text-sm text-black placeholder:text-black/30 focus:outline-none focus:ring-2 focus:ring-[#7AAACE]/30 focus:border-[#7AAACE]/40 transition-all"
                 />
               </motion.div>
 
@@ -191,15 +191,15 @@ export default function FundingPage() {
                 variants={fadeUp}
                 className="flex items-center gap-2 flex-wrap"
               >
-                <Filter className="w-4 h-4 text-[#355872]/50 mr-1" />
+                <Filter className="w-4 h-4 text-black/50 mr-1" />
                 {categories.map((cat) => (
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
                     className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all border ${
                       activeCategory === cat
-                        ? "bg-[#355872] text-white border-[#355872]"
-                        : "bg-white text-[#0a1628]/60 border-[#355872]/10 hover:border-[#355872]/30"
+                        ? "bg-[#355872] text-black border-[#355872]"
+                        : "bg-white text-black/60 border-[#355872]/10 hover:border-[#355872]/30"
                     }`}
                   >
                     {cat}
@@ -208,7 +208,7 @@ export default function FundingPage() {
               </motion.div>
             </motion.div>
 
-            <p className="text-[#0a1628]/40 text-xs mt-2">
+            <p className="text-black/40 text-xs mt-2">
               Showing {filtered.length} of {governmentSchemes.length} schemes
             </p>
           </div>
@@ -240,36 +240,36 @@ export default function FundingPage() {
                         {scheme.icon}
                       </div>
                       <div className="min-w-0">
-                        <h3 className="text-[#0a1628] font-bold text-base leading-snug line-clamp-1">
+                        <h3 className="text-black font-bold text-base leading-snug line-clamp-1">
                           {scheme.title}
                         </h3>
-                        <span className="inline-block mt-1 text-[10px] font-bold uppercase tracking-wider text-[#355872] bg-[#9CD5FF]/15 border border-[#9CD5FF]/25 px-2 py-0.5 rounded-full">
+                        <span className="inline-block mt-1 text-[10px] font-bold uppercase tracking-wider text-black bg-[#9CD5FF]/15 border border-[#9CD5FF]/25 px-2 py-0.5 rounded-full">
                           {scheme.category}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <p className="text-[#0a1628]/55 text-sm leading-relaxed line-clamp-2 mb-4">
+                  <p className="text-black/55 text-sm leading-relaxed line-clamp-2 mb-4">
                     {scheme.shortDesc}
                   </p>
 
                   {/* Highlight + Timeline */}
                   <div className="flex items-center gap-3 mb-1">
                     <div className="flex-1 rounded-xl border border-[#355872]/[0.06] bg-[#F7F8F0] px-3 py-2.5 text-center">
-                      <p className="text-[#0a1628] font-extrabold text-lg leading-none">
+                      <p className="text-black font-extrabold text-lg leading-none">
                         {scheme.highlight}
                       </p>
-                      <p className="text-[#0a1628]/40 text-[10px] font-medium uppercase mt-1">
+                      <p className="text-black/40 text-[10px] font-medium uppercase mt-1">
                         {scheme.highlightLabel}
                       </p>
                     </div>
                     <div className="flex-1 rounded-xl border border-[#355872]/[0.06] bg-[#F7F8F0] px-3 py-2.5 text-center">
-                      <p className="text-[#0a1628] font-extrabold text-base leading-none flex items-center justify-center gap-1">
-                        <Clock className="w-3.5 h-3.5 text-[#355872]" />
+                      <p className="text-black font-extrabold text-base leading-none flex items-center justify-center gap-1">
+                        <Clock className="w-3.5 h-3.5 text-black" />
                         {scheme.timeline}
                       </p>
-                      <p className="text-[#0a1628]/40 text-[10px] font-medium uppercase mt-1">
+                      <p className="text-black/40 text-[10px] font-medium uppercase mt-1">
                         Timeline
                       </p>
                     </div>
@@ -280,7 +280,7 @@ export default function FundingPage() {
                 <div className="mt-auto border-t border-[#355872]/[0.06] px-6 py-4">
                   <Link
                     href={`/funding/${scheme.slug}`}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#355872] group-hover:text-[#7AAACE] transition-colors"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-black group-hover:text-black transition-colors"
                   >
                     View Details
                     <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
@@ -292,8 +292,8 @@ export default function FundingPage() {
 
           {filtered.length === 0 && (
             <div className="max-w-7xl mx-auto text-center py-16">
-              <Search className="w-10 h-10 text-[#355872]/20 mx-auto mb-4" />
-              <p className="text-[#0a1628]/50 text-base font-medium">
+              <Search className="w-10 h-10 text-black/20 mx-auto mb-4" />
+              <p className="text-black/50 text-base font-medium">
                 No schemes found matching your criteria.
               </p>
               <button
@@ -301,7 +301,7 @@ export default function FundingPage() {
                   setActiveCategory("All")
                   setSearchQuery("")
                 }}
-                className="mt-3 text-sm text-[#355872] underline underline-offset-4 hover:text-[#7AAACE] transition-colors"
+                className="mt-3 text-sm text-black underline underline-offset-4 hover:text-black transition-colors"
               >
                 Clear filters
               </button>
@@ -322,20 +322,20 @@ export default function FundingPage() {
               variants={fadeUp}
               className="flex items-center justify-center gap-2 mb-4"
             >
-              <AlertCircle className="w-5 h-5 text-white/80" />
-              <span className="text-white/80 text-sm font-medium">
+              <AlertCircle className="w-5 h-5 text-black/80" />
+              <span className="text-black/80 text-sm font-medium">
                 Not sure which scheme is right for you?
               </span>
             </motion.div>
             <motion.h2
               variants={fadeUp}
-              className="text-3xl md:text-4xl font-bold text-white mb-4"
+              className="text-3xl md:text-4xl font-bold text-black mb-4"
             >
               Get Your Free Eligibility Check
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="text-white/70 text-base mb-8"
+              className="text-black/70 text-base mb-8"
             >
               Our eligibility engine checks your profile against{" "}
               {governmentSchemes.length}+ schemes in seconds. Get your

@@ -161,14 +161,14 @@ export default function SuccessStoriesPage() {
           </div>
 
           <motion.div className="max-w-4xl mx-auto text-center relative z-10" initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-4">🏆 Client Achievements</motion.span>
-            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-4">🏆 Client Achievements</motion.span>
+            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-bold text-black leading-tight mb-6">
               Success Stories —{" "}
-              <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>
                 Real Businesses, Real Results
               </span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-white/50 text-lg max-w-2xl mx-auto leading-relaxed">
+            <motion.p variants={fadeUp} className="text-black/50 text-lg max-w-2xl mx-auto leading-relaxed">
               From ₹5 Lakh MUDRA loans to ₹1.1 Crore CGTMSE sanctions — see how Grow Bridge has transformed businesses across India with government funding.
             </motion.p>
 
@@ -180,8 +180,8 @@ export default function SuccessStoriesPage() {
                 { icon: Users, label: "500+ Businesses" },
                 { icon: Star, label: "4.9★ Client Rating" },
               ].map(b => (
-                <div key={b.label} className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
-                  <b.icon className="w-4 h-4 text-[#9CD5FF]" />{b.label}
+                <div key={b.label} className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-black/70">
+                  <b.icon className="w-4 h-4 text-black" />{b.label}
                 </div>
               ))}
             </motion.div>
@@ -192,8 +192,8 @@ export default function SuccessStoriesPage() {
         <section className="py-20 px-6 bg-[#F7F8F0]">
           <motion.div className="max-w-5xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.div variants={fadeUp} className="text-center mb-14">
-              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#7AAACE] block mb-3">Impact Numbers</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0a1628]">Numbers That Speak</h2>
+              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Impact Numbers</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-black">Numbers That Speak</h2>
             </motion.div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
               {overallStats.map((s, i) => (
@@ -202,12 +202,12 @@ export default function SuccessStoriesPage() {
                   whileHover={{ y: -4 }}
                 >
                   <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center bg-[#355872]/[0.08] group-hover:bg-gradient-to-br group-hover:from-[#355872] group-hover:to-[#7AAACE] transition-all duration-300">
-                    <s.icon className="w-5 h-5 text-[#355872] group-hover:text-white transition-colors duration-300" />
+                    <s.icon className="w-5 h-5 text-black group-hover:text-black transition-colors duration-300" />
                   </div>
-                  <p className="text-2xl md:text-3xl font-black text-[#355872] mb-1">
+                  <p className="text-2xl md:text-3xl font-black text-black mb-1">
                     <AnimatedCounter target={s.value} prefix={s.prefix || ""} suffix={s.suffix} />
                   </p>
-                  <p className="text-sm font-semibold text-[#0a1628]">{s.label}</p>
+                  <p className="text-sm font-semibold text-black">{s.label}</p>
                 </motion.div>
               ))}
             </div>
@@ -218,12 +218,12 @@ export default function SuccessStoriesPage() {
         <section className="py-20 px-6 bg-[#060e1a]">
           <motion.div className="max-w-6xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.05 }} variants={stagger}>
             <motion.div variants={fadeUp} className="text-center mb-14">
-              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-3">Featured Stories</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
+              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Featured Stories</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-black">
                 Businesses We&apos;ve{" "}
-                <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Transformed</span>
+                <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Transformed</span>
               </h2>
-              <p className="text-white/40 text-sm mt-3 max-w-xl mx-auto">Each story represents a dream funded, a family empowered, and a business scaled.</p>
+              <p className="text-black/40 text-sm mt-3 max-w-xl mx-auto">Each story represents a dream funded, a family empowered, and a business scaled.</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -238,37 +238,37 @@ export default function SuccessStoriesPage() {
                       {story.icon}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h3 className="text-white font-bold text-base leading-tight">{story.name}</h3>
-                      <p className="text-white/35 text-[11px] mt-0.5">{story.founder} · {story.location}</p>
+                      <h3 className="text-black font-bold text-base leading-tight">{story.name}</h3>
+                      <p className="text-black/35 text-[11px] mt-0.5">{story.founder} · {story.location}</p>
                     </div>
                   </div>
 
                   {/* Badges */}
                   <div className="flex flex-wrap items-center gap-2 mb-4">
-                    <span className="text-[10px] font-bold tracking-wider uppercase text-white bg-[#355872] px-2.5 py-0.5 rounded-full">{story.scheme}</span>
-                    <span className="text-[10px] font-bold tracking-wider uppercase text-[#9CD5FF] bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-2.5 py-0.5 rounded-full">{story.amount}</span>
-                    <span className="text-[10px] font-bold tracking-wider uppercase text-white/50 bg-white/5 px-2.5 py-0.5 rounded-full">{story.sector}</span>
+                    <span className="text-[10px] font-bold tracking-wider uppercase text-black bg-[#355872] px-2.5 py-0.5 rounded-full">{story.scheme}</span>
+                    <span className="text-[10px] font-bold tracking-wider uppercase text-black bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-2.5 py-0.5 rounded-full">{story.amount}</span>
+                    <span className="text-[10px] font-bold tracking-wider uppercase text-black/50 bg-white/5 px-2.5 py-0.5 rounded-full">{story.sector}</span>
                   </div>
 
                   {/* Quote */}
                   <div className="relative mb-4 flex-1">
-                    <Quote className="w-4 h-4 text-[#9CD5FF]/30 absolute -top-1 -left-1" />
-                    <p className="text-white/50 text-sm leading-relaxed pl-4 italic">&ldquo;{story.quote}&rdquo;</p>
+                    <Quote className="w-4 h-4 text-black/30 absolute -top-1 -left-1" />
+                    <p className="text-black/50 text-sm leading-relaxed pl-4 italic">&ldquo;{story.quote}&rdquo;</p>
                   </div>
 
                   {/* Timeline */}
                   <div className="flex items-center gap-2 mb-4 p-2.5 rounded-lg bg-white/[0.04] border border-white/[0.06]">
-                    <Clock className="w-3.5 h-3.5 text-[#9CD5FF] shrink-0" />
-                    <span className="text-[11px] text-white/50 font-medium">{story.timeline}</span>
+                    <Clock className="w-3.5 h-3.5 text-black shrink-0" />
+                    <span className="text-[11px] text-black/50 font-medium">{story.timeline}</span>
                   </div>
 
                   {/* Outcomes */}
                   <div className="mb-4">
-                    <p className="text-[10px] font-bold text-[#9CD5FF] uppercase tracking-wider mb-2">Key Outcomes</p>
+                    <p className="text-[10px] font-bold text-black uppercase tracking-wider mb-2">Key Outcomes</p>
                     <ul className="space-y-1.5">
                       {story.outcomes.map((o, oi) => (
-                        <li key={oi} className="flex items-start gap-2 text-xs text-white/50">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#7AAACE] shrink-0 mt-0.5" />{o}
+                        <li key={oi} className="flex items-start gap-2 text-xs text-black/50">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-black shrink-0 mt-0.5" />{o}
                         </li>
                       ))}
                     </ul>
@@ -277,7 +277,7 @@ export default function SuccessStoriesPage() {
                   {/* Tags */}
                   <div className="flex flex-wrap gap-1.5 pt-3 mt-auto border-t border-white/[0.06]">
                     {story.tags.map(tag => (
-                      <span key={tag} className="text-[9px] font-bold tracking-wider uppercase text-white/30 bg-white/[0.04] px-2 py-0.5 rounded">{tag}</span>
+                      <span key={tag} className="text-[9px] font-bold tracking-wider uppercase text-black/30 bg-white/[0.04] px-2 py-0.5 rounded">{tag}</span>
                     ))}
                   </div>
                 </motion.div>
@@ -290,9 +290,9 @@ export default function SuccessStoriesPage() {
         <section className="py-20 px-6 bg-[#F7F8F0]">
           <motion.div className="max-w-5xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.div variants={fadeUp} className="text-center mb-14">
-              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#7AAACE] block mb-3">Video Testimonials</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0a1628]">Hear It From Them</h2>
-              <p className="text-[#0a1628]/50 text-sm mt-3">Watch real entrepreneurs share their funding journey with Grow Bridge.</p>
+              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Video Testimonials</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-black">Hear It From Them</h2>
+              <p className="text-black/50 text-sm mt-3">Watch real entrepreneurs share their funding journey with Grow Bridge.</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -305,17 +305,17 @@ export default function SuccessStoriesPage() {
                   <div className="relative bg-gradient-to-br from-[#0a1628] to-[#355872] h-48 flex items-center justify-center">
                     <span className="text-5xl opacity-20 absolute">{v.thumbnail}</span>
                     <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300 cursor-pointer z-10">
-                      <Play className="w-6 h-6 text-white ml-1" />
+                      <Play className="w-6 h-6 text-black ml-1" />
                     </div>
                     <div className="absolute bottom-3 left-3">
-                      <span className="text-[10px] font-bold tracking-wider uppercase text-white bg-[#355872]/80 backdrop-blur-sm px-2.5 py-1 rounded-full">{v.scheme}</span>
+                      <span className="text-[10px] font-bold tracking-wider uppercase text-black bg-[#355872]/80 backdrop-blur-sm px-2.5 py-1 rounded-full">{v.scheme}</span>
                     </div>
                   </div>
 
                   {/* Info */}
                   <div className="p-5">
-                    <h3 className="text-[#0a1628] font-bold text-sm">{v.name}</h3>
-                    <p className="text-[#0a1628]/40 text-xs mt-0.5">{v.business}</p>
+                    <h3 className="text-black font-bold text-sm">{v.name}</h3>
+                    <p className="text-black/40 text-xs mt-0.5">{v.business}</p>
                   </div>
                 </motion.div>
               ))}
@@ -326,10 +326,10 @@ export default function SuccessStoriesPage() {
         {/* Consultation CTA */}
         <section className="py-20 px-6 bg-gradient-to-r from-[#355872] to-[#7AAACE]">
           <motion.div className="max-w-3xl mx-auto text-center" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black mb-4">
               Become Our Next Success Story
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-white/70 text-base mb-8">
+            <motion.p variants={fadeUp} className="text-black/70 text-base mb-8">
               Join 500+ businesses who trusted Grow Bridge to navigate their funding journey. Your growth story starts with a free consultation.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -341,7 +341,7 @@ export default function SuccessStoriesPage() {
                 </MetalButton>
               </Link>
               <Link href="/eligibility-results"
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full border border-white/30 text-white font-semibold text-sm hover:bg-white/10 transition-all"
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full border border-white/30 text-black font-semibold text-sm hover:bg-white/10 transition-all"
               >
                 Check Your Eligibility
               </Link>

@@ -45,7 +45,7 @@ function AnimatedNumber({ target, suffix = "", prefix = "" }: { target: number; 
 }
 
 /* ─── Animated SVG Progress Ring ─── */
-function ProgressRing({ value, size = 80, strokeWidth = 6, color = "#9DB2BF" }: {
+function ProgressRing({ value, size = 80, strokeWidth = 6, color = "#1e3a5c" }: {
   value: number; size?: number; strokeWidth?: number; color?: string
 }) {
   const ref = useRef<SVGSVGElement>(null)
@@ -59,7 +59,7 @@ function ProgressRing({ value, size = 80, strokeWidth = 6, color = "#9DB2BF" }: 
       {/* Background circle */}
       <circle
         cx={size / 2} cy={size / 2} r={radius}
-        fill="none" stroke="rgba(82,109,130,0.15)" strokeWidth={strokeWidth}
+        fill="none" stroke="rgba(10,22,40,0.15)" strokeWidth={strokeWidth}
       />
       {/* Animated progress circle */}
       <motion.circle
@@ -77,13 +77,13 @@ function ProgressRing({ value, size = 80, strokeWidth = 6, color = "#9DB2BF" }: 
 
 /* ─── Process Steps ─── */
 const STEPS = [
-  { icon: Zap, num: "01", title: "Initial Information", desc: "Share your business details in a quick consultation. We gather all necessary information to understand your needs.", gradient: "from-[#526D82] to-[#9DB2BF]" },
-  { icon: Search, num: "02", title: "Analysts' Deep Dive", desc: "Our expert analysts research eligible schemes, funding options, and compliance requirements specific to your business.", gradient: "from-[#9DB2BF] to-[#DDE6ED]" },
-  { icon: PenTool, num: "03", title: "Design Phase", desc: "We design a custom growth roadmap — DPR preparation, application strategy, and compliance blueprint.", gradient: "from-[#526D82] to-[#DDE6ED]" },
-  { icon: Users, num: "04", title: "Client Collaboration", desc: "Review the proposed plan together. Your feedback shapes the final approach — no surprises, full transparency.", gradient: "from-[#9DB2BF] to-[#526D82]" },
-  { icon: RefreshCcw, num: "05", title: "Refinement & Research", desc: "Fine-tune every detail based on your inputs. Additional research ensures maximum approval probability.", gradient: "from-[#526D82] to-[#9DB2BF]" },
-  { icon: FileCheck, num: "06", title: "Draft Finalization", desc: "All documents, applications, and filings are finalized with precision before submission.", gradient: "from-[#9DB2BF] to-[#DDE6ED]" },
-  { icon: Truck, num: "07", title: "Delivery & Support", desc: "Applications submitted, approvals tracked, and ongoing support until your funding or certification is secured.", gradient: "from-[#526D82] to-[#DDE6ED]" },
+  { icon: Zap, num: "01", title: "Initial Information", desc: "Share your business details in a quick consultation. We gather all necessary information to understand your needs.", gradient: "from-[#1B4F8A] to-[#1B4F8A]" },
+  { icon: Search, num: "02", title: "Analysts' Deep Dive", desc: "Our expert analysts research eligible schemes, funding options, and compliance requirements specific to your business.", gradient: "from-[#1B4F8A] to-[#2E7DD9]" },
+  { icon: PenTool, num: "03", title: "Design Phase", desc: "We design a custom growth roadmap — DPR preparation, application strategy, and compliance blueprint.", gradient: "from-[#1B4F8A] to-[#1B4F8A]" },
+  { icon: Users, num: "04", title: "Client Collaboration", desc: "Review the proposed plan together. Your feedback shapes the final approach — no surprises, full transparency.", gradient: "from-[#1B4F8A] to-[#1B4F8A]" },
+  { icon: RefreshCcw, num: "05", title: "Refinement & Research", desc: "Fine-tune every detail based on your inputs. Additional research ensures maximum approval probability.", gradient: "from-[#1B4F8A] to-[#1B4F8A]" },
+  { icon: FileCheck, num: "06", title: "Draft Finalization", desc: "All documents, applications, and filings are finalized with precision before submission.", gradient: "from-[#1B4F8A] to-[#2E7DD9]" },
+  { icon: Truck, num: "07", title: "Delivery & Support", desc: "Applications submitted, approvals tracked, and ongoing support until your funding or certification is secured.", gradient: "from-[#1B4F8A] to-[#1B4F8A]" },
 ]
 
 /* ─── Testimonials ─── */
@@ -113,7 +113,7 @@ export default function PremiumProof() {
   return (
     <>
       {/* ━━━ HOW IT WORKS ━━━ */}
-      <section className="relative overflow-hidden px-6 py-28 bg-[#2d3f56]">
+      <section className="relative overflow-hidden px-6 py-28 bg-[#FFF8F0]">
         <div className="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#526D82]/20 blur-[100px] pointer-events-none" />
 
         <motion.div
@@ -122,13 +122,13 @@ export default function PremiumProof() {
         >
           <div className="text-center mb-16">
             <motion.span variants={blurFadeUp} custom={0}
-              className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#526D82] bg-[#526D82]/30 px-4 py-1.5 text-xs font-medium text-[#9DB2BF]"
+              className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#526D82] bg-[#526D82]/30 px-4 py-1.5 text-xs font-medium text-black"
             >
               ⚡ How It Works
             </motion.span>
-            <motion.h2 variants={blurFadeUp} custom={0.1} className="text-3xl font-bold tracking-tight text-[#DDE6ED] sm:text-4xl md:text-5xl">
+            <motion.h2 variants={blurFadeUp} custom={0.1} className="text-3xl font-bold tracking-tight text-black sm:text-4xl md:text-5xl">
               From Signup to Growth{" "}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82]">in 7 Steps</span>
+              <span className="text-black bg-gradient-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A]">in 7 Steps</span>
             </motion.h2>
           </div>
 
@@ -147,13 +147,12 @@ export default function PremiumProof() {
               {STEPS.map((s, i) => (
                 <motion.div
                   key={s.num} variants={scaleIn} custom={i * 0.08}
-                  className="group relative rounded-2xl border border-[#526D82]/60 bg-[#27374D]/40 backdrop-blur-md p-6
-                    hover:bg-[#526D82]/25 hover:border-[#9DB2BF]/25 hover:shadow-xl hover:shadow-[#9DB2BF]/8 transition-all duration-500
-                    shadow-[inset_0_1px_0_rgba(157,178,191,0.08)]"
+                  className="group relative rounded-2xl border border-white/25 blue-card p-6
+                    hover:bg-[#1B4F8A]/70 hover:border-[#1B4F8A]/80 hover:shadow-xl hover:shadow-[#1B4F8A]/20 transition-all duration-500"
                   whileHover={{ y: -8, transition: { type: "spring", stiffness: 300, damping: 20 } }}
                 >
                   {/* Step number watermark */}
-                  <span className="absolute top-2 right-4 select-none text-[64px] font-black leading-none text-[#526D82]/30 transition-colors duration-500 group-hover:text-[#9DB2BF]/20">
+                  <span className="absolute top-2 right-4 select-none text-[64px] font-black leading-none text-black/30 transition-colors duration-500 group-hover:text-black/40">
                     {s.num}
                   </span>
 
@@ -163,21 +162,21 @@ export default function PremiumProof() {
                     whileHover={{ rotate: -8, scale: 1.15 }}
                     transition={{ type: "spring", stiffness: 300, damping: 15 }}
                   >
-                    <s.icon className="w-5 h-5 text-white relative z-10" />
+                    <s.icon className="w-5 h-5 text-black relative z-10" />
                     {/* Breathe ring */}
                     <motion.div
                       className="absolute inset-0 rounded-xl"
-                      animate={{ boxShadow: ["0 0 0 0 rgba(157,178,191,0.3)", "0 0 0 6px rgba(157,178,191,0)", "0 0 0 0 rgba(157,178,191,0)"] }}
+                      animate={{ boxShadow: ["0 0 0 0 rgba(30,58,92,0.3)", "0 0 0 6px rgba(30,58,92,0)", "0 0 0 0 rgba(30,58,92,0)"] }}
                       transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.3 }}
                     />
                   </motion.div>
 
-                  <h3 className="text-[#DDE6ED] font-bold text-base mb-2">{s.title}</h3>
-                  <p className="text-[#9DB2BF]/70 text-sm leading-relaxed">{s.desc}</p>
+                  <h3 className="text-black font-bold text-base mb-2">{s.title}</h3>
+                  <p className="text-black/70 text-sm leading-relaxed">{s.desc}</p>
 
                   {/* Bottom progress indicator */}
                   <motion.div
-                    className="mt-4 h-0.5 rounded-full bg-[#526D82]/40 overflow-hidden"
+                    className="mt-4 h-0.5 rounded-full blue-card overflow-hidden"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
@@ -208,17 +207,17 @@ export default function PremiumProof() {
           {/* Stats with animated progress rings */}
           <motion.div variants={blurFadeUp} className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-24">
             {[
-              { target: 110, prefix: "₹", suffix: "Cr+", label: "Funding Enabled", sublabel: "across MSMEs & startups", pct: 92, color: "#27374D" },
-              { target: 500, prefix: "", suffix: "+", label: "Businesses Served", sublabel: "across 28+ states", pct: 88, color: "#526D82" },
-              { target: 95, prefix: "", suffix: "%", label: "Success Rate", sublabel: "scheme approvals", pct: 95, color: "#27374D" },
-              { target: 50, prefix: "", suffix: "+", label: "Active Schemes", sublabel: "matched & filed", pct: 82, color: "#526D82" },
+              { target: 110, prefix: "₹", suffix: "Cr+", label: "Funding Enabled", sublabel: "across MSMEs & startups", pct: 92, color: "#1e3a5c" },
+              { target: 500, prefix: "", suffix: "+", label: "Businesses Served", sublabel: "across 28+ states", pct: 88, color: "#1e3a5c" },
+              { target: 95, prefix: "", suffix: "%", label: "Success Rate", sublabel: "scheme approvals", pct: 95, color: "#1e3a5c" },
+              { target: 50, prefix: "", suffix: "+", label: "Active Schemes", sublabel: "matched & filed", pct: 82, color: "#1e3a5c" },
             ].map((s, i) => (
               <motion.div
                 key={s.label}
                 variants={scaleIn} custom={i * 0.1}
-                className="group relative rounded-2xl border border-[#9DB2BF]/20 bg-white/60 backdrop-blur-sm px-4 py-8 text-center
-                  transition-all duration-500 hover:border-[#526D82]/30 hover:bg-white/90 hover:shadow-xl hover:shadow-[#526D82]/8
-                  shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_2px_10px_rgba(82,109,130,0.06)] overflow-hidden"
+                className="group relative rounded-2xl border border-white/25 bg-white/60 backdrop-blur-sm px-4 py-8 text-center
+                  transition-all duration-500 hover:border-white/20 hover:bg-white/90 hover:shadow-xl hover:shadow-[#1B4F8A]/20
+                  shadow-[inset_0_1px_0_rgba(0,0,0,0.5),0_2px_10px_rgba(10,22,40,0.06)] overflow-hidden"
                 whileHover={{ scale: 1.04, y: -4, transition: { type: "spring", stiffness: 300, damping: 20 } }}
               >
                 {/* Background progress ring */}
@@ -226,21 +225,21 @@ export default function PremiumProof() {
                   <ProgressRing value={s.pct} size={120} strokeWidth={4} color={s.color} />
                 </div>
 
-                <p className="relative text-3xl sm:text-4xl font-black text-[#27374D] tabular-nums mb-1">
+                <p className="relative text-3xl sm:text-4xl font-black text-black tabular-nums mb-1">
                   <AnimatedNumber target={s.target} prefix={s.prefix} suffix={s.suffix} />
                 </p>
-                <p className="relative text-sm font-semibold text-[#526D82]">{s.label}</p>
-                <p className="relative mt-0.5 text-xs text-[#9DB2BF]">{s.sublabel}</p>
+                <p className="relative text-sm font-semibold text-black">{s.label}</p>
+                <p className="relative mt-0.5 text-xs text-black">{s.sublabel}</p>
               </motion.div>
             ))}
           </motion.div>
 
           {/* Testimonials */}
           <div className="text-center mb-14">
-            <motion.h2 variants={blurFadeUp} className="text-3xl sm:text-4xl font-bold text-[#27374D] tracking-tight">
-              Loved by <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#526D82] to-[#27374D]">Business Owners</span>
+            <motion.h2 variants={blurFadeUp} className="text-3xl sm:text-4xl font-bold text-black tracking-tight">
+              Loved by <span className="text-black bg-gradient-to-r from-[#526D82] to-[#FFF8F0]">Business Owners</span>
             </motion.h2>
-            <motion.p variants={blurFadeUp} className="mt-4 text-[#526D82] text-base max-w-xl mx-auto">
+            <motion.p variants={blurFadeUp} className="mt-4 text-black text-base max-w-xl mx-auto">
               Real stories from real entrepreneurs who accelerated their growth with GrowBridge.
             </motion.p>
           </div>
@@ -251,8 +250,8 @@ export default function PremiumProof() {
                 key={t.name}
                 variants={scaleIn} custom={i * 0.1}
                 className="group relative rounded-2xl border border-[#9DB2BF]/15 bg-white/60 backdrop-blur-sm p-7
-                  transition-all duration-500 hover:border-[#526D82]/25 hover:bg-white/90 hover:shadow-2xl hover:shadow-[#526D82]/10
-                  shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_2px_8px_rgba(82,109,130,0.04)] overflow-hidden"
+                  transition-all duration-500 hover:border-[#526D82]/25 hover:bg-white/90 hover:shadow-2xl hover:shadow-[#1B4F8A]/20
+                  shadow-[inset_0_1px_0_rgba(0,0,0,0.5),0_2px_8px_rgba(10,22,40,0.04)] overflow-hidden"
                 whileHover={{ y: -8, transition: { type: "spring", stiffness: 300, damping: 18 } }}
               >
                 {/* Hover gradient border top */}
@@ -270,7 +269,7 @@ export default function PremiumProof() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + i * 0.1, type: "spring", stiffness: 300 }}
                 >
-                  <Quote className="mb-4 h-8 w-8 text-[#9DB2BF]/50 group-hover:text-[#526D82]/60 transition-colors duration-300" />
+                  <Quote className="mb-4 h-8 w-8 text-black/50 group-hover:text-black/60 transition-colors duration-300" />
                 </motion.div>
 
                 {/* Stars with stagger */}
@@ -289,28 +288,28 @@ export default function PremiumProof() {
                   ))}
                 </div>
 
-                <p className="text-[#526D82] text-sm leading-relaxed mb-6 group-hover:text-[#27374D] transition-colors">
+                <p className="text-black text-sm leading-relaxed mb-6 group-hover:text-black transition-colors">
                   &ldquo;{t.quote}&rdquo;
                 </p>
 
                 {/* Author with slide-in */}
                 <motion.div
-                  className="flex items-center gap-3 border-t border-[#9DB2BF]/25 pt-5"
+                  className="flex items-center gap-3 border-t border-white/25 pt-5"
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 + i * 0.1 }}
                 >
                   <motion.div
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#27374D] to-[#526D82] text-xs font-bold text-white"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#FFF8F0] to-[#526D82] text-xs font-bold text-black"
                     whileHover={{ scale: 1.15, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     {t.avatar}
                   </motion.div>
                   <div>
-                    <p className="text-[#27374D] font-semibold text-sm">{t.name}</p>
-                    <p className="text-[#9DB2BF] text-xs">{t.role} · {t.location}</p>
+                    <p className="text-black font-semibold text-sm">{t.name}</p>
+                    <p className="text-black text-xs">{t.role} · {t.location}</p>
                   </div>
                 </motion.div>
               </motion.div>

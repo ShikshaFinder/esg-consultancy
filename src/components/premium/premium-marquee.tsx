@@ -33,7 +33,7 @@ export default function PremiumMarquee() {
   return (
     <section
       className="relative overflow-hidden py-20"
-      style={{ background: "linear-gradient(180deg, #526D82 0%, #476078 100%)" }}
+      style={{ background: "linear-gradient(180deg, #526D82 0%, #FFF8F0 100%)" }}
     >
       <motion.div
         initial="hidden"
@@ -42,8 +42,8 @@ export default function PremiumMarquee() {
         variants={blurFadeUp}
         className="text-center mb-12"
       >
-        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-[#9DB2BF]">Trusted Ecosystem</p>
-        <h2 className="text-2xl font-semibold text-[#DDE6ED] md:text-3xl">
+        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-black">Trusted Ecosystem</p>
+        <h2 className="text-2xl font-semibold text-black md:text-3xl">
           Integrated with India&apos;s MSME Growth Network
         </h2>
       </motion.div>
@@ -64,10 +64,10 @@ export default function PremiumMarquee() {
               key={`${item.name}-${i}`}
               whileHover={{ scale: 1.1, y: -6 }}
               transition={{ type: "spring", stiffness: 400, damping: 18 }}
-              className="flex-shrink-0 px-5 py-3 rounded-xl border border-[#9DB2BF]/15 bg-[#27374D]/40 backdrop-blur-md
-                         hover:bg-[#27374D]/70 hover:border-[#9DB2BF]/40 hover:shadow-lg hover:shadow-[#9DB2BF]/15 transition-all duration-300
+              className="flex-shrink-0 px-5 py-3 rounded-xl border border-[#9DB2BF]/15 blue-card backdrop-blur-md
+                         hover:bg-[#1e3a5c]/70 hover:border-[#9DB2BF]/40 hover:shadow-lg hover:shadow-[#1B4F8A]/20 transition-all duration-300
                          flex items-center gap-3 group/logo cursor-default relative overflow-hidden
-                         shadow-[inset_0_1px_0_rgba(157,178,191,0.08)]"
+                         shadow-[inset_0_1px_0_rgba(30,58,92,0.08)]"
             >
               {/* Hover glow effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#9DB2BF]/0 via-[#9DB2BF]/5 to-[#9DB2BF]/0 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300" />
@@ -82,11 +82,11 @@ export default function PremiumMarquee() {
                 </div>
               ) : (
                 <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-[#9DB2BF]/25 to-[#526D82]/35 flex items-center justify-center
-                                text-[10px] font-bold text-[#9DB2BF] group-hover/logo:from-[#9DB2BF]/35 group-hover/logo:to-[#526D82]/45 transition-colors shrink-0">
+                                text-[10px] font-bold text-black group-hover/logo:from-[#9DB2BF]/35 group-hover/logo:to-[#526D82]/45 transition-colors shrink-0">
                   {item.name.slice(0, 2).toUpperCase()}
                 </div>
               )}
-              <span className="relative text-sm text-[#9DB2BF] group-hover/logo:text-[#DDE6ED] whitespace-nowrap transition-colors font-medium">
+              <span className="relative text-sm text-black group-hover/logo:text-black whitespace-nowrap transition-colors font-medium">
                 {item.name}
               </span>
             </motion.div>

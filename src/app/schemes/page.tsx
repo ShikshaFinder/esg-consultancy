@@ -95,12 +95,12 @@ export default function SchemesPage() {
           </div>
 
           <motion.div className="max-w-4xl mx-auto text-center relative z-10" initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-4">Government Schemes</motion.span>
-            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-4">Government Schemes</motion.span>
+            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-bold text-black leading-tight mb-6">
               Unlock Funding with{" "}
-              <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Government Schemes</span>
+              <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Government Schemes</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-white/50 text-lg max-w-2xl mx-auto">
+            <motion.p variants={fadeUp} className="text-black/50 text-lg max-w-2xl mx-auto">
               Explore all major central and state government schemes for MSMEs and startups. We handle the entire application process end to end.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-3 mt-8">
@@ -112,8 +112,8 @@ export default function SchemesPage() {
                   { label: "Pan India Service", icon: Shield },
                   { label: "Expert Consultants", icon: Users },
                 ].map(b => (
-                  <div key={b.label} className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70 whitespace-nowrap">
-                    <b.icon className="w-4 h-4 text-[#9CD5FF]" />{b.label}
+                  <div key={b.label} className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-black/70 whitespace-nowrap">
+                    <b.icon className="w-4 h-4 text-black" />{b.label}
                   </div>
                 ))}
               </Marquee>
@@ -131,7 +131,7 @@ export default function SchemesPage() {
                 >
                   {s.popular && (
                     <div className="absolute top-4 right-4">
-                      <span className="flex items-center gap-1 text-[10px] font-bold text-[#355872] bg-[#9CD5FF]/20 border border-[#9CD5FF]/30 px-2.5 py-1 rounded-full">
+                      <span className="flex items-center gap-1 text-[10px] font-bold text-black bg-[#9CD5FF]/20 border border-[#9CD5FF]/30 px-2.5 py-1 rounded-full">
                         <Star className="w-3 h-3 fill-[#355872]" /> Most Popular
                       </span>
                     </div>
@@ -142,32 +142,32 @@ export default function SchemesPage() {
                     <div className="lg:col-span-2">
                       <div className="flex items-center gap-3 mb-3">
                         <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${s.gradient} flex items-center justify-center shrink-0`}>
-                          <Banknote className="w-5 h-5 text-white" />
+                          <Banknote className="w-5 h-5 text-black" />
                         </div>
                         <div>
-                          <h3 className="text-[#0a1628] font-bold text-xl">{s.name}</h3>
-                          <p className="text-[#0a1628]/40 text-xs">{s.full}</p>
+                          <h3 className="text-black font-bold text-xl">{s.name}</h3>
+                          <p className="text-black/40 text-xs">{s.full}</p>
                         </div>
                       </div>
-                      <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-5">{s.desc}</p>
-                      <p className="text-[11px] text-[#0a1628]/40 font-medium mb-2 uppercase tracking-wide">Ministry: {s.ministry}</p>
+                      <p className="text-black/60 text-sm leading-relaxed mb-5">{s.desc}</p>
+                      <p className="text-[11px] text-black/40 font-medium mb-2 uppercase tracking-wide">Ministry: {s.ministry}</p>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <p className="text-xs font-bold text-[#355872] mb-2 flex items-center gap-1"><CheckCircle2 className="w-3.5 h-3.5" /> Eligibility</p>
+                          <p className="text-xs font-bold text-black mb-2 flex items-center gap-1"><CheckCircle2 className="w-3.5 h-3.5" /> Eligibility</p>
                           <ul className="space-y-1.5">
                             {s.eligibility.map(e => (
-                              <li key={e} className="flex items-center gap-2 text-sm text-[#0a1628]/60">
+                              <li key={e} className="flex items-center gap-2 text-sm text-black/60">
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#7AAACE] shrink-0" />{e}
                               </li>
                             ))}
                           </ul>
                         </div>
                         <div>
-                          <p className="text-xs font-bold text-[#355872] mb-2 flex items-center gap-1"><Star className="w-3.5 h-3.5" /> Key Benefits</p>
+                          <p className="text-xs font-bold text-black mb-2 flex items-center gap-1"><Star className="w-3.5 h-3.5" /> Key Benefits</p>
                           <ul className="space-y-1.5">
                             {s.benefits.map(b => (
-                              <li key={b} className="flex items-center gap-2 text-sm text-[#0a1628]/60">
+                              <li key={b} className="flex items-center gap-2 text-sm text-black/60">
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#9CD5FF] shrink-0" />{b}
                               </li>
                             ))}
@@ -185,16 +185,16 @@ export default function SchemesPage() {
                       ].map(st => (
                         <div key={st.label} className="rounded-xl border border-[#355872]/[0.06] bg-[#F7F8F0] p-4 flex items-center gap-3">
                           <div className="w-9 h-9 rounded-lg bg-[#355872]/10 flex items-center justify-center shrink-0">
-                            <st.icon className="w-4 h-4 text-[#355872]" />
+                            <st.icon className="w-4 h-4 text-black" />
                           </div>
                           <div>
-                            <p className="text-[#0a1628]/40 text-[10px] font-medium uppercase">{st.label}</p>
-                            <p className="text-[#0a1628] font-bold text-sm">{st.value}</p>
+                            <p className="text-black/40 text-[10px] font-medium uppercase">{st.label}</p>
+                            <p className="text-black font-bold text-sm">{st.value}</p>
                           </div>
                         </div>
                       ))}
                       <Link href="/contact"
-                        className="mt-2 inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] text-white font-semibold text-sm hover:shadow-lg hover:shadow-[#355872]/25 transition-all"
+                        className="mt-2 inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] text-black font-semibold text-sm hover:shadow-lg hover:shadow-[#355872]/25 transition-all"
                       >
                         Check Eligibility <ArrowRight className="w-4 h-4" />
                       </Link>
@@ -210,13 +210,13 @@ export default function SchemesPage() {
         <section className="py-20 px-6 bg-gradient-to-r from-[#355872] to-[#7AAACE]">
           <motion.div className="max-w-3xl mx-auto text-center" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 mb-4">
-              <AlertCircle className="w-5 h-5 text-white/80" />
-              <span className="text-white/80 text-sm font-medium">Not sure which scheme is right for you?</span>
+              <AlertCircle className="w-5 h-5 text-black/80" />
+              <span className="text-black/80 text-sm font-medium">Not sure which scheme is right for you?</span>
             </motion.div>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black mb-4">
               Let Our AI Find Your Best Match
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-white/70 text-base mb-8">
+            <motion.p variants={fadeUp} className="text-black/70 text-base mb-8">
               Our eligibility engine checks your profile against 30+ schemes in seconds. Get your personalized report for free.
             </motion.p>
             <motion.div variants={fadeUp}>

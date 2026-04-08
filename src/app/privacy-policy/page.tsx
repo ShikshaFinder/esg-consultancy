@@ -124,11 +124,11 @@ const sections = [
       },
       {
         subtitle: "Right to Withdraw Consent",
-        body: "Where processing is based on your consent, you may withdraw consent at any time by writing to us at abhay@growbridge.org. Withdrawal of consent does not affect the lawfulness of processing carried out prior to withdrawal.",
+        body: "Where processing is based on your consent, you may withdraw consent at any time by writing to us at growbridgeinfo@gmail.com. Withdrawal of consent does not affect the lawfulness of processing carried out prior to withdrawal.",
       },
       {
         subtitle: "Right to Grievance Redressal",
-        body: "If you have concerns about how your data is handled, you may contact our Grievance Officer at abhay@growbridge.org. We will acknowledge your complaint within 48 hours and resolve it within 30 days.",
+        body: "If you have concerns about how your data is handled, you may contact our Grievance Officer at growbridgeinfo@gmail.com. We will acknowledge your complaint within 48 hours and resolve it within 30 days.",
       },
     ],
   },
@@ -195,33 +195,33 @@ export default function PrivacyPolicyPage() {
 
           <motion.div className="max-w-4xl mx-auto text-center relative z-10" initial="hidden" animate="show" variants={stagger}>
             {/* Breadcrumb */}
-            <motion.nav variants={fadeUp} className="flex items-center justify-center gap-2 text-sm text-white/40 mb-8">
-              <Link href="/" className="hover:text-[#9CD5FF] transition-colors">Home</Link>
+            <motion.nav variants={fadeUp} className="flex items-center justify-center gap-2 text-sm text-black/40 mb-8">
+              <Link href="/" className="hover:text-black transition-colors">Home</Link>
               <span>/</span>
-              <span className="text-white/70">Privacy Policy</span>
+              <span className="text-black/70">Privacy Policy</span>
             </motion.nav>
 
             <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#355872]/20 border border-[#355872]/30 mb-6">
-              <Shield className="w-4 h-4 text-[#9CD5FF]" />
-              <span className="text-[11px] font-bold tracking-[0.15em] uppercase text-[#9CD5FF]">Your Privacy Matters</span>
+              <Shield className="w-4 h-4 text-black" />
+              <span className="text-[11px] font-bold tracking-[0.15em] uppercase text-black">Your Privacy Matters</span>
             </motion.div>
 
-            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-bold text-black leading-tight mb-6">
               Privacy{" "}
-              <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Policy</span>
+              <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Policy</span>
             </motion.h1>
 
-            <motion.p variants={fadeUp} className="text-white/50 text-lg max-w-2xl mx-auto leading-relaxed">
+            <motion.p variants={fadeUp} className="text-black/50 text-lg max-w-2xl mx-auto leading-relaxed">
               At Grow Bridge, we are committed to protecting your personal information. This policy explains how we collect, use, store, and safeguard your data.
             </motion.p>
 
-            <motion.div variants={fadeUp} className="flex items-center justify-center gap-6 mt-8 text-sm text-white/30">
+            <motion.div variants={fadeUp} className="flex items-center justify-center gap-6 mt-8 text-sm text-black/30">
               <span className="flex items-center gap-1.5">
-                <svg className="w-4 h-4 text-[#7AAACE]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                 Last updated: April 1, 2026
               </span>
               <span className="flex items-center gap-1.5">
-                <svg className="w-4 h-4 text-[#7AAACE]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 10 min read
               </span>
             </motion.div>
@@ -236,7 +236,7 @@ export default function PrivacyPolicyPage() {
               className="bg-white rounded-2xl border border-[#355872]/10 p-8 md:p-10 shadow-sm mb-10"
               initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
             >
-              <motion.p variants={fadeUp} className="text-[#0a1628]/60 text-sm leading-relaxed">
+              <motion.p variants={fadeUp} className="text-black/60 text-sm leading-relaxed">
                 This Privacy Policy (&quot;Policy&quot;) applies to the website <strong>growbridge.org</strong> and all services provided by <strong>Grow Bridge</strong> (&quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), a business consultancy firm headquartered in Ahmedabad, Gujarat, India. By accessing our website or engaging our services, you consent to the practices described in this Policy. This Policy is governed by the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023.
               </motion.p>
             </motion.div>
@@ -250,17 +250,17 @@ export default function PrivacyPolicyPage() {
                 initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
               >
                 <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-[#355872]/10 flex items-center justify-center text-[#355872] flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#355872]/10 flex items-center justify-center text-black flex-shrink-0">
                     <section.icon className="w-5 h-5" />
                   </div>
-                  <h2 className="text-xl md:text-2xl font-bold text-[#0a1628]">{section.title}</h2>
+                  <h2 className="text-xl md:text-2xl font-bold text-black">{section.title}</h2>
                 </motion.div>
 
                 <div className="space-y-5">
                   {section.items.map((item) => (
                     <motion.div key={item.subtitle} variants={fadeUp}>
-                      <h3 className="text-sm font-semibold text-[#355872] mb-1.5">{item.subtitle}</h3>
-                      <p className="text-[#0a1628]/60 text-sm leading-relaxed">{item.body}</p>
+                      <h3 className="text-sm font-semibold text-black mb-1.5">{item.subtitle}</h3>
+                      <p className="text-black/60 text-sm leading-relaxed">{item.body}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -273,42 +273,42 @@ export default function PrivacyPolicyPage() {
               initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
             >
               <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-[#355872]/10 flex items-center justify-center text-[#355872] flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-[#355872]/10 flex items-center justify-center text-black flex-shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
-                <h2 className="text-xl md:text-2xl font-bold text-[#0a1628]">9. Contact Us</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-black">9. Contact Us</h2>
               </motion.div>
 
-              <motion.p variants={fadeUp} className="text-[#0a1628]/60 text-sm leading-relaxed mb-6">
+              <motion.p variants={fadeUp} className="text-black/60 text-sm leading-relaxed mb-6">
                 If you have any questions, concerns, or requests regarding this Privacy Policy or the handling of your personal data, please contact us:
               </motion.p>
 
               <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="flex items-start gap-3 p-4 rounded-xl bg-[#F7F8F0] border border-[#355872]/5">
-                  <Mail className="w-5 h-5 text-[#7AAACE] mt-0.5 flex-shrink-0" />
+                  <Mail className="w-5 h-5 text-black mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-xs font-semibold text-[#0a1628]/40 uppercase tracking-wider mb-1">Email</p>
-                    <a href="mailto:abhay@growbridge.org" className="text-sm font-medium text-[#355872] hover:underline">abhay@growbridge.org</a>
+                    <p className="text-xs font-semibold text-black/40 uppercase tracking-wider mb-1">Email</p>
+                    <a href="mailto:growbridgeinfo@gmail.com" className="text-sm font-medium text-black hover:underline">growbridgeinfo@gmail.com</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 p-4 rounded-xl bg-[#F7F8F0] border border-[#355872]/5">
-                  <Phone className="w-5 h-5 text-[#7AAACE] mt-0.5 flex-shrink-0" />
+                  <Phone className="w-5 h-5 text-black mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-xs font-semibold text-[#0a1628]/40 uppercase tracking-wider mb-1">Phone</p>
-                    <a href="tel:+918487828752" className="text-sm font-medium text-[#355872] hover:underline">+91 84878 28752</a>
+                    <p className="text-xs font-semibold text-black/40 uppercase tracking-wider mb-1">Phone</p>
+                    <a href="tel:+919998035607" className="text-sm font-medium text-black hover:underline">+91 99980 35607</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 p-4 rounded-xl bg-[#F7F8F0] border border-[#355872]/5">
-                  <MapPin className="w-5 h-5 text-[#7AAACE] mt-0.5 flex-shrink-0" />
+                  <MapPin className="w-5 h-5 text-black mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-xs font-semibold text-[#0a1628]/40 uppercase tracking-wider mb-1">Office</p>
-                    <p className="text-sm font-medium text-[#355872]">Ahmedabad, Gujarat, India</p>
+                    <p className="text-xs font-semibold text-black/40 uppercase tracking-wider mb-1">Office</p>
+                    <p className="text-sm font-medium text-black">630, Solaris Business Hub, Sola Rd, Ahmedabad 380063</p>
                   </div>
                 </div>
               </motion.div>
 
-              <motion.p variants={fadeUp} className="text-[#0a1628]/40 text-xs mt-6">
-                For grievance redressal under the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023, please write to our Grievance Officer at <a href="mailto:abhay@growbridge.org" className="text-[#7AAACE] hover:underline">abhay@growbridge.org</a>. We will acknowledge your complaint within 48 hours and endeavour to resolve it within 30 days.
+              <motion.p variants={fadeUp} className="text-black/40 text-xs mt-6">
+                For grievance redressal under the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023, please write to our Grievance Officer at <a href="mailto:growbridgeinfo@gmail.com" className="text-black hover:underline">growbridgeinfo@gmail.com</a>. We will acknowledge your complaint within 48 hours and endeavour to resolve it within 30 days.
               </motion.p>
             </motion.div>
           </div>

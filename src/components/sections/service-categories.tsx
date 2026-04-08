@@ -26,11 +26,11 @@ export default function ServiceCategories() {
       <motion.div className="max-w-7xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.06 }} variants={stagger}>
         <div className="text-center mb-14">
           <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-green-400 block mb-3">Expert Support</motion.span>
-          <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-black leading-tight">
             Grow Your Business with{" "}
-            <span style={{ background: "linear-gradient(90deg,#22c55e,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Expert Support</span>
+            <span style={{ background: "linear-gradient(90deg,#22c55e,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Expert Support</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-white/50 text-base mt-3 max-w-xl mx-auto">
+          <motion.p variants={fadeUp} className="text-black/50 text-base mt-3 max-w-xl mx-auto">
             Choose a service to check your eligibility instantly — our team handles the rest.
           </motion.p>
         </div>
@@ -44,8 +44,8 @@ export default function ServiceCategories() {
               <span className="absolute top-4 right-4 text-[9px] font-bold tracking-widest px-2.5 py-0.5 rounded-full border" style={{ color: svc.color, backgroundColor: `${svc.color}15`, borderColor: `${svc.color}30` }}>{svc.badge}</span>
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl border transition-all duration-300 group-hover:scale-110" style={{ backgroundColor: `${svc.color}12`, borderColor: `${svc.color}25` }}>{svc.icon}</div>
               <div>
-                <h3 className="text-white font-bold text-base mb-1">{svc.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{svc.desc}</p>
+                <h3 className="text-black font-bold text-base mb-1">{svc.title}</h3>
+                <p className="text-black/50 text-sm leading-relaxed">{svc.desc}</p>
               </div>
               <div className="mt-auto pt-4 border-t border-white/[0.05] flex items-center justify-between">
                 <Link href="/contact" className="text-xs font-semibold flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: svc.color }}>
@@ -60,17 +60,17 @@ export default function ServiceCategories() {
         <motion.div variants={fadeUp} className="mt-10 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 flex flex-col sm:flex-row items-center gap-4">
           <span className="text-3xl">🚀</span>
           <div className="flex-1">
-            <p className="text-white font-semibold text-base">Not sure where to start?</p>
-            <p className="text-white/50 text-sm">Talk to an expert for free — we&apos;ll find the right path for your business.</p>
+            <p className="text-black font-semibold text-base">Not sure where to start?</p>
+            <p className="text-black/50 text-sm">Talk to an expert for free — we&apos;ll find the right path for your business.</p>
           </div>
-          <Link href="/contact" className="flex items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-[#355872] px-6 py-3 text-sm font-semibold text-white shrink-0">
+          <Link href="/contact" className="flex items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-[#355872] px-6 py-3 text-sm font-semibold text-black shrink-0">
             Get Help <ArrowRight className="w-4 h-4" />
           </Link>
           <div className="flex items-center gap-1">
             <div className="flex gap-0.5">
-              {[...Array(5)].map((_, j) => (<Star key={j} className="w-3.5 h-3.5 text-[#F7F8F0] fill-[#F7F8F0]" />))}
+              {[...Array(5)].map((_, j) => (<Star key={j} className="w-3.5 h-3.5 text-black fill-[#F7F8F0]" />))}
             </div>
-            <span className="text-white/50 text-xs ml-1">500+ Reviews</span>
+            <span className="text-black/50 text-xs ml-1">500+ Reviews</span>
           </div>
         </motion.div>
       </motion.div>

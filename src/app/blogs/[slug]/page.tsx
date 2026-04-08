@@ -80,17 +80,17 @@ export default function BlogPostPage() {
             variants={stagger}
           >
             <motion.div variants={fadeUp}>
-              <BookOpen className="w-16 h-16 text-[#355872]/40 mx-auto mb-6" />
+              <BookOpen className="w-16 h-16 text-black/40 mx-auto mb-6" />
             </motion.div>
             <motion.h1
               variants={fadeUp}
-              className="text-3xl font-bold text-white mb-3"
+              className="text-3xl font-bold text-black mb-3"
             >
               Blog Not Found
             </motion.h1>
             <motion.p
               variants={fadeUp}
-              className="text-white/40 text-base mb-8"
+              className="text-black/40 text-base mb-8"
             >
               The article you&apos;re looking for doesn&apos;t exist or may have been
               moved.
@@ -98,7 +98,7 @@ export default function BlogPostPage() {
             <motion.div variants={fadeUp}>
               <Link
                 href="/blogs"
-                className="inline-flex items-center gap-2 h-11 px-6 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] text-white text-sm font-semibold hover:shadow-lg hover:shadow-[#355872]/30 transition-all"
+                className="inline-flex items-center gap-2 h-11 px-6 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] text-black text-sm font-semibold hover:shadow-lg hover:shadow-[#355872]/30 transition-all"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Back to All Blogs
@@ -154,7 +154,7 @@ export default function BlogPostPage() {
             <motion.div variants={fadeUp} className="mb-8">
               <Link
                 href="/blogs"
-                className="inline-flex items-center gap-1.5 text-[#9CD5FF]/60 text-sm hover:text-[#9CD5FF] transition-colors"
+                className="inline-flex items-center gap-1.5 text-black/60 text-sm hover:text-black transition-colors"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 Back to Blogs
@@ -163,11 +163,11 @@ export default function BlogPostPage() {
 
             {/* Category badge */}
             <motion.div variants={fadeUp} className="flex items-center gap-2 mb-5">
-              <span className="text-[10px] font-bold text-[#9CD5FF] bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-3 py-1 rounded-full uppercase tracking-wider">
+              <span className="text-[10px] font-bold text-black bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-3 py-1 rounded-full uppercase tracking-wider">
                 {post.category}
               </span>
               {post.featured && (
-                <span className="text-[10px] font-bold text-[#7AAACE] bg-[#7AAACE]/10 border border-[#7AAACE]/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                <span className="text-[10px] font-bold text-black bg-[#7AAACE]/10 border border-[#7AAACE]/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
                   Featured
                 </span>
               )}
@@ -176,7 +176,7 @@ export default function BlogPostPage() {
             {/* Title */}
             <motion.h1
               variants={fadeUp}
-              className="text-3xl md:text-5xl font-bold text-white leading-tight mb-6"
+              className="text-3xl md:text-5xl font-bold text-black leading-tight mb-6"
             >
               {post.title}
             </motion.h1>
@@ -184,7 +184,7 @@ export default function BlogPostPage() {
             {/* Meta */}
             <motion.div
               variants={fadeUp}
-              className="flex flex-wrap items-center gap-4 text-white/35 text-sm mb-6"
+              className="flex flex-wrap items-center gap-4 text-black/35 text-sm mb-6"
             >
               <span className="flex items-center gap-1.5">
                 <Calendar className="w-4 h-4" />
@@ -205,7 +205,7 @@ export default function BlogPostPage() {
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="flex items-center gap-1 text-xs text-[#9CD5FF]/50 bg-[#9CD5FF]/[0.06] border border-[#9CD5FF]/10 px-3 py-1 rounded-full"
+                  className="flex items-center gap-1 text-xs text-black/50 bg-[#9CD5FF]/[0.06] border border-[#9CD5FF]/10 px-3 py-1 rounded-full"
                 >
                   <Tag className="w-3 h-3" />
                   {tag}
@@ -229,9 +229,9 @@ export default function BlogPostPage() {
                 >
                   <motion.h3
                     variants={fadeUp}
-                    className="flex items-center gap-2 text-sm font-bold text-[#0a1628] mb-4"
+                    className="flex items-center gap-2 text-sm font-bold text-black mb-4"
                   >
-                    <List className="w-4 h-4 text-[#355872]" />
+                    <List className="w-4 h-4 text-black" />
                     Table of Contents
                   </motion.h3>
                   <ul className="space-y-1">
@@ -247,8 +247,8 @@ export default function BlogPostPage() {
                           }}
                           className={`block text-[13px] leading-snug py-1.5 px-3 rounded-lg transition-all duration-200 ${
                             activeSection === sec.id
-                              ? "bg-[#9CD5FF]/10 text-[#355872] font-semibold border-l-2 border-[#355872]"
-                              : "text-[#0a1628]/40 hover:text-[#355872] hover:bg-[#355872]/[0.04]"
+                              ? "bg-[#9CD5FF]/10 text-black font-semibold border-l-2 border-[#355872]"
+                              : "text-black/40 hover:text-black hover:bg-[#355872]/[0.04]"
                           }`}
                         >
                           {sec.heading}
@@ -264,7 +264,7 @@ export default function BlogPostPage() {
             <div className="lg:hidden fixed bottom-20 right-6 z-40">
               <button
                 onClick={() => setTocOpen(!tocOpen)}
-                className="w-12 h-12 rounded-full bg-[#355872] text-white shadow-lg shadow-[#355872]/30 flex items-center justify-center hover:bg-[#7AAACE] transition-colors"
+                className="w-12 h-12 rounded-full bg-[#355872] text-black shadow-lg shadow-[#355872]/30 flex items-center justify-center hover:bg-[#7AAACE] transition-colors"
                 aria-label="Table of Contents"
               >
                 <List className="w-5 h-5" />
@@ -279,8 +279,8 @@ export default function BlogPostPage() {
                 exit={{ opacity: 0, y: 20 }}
                 className="lg:hidden fixed bottom-36 right-6 z-40 w-72 max-h-80 overflow-y-auto rounded-2xl border border-[#355872]/10 bg-white shadow-2xl p-5"
               >
-                <h3 className="flex items-center gap-2 text-sm font-bold text-[#0a1628] mb-3">
-                  <List className="w-4 h-4 text-[#355872]" />
+                <h3 className="flex items-center gap-2 text-sm font-bold text-black mb-3">
+                  <List className="w-4 h-4 text-black" />
                   Contents
                 </h3>
                 <ul className="space-y-1">
@@ -297,8 +297,8 @@ export default function BlogPostPage() {
                         }}
                         className={`block text-[13px] leading-snug py-1.5 px-3 rounded-lg transition-all duration-200 ${
                           activeSection === sec.id
-                            ? "bg-[#9CD5FF]/10 text-[#355872] font-semibold"
-                            : "text-[#0a1628]/40 hover:text-[#355872]"
+                            ? "bg-[#9CD5FF]/10 text-black font-semibold"
+                            : "text-black/40 hover:text-black"
                         }`}
                       >
                         {sec.heading}
@@ -320,7 +320,7 @@ export default function BlogPostPage() {
                 {/* Excerpt / Intro */}
                 <motion.p
                   variants={fadeUp}
-                  className="text-[#0a1628]/60 text-lg leading-relaxed mb-10 pb-8 border-b border-[#355872]/[0.06]"
+                  className="text-black/60 text-lg leading-relaxed mb-10 pb-8 border-b border-[#355872]/[0.06]"
                 >
                   {post.excerpt}
                 </motion.p>
@@ -339,14 +339,14 @@ export default function BlogPostPage() {
                       className="mb-10 last:mb-0 scroll-mt-28"
                       id={sectionId}
                     >
-                      <h2 className="text-xl md:text-2xl font-bold text-[#0a1628] mb-4 leading-snug">
+                      <h2 className="text-xl md:text-2xl font-bold text-black mb-4 leading-snug">
                         {section.heading}
                       </h2>
 
                       {section.paragraphs.map((para, pIdx) => (
                         <p
                           key={pIdx}
-                          className="text-[#0a1628]/60 text-[15px] leading-[1.8] mb-4 last:mb-0"
+                          className="text-black/60 text-[15px] leading-[1.8] mb-4 last:mb-0"
                         >
                           {para}
                         </p>
@@ -356,12 +356,12 @@ export default function BlogPostPage() {
                         <div className="mt-5 rounded-xl bg-gradient-to-r from-[#9CD5FF]/[0.08] to-transparent border border-[#9CD5FF]/10 p-5 relative overflow-hidden">
                           <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#355872] to-[#7AAACE]" />
                           <div className="flex items-start gap-3 pl-3">
-                            <Lightbulb className="w-5 h-5 text-[#355872] shrink-0 mt-0.5" />
+                            <Lightbulb className="w-5 h-5 text-black shrink-0 mt-0.5" />
                             <div>
-                              <span className="text-[11px] font-bold uppercase tracking-wider text-[#355872]/60 block mb-1">
+                              <span className="text-[11px] font-bold uppercase tracking-wider text-black/60 block mb-1">
                                 Key Takeaway
                               </span>
-                              <p className="text-[#0a1628]/70 text-sm font-medium leading-relaxed">
+                              <p className="text-black/70 text-sm font-medium leading-relaxed">
                                 {section.keyTakeaway}
                               </p>
                             </div>
@@ -377,7 +377,7 @@ export default function BlogPostPage() {
               <motion.div variants={fadeUp} className="mt-8 text-center">
                 <Link
                   href="/blogs"
-                  className="inline-flex items-center gap-2 text-[#355872] text-sm font-medium hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-black text-sm font-medium hover:gap-3 transition-all"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Back to All Articles
@@ -398,10 +398,10 @@ export default function BlogPostPage() {
               variants={stagger}
             >
               <motion.div variants={fadeUp} className="text-center mb-10">
-                <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF]/50 block mb-2">
+                <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-black/50 block mb-2">
                   Keep Reading
                 </span>
-                <h2 className="text-2xl md:text-3xl font-bold text-white">
+                <h2 className="text-2xl md:text-3xl font-bold text-black">
                   Related Articles
                 </h2>
               </motion.div>
@@ -414,22 +414,22 @@ export default function BlogPostPage() {
                       className="group block rounded-2xl border border-white/[0.06] bg-white/[0.03] p-6 hover:border-[#7AAACE]/30 hover:bg-white/[0.05] transition-all duration-300 h-full flex flex-col"
                     >
                       <div className="flex items-center gap-2 mb-4">
-                        <span className="flex items-center gap-1 text-[10px] font-bold text-[#9CD5FF] bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        <span className="flex items-center gap-1 text-[10px] font-bold text-black bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
                           <Tag className="w-3 h-3" />
                           {related.category}
                         </span>
                       </div>
 
-                      <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#9CD5FF] transition-colors duration-200 leading-snug">
+                      <h3 className="text-black font-bold text-lg mb-2 group-hover:text-black transition-colors duration-200 leading-snug">
                         {related.title}
                       </h3>
 
-                      <p className="text-white/40 text-sm leading-relaxed mb-5 line-clamp-3 flex-1">
+                      <p className="text-black/40 text-sm leading-relaxed mb-5 line-clamp-3 flex-1">
                         {related.excerpt}
                       </p>
 
                       <div className="flex items-center justify-between pt-4 border-t border-white/[0.06]">
-                        <div className="flex items-center gap-3 text-white/30 text-xs">
+                        <div className="flex items-center gap-3 text-black/30 text-xs">
                           <span className="flex items-center gap-1">
                             <Calendar className="w-3.5 h-3.5" />
                             {new Date(related.date).toLocaleDateString("en-IN", {
@@ -443,7 +443,7 @@ export default function BlogPostPage() {
                             {related.readTime}
                           </span>
                         </div>
-                        <span className="flex items-center gap-1 text-[#9CD5FF] text-xs font-medium group-hover:gap-2 transition-all duration-200">
+                        <span className="flex items-center gap-1 text-black text-xs font-medium group-hover:gap-2 transition-all duration-200">
                           Read <ChevronRight className="w-3.5 h-3.5" />
                         </span>
                       </div>
@@ -466,13 +466,13 @@ export default function BlogPostPage() {
           >
             <motion.h2
               variants={fadeUp}
-              className="text-2xl md:text-4xl font-bold text-white mb-4"
+              className="text-2xl md:text-4xl font-bold text-black mb-4"
             >
               Need Help With This Topic?
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="text-white/70 text-base mb-8"
+              className="text-black/70 text-base mb-8"
             >
               Our experts can guide you through schemes, funding, and compliance
               tailored to your business. Get a free consultation today.
@@ -480,7 +480,7 @@ export default function BlogPostPage() {
             <motion.div variants={fadeUp}>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-white text-[#355872] font-semibold text-sm hover:shadow-lg hover:shadow-black/20 transition-all"
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-white text-black font-semibold text-sm hover:shadow-lg hover:shadow-black/20 transition-all"
               >
                 Talk to an Expert <ArrowRight className="w-4 h-4" />
               </Link>

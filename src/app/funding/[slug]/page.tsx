@@ -51,18 +51,18 @@ export default function SchemeDetailPage() {
             transition={{ duration: 0.5 }}
           >
             <div className="w-16 h-16 rounded-2xl bg-[#355872]/20 flex items-center justify-center mx-auto mb-6">
-              <AlertCircle className="w-8 h-8 text-[#9CD5FF]" />
+              <AlertCircle className="w-8 h-8 text-black" />
             </div>
-            <h1 className="text-3xl font-bold text-white mb-3">
+            <h1 className="text-3xl font-bold text-black mb-3">
               Scheme Not Found
             </h1>
-            <p className="text-white/50 mb-8">
+            <p className="text-black/50 mb-8">
               The scheme you&apos;re looking for doesn&apos;t exist or may have been
               moved. Browse our complete list of funding schemes.
             </p>
             <Link
               href="/funding"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] text-white font-semibold text-sm hover:shadow-lg hover:shadow-[#355872]/25 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] text-black font-semibold text-sm hover:shadow-lg hover:shadow-[#355872]/25 transition-all"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to All Schemes
@@ -103,7 +103,7 @@ export default function SchemeDetailPage() {
             <motion.div variants={fadeUp}>
               <Link
                 href="/funding"
-                className="inline-flex items-center gap-1.5 text-sm text-white/40 hover:text-[#9CD5FF] transition-colors mb-8"
+                className="inline-flex items-center gap-1.5 text-sm text-black/40 hover:text-black transition-colors mb-8"
               >
                 <ArrowLeft className="w-4 h-4" />
                 All Schemes
@@ -120,15 +120,15 @@ export default function SchemeDetailPage() {
                     {scheme.icon}
                   </div>
                   <div>
-                    <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-[#9CD5FF] bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-2.5 py-0.5 rounded-full mb-1.5">
+                    <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-black bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-2.5 py-0.5 rounded-full mb-1.5">
                       {scheme.category}
                     </span>
-                    <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+                    <h1 className="text-3xl md:text-4xl font-bold text-black leading-tight">
                       {scheme.title}
                     </h1>
                   </div>
                 </div>
-                <p className="text-white/50 text-base md:text-lg leading-relaxed mt-2">
+                <p className="text-black/50 text-base md:text-lg leading-relaxed mt-2">
                   {scheme.shortDesc}
                 </p>
               </motion.div>
@@ -139,19 +139,19 @@ export default function SchemeDetailPage() {
                 className="flex flex-row md:flex-col gap-3 shrink-0"
               >
                 <div className="rounded-xl border border-white/10 bg-white/[0.04] backdrop-blur-sm px-5 py-4 text-center min-w-[110px]">
-                  <p className="text-white font-extrabold text-2xl leading-none">
+                  <p className="text-black font-extrabold text-2xl leading-none">
                     {scheme.highlight}
                   </p>
-                  <p className="text-white/40 text-[10px] font-medium uppercase mt-1.5">
+                  <p className="text-black/40 text-[10px] font-medium uppercase mt-1.5">
                     {scheme.highlightLabel}
                   </p>
                 </div>
                 <div className="rounded-xl border border-white/10 bg-white/[0.04] backdrop-blur-sm px-5 py-4 text-center min-w-[110px]">
-                  <p className="text-white font-extrabold text-lg leading-none flex items-center justify-center gap-1.5">
-                    <Clock className="w-4 h-4 text-[#9CD5FF]" />
+                  <p className="text-black font-extrabold text-lg leading-none flex items-center justify-center gap-1.5">
+                    <Clock className="w-4 h-4 text-black" />
                     {scheme.timeline}
                   </p>
-                  <p className="text-white/40 text-[10px] font-medium uppercase mt-1.5">
+                  <p className="text-black/40 text-[10px] font-medium uppercase mt-1.5">
                     Timeline
                   </p>
                 </div>
@@ -173,12 +173,12 @@ export default function SchemeDetailPage() {
               variants={fadeUp}
               className="flex items-center gap-2 mb-4"
             >
-              <Sparkles className="w-5 h-5 text-[#355872]" />
-              <h2 className="text-[#0a1628] font-bold text-2xl">Overview</h2>
+              <Sparkles className="w-5 h-5 text-black" />
+              <h2 className="text-black font-bold text-2xl">Overview</h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
-              className="text-[#0a1628]/60 text-base leading-relaxed"
+              className="text-black/60 text-base leading-relaxed"
             >
               {scheme.fullDescription}
             </motion.p>
@@ -198,8 +198,8 @@ export default function SchemeDetailPage() {
               variants={fadeUp}
               className="flex items-center gap-2 mb-6"
             >
-              <ListChecks className="w-5 h-5 text-[#355872]" />
-              <h2 className="text-[#0a1628] font-bold text-2xl">
+              <ListChecks className="w-5 h-5 text-black" />
+              <h2 className="text-black font-bold text-2xl">
                 Eligibility Criteria
               </h2>
             </motion.div>
@@ -211,8 +211,8 @@ export default function SchemeDetailPage() {
                   variants={fadeUp}
                   className="flex items-start gap-3 rounded-xl border border-[#355872]/[0.06] bg-[#F7F8F0] p-4"
                 >
-                  <CheckCircle2 className="w-5 h-5 text-[#7AAACE] shrink-0 mt-0.5" />
-                  <span className="text-[#0a1628]/70 text-sm leading-relaxed">
+                  <CheckCircle2 className="w-5 h-5 text-black shrink-0 mt-0.5" />
+                  <span className="text-black/70 text-sm leading-relaxed">
                     {item}
                   </span>
                 </motion.div>
@@ -234,8 +234,8 @@ export default function SchemeDetailPage() {
               variants={fadeUp}
               className="flex items-center gap-2 mb-6"
             >
-              <Gift className="w-5 h-5 text-[#355872]" />
-              <h2 className="text-[#0a1628] font-bold text-2xl">
+              <Gift className="w-5 h-5 text-black" />
+              <h2 className="text-black font-bold text-2xl">
                 Key Benefits
               </h2>
             </motion.div>
@@ -248,9 +248,9 @@ export default function SchemeDetailPage() {
                   className="rounded-2xl border border-[#355872]/[0.08] bg-white p-5 hover:border-[#355872]/20 hover:shadow-lg hover:shadow-[#355872]/5 transition-all duration-300"
                 >
                   <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#355872] to-[#7AAACE] flex items-center justify-center mb-3">
-                    <ShieldCheck className="w-4 h-4 text-white" />
+                    <ShieldCheck className="w-4 h-4 text-black" />
                   </div>
-                  <p className="text-[#0a1628]/70 text-sm leading-relaxed">
+                  <p className="text-black/70 text-sm leading-relaxed">
                     {benefit}
                   </p>
                 </motion.div>
@@ -272,8 +272,8 @@ export default function SchemeDetailPage() {
               variants={fadeUp}
               className="flex items-center gap-2 mb-6"
             >
-              <FileText className="w-5 h-5 text-[#355872]" />
-              <h2 className="text-[#0a1628] font-bold text-2xl">
+              <FileText className="w-5 h-5 text-black" />
+              <h2 className="text-black font-bold text-2xl">
                 Required Documents
               </h2>
             </motion.div>
@@ -285,11 +285,11 @@ export default function SchemeDetailPage() {
                 {scheme.documents.map((doc, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="w-6 h-6 rounded-full bg-[#355872]/10 flex items-center justify-center shrink-0">
-                      <span className="text-[10px] font-bold text-[#355872]">
+                      <span className="text-[10px] font-bold text-black">
                         {i + 1}
                       </span>
                     </div>
-                    <span className="text-[#0a1628]/60 text-sm">{doc}</span>
+                    <span className="text-black/60 text-sm">{doc}</span>
                   </div>
                 ))}
               </div>
@@ -310,8 +310,8 @@ export default function SchemeDetailPage() {
               variants={fadeUp}
               className="flex items-center gap-2 mb-10"
             >
-              <Clock className="w-5 h-5 text-[#355872]" />
-              <h2 className="text-[#0a1628] font-bold text-2xl">
+              <Clock className="w-5 h-5 text-black" />
+              <h2 className="text-black font-bold text-2xl">
                 Application Process
               </h2>
             </motion.div>
@@ -330,17 +330,17 @@ export default function SchemeDetailPage() {
                   >
                     {/* Step Number */}
                     <div className="relative z-10 w-10 h-10 rounded-full bg-gradient-to-br from-[#355872] to-[#7AAACE] flex items-center justify-center shrink-0 shadow-lg shadow-[#355872]/20">
-                      <span className="text-white font-bold text-sm">
+                      <span className="text-black font-bold text-sm">
                         {i + 1}
                       </span>
                     </div>
 
                     {/* Step Content */}
                     <div className="flex-1 rounded-2xl border border-[#355872]/[0.08] bg-white p-5 hover:border-[#355872]/15 hover:shadow-md transition-all duration-300">
-                      <p className="text-[10px] font-bold uppercase tracking-wider text-[#355872]/50 mb-1">
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-black/50 mb-1">
                         Step {i + 1}
                       </p>
-                      <p className="text-[#0a1628]/70 text-sm leading-relaxed">
+                      <p className="text-black/70 text-sm leading-relaxed">
                         {step}
                       </p>
                     </div>
@@ -368,13 +368,13 @@ export default function SchemeDetailPage() {
             </motion.div>
             <motion.h2
               variants={fadeUp}
-              className="text-3xl md:text-4xl font-bold text-white mb-4"
+              className="text-3xl md:text-4xl font-bold text-black mb-4"
             >
               Ready to Apply for {scheme.title}?
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="text-white/70 text-base mb-8 max-w-xl mx-auto"
+              className="text-black/70 text-base mb-8 max-w-xl mx-auto"
             >
               Our experts handle the entire application process — from
               eligibility assessment to documentation to final approval. Get
@@ -393,7 +393,7 @@ export default function SchemeDetailPage() {
               </Link>
               <Link
                 href="/funding"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-white/70 hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-black/70 hover:text-black transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Browse All Schemes

@@ -46,7 +46,7 @@ function PricingSection({ tiers, className }: PricingSectionProps) {
     highlight: cn(
       "h-12 bg-zinc-900 dark:bg-zinc-100",
       "hover:bg-zinc-800 dark:hover:bg-zinc-300",
-      "text-white dark:text-zinc-900",
+      "text-black dark:text-zinc-900",
       "shadow-[0_1px_15px_rgba(0,0,0,0.1)]",
       "hover:shadow-[0_1px_20px_rgba(0,0,0,0.15)]",
       "font-semibold text-base",
@@ -56,7 +56,7 @@ function PricingSection({ tiers, className }: PricingSectionProps) {
   const badgeStyles = cn(
     "px-4 py-1.5 text-sm font-medium",
     "bg-zinc-900 dark:bg-zinc-100",
-    "text-white dark:text-zinc-900",
+    "text-black dark:text-zinc-900",
     "border-none shadow-lg",
   )
 
@@ -82,7 +82,7 @@ function PricingSection({ tiers, className }: PricingSectionProps) {
                 className={cn(
                   "px-8 py-2.5 text-sm font-medium rounded-full transition-all duration-300",
                   (period === "Yearly") === isYearly
-                    ? "bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 shadow-lg"
+                    ? "bg-zinc-900 dark:bg-zinc-100 text-black dark:text-zinc-900 shadow-lg"
                     : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100",
                 )}
               >

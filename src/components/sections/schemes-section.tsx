@@ -42,21 +42,21 @@ export default function SchemesSection() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-3">
+            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">
               Government Schemes
             </motion.span>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-white leading-tight">
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-black leading-tight">
               Helping MSMEs Access{" "}
-              <span style={{ background: "linear-gradient(90deg,#355872,#7AAACE)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              <span style={{ background: "linear-gradient(90deg,#355872,#7AAACE)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>
                 Government Support
               </span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-white/50 text-base mt-3 max-w-lg">
+            <motion.p variants={fadeUp} className="text-black/50 text-base mt-3 max-w-lg">
               Expert guidance for PMEGP, CGTMSE, MUDRA and all major MSME schemes across India.
             </motion.p>
           </div>
           <motion.div variants={fadeUp}>
-            <Link href="/schemes" className="flex items-center gap-2 rounded-full border border-[#355872]/25 bg-[#355872]/[0.06] px-5 py-2.5 text-sm text-[#9CD5FF] hover:bg-[#355872]/[0.12] transition-all shrink-0 w-fit">
+            <Link href="/schemes" className="flex items-center gap-2 rounded-full border border-[#355872]/25 bg-[#355872]/[0.06] px-5 py-2.5 text-sm text-black hover:bg-[#355872]/[0.12] transition-all shrink-0 w-fit">
               View All Schemes <ExternalLink className="w-3.5 h-3.5" />
             </Link>
           </motion.div>
@@ -68,8 +68,8 @@ export default function SchemesSection() {
             {ticker.map((t) => (
               <div key={t.label} className="flex flex-col items-center py-4 px-8 gap-1 border-r border-white/[0.06]">
                 <span className="text-lg">{t.icon}</span>
-                <p className="text-white font-bold text-sm whitespace-nowrap">{t.val}</p>
-                <p className="text-white/40 text-[10px] text-center leading-snug whitespace-nowrap">{t.label}</p>
+                <p className="text-black font-bold text-sm whitespace-nowrap">{t.val}</p>
+                <p className="text-black/40 text-[10px] text-center leading-snug whitespace-nowrap">{t.label}</p>
               </div>
             ))}
           </Marquee>
@@ -90,13 +90,13 @@ export default function SchemesSection() {
                 </span>
               </div>
               <div>
-                <p className="text-white font-bold text-sm mb-1">{s.label}</p>
-                <p className="text-white/50 text-xs leading-relaxed">{s.title}</p>
+                <p className="text-black font-bold text-sm mb-1">{s.label}</p>
+                <p className="text-black/50 text-xs leading-relaxed">{s.title}</p>
               </div>
               <div className="mt-auto pt-3 border-t border-white/[0.06] flex items-end justify-between">
                 <div>
                   <p className="font-black text-xl" style={{ color: s.color }}>{s.amount}</p>
-                  <p className="text-white/40 text-[10px] uppercase tracking-wider mt-0.5">{s.amountLabel}</p>
+                  <p className="text-black/40 text-[10px] uppercase tracking-wider mt-0.5">{s.amountLabel}</p>
                 </div>
                 <span className="text-[9px] font-semibold px-2 py-1 rounded-full border" style={{ color: s.color, backgroundColor: `${s.color}12`, borderColor: `${s.color}25` }}>
                   {s.highlight}
@@ -109,12 +109,12 @@ export default function SchemesSection() {
         {/* Trust chips */}
         <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4 items-center">
           {["MSME Registered", "Pan India Service", "Expert Consultants", "Transparent Process"].map((t) => (
-            <div key={t} className="flex items-center gap-2 text-white/45 text-xs">
+            <div key={t} className="flex items-center gap-2 text-black/45 text-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-[#9CD5FF] shrink-0" />
               {t}
             </div>
           ))}
-          <span className="text-white/30 text-xs ml-auto">Serving MSMEs across 28+ States</span>
+          <span className="text-black/30 text-xs ml-auto">Serving MSMEs across 28+ States</span>
         </motion.div>
       </motion.div>
     </section>

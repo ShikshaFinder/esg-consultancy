@@ -40,12 +40,12 @@ function FAQItem({ faq, index, isOpen, onToggle }: { faq: { q: string; a: string
   return (
     <div className={`rounded-2xl border transition-all duration-300 ${isOpen ? "border-[#355872]/20 bg-white shadow-lg shadow-[#355872]/5" : "border-[#355872]/[0.08] bg-white/60 hover:border-[#355872]/15 hover:bg-white"}`}>
       <button onClick={onToggle} className="w-full flex items-center gap-4 p-5 text-left cursor-pointer">
-        <span className="text-xs font-bold text-[#7AAACE] bg-[#7AAACE]/10 border border-[#7AAACE]/20 w-7 h-7 rounded-full flex items-center justify-center shrink-0">
+        <span className="text-xs font-bold text-black bg-[#7AAACE]/10 border border-[#7AAACE]/20 w-7 h-7 rounded-full flex items-center justify-center shrink-0">
           {index + 1}
         </span>
-        <span className="flex-1 text-[#0a1628] font-semibold text-sm">{faq.q}</span>
+        <span className="flex-1 text-black font-semibold text-sm">{faq.q}</span>
         <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
-          <ChevronDown className={`w-5 h-5 transition-colors ${isOpen ? "text-[#355872]" : "text-[#355872]/40"}`} />
+          <ChevronDown className={`w-5 h-5 transition-colors ${isOpen ? "text-black" : "text-black/40"}`} />
         </motion.div>
       </button>
       <AnimatePresence initial={false}>
@@ -56,7 +56,7 @@ function FAQItem({ faq, index, isOpen, onToggle }: { faq: { q: string; a: string
             exit={{ height: 0, opacity: 0, transition: { height: { duration: 0.3 }, opacity: { duration: 0.2 } } }}
             className="overflow-hidden"
           >
-            <div className="px-5 pb-5 text-[#0a1628]/60 text-sm leading-relaxed border-t border-[#355872]/[0.06] pt-4 ml-11">
+            <div className="px-5 pb-5 text-black/60 text-sm leading-relaxed border-t border-[#355872]/[0.06] pt-4 ml-11">
               {faq.a}
             </div>
           </motion.div>
@@ -76,25 +76,25 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         {/* Hero */}
         <section className="relative pt-32 pb-20 px-6 bg-[#0a1628] overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(53,88,114,0.15)_0%,transparent_60%)] pointer-events-none" />
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.5) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
 
           <motion.div className="max-w-7xl mx-auto relative z-10" initial="hidden" animate="show" variants={stagger}>
             {/* Breadcrumb */}
             <motion.div variants={fadeUp} className="flex items-center gap-2 mb-6">
-              <Link href="/services" className="text-white/40 text-sm hover:text-white/70 transition-colors">Services</Link>
-              <span className="text-white/20">/</span>
-              <span className="text-[#9CD5FF] text-sm font-medium">{data.breadcrumbEmoji} {data.breadcrumbLabel}</span>
+              <Link href="/services" className="text-black/40 text-sm hover:text-black/70 transition-colors">Services</Link>
+              <span className="text-black/20">/</span>
+              <span className="text-black text-sm font-medium">{data.breadcrumbEmoji} {data.breadcrumbLabel}</span>
             </motion.div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <motion.h1 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-white leading-tight mb-5">
+                <motion.h1 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-black leading-tight mb-5">
                   {data.heroTitle}{" "}
-                  <span style={{ background: "linear-gradient(90deg,#9CD5FF,#7AAACE)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  <span style={{ background: "linear-gradient(90deg,#9CD5FF,#7AAACE)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>
                     {data.heroHighlight}
                   </span>
                 </motion.h1>
-                <motion.p variants={fadeUp} className="text-white/50 text-base leading-relaxed mb-8 max-w-lg">
+                <motion.p variants={fadeUp} className="text-black/50 text-base leading-relaxed mb-8 max-w-lg">
                   {data.heroDesc}
                 </motion.p>
 
@@ -102,18 +102,18 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
                 <motion.div variants={fadeUp} className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
                   {data.heroStats.map((s) => (
                     <div key={s.label} className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-3 text-center">
-                      <p className="text-lg font-black text-white">{s.value}</p>
-                      <p className="text-[10px] text-white/40 font-medium uppercase tracking-wide">{s.label}</p>
+                      <p className="text-lg font-black text-black">{s.value}</p>
+                      <p className="text-[10px] text-black/40 font-medium uppercase tracking-wide">{s.label}</p>
                     </div>
                   ))}
                 </motion.div>
 
                 {/* CTAs */}
                 <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
-                  <Link href="/contact" className="inline-flex items-center gap-2 h-12 px-7 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] text-white font-semibold text-sm hover:shadow-lg hover:shadow-[#355872]/25 transition-all">
+                  <Link href="/contact" className="inline-flex items-center gap-2 h-12 px-7 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] text-black font-semibold text-sm hover:shadow-lg hover:shadow-[#355872]/25 transition-all">
                     Get Started <ArrowRight className="w-4 h-4" />
                   </Link>
-                  <a href="tel:+918487828752" className="inline-flex items-center gap-2 h-12 px-7 rounded-full border border-white/15 text-white/80 font-medium text-sm hover:bg-white/5 transition-all">
+                  <a href="tel:+919998035607" className="inline-flex items-center gap-2 h-12 px-7 rounded-full border border-white/15 text-black/80 font-medium text-sm hover:bg-white/5 transition-all">
                     <Phone className="w-4 h-4" /> Talk to Expert
                   </a>
                 </motion.div>
@@ -140,8 +140,8 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         <section className="py-20 px-6 bg-[#F7F8F0]">
           <motion.div className="max-w-7xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.05 }} variants={stagger}>
             <motion.div variants={fadeUp} className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0a1628]">What We Offer</h2>
-              <p className="text-[#0a1628]/50 text-base mt-3 max-w-xl mx-auto">Comprehensive solutions tailored to your business needs</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-black">What We Offer</h2>
+              <p className="text-black/50 text-base mt-3 max-w-xl mx-auto">Comprehensive solutions tailored to your business needs</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -152,16 +152,16 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
                 >
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-2xl">{s.emoji}</span>
-                    <span className="flex items-center gap-1 text-[10px] font-bold text-[#355872] bg-[#355872]/8 border border-[#355872]/15 px-2.5 py-1 rounded-full">
+                    <span className="flex items-center gap-1 text-[10px] font-bold text-black bg-[#355872]/8 border border-[#355872]/15 px-2.5 py-1 rounded-full">
                       <Clock className="w-3 h-3" /> {s.timeline}
                     </span>
                   </div>
-                  <h3 className="text-[#0a1628] font-bold text-lg mb-2">{s.title}</h3>
-                  <p className="text-[#0a1628]/50 text-sm mb-4">{s.desc}</p>
+                  <h3 className="text-black font-bold text-lg mb-2">{s.title}</h3>
+                  <p className="text-black/50 text-sm mb-4">{s.desc}</p>
                   <div className="space-y-2">
                     {s.items.map((item) => (
-                      <div key={item} className="flex items-center gap-2 text-sm text-[#0a1628]/70">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#7AAACE] shrink-0" />
+                      <div key={item} className="flex items-center gap-2 text-sm text-black/70">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-black shrink-0" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -176,13 +176,13 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         <section className="py-20 px-6 bg-[#0a1628]">
           <motion.div className="max-w-5xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.08 }} variants={stagger}>
             <motion.div variants={fadeUp} className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white">Why Choose Grow Bridge?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-black">Why Choose Grow Bridge?</h2>
             </motion.div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {data.whyChooseUs.map((item, i) => (
                 <motion.div key={i} custom={i} variants={fadeUp} className="flex items-start gap-3 rounded-xl border border-white/[0.06] bg-white/[0.03] p-4">
-                  <CheckCircle2 className="w-5 h-5 text-[#9CD5FF] shrink-0 mt-0.5" />
-                  <span className="text-white/80 text-sm">{item}</span>
+                  <CheckCircle2 className="w-5 h-5 text-black shrink-0 mt-0.5" />
+                  <span className="text-black/80 text-sm">{item}</span>
                 </motion.div>
               ))}
             </div>
@@ -193,17 +193,17 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         <section className="py-20 px-6 bg-[#F7F8F0]">
           <motion.div className="max-w-4xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.08 }} variants={stagger}>
             <motion.div variants={fadeUp} className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0a1628]">How It Works</h2>
-              <p className="text-[#0a1628]/50 text-base mt-3">Simple 4-step process to get you started</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-black">How It Works</h2>
+              <p className="text-black/50 text-base mt-3">Simple 4-step process to get you started</p>
             </motion.div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {data.process.map((p, i) => (
                 <motion.div key={p.step} custom={i} variants={fadeUp} className="relative rounded-2xl border border-[#355872]/[0.08] bg-white p-6 text-center">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#355872] to-[#7AAACE] flex items-center justify-center text-white font-bold text-sm mx-auto mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#355872] to-[#7AAACE] flex items-center justify-center text-black font-bold text-sm mx-auto mb-4">
                     {p.step}
                   </div>
-                  <h3 className="text-[#0a1628] font-bold text-base mb-2">{p.title}</h3>
-                  <p className="text-[#0a1628]/50 text-sm">{p.desc}</p>
+                  <h3 className="text-black font-bold text-base mb-2">{p.title}</h3>
+                  <p className="text-black/50 text-sm">{p.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -214,7 +214,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         <section className="py-20 px-6 bg-[#F7F8F0]">
           <motion.div className="max-w-3xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.08 }} variants={stagger}>
             <motion.div variants={fadeUp} className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0a1628]">Frequently Asked Questions</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-black">Frequently Asked Questions</h2>
             </motion.div>
             <div className="flex flex-col gap-3">
               {data.faqs.map((faq, i) => (
@@ -227,18 +227,18 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         {/* CTA */}
         <section className="py-20 px-6 bg-gradient-to-r from-[#355872] to-[#7AAACE]">
           <motion.div className="max-w-3xl mx-auto text-center" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black mb-4">
               Ready to Get Started?
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-white/70 text-base mb-8">
+            <motion.p variants={fadeUp} className="text-black/70 text-base mb-8">
               Talk to our experts for a free eligibility check and get started on your journey today.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/contact" className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-white text-[#355872] font-semibold text-sm hover:shadow-lg transition-all">
+              <Link href="/contact" className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-white text-black font-semibold text-sm hover:shadow-lg transition-all">
                 Get Free Consultation <ArrowRight className="w-4 h-4" />
               </Link>
-              <a href="https://wa.me/918487828752" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full border border-white/30 text-white font-semibold text-sm hover:bg-white/10 transition-all"
+              <a href="https://wa.me/919998035607" target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full border border-white/30 text-black font-semibold text-sm hover:bg-white/10 transition-all"
               >
                 <MessageCircle className="w-4 h-4" /> WhatsApp Us
               </a>

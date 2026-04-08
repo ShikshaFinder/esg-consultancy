@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased noise-overlay bg-[#27374D] text-[#DDE6ED]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased noise-overlay bg-white text-black`}
       >
         <ClientPopupWrapper />
         <SiteAnimations />

@@ -113,12 +113,12 @@ export default function ImpactPage() {
           </div>
 
           <motion.div className="max-w-4xl mx-auto text-center relative z-10" initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-4">📊 Proven Results</motion.span>
-            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-4">📊 Proven Results</motion.span>
+            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-bold text-black leading-tight mb-6">
               Our Impact{" "}
-              <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Across India</span>
+              <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Across India</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-white/50 text-lg max-w-2xl mx-auto leading-relaxed">
+            <motion.p variants={fadeUp} className="text-black/50 text-lg max-w-2xl mx-auto leading-relaxed">
               From securing ₹110+ Crore in government funding to empowering 500+ businesses across 28 states — here&apos;s the story of how Grow Bridge is transforming India&apos;s MSME landscape.
             </motion.p>
           </motion.div>
@@ -128,8 +128,8 @@ export default function ImpactPage() {
         <section className="py-20 px-6 bg-[#F7F8F0]">
           <motion.div className="max-w-5xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.div variants={fadeUp} className="text-center mb-14">
-              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#7AAACE] block mb-3">Key Metrics</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0a1628]">Numbers That Speak</h2>
+              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Key Metrics</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-black">Numbers That Speak</h2>
             </motion.div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
@@ -139,10 +139,10 @@ export default function ImpactPage() {
                   whileHover={{ y: -4 }}
                 >
                   <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center bg-[#355872]/[0.08] group-hover:bg-gradient-to-br group-hover:from-[#355872] group-hover:to-[#7AAACE] transition-all duration-300">
-                    <s.icon className="w-5 h-5 text-[#355872] group-hover:text-white transition-colors duration-300" />
+                    <s.icon className="w-5 h-5 text-black group-hover:text-black transition-colors duration-300" />
                   </div>
-                  <p className="text-2xl md:text-3xl font-black text-[#355872] mb-1">{s.value}</p>
-                  <p className="text-sm font-semibold text-[#0a1628]">{s.label}</p>
+                  <p className="text-2xl md:text-3xl font-black text-black mb-1">{s.value}</p>
+                  <p className="text-sm font-semibold text-black">{s.label}</p>
                 </motion.div>
               ))}
             </div>
@@ -153,12 +153,12 @@ export default function ImpactPage() {
         <section className="py-20 px-6 bg-[#060e1a]">
           <motion.div className="max-w-5xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.div variants={fadeUp} className="text-center mb-14">
-              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-3">Sector Breakdown</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
+              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Sector Breakdown</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-black">
                 Businesses We&apos;ve{" "}
-                <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Empowered</span>
+                <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Empowered</span>
               </h2>
-              <p className="text-white/40 text-sm mt-3 max-w-xl mx-auto">Grow Bridge serves MSMEs and startups across diverse industries, each with tailored funding strategies.</p>
+              <p className="text-black/40 text-sm mt-3 max-w-xl mx-auto">Grow Bridge serves MSMEs and startups across diverse industries, each with tailored funding strategies.</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -169,8 +169,8 @@ export default function ImpactPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-white font-semibold text-sm">{s.name}</span>
-                      <span className="text-[#9CD5FF] font-bold text-sm">{s.percent}%</span>
+                      <span className="text-black font-semibold text-sm">{s.name}</span>
+                      <span className="text-black font-bold text-sm">{s.percent}%</span>
                     </div>
                     <div className="w-full h-2 rounded-full bg-white/[0.08] overflow-hidden">
                       <motion.div
@@ -195,9 +195,9 @@ export default function ImpactPage() {
                 { label: "Highest Ticket", value: "Manufacturing", sub: "Avg ₹35L per business" },
               ].map((item) => (
                 <div key={item.label} className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4 text-center">
-                  <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-white/30 mb-1">{item.label}</p>
-                  <p className="text-white font-bold text-sm">{item.value}</p>
-                  <p className="text-white/30 text-[11px] mt-0.5">{item.sub}</p>
+                  <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-black/30 mb-1">{item.label}</p>
+                  <p className="text-black font-bold text-sm">{item.value}</p>
+                  <p className="text-black/30 text-[11px] mt-0.5">{item.sub}</p>
                 </div>
               ))}
             </motion.div>
@@ -209,43 +209,43 @@ export default function ImpactPage() {
           <motion.div className="max-w-5xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               <div>
-                <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#7AAACE] block mb-3">Pan-India Presence</motion.span>
-                <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-[#0a1628] leading-tight mb-5">
+                <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Pan-India Presence</motion.span>
+                <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black leading-tight mb-5">
                   Covering{" "}
-                  <span style={{ background: "linear-gradient(90deg,#355872,#7AAACE)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>28+ States</span>
+                  <span style={{ background: "linear-gradient(90deg,#355872,#7AAACE)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>28+ States</span>
                 </motion.h2>
-                <motion.p variants={fadeUp} className="text-[#0a1628]/50 text-sm leading-relaxed mb-8">
+                <motion.p variants={fadeUp} className="text-black/50 text-sm leading-relaxed mb-8">
                   From metro cities to tier-2 and tier-3 towns, Grow Bridge&apos;s digital-first approach ensures no deserving business is left behind. Our 100% online process means geography is never a barrier.
                 </motion.p>
 
                 <motion.div variants={fadeUp} className="grid grid-cols-2 gap-4 mb-8">
                   <div className="rounded-xl bg-[#F7F8F0] border border-[#355872]/10 p-4 text-center">
-                    <p className="text-2xl font-black text-[#355872]">28+</p>
-                    <p className="text-[11px] text-[#0a1628]/50 font-medium">Active States</p>
+                    <p className="text-2xl font-black text-black">28+</p>
+                    <p className="text-[11px] text-black/50 font-medium">Active States</p>
                   </div>
                   <div className="rounded-xl bg-[#F7F8F0] border border-[#355872]/10 p-4 text-center">
-                    <p className="text-2xl font-black text-[#355872]">100%</p>
-                    <p className="text-[11px] text-[#0a1628]/50 font-medium">Digital Process</p>
+                    <p className="text-2xl font-black text-black">100%</p>
+                    <p className="text-[11px] text-black/50 font-medium">Digital Process</p>
                   </div>
                 </motion.div>
 
                 <motion.div variants={fadeUp} className="flex flex-wrap gap-2">
                   {["Gujarat", "Maharashtra", "Rajasthan", "Karnataka", "Tamil Nadu", "Delhi NCR", "UP", "MP", "Kerala", "West Bengal", "Bihar", "Odisha", "Punjab", "Haryana", "Telangana", "AP", "Jharkhand", "Chhattisgarh"].map((s) => (
-                    <span key={s} className="text-[10px] font-medium text-[#355872] bg-[#F7F8F0] border border-[#355872]/10 px-2.5 py-1 rounded-full">{s}</span>
+                    <span key={s} className="text-[10px] font-medium text-black bg-[#F7F8F0] border border-[#355872]/10 px-2.5 py-1 rounded-full">{s}</span>
                   ))}
-                  <span className="text-[10px] font-medium text-white bg-[#355872] px-2.5 py-1 rounded-full">10+ more</span>
+                  <span className="text-[10px] font-medium text-black bg-[#355872] px-2.5 py-1 rounded-full">10+ more</span>
                 </motion.div>
               </div>
 
               {/* State bars */}
               <motion.div variants={fadeUp} className="rounded-2xl border border-[#355872]/10 bg-[#F7F8F0] p-8">
-                <h3 className="text-[#0a1628] font-bold text-lg mb-6">Top States by Businesses Funded</h3>
+                <h3 className="text-black font-bold text-lg mb-6">Top States by Businesses Funded</h3>
                 <div className="space-y-4">
                   {statePresence.map((item, i) => (
                     <div key={item.state} className="space-y-1.5">
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-[#0a1628]/60 font-medium">{item.state}</span>
-                        <span className="text-[#355872] font-bold">{item.businesses}</span>
+                        <span className="text-black/60 font-medium">{item.state}</span>
+                        <span className="text-black font-bold">{item.businesses}</span>
                       </div>
                       <div className="w-full h-2 rounded-full bg-[#355872]/[0.08] overflow-hidden">
                         <motion.div
@@ -268,9 +268,9 @@ export default function ImpactPage() {
         <section className="py-20 px-6 bg-[#F7F8F0]">
           <motion.div className="max-w-5xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.div variants={fadeUp} className="text-center mb-14">
-              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#7AAACE] block mb-3">Success Stories</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0a1628]">Impact That Matters</h2>
-              <p className="text-[#0a1628]/50 text-sm mt-3 max-w-xl mx-auto">Real businesses, real funding, real growth — powered by Grow Bridge.</p>
+              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Success Stories</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-black">Impact That Matters</h2>
+              <p className="text-black/50 text-sm mt-3 max-w-xl mx-auto">Real businesses, real funding, real growth — powered by Grow Bridge.</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -280,13 +280,13 @@ export default function ImpactPage() {
                   whileHover={{ y: -4 }}
                 >
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="text-[10px] font-bold tracking-wider uppercase text-white bg-[#355872] px-2.5 py-0.5 rounded-full">{story.scheme}</span>
-                    <span className="text-[10px] font-bold tracking-wider uppercase text-[#355872] bg-[#355872]/10 px-2.5 py-0.5 rounded-full">{story.funding}</span>
+                    <span className="text-[10px] font-bold tracking-wider uppercase text-black bg-[#355872] px-2.5 py-0.5 rounded-full">{story.scheme}</span>
+                    <span className="text-[10px] font-bold tracking-wider uppercase text-black bg-[#355872]/10 px-2.5 py-0.5 rounded-full">{story.funding}</span>
                   </div>
-                  <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-5 italic">&ldquo;{story.quote}&rdquo;</p>
+                  <p className="text-black/60 text-sm leading-relaxed mb-5 italic">&ldquo;{story.quote}&rdquo;</p>
                   <div className="border-t border-[#355872]/[0.06] pt-4">
-                    <p className="text-[#0a1628] font-bold text-sm">{story.name}</p>
-                    <p className="text-[#0a1628]/40 text-[11px]">{story.business} · {story.location}</p>
+                    <p className="text-black font-bold text-sm">{story.name}</p>
+                    <p className="text-black/40 text-[11px]">{story.business} · {story.location}</p>
                   </div>
                 </motion.div>
               ))}
@@ -298,8 +298,8 @@ export default function ImpactPage() {
         <section className="py-20 px-6 bg-[#060e1a]">
           <motion.div className="max-w-5xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.div variants={fadeUp} className="text-center mb-14">
-              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#9CD5FF] block mb-3">Schemes We Cover</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">30+ Government Schemes</h2>
+              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Schemes We Cover</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-black">30+ Government Schemes</h2>
             </motion.div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -316,9 +316,9 @@ export default function ImpactPage() {
                 <motion.div key={scheme.name} custom={i} variants={fadeUp}
                   className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4 text-center hover:bg-white/[0.06] transition-all duration-300"
                 >
-                  <CheckCircle2 className="w-5 h-5 text-[#9CD5FF] mx-auto mb-2" />
-                  <p className="text-white font-bold text-sm">{scheme.name}</p>
-                  <p className="text-white/35 text-[11px] mt-0.5">{scheme.desc}</p>
+                  <CheckCircle2 className="w-5 h-5 text-black mx-auto mb-2" />
+                  <p className="text-black font-bold text-sm">{scheme.name}</p>
+                  <p className="text-black/35 text-[11px] mt-0.5">{scheme.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -328,8 +328,8 @@ export default function ImpactPage() {
         {/* CTA */}
         <section className="py-20 px-6 bg-gradient-to-r from-[#355872] to-[#7AAACE]">
           <motion.div className="max-w-3xl mx-auto text-center" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-white mb-4">Become Our Next Success Story</motion.h2>
-            <motion.p variants={fadeUp} className="text-white/70 text-base mb-8">
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black mb-4">Become Our Next Success Story</motion.h2>
+            <motion.p variants={fadeUp} className="text-black/70 text-base mb-8">
               Join 500+ businesses who trusted Grow Bridge to navigate their funding journey. Your growth story starts with a free consultation.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -341,7 +341,7 @@ export default function ImpactPage() {
                 </MetalButton>
               </Link>
               <Link href="/schemes"
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full border border-white/30 text-white font-semibold text-sm hover:bg-white/10 transition-all"
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full border border-white/30 text-black font-semibold text-sm hover:bg-white/10 transition-all"
               >
                 Explore Schemes
               </Link>

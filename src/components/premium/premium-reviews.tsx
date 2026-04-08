@@ -116,19 +116,19 @@ function ReviewCard({ review, position, onClick }: {
         className="rounded-2xl p-6 border"
         style={{
           background: position === "center"
-            ? "linear-gradient(145deg, #526D82 0%, #27374D 100%)"
-            : "linear-gradient(145deg, #3a5468 0%, #27374D 100%)",
-          borderColor: position === "center" ? "rgba(157,178,191,0.3)" : "rgba(82,109,130,0.3)",
+            ? "linear-gradient(145deg, #EBF4FF 0%, #2E7DD9 100%)"
+            : "#EBF4FF",
+          borderColor: position === "center" ? "rgba(27,79,138,0.6)" : "rgba(27,79,138,0.3)",
           boxShadow: position === "center"
-            ? "0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(157,178,191,0.15)"
-            : "0 8px 30px rgba(0,0,0,0.25)",
+            ? "0 20px 60px rgba(27,79,138,0.3), 0 0 0 1px rgba(27,79,138,0.2)"
+            : "0 8px 30px rgba(27,79,138,0.15)",
         }}
       >
         {/* Top row */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <GoogleIcon />
-            <span className="text-[#DDE6ED]/70 text-sm font-semibold tracking-wide">Google Reviews</span>
+            <span className="text-black/70 text-sm font-semibold tracking-wide">Google Reviews</span>
           </div>
           <Stars />
         </div>
@@ -136,20 +136,20 @@ function ReviewCard({ review, position, onClick }: {
         {/* Reviewer */}
         <div className="flex items-center gap-3 mb-4">
           <div
-            className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-xs shrink-0"
-            style={{ background: "linear-gradient(135deg, #526D82, #9DB2BF)" }}
+            className="w-10 h-10 rounded-full flex items-center justify-center text-black font-bold text-xs shrink-0"
+            style={{ background: "linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.15))" }}
           >
             {review.initials}
           </div>
           <div>
-            <p className="text-[#DDE6ED] font-bold text-sm">{review.name}</p>
-            {review.business && <p className="text-[#9DB2BF]/50 text-xs font-medium">{review.business}</p>}
+            <p className="text-black font-bold text-sm">{review.name}</p>
+            {review.business && <p className="text-black/50 text-xs font-medium">{review.business}</p>}
           </div>
-          <span className="ml-auto text-[#526D82] text-xs">{review.date}</span>
+          <span className="ml-auto text-black text-xs">{review.date}</span>
         </div>
 
         {/* Review text */}
-        <p className="text-[#DDE6ED]/65 text-sm leading-relaxed line-clamp-4">
+        <p className="text-black/75 text-sm leading-relaxed line-clamp-4">
           &ldquo;{review.text}&rdquo;
         </p>
 
@@ -159,7 +159,7 @@ function ReviewCard({ review, position, onClick }: {
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
-          className="inline-flex items-center gap-1 mt-4 text-[#9DB2BF] text-xs font-bold hover:text-[#DDE6ED] transition-colors"
+          className="inline-flex items-center gap-1 mt-4 text-black text-xs font-bold hover:text-black transition-colors"
         >
           Read More
           <ExternalLink className="w-3 h-3" />
@@ -204,17 +204,17 @@ export default function PremiumReviews() {
         >
           <motion.div variants={blurFade} custom={0} className="flex items-center justify-center gap-3 mb-4">
             <GoogleIcon />
-            <span className="text-sm font-bold text-[#9DB2BF]">Google Reviews</span>
-            <span className="text-sm font-bold text-[#DDE6ED]">4.9</span>
+            <span className="text-sm font-bold text-black">Google Reviews</span>
+            <span className="text-sm font-bold text-black">4.9</span>
             <Stars />
           </motion.div>
-          <motion.h2 variants={blurFade} custom={0.1} className="text-3xl md:text-5xl font-bold text-[#DDE6ED] mb-3">
+          <motion.h2 variants={blurFade} custom={0.1} className="text-3xl md:text-5xl font-bold text-black mb-3">
             What Our{" "}
-            <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #DDE6ED, #9DB2BF)" }}>
+            <span className="text-black" style={{ backgroundImage: "linear-gradient(135deg, #EBF4FF, #2E7DD9)" }}>
               Clients Say
             </span>
           </motion.h2>
-          <motion.p variants={blurFade} custom={0.2} className="text-[#9DB2BF]/80 max-w-md mx-auto">
+          <motion.p variants={blurFade} custom={0.2} className="text-black/80 max-w-md mx-auto">
             Real reviews from businesses we&apos;ve helped grow across India
           </motion.p>
         </motion.div>
@@ -241,7 +241,7 @@ export default function PremiumReviews() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={prev}
-            className="w-10 h-10 rounded-full border border-[#526D82]/50 bg-[#27374D]/60 flex items-center justify-center text-[#9DB2BF] hover:text-[#DDE6ED] hover:border-[#9DB2BF]/40 transition-all backdrop-blur-sm"
+            className="w-10 h-10 rounded-full border border-white/25 blue-card flex items-center justify-center text-black hover:text-black hover:border-[#9DB2BF]/40 transition-all backdrop-blur-sm"
           >
             <ChevronLeft className="w-5 h-5" />
           </motion.button>
@@ -253,7 +253,7 @@ export default function PremiumReviews() {
                 key={i}
                 onClick={() => setCurrent(i)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  i === current ? "bg-[#DDE6ED] w-6" : "bg-[#526D82]"
+                  i === current ? "bg-[#EBF4FF] w-6" : "bg-[#1B4F8A]/50"
                 }`}
               />
             ))}
@@ -263,7 +263,7 @@ export default function PremiumReviews() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={next}
-            className="w-10 h-10 rounded-full border border-[#526D82]/50 bg-[#27374D]/60 flex items-center justify-center text-[#9DB2BF] hover:text-[#DDE6ED] hover:border-[#9DB2BF]/40 transition-all backdrop-blur-sm"
+            className="w-10 h-10 rounded-full border border-white/25 blue-card flex items-center justify-center text-black hover:text-black hover:border-[#9DB2BF]/40 transition-all backdrop-blur-sm"
           >
             <ChevronRight className="w-5 h-5" />
           </motion.button>
@@ -280,7 +280,7 @@ export default function PremiumReviews() {
             href={googleMapsLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#9DB2BF] hover:text-[#DDE6ED] transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-black hover:text-black transition-colors"
           >
             <GoogleIcon />
             See all reviews on Google

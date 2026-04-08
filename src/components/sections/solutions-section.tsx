@@ -25,16 +25,16 @@ export default function SolutionsSection() {
       <motion.div className="max-w-7xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.06 }} variants={stagger}>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#F7F8F0] block mb-3">Complete Solutions</motion.span>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-white leading-tight">
+            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Complete Solutions</motion.span>
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-black leading-tight">
               Strategic Guidance,{" "}
-              <span style={{ background: "linear-gradient(90deg,#F7F8F0,#9CD5FF)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>End-to-End Execution.</span>
+              <span style={{ background: "linear-gradient(90deg,#F7F8F0,#9CD5FF)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>End-to-End Execution.</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-white/50 text-base mt-3 max-w-xl">Everything your MSME or startup needs under one roof — from funding to digital transformation.</motion.p>
+            <motion.p variants={fadeUp} className="text-black/50 text-base mt-3 max-w-xl">Everything your MSME or startup needs under one roof — from funding to digital transformation.</motion.p>
           </div>
-          <motion.span variants={fadeUp} className="flex items-center gap-2 text-sm text-white/50">
+          <motion.span variants={fadeUp} className="flex items-center gap-2 text-sm text-black/50">
             <span className="text-2xl">📊</span>
-            <span><span className="text-[#9CD5FF] font-bold">₹45Cr+</span> Disbursed</span>
+            <span><span className="text-black font-bold">₹45Cr+</span> Disbursed</span>
           </motion.span>
         </div>
 
@@ -53,15 +53,15 @@ export default function SolutionsSection() {
                 </div>
                 <div className="absolute bottom-3 right-3 text-right">
                   <p className="font-black text-lg leading-none" style={{ color: sol.color }}>{sol.stat}</p>
-                  <p className="text-white/40 text-[9px] uppercase tracking-wider">{sol.statLabel}</p>
+                  <p className="text-black/40 text-[9px] uppercase tracking-wider">{sol.statLabel}</p>
                 </div>
               </div>
               <div className="p-5">
-                <h3 className="text-white font-bold text-base mb-1.5">{sol.title}</h3>
-                <p className="text-white/55 text-xs leading-relaxed mb-4">{sol.desc}</p>
+                <h3 className="text-black font-bold text-base mb-1.5">{sol.title}</h3>
+                <p className="text-black/55 text-xs leading-relaxed mb-4">{sol.desc}</p>
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {sol.tags.map((t) => (
-                    <span key={t} className="text-[9px] font-semibold text-white/55 bg-white/[0.05] px-2 py-0.5 rounded-full border border-white/[0.08]">{t}</span>
+                    <span key={t} className="text-[9px] font-semibold text-black/55 bg-white/[0.05] px-2 py-0.5 rounded-full border border-white/[0.08]">{t}</span>
                   ))}
                 </div>
                 <Link href="/services" className="flex items-center gap-1 text-xs font-semibold transition-colors group/btn" style={{ color: sol.color }}>
@@ -74,10 +74,10 @@ export default function SolutionsSection() {
 
         <motion.div variants={fadeUp} className="mt-12 rounded-2xl border border-white/[0.08] bg-gradient-to-r from-[#355872]/[0.06] via-transparent to-[#F7F8F0]/[0.04] p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <p className="text-white font-semibold text-base mb-1">Need Help Choosing the Right Solution?</p>
-            <p className="text-white/50 text-sm">Our experts will guide you to the best option for your business stage and goals.</p>
+            <p className="text-black font-semibold text-base mb-1">Need Help Choosing the Right Solution?</p>
+            <p className="text-black/50 text-sm">Our experts will guide you to the best option for your business stage and goals.</p>
           </div>
-          <Link href="/contact" className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] px-6 py-3 text-sm font-semibold text-white shrink-0">
+          <Link href="/contact" className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] px-6 py-3 text-sm font-semibold text-black shrink-0">
             🎯 Get Free Consultation <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>

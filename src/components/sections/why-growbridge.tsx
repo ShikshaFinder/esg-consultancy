@@ -65,12 +65,12 @@ export default function WhyGrowBridge() {
       <motion.div className="max-w-7xl mx-auto relative z-10" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.08 }} variants={stagger}>
         {/* Header */}
         <div className="max-w-2xl mb-14">
-          <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#7AAACE] block mb-3">Why Choose Us</motion.span>
-          <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-[#0a1628] leading-tight">
+          <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Why Choose Us</motion.span>
+          <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-black leading-tight">
             The Grow Bridge{" "}
-            <span style={{ background: "linear-gradient(90deg,#355872,#7AAACE)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Advantage</span>
+            <span style={{ background: "linear-gradient(90deg,#355872,#7AAACE)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Advantage</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-[#0a1628]/50 text-base mt-3">
+          <motion.p variants={fadeUp} className="text-black/50 text-base mt-3">
             We combine AI technology with human expertise to deliver the highest success rates in government scheme processing.
           </motion.p>
         </div>
@@ -96,19 +96,19 @@ export default function WhyGrowBridge() {
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-5">
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${f.gradient} flex items-center justify-center group-hover/feature:scale-110 transition-transform duration-300`}>
-                    <f.icon className="w-6 h-6 text-white" />
+                    <f.icon className="w-6 h-6 text-black" />
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-black text-[#355872]">{f.stat}</p>
-                    <p className="text-[10px] text-[#355872]/50 font-medium">{f.statLabel}</p>
+                    <p className="text-2xl font-black text-black">{f.stat}</p>
+                    <p className="text-[10px] text-black/50 font-medium">{f.statLabel}</p>
                   </div>
                 </div>
 
                 {/* Animated accent bar (21st.dev style) */}
                 <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-10 w-1 rounded-tr-full rounded-br-full bg-[#355872]/20 group-hover/feature:bg-[#7AAACE] transition-all duration-300 origin-center top-1/2 -translate-y-1/2" />
 
-                <h3 className="text-[#0a1628] font-bold text-lg mb-2 group-hover/feature:translate-x-1 transition duration-200">{f.title}</h3>
-                <p className="text-[#0a1628]/55 text-sm leading-relaxed">{f.desc}</p>
+                <h3 className="text-black font-bold text-lg mb-2 group-hover/feature:translate-x-1 transition duration-200">{f.title}</h3>
+                <p className="text-black/55 text-sm leading-relaxed">{f.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -117,8 +117,8 @@ export default function WhyGrowBridge() {
         {/* Badge bar */}
         <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-3 mb-10">
           {badges.map((b) => (
-            <div key={b.label} className="flex items-center gap-2 rounded-full border border-[#355872]/10 bg-white px-4 py-2 text-sm text-[#355872] font-medium">
-              <b.icon className="w-4 h-4 text-[#7AAACE]" />
+            <div key={b.label} className="flex items-center gap-2 rounded-full border border-[#355872]/10 bg-white px-4 py-2 text-sm text-black font-medium">
+              <b.icon className="w-4 h-4 text-black" />
               {b.label}
             </div>
           ))}

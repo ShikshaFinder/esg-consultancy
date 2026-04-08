@@ -20,29 +20,23 @@ import PremiumFooter from "../../components/premium/premium-footer"
 function LoadingScreen() {
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#1e3a5c]"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#FFF8F0]"
       style={{
-        backgroundImage: "radial-gradient(circle at top, rgba(82,109,130,0.55), transparent 35%), radial-gradient(circle at bottom, rgba(157,178,191,0.35), transparent 42%)",
+        backgroundImage: "radial-gradient(circle at top, rgba(10,22,40,0.55), transparent 35%), radial-gradient(circle at bottom, rgba(30,58,92,0.35), transparent 42%)",
       }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
     >
       <div className="flex flex-col items-center gap-6">
         <motion.div className="relative">
-          <motion.svg viewBox="0 0 48 48" className="w-16 h-16">
-            <motion.rect x="3" y="3" width="18" height="18" rx="4" fill="#1e3a5c"
-              initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0, duration: 0.5, type: "spring" }} />
-            <motion.rect x="27" y="3" width="18" height="18" rx="4" fill="#526D82"
-              initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.5, type: "spring" }} />
-            <motion.rect x="3" y="27" width="18" height="18" rx="4" fill="#9DB2BF"
-              initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5, type: "spring" }} />
-            <motion.rect x="27" y="27" width="18" height="18" rx="4" fill="#DDE6ED"
-              initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.5, type: "spring" }} />
-          </motion.svg>
+          <motion.img
+            src="/logo.png"
+            alt="GrowBridge"
+            className="h-[180px] w-auto object-contain"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, type: "spring" }}
+          />
           <motion.div
             className="absolute inset-0 rounded-xl border-2 border-[#9DB2BF]"
             animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
@@ -51,14 +45,14 @@ function LoadingScreen() {
         </motion.div>
         <div className="w-48 h-1 overflow-hidden rounded-full bg-[#526D82]">
           <motion.div
-            className="h-full rounded-full bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82]"
+            className="h-full rounded-full bg-gradient-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A]"
             initial={{ width: "0%" }}
             animate={{ width: "100%" }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
           />
         </div>
         <motion.p
-          className="text-sm font-medium text-[#DDE6ED]"
+          className="text-sm font-medium text-black"
           animate={{ opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >
@@ -92,9 +86,9 @@ export default function PremiumPage() {
 
   return (
     <div
-      className="noise-overlay relative overflow-x-hidden text-[#DDE6ED] selection:bg-[#9DB2BF]/40 selection:text-[#1e3a5c]"
+      className="noise-overlay relative overflow-x-hidden text-black selection:bg-[#9DB2BF]/40 selection:text-black"
       style={{
-        background: "linear-gradient(180deg, #1e3a5c 0%, #234466 22%, #2e5278 54%, #3d6b90 100%)",
+        background: "linear-gradient(180deg, #FFF8F0 0%, #FFF8F0 22%, #FFF8F0 54%, #FFF8F0 100%)",
       }}
     >
       <AnimatePresence>{loading && <LoadingScreen />}</AnimatePresence>
@@ -105,7 +99,7 @@ export default function PremiumPage() {
         style={{
           x: smoothX,
           y: smoothY,
-          background: "radial-gradient(circle, rgba(157,178,191,0.08) 0%, rgba(82,109,130,0.05) 30%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(30,58,92,0.08) 0%, rgba(10,22,40,0.05) 30%, transparent 65%)",
         }}
       />
       <motion.div

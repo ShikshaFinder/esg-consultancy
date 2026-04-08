@@ -59,14 +59,14 @@ function AccordionItem({ faq, index, isOpen, onToggle }: { faq: typeof faqs[0]; 
         onClick={onToggle}
         className="w-full flex items-center gap-4 p-6 text-left"
       >
-        <span className="text-xs font-bold text-[#7AAACE] bg-[#7AAACE]/10 border border-[#7AAACE]/20 px-2.5 py-1 rounded-full shrink-0">{faq.tag}</span>
-        <span className="flex-1 text-[#0a1628] font-semibold text-sm md:text-base">{faq.q}</span>
+        <span className="text-xs font-bold text-black bg-[#7AAACE]/10 border border-[#7AAACE]/20 px-2.5 py-1 rounded-full shrink-0">{faq.tag}</span>
+        <span className="flex-1 text-black font-semibold text-sm md:text-base">{faq.q}</span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
           className="shrink-0"
         >
-          <ChevronDown className={`w-5 h-5 transition-colors ${isOpen ? "text-[#355872]" : "text-[#355872]/40"}`} />
+          <ChevronDown className={`w-5 h-5 transition-colors ${isOpen ? "text-black" : "text-black/40"}`} />
         </motion.div>
       </button>
       <AnimatePresence initial={false}>
@@ -77,7 +77,7 @@ function AccordionItem({ faq, index, isOpen, onToggle }: { faq: typeof faqs[0]; 
             exit={{ height: 0, opacity: 0, transition: { height: { duration: 0.3, delay: 0.05 }, opacity: { duration: 0.2 } } }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-6 text-[#0a1628]/60 text-sm leading-relaxed border-t border-[#355872]/[0.06] pt-4 ml-[60px]">
+            <div className="px-6 pb-6 text-black/60 text-sm leading-relaxed border-t border-[#355872]/[0.06] pt-4 ml-[60px]">
               {faq.a}
             </div>
           </motion.div>
@@ -98,14 +98,14 @@ export default function FAQSection() {
         {/* Header */}
         <div className="text-center mb-14">
           <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-[#7AAACE]/20 bg-[#7AAACE]/5 px-4 py-1.5 mb-5">
-            <HelpCircle className="w-3.5 h-3.5 text-[#7AAACE]" />
-            <span className="text-[11px] font-bold tracking-wide uppercase text-[#7AAACE]">FAQ</span>
+            <HelpCircle className="w-3.5 h-3.5 text-black" />
+            <span className="text-[11px] font-bold tracking-wide uppercase text-black">FAQ</span>
           </motion.div>
-          <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-[#0a1628] leading-tight">
+          <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-black leading-tight">
             Frequently Asked{" "}
-            <span style={{ background: "linear-gradient(90deg,#355872,#7AAACE)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Questions</span>
+            <span style={{ background: "linear-gradient(90deg,#355872,#7AAACE)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Questions</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-[#0a1628]/50 text-base mt-3">
+          <motion.p variants={fadeUp} className="text-black/50 text-base mt-3">
             Everything you need to know about our services and the application process.
           </motion.p>
         </div>
@@ -126,16 +126,16 @@ export default function FAQSection() {
         {/* CTA */}
         <motion.div variants={fadeUp} className="mt-12 text-center">
           <div className="rounded-2xl border border-[#355872]/10 bg-gradient-to-r from-[#355872]/5 to-[#7AAACE]/5 p-8">
-            <p className="text-[#0a1628] font-semibold text-lg mb-2">Still have questions?</p>
-            <p className="text-[#0a1628]/50 text-sm mb-5">Our experts are always happy to help. Get in touch for a free consultation.</p>
+            <p className="text-black font-semibold text-lg mb-2">Still have questions?</p>
+            <p className="text-black/50 text-sm mb-5">Our experts are always happy to help. Get in touch for a free consultation.</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/contact">
                 <MetalButton variant="primary">
                   Contact Us
                 </MetalButton>
               </Link>
-              <a href="https://wa.me/918487828752" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full border border-[#355872]/20 text-[#355872] font-semibold text-sm hover:bg-[#355872]/5 transition-colors"
+              <a href="https://wa.me/919998035607" target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full border border-[#355872]/20 text-black font-semibold text-sm hover:bg-[#355872]/5 transition-colors"
               >
                 <MessageCircle className="w-4 h-4" /> WhatsApp Us
               </a>

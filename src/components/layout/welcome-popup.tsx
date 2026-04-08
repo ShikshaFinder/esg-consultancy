@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence, type Variants } from "framer-motion"
 import {
@@ -8,12 +8,12 @@ import {
 import Link from "next/link"
 
 const SERVICES = [
-  { num: "01", title: "Business Registration", desc: "Company formation & compliance",  icon: Building2,  color: "#34d399", badge: "Popular",      href: "/services/business-registration" },
-  { num: "02", title: "Tax & Compliance",      desc: "GST, income tax & TDS returns",  icon: Calculator, color: "#fb923c", badge: "Save More",   href: "/services/tax-compliance" },
-  { num: "03", title: "Certifications & IP",   desc: "ISO, patents & trademarks",       icon: Award,      color: "#60a5fa", badge: "Govt. Backed", href: "/services/certifications" },
-  { num: "04", title: "Marketing & Branding",  desc: "Digital marketing solutions",     icon: Megaphone,  color: "#f472b6", badge: "Growth",       href: "/services/marketing" },
-  { num: "05", title: "Grants & Funding",      desc: "Government grants & schemes",     icon: Banknote,   color: "#a78bfa", badge: "Free Money",   href: "/services/grants" },
-  { num: "06", title: "CIBIL Assistance",      desc: "Credit score improvement",        icon: CreditCard, color: "#f87171", badge: "Boost Score",  href: "/services/cibil-assistance" },
+  { num: "01", title: "Start Your Business",   desc: "Company formation & registration", icon: Building2,  color: "#34d399", badge: "Popular",      href: "/services/private-limited" },
+  { num: "02", title: "GST & Compliance",      desc: "GST registration & filing",        icon: Calculator, color: "#fb923c", badge: "Save More",   href: "/services/gst" },
+  { num: "03", title: "Certifications",        desc: "ISO, Startup India & more",        icon: Award,      color: "#60a5fa", badge: "Govt. Backed", href: "/services/iso-certification" },
+  { num: "04", title: "Digital Marketing",     desc: "SEO, ads & social media",          icon: Megaphone,  color: "#f472b6", badge: "Growth",       href: "/services/digital-marketing" },
+  { num: "05", title: "Government Grants",     desc: "Government grants & schemes",      icon: Banknote,   color: "#a78bfa", badge: "Free Money",   href: "/services/government-grants" },
+  { num: "06", title: "Website Development",   desc: "Custom websites & ecommerce",      icon: CreditCard, color: "#f87171", badge: "Trending",     href: "/services/website-development" },
 ]
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
@@ -76,21 +76,21 @@ export default function WelcomePopup() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="relative w-[min(460px,calc(100vw-2rem))] rounded-[26px] overflow-hidden"
               style={{
-                background: "linear-gradient(158deg, #1e3a5c 0%, #243f65 55%, #1e3a5c 100%)",
-                border: "1px solid rgba(82,109,130,0.22)",
+                background: "linear-gradient(158deg, #FFF8F0 0%, #FFF8F0 55%, #FFF8F0 100%)",
+                border: "1px solid rgba(10,22,40,0.22)",
                 boxShadow:
-                  "0 52px 120px rgba(0,0,0,0.85), 0 0 0 1px rgba(157,178,191,0.03), inset 0 1px 0 rgba(255,255,255,0.04)",
+                  "0 52px 120px rgba(0,0,0,0.85), 0 0 0 1px rgba(30,58,92,0.03), inset 0 1px 0 rgba(0,0,0,0.04)",
               }}
             >
               {/* Ambient orbs */}
-              <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[#355872]/22 blur-[80px] pointer-events-none" />
+              <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[#1e3a5c]/22 blur-[80px] pointer-events-none" />
               <div className="absolute -bottom-14 -left-14 w-52 h-52 rounded-full bg-[#9CD5FF]/[0.055] blur-[64px] pointer-events-none" />
 
               {/* Dot-grid texture */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px)",
+                  backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.55) 1px, transparent 1px)",
                   backgroundSize: "20px 20px",
                   opacity: 0.018,
                 }}
@@ -103,19 +103,19 @@ export default function WelcomePopup() {
                     initial={{ opacity: 0, y: -6 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.08 }}
-                    className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10px] font-bold text-[#9CD5FF] uppercase tracking-[0.11em]"
+                    className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10px] font-bold text-black uppercase tracking-[0.11em]"
                     style={{
                       background: "rgba(53,88,114,0.28)",
                       border: "1px solid rgba(122,170,206,0.22)",
                     }}
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                    GrowBridge · Free Consultation
+                    GrowBridge Â· Free Consultation
                   </motion.span>
                   <button
                     type="button"
                     onClick={(e) => { e.stopPropagation(); setOpen(false) }}
-                    className="w-7 h-7 rounded-full flex items-center justify-center text-white/25 hover:text-white/80 hover:bg-white/[0.07] transition-all border border-white/[0.06] cursor-pointer shrink-0"
+                    className="w-7 h-7 rounded-full flex items-center justify-center text-black/45 hover:text-black/80 hover:bg-white/[0.07] transition-all border border-[#1e3a5c]/20/[0.06] cursor-pointer shrink-0"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -125,14 +125,14 @@ export default function WelcomePopup() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.13, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-[27px] font-black text-white tracking-tight leading-[1.08] mb-1"
+                  className="text-[27px] font-black text-black tracking-tight leading-[1.08] mb-1"
                 >
                   Grow Your{" "}
                   <span
                     style={{
                       background: "linear-gradient(92deg, #7AAACE 0%, #9CD5FF 60%, #7AAACE 100%)",
                       WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
+                      WebkitTextFillColor: "#000000",
                     }}
                   >
                     Business
@@ -143,11 +143,11 @@ export default function WelcomePopup() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
                   className="text-[13px] mb-4"
-                  style={{ color: "rgba(157,178,191,0.52)" }}
+                  style={{ color: "rgba(30,58,92,0.52)" }}
                 >
                   with{" "}
-                  <span style={{ color: "rgba(157,178,191,0.82)", fontWeight: 600 }}>Expert Support</span>
-                  {" "}· Pick a service
+                  <span style={{ color: "rgba(30,58,92,0.82)", fontWeight: 600 }}>Expert Support</span>
+                  {" "}Â· Pick a service
                 </motion.p>
 
                 {/* Stats strip */}
@@ -158,7 +158,7 @@ export default function WelcomePopup() {
                   className="flex items-stretch mb-4 rounded-xl overflow-hidden"
                   style={{
                     background: "rgba(53,88,114,0.14)",
-                    border: "1px solid rgba(82,109,130,0.22)",
+                    border: "1px solid rgba(10,22,40,0.22)",
                   }}
                 >
                   {[
@@ -169,12 +169,12 @@ export default function WelcomePopup() {
                     <div
                       key={i}
                       className="flex-1 flex flex-col items-center justify-center py-2.5 gap-0.5"
-                      style={i < arr.length - 1 ? { borderRight: "1px solid rgba(82,109,130,0.22)" } : {}}
+                      style={i < arr.length - 1 ? { borderRight: "1px solid rgba(10,22,40,0.22)" } : {}}
                     >
-                      <span className="text-[15px] font-black text-white leading-none">{s.value}</span>
+                      <span className="text-[15px] font-black text-black leading-none">{s.value}</span>
                       <span
                         className="text-[8.5px] uppercase tracking-widest leading-none"
-                        style={{ color: "rgba(157,178,191,0.4)" }}
+                        style={{ color: "rgba(30,58,92,0.4)" }}
                       >
                         {s.label}
                       </span>
@@ -217,7 +217,7 @@ export default function WelcomePopup() {
                         {/* Number */}
                         <span
                           className="text-[11px] font-black w-5 shrink-0 tabular-nums select-none"
-                          style={{ color: "rgba(82,109,130,0.7)", fontFamily: "ui-monospace, monospace" }}
+                          style={{ color: "rgba(10,22,40,0.7)", fontFamily: "ui-monospace, monospace" }}
                         >
                           {s.num}
                         </span>
@@ -238,14 +238,14 @@ export default function WelcomePopup() {
                         {/* Title + desc */}
                         <div className="flex-1 min-w-0">
                           <p
-                            className="font-semibold text-[13px] leading-none mb-[3px] transition-colors duration-200 group-hover:text-white truncate"
+                            className="font-semibold text-[13px] leading-none mb-[3px] transition-colors duration-200 group-hover:text-black truncate"
                             style={{ color: "rgba(221,230,237,0.88)" }}
                           >
                             {s.title}
                           </p>
                           <p
                             className="text-[10px] truncate"
-                            style={{ color: "rgba(157,178,191,0.38)" }}
+                            style={{ color: "rgba(30,58,92,0.38)" }}
                           >
                             {s.desc}
                           </p>
@@ -266,7 +266,7 @@ export default function WelcomePopup() {
                         {/* Chevron */}
                         <ChevronRight
                           className="w-3.5 h-3.5 shrink-0 transition-all duration-200 group-hover:translate-x-0.5"
-                          style={{ color: "rgba(255,255,255,0.12)" }}
+                          style={{ color: "rgba(30,58,92,0.12)" }}
                         />
                       </Link>
                     </motion.div>
@@ -278,7 +278,7 @@ export default function WelcomePopup() {
               <div className="relative z-10 px-4 pb-4 pt-0">
                 <div
                   className="h-px mb-3.5"
-                  style={{ background: "linear-gradient(90deg, transparent, rgba(82,109,130,0.35), transparent)" }}
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(10,22,40,0.35), transparent)" }}
                 />
 
                 <motion.div
@@ -291,20 +291,20 @@ export default function WelcomePopup() {
                     onClick={() => setOpen(false)}
                     className="group relative flex items-center justify-between w-full px-4 py-3 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_8px_36px_rgba(53,88,114,0.55)]"
                     style={{
-                      background: "linear-gradient(135deg, #1e3248 0%, #2d4a62 50%, #3d5f78 100%)",
+                      background: "linear-gradient(135deg, #FFF8F0 0%, #FFF8F0 50%, #FFF8F0 100%)",
                       border: "1px solid rgba(122,170,206,0.16)",
                     }}
                   >
                     <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/[0.08] to-transparent pointer-events-none" />
                     <div className="relative z-10">
-                      <p className="text-white font-bold text-[13px] leading-none mb-0.5">Not sure where to start?</p>
-                      <p style={{ color: "rgba(157,178,191,0.5)", fontSize: "10px" }}>Talk to an expert · Free</p>
+                      <p className="text-black font-bold text-[13px] leading-none mb-0.5">Not sure where to start?</p>
+                      <p style={{ color: "rgba(30,58,92,0.5)", fontSize: "10px" }}>Talk to an expert Â· Free</p>
                     </div>
                     <div
                       className="relative z-10 flex items-center gap-1.5 rounded-xl px-3 py-2 transition-colors duration-200 group-hover:bg-white/[0.12]"
-                      style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.08)" }}
+                      style={{ background: "rgba(0,0,0,0.07)", border: "1px solid rgba(0,0,0,0.08)" }}
                     >
-                      <span className="text-white text-[11px] font-bold">Get Help</span>
+                      <span className="text-black text-[11px] font-bold">Get Help</span>
                       <ArrowRight
                         className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
                         style={{ color: "#9CD5FF" }}
@@ -324,7 +324,7 @@ export default function WelcomePopup() {
                       <Star key={i} className="w-2.5 h-2.5 text-amber-400 fill-amber-400" />
                     ))}
                   </div>
-                  <span style={{ color: "rgba(157,178,191,0.35)", fontSize: "10px" }}>
+                  <span style={{ color: "rgba(30,58,92,0.35)", fontSize: "10px" }}>
                     Evolving 1000+ Indian Startups &amp; MSMEs
                   </span>
                 </motion.div>

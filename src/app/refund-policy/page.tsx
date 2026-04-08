@@ -16,7 +16,7 @@ const quickStats = [
   { value: "7–10 Days", label: "Refund Processing", icon: Clock },
   { value: "Bank Transfer", label: "Refund Mode", icon: IndianRupee },
   { value: "Written Request", label: "How to Request", icon: FileText },
-  { value: "abhay@growbridge.org", label: "Refund Contact", icon: Mail },
+  { value: "growbridgeinfo@gmail.com", label: "Refund Contact", icon: Mail },
 ]
 
 const sections = [
@@ -54,7 +54,7 @@ const sections = [
       },
       {
         subtitle: "Refund Request Requirements",
-        body: "To be eligible for a refund, you must submit a written request via email to abhay@growbridge.org within 7 days of the service date, clearly stating: your full name, service availed, payment receipt/transaction ID, reason for the refund request, and any supporting documentation.",
+        body: "To be eligible for a refund, you must submit a written request via email to growbridgeinfo@gmail.com within 7 days of the service date, clearly stating: your full name, service availed, payment receipt/transaction ID, reason for the refund request, and any supporting documentation.",
       },
       {
         subtitle: "Review Process",
@@ -103,7 +103,7 @@ const sections = [
     items: [
       {
         subtitle: "Client-Initiated Cancellation",
-        body: "You may cancel any ongoing engagement by providing written notice via email to abhay@growbridge.org. Cancellation is effective from the date the written notice is received. Any work completed up to the cancellation date will be billed, and fees for completed work are non-refundable.",
+        body: "You may cancel any ongoing engagement by providing written notice via email to growbridgeinfo@gmail.com. Cancellation is effective from the date the written notice is received. Any work completed up to the cancellation date will be billed, and fees for completed work are non-refundable.",
       },
       {
         subtitle: "Cancellation Before Service Commencement",
@@ -141,7 +141,7 @@ const sections = [
     items: [
       {
         subtitle: "Internal Resolution",
-        body: "In the event of a dispute regarding refunds, we encourage you to first contact our team at abhay@growbridge.org. Our senior management will review your case and work towards an amicable resolution within 15 business days.",
+        body: "In the event of a dispute regarding refunds, we encourage you to first contact our team at growbridgeinfo@gmail.com. Our senior management will review your case and work towards an amicable resolution within 15 business days.",
       },
       {
         subtitle: "Mediation & Arbitration",
@@ -167,33 +167,33 @@ export default function RefundPolicyPage() {
 
           <motion.div className="max-w-4xl mx-auto text-center relative z-10" initial="hidden" animate="show" variants={stagger}>
             {/* Breadcrumb */}
-            <motion.nav variants={fadeUp} className="flex items-center justify-center gap-2 text-sm text-white/40 mb-8">
-              <Link href="/" className="hover:text-[#9CD5FF] transition-colors">Home</Link>
+            <motion.nav variants={fadeUp} className="flex items-center justify-center gap-2 text-sm text-black/40 mb-8">
+              <Link href="/" className="hover:text-black transition-colors">Home</Link>
               <span>/</span>
-              <span className="text-white/70">Refund Policy</span>
+              <span className="text-black/70">Refund Policy</span>
             </motion.nav>
 
             <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#355872]/20 border border-[#355872]/30 mb-6">
-              <RotateCcw className="w-4 h-4 text-[#9CD5FF]" />
-              <span className="text-[11px] font-bold tracking-[0.15em] uppercase text-[#9CD5FF]">Refund &amp; Cancellation</span>
+              <RotateCcw className="w-4 h-4 text-black" />
+              <span className="text-[11px] font-bold tracking-[0.15em] uppercase text-black">Refund &amp; Cancellation</span>
             </motion.div>
 
-            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-bold text-black leading-tight mb-6">
               Refund{" "}
-              <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Policy</span>
+              <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Policy</span>
             </motion.h1>
 
-            <motion.p variants={fadeUp} className="text-white/50 text-lg max-w-2xl mx-auto leading-relaxed">
+            <motion.p variants={fadeUp} className="text-black/50 text-lg max-w-2xl mx-auto leading-relaxed">
               We are committed to delivering quality consultancy services. This policy outlines the circumstances under which refunds apply, our cancellation procedures, and your rights as a client.
             </motion.p>
 
-            <motion.div variants={fadeUp} className="flex items-center justify-center gap-6 mt-8 text-sm text-white/30">
+            <motion.div variants={fadeUp} className="flex items-center justify-center gap-6 mt-8 text-sm text-black/30">
               <span className="flex items-center gap-1.5">
-                <svg className="w-4 h-4 text-[#7AAACE]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                 Last updated: April 1, 2026
               </span>
               <span className="flex items-center gap-1.5">
-                <svg className="w-4 h-4 text-[#7AAACE]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" /></svg>
+                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" /></svg>
                 Refunds processed in 7–10 business days
               </span>
             </motion.div>
@@ -205,9 +205,9 @@ export default function RefundPolicyPage() {
           <motion.div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             {quickStats.map((stat) => (
               <motion.div key={stat.label} variants={fadeUp} className="text-center p-4 rounded-xl bg-[#355872]/10 border border-[#355872]/15">
-                <stat.icon className="w-5 h-5 text-[#9CD5FF] mx-auto mb-2" />
-                <p className="text-sm font-bold text-white">{stat.value}</p>
-                <p className="text-[11px] text-white/40 mt-0.5">{stat.label}</p>
+                <stat.icon className="w-5 h-5 text-black mx-auto mb-2" />
+                <p className="text-sm font-bold text-black">{stat.value}</p>
+                <p className="text-[11px] text-black/40 mt-0.5">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -221,8 +221,8 @@ export default function RefundPolicyPage() {
               className="bg-white rounded-2xl border border-[#355872]/10 p-8 md:p-10 shadow-sm mb-10"
               initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
             >
-              <motion.p variants={fadeUp} className="text-[#0a1628]/60 text-sm leading-relaxed">
-                This Refund &amp; Cancellation Policy (&quot;Policy&quot;) applies to all services provided by <strong>Grow Bridge</strong> (&quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), a business consultancy firm headquartered in Ahmedabad, Gujarat, India. By engaging our services, you acknowledge that you have read and understood this Policy. This document should be read in conjunction with our <Link href="/terms-conditions" className="text-[#7AAACE] hover:underline font-medium">Terms &amp; Conditions</Link> and <Link href="/privacy-policy" className="text-[#7AAACE] hover:underline font-medium">Privacy Policy</Link>.
+              <motion.p variants={fadeUp} className="text-black/60 text-sm leading-relaxed">
+                This Refund &amp; Cancellation Policy (&quot;Policy&quot;) applies to all services provided by <strong>Grow Bridge</strong> (&quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), a business consultancy firm headquartered in Ahmedabad, Gujarat, India. By engaging our services, you acknowledge that you have read and understood this Policy. This document should be read in conjunction with our <Link href="/terms-conditions" className="text-black hover:underline font-medium">Terms &amp; Conditions</Link> and <Link href="/privacy-policy" className="text-black hover:underline font-medium">Privacy Policy</Link>.
               </motion.p>
             </motion.div>
 
@@ -235,17 +235,17 @@ export default function RefundPolicyPage() {
                 initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
               >
                 <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-[#355872]/10 flex items-center justify-center text-[#355872] flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#355872]/10 flex items-center justify-center text-black flex-shrink-0">
                     <section.icon className="w-5 h-5" />
                   </div>
-                  <h2 className="text-xl md:text-2xl font-bold text-[#0a1628]">{section.title}</h2>
+                  <h2 className="text-xl md:text-2xl font-bold text-black">{section.title}</h2>
                 </motion.div>
 
                 <div className="space-y-5">
                   {section.items.map((item) => (
                     <motion.div key={item.subtitle} variants={fadeUp}>
-                      <h3 className="text-sm font-semibold text-[#355872] mb-1.5">{item.subtitle}</h3>
-                      <p className="text-[#0a1628]/60 text-sm leading-relaxed">{item.body}</p>
+                      <h3 className="text-sm font-semibold text-black mb-1.5">{item.subtitle}</h3>
+                      <p className="text-black/60 text-sm leading-relaxed">{item.body}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -258,41 +258,41 @@ export default function RefundPolicyPage() {
               initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
             >
               <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-[#355872]/10 flex items-center justify-center text-[#355872] flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-[#355872]/10 flex items-center justify-center text-black flex-shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
-                <h2 className="text-xl md:text-2xl font-bold text-[#0a1628]">8. Contact for Refund Requests</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-black">8. Contact for Refund Requests</h2>
               </motion.div>
 
-              <motion.p variants={fadeUp} className="text-[#0a1628]/60 text-sm leading-relaxed mb-6">
+              <motion.p variants={fadeUp} className="text-black/60 text-sm leading-relaxed mb-6">
                 To initiate a refund request or for any questions regarding this policy, please reach out to us through the following channels:
               </motion.p>
 
               <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="flex items-start gap-3 p-4 rounded-xl bg-[#F7F8F0] border border-[#355872]/5">
-                  <Mail className="w-5 h-5 text-[#7AAACE] mt-0.5 flex-shrink-0" />
+                  <Mail className="w-5 h-5 text-black mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-xs font-semibold text-[#0a1628]/40 uppercase tracking-wider mb-1">Email</p>
-                    <a href="mailto:abhay@growbridge.org" className="text-sm font-medium text-[#355872] hover:underline">abhay@growbridge.org</a>
+                    <p className="text-xs font-semibold text-black/40 uppercase tracking-wider mb-1">Email</p>
+                    <a href="mailto:growbridgeinfo@gmail.com" className="text-sm font-medium text-black hover:underline">growbridgeinfo@gmail.com</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 p-4 rounded-xl bg-[#F7F8F0] border border-[#355872]/5">
-                  <Phone className="w-5 h-5 text-[#7AAACE] mt-0.5 flex-shrink-0" />
+                  <Phone className="w-5 h-5 text-black mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-xs font-semibold text-[#0a1628]/40 uppercase tracking-wider mb-1">Phone</p>
-                    <a href="tel:+918487828752" className="text-sm font-medium text-[#355872] hover:underline">+91 84878 28752</a>
+                    <p className="text-xs font-semibold text-black/40 uppercase tracking-wider mb-1">Phone</p>
+                    <a href="tel:+919998035607" className="text-sm font-medium text-black hover:underline">+91 99980 35607</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 p-4 rounded-xl bg-[#F7F8F0] border border-[#355872]/5">
-                  <MapPin className="w-5 h-5 text-[#7AAACE] mt-0.5 flex-shrink-0" />
+                  <MapPin className="w-5 h-5 text-black mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-xs font-semibold text-[#0a1628]/40 uppercase tracking-wider mb-1">Office</p>
-                    <p className="text-sm font-medium text-[#355872]">Ahmedabad, Gujarat, India</p>
+                    <p className="text-xs font-semibold text-black/40 uppercase tracking-wider mb-1">Office</p>
+                    <p className="text-sm font-medium text-black">630, Solaris Business Hub, Sola Rd, Ahmedabad 380063</p>
                   </div>
                 </div>
               </motion.div>
 
-              <motion.p variants={fadeUp} className="text-[#0a1628]/40 text-xs mt-6">
+              <motion.p variants={fadeUp} className="text-black/40 text-xs mt-6">
                 Please include your full name, service engagement details, payment receipt/transaction ID, and reason for the refund request in your email. Our team will acknowledge your request within 48 hours and provide a resolution within 7 business days.
               </motion.p>
             </motion.div>

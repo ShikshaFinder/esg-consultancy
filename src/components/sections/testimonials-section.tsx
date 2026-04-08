@@ -63,11 +63,11 @@ export default function TestimonialsSection() {
               { val: 24, suffix: "/7", prefix: "", label: "Expert Support", sub: "Always available", color: "#9CD5FF" },
             ].map((s) => (
               <div key={s.label} className="px-8 py-4 text-center group" style={{ boxShadow: `inset 0 1px 0 ${s.color}18` }}>
-                <p className="text-3xl md:text-4xl font-black mb-1" style={{ background: `linear-gradient(135deg,${s.color},${s.color}aa)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                <p className="text-3xl md:text-4xl font-black mb-1" style={{ background: `linear-gradient(135deg,${s.color},${s.color}aa)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>
                   <AnimatedCounter target={s.val} suffix={s.suffix} prefix={s.prefix} />
                 </p>
-                <p className="text-white font-semibold text-sm mb-0.5">{s.label}</p>
-                <p className="text-white/35 text-[11px]">{s.sub}</p>
+                <p className="text-black font-semibold text-sm mb-0.5">{s.label}</p>
+                <p className="text-black/35 text-[11px]">{s.sub}</p>
               </div>
             ))}
           </Marquee>
@@ -75,12 +75,12 @@ export default function TestimonialsSection() {
 
         {/* Testimonials header */}
         <div className="mb-10">
-          <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#F7F8F0] block mb-3">Success Stories</motion.span>
-          <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Success Stories</motion.span>
+          <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-black leading-tight">
             Real Businesses,{" "}
-            <span style={{ background: "linear-gradient(90deg,#F7F8F0,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Real Results.</span>
+            <span style={{ background: "linear-gradient(90deg,#F7F8F0,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Real Results.</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-white/50 text-base mt-3 max-w-lg">
+          <motion.p variants={fadeUp} className="text-black/50 text-base mt-3 max-w-lg">
             Discover how we&apos;ve helped businesses like yours secure funding and achieve their goals.
           </motion.p>
         </div>
@@ -94,18 +94,18 @@ export default function TestimonialsSection() {
             >
               <div className="flex items-center justify-between">
                 <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, j) => (<Star key={j} className="w-3.5 h-3.5 text-[#F7F8F0] fill-[#F7F8F0]" />))}
+                  {[...Array(5)].map((_, j) => (<Star key={j} className="w-3.5 h-3.5 text-black fill-[#F7F8F0]" />))}
                 </div>
-                <span className="text-[9px] font-bold text-[#F7F8F0] bg-[#F7F8F0]/10 border border-[#F7F8F0]/20 px-2 py-1 rounded-full">{t.scheme}</span>
+                <span className="text-[9px] font-bold text-black bg-[#F7F8F0]/10 border border-[#F7F8F0]/20 px-2 py-1 rounded-full">{t.scheme}</span>
               </div>
-              <p className="text-white/80 text-sm leading-relaxed italic flex-1">&ldquo;{t.text}&rdquo;</p>
+              <p className="text-black/80 text-sm leading-relaxed italic flex-1">&ldquo;{t.text}&rdquo;</p>
               <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#355872] to-[#F7F8F0] flex items-center justify-center text-white font-bold text-sm shrink-0">{t.initials}</div>
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#355872] to-[#F7F8F0] flex items-center justify-center text-black font-bold text-sm shrink-0">{t.initials}</div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-white font-semibold text-sm truncate">{t.name}</p>
-                  <p className="text-white/40 text-[11px] truncate">{t.role} · {t.company}</p>
+                  <p className="text-black font-semibold text-sm truncate">{t.name}</p>
+                  <p className="text-black/40 text-[11px] truncate">{t.role} · {t.company}</p>
                 </div>
-                <span className="text-[9px] font-bold text-[#9CD5FF] bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-2 py-1 rounded-full shrink-0">{t.badge}</span>
+                <span className="text-[9px] font-bold text-black bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-2 py-1 rounded-full shrink-0">{t.badge}</span>
               </div>
             </motion.div>
           ))}

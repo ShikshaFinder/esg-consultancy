@@ -3,25 +3,15 @@ import { ArrowRight, MapPin, Mail, Phone } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0a1628] border-t border-white/[0.06] pt-16 pb-8 px-6">
+    <footer className="bg-[#FFF8F0] border-t border-[#1e3a5c]/20/[0.06] pt-16 pb-8 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <svg viewBox="0 0 40 40" className="w-8 h-8">
-                <rect x="2" y="2" width="16" height="16" rx="4" fill="#355872" />
-                <rect x="22" y="2" width="16" height="16" rx="4" fill="#9CD5FF" opacity="0.85" />
-                <rect x="2" y="22" width="16" height="16" rx="4" fill="#9CD5FF" opacity="0.85" />
-                <rect x="22" y="22" width="16" height="16" rx="4" fill="#355872" />
-                <rect x="10" y="10" width="20" height="20" rx="3" fill="#0a1628" opacity="0.75" />
-                <circle cx="20" cy="20" r="4.5" fill="white" opacity="0.9" />
-              </svg>
-              <span className="font-bold text-white text-base">
-                Grow<span className="text-[#9CD5FF]">Bridge</span>
-              </span>
+              <img src="/logo.png" alt="GrowBridge" className="h-[180px] w-auto object-contain" />
             </div>
-            <p className="text-white/40 text-xs leading-relaxed mb-5">
+            <p className="text-black/55 text-xs leading-relaxed mb-5">
               Empowering Indian MSMEs and startups with registration,
               certification, funding enablement, and digital growth consulting.
             </p>
@@ -34,7 +24,7 @@ export default function Footer() {
                 <a
                   key={s.label}
                   href="#"
-                  className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all text-[10px] font-bold"
+                  className="w-8 h-8 rounded-lg bg-white/[0.05] border border-[#1e3a5c]/20/[0.08] flex items-center justify-center text-black/55 hover:text-black hover:bg-white/10 transition-all text-[10px] font-bold"
                   aria-label={s.label}
                 >
                   {s.icon}
@@ -45,7 +35,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <p className="text-white font-semibold text-xs tracking-widest uppercase mb-5">
+            <p className="text-black font-semibold text-xs tracking-widest uppercase mb-5">
               Company
             </p>
             <ul className="space-y-3">
@@ -62,7 +52,7 @@ export default function Footer() {
                 <li key={l.label}>
                   <Link
                     href={l.href}
-                    className="text-white/45 text-sm hover:text-white transition-colors"
+                    className="text-black/60 text-sm hover:text-black transition-colors"
                   >
                     {l.label}
                   </Link>
@@ -71,23 +61,23 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Funding Schemes */}
+          {/* Our Services */}
           <div>
-            <p className="text-white font-semibold text-xs tracking-widest uppercase mb-5">
-              Funding Schemes
+            <p className="text-black font-semibold text-xs tracking-widest uppercase mb-5">
+              Our Services
             </p>
             <ul className="space-y-3">
               {[
-                { label: "PMEGP Scheme", href: "/funding/pmegp" },
-                { label: "PM MUDRA Yojana", href: "/funding/pm-mudra-yojana" },
-                { label: "CGTMSE Guarantee", href: "/funding/cgtmse" },
-                { label: "Startup India", href: "/funding/startup-india" },
-                { label: "NAIF Scheme", href: "/funding/naif-scheme" },
+                { label: "Start Your Business", href: "/services#start-your-business" },
+                { label: "Certifications", href: "/services#certifications" },
+                { label: "Funding & Loans", href: "/services#funding" },
+                { label: "Digital Marketing", href: "/services#digital-marketing" },
+                { label: "Website Development", href: "/services#website-development" },
               ].map((l) => (
                 <li key={l.label}>
                   <Link
                     href={l.href}
-                    className="text-white/45 text-sm hover:text-white transition-colors"
+                    className="text-black/60 text-sm hover:text-black transition-colors"
                   >
                     {l.label}
                   </Link>
@@ -95,10 +85,10 @@ export default function Footer() {
               ))}
               <li>
                 <Link
-                  href="/funding"
-                  className="text-[#9CD5FF] text-sm hover:text-white transition-colors inline-flex items-center gap-1"
+                  href="/services"
+                  className="text-black text-sm hover:text-black transition-colors inline-flex items-center gap-1"
                 >
-                  View All Schemes <ArrowRight className="w-3 h-3" />
+                  View All Services <ArrowRight className="w-3 h-3" />
                 </Link>
               </li>
             </ul>
@@ -106,34 +96,34 @@ export default function Footer() {
 
           {/* Get in Touch */}
           <div>
-            <p className="text-white font-semibold text-xs tracking-widest uppercase mb-5">
+            <p className="text-black font-semibold text-xs tracking-widest uppercase mb-5">
               Get in Touch
             </p>
-            <ul className="space-y-3 text-white/45 text-sm">
+            <ul className="space-y-3 text-black/60 text-sm">
               <li className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#9CD5FF]" />
-                Ahmedabad, Gujarat — Pan India Service
+                <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0 text-black" />
+                Sola Rd, Ahmedabad, Gujarat 380063
               </li>
               <li className="flex items-start gap-2">
-                <Mail className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#9CD5FF]" />
-                <a href="mailto:abhay@growbridge.org" className="hover:text-white transition-colors">
-                  abhay@growbridge.org
+                <Mail className="w-3.5 h-3.5 mt-0.5 shrink-0 text-black" />
+                <a href="mailto:growbridgeinfo@gmail.com" className="hover:text-black transition-colors">
+                  growbridgeinfo@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2">
-                <Phone className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#9CD5FF]" />
-                <a href="tel:+918487828752" className="hover:text-white transition-colors">
-                  +91 84878 28752
+                <Phone className="w-3.5 h-3.5 mt-0.5 shrink-0 text-black" />
+                <a href="tel:+919998035607" className="hover:text-black transition-colors">
+                  +91 99980 35607
                 </a>
               </li>
             </ul>
             <div className="mt-5 space-y-2">
-              <span className="block text-white/35 text-[10px]">
+              <span className="block text-black/50 text-[10px]">
                 Mon — Sat, 9:30 AM — 6:00 PM
               </span>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-1.5 text-[10px] text-[#9CD5FF] bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-3 py-1 rounded-full hover:bg-[#9CD5FF]/20 transition-colors"
+                className="inline-flex items-center gap-1.5 text-[10px] text-black bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-3 py-1 rounded-full hover:bg-[#9CD5FF]/20 transition-colors"
               >
                 Start Your Journey <ArrowRight className="w-3 h-3" />
               </Link>
@@ -142,8 +132,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/[0.06] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-white/35 text-xs">
+        <div className="border-t border-[#1e3a5c]/20/[0.06] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-black/50 text-xs">
             © 2026 Grow Bridge Services. All rights reserved.
           </p>
           <div className="flex gap-5">
@@ -155,7 +145,7 @@ export default function Footer() {
               <Link
                 key={l.label}
                 href={l.href}
-                className="text-white/35 text-xs hover:text-white/65 transition-colors"
+                className="text-black/50 text-xs hover:text-black/75 transition-colors"
               >
                 {l.label}
               </Link>

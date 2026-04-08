@@ -46,7 +46,7 @@ function SpotlightCard({ children, className, popular }: { children: React.React
       <div
         className="pointer-events-none absolute inset-0 rounded-2xl z-0 transition-opacity duration-300"
         style={{
-          background: `radial-gradient(300px circle at ${pos.x}px ${pos.y}px, ${popular ? "rgba(157,178,191,0.12)" : "rgba(157,178,191,0.06)"}, transparent 60%)`,
+          background: `radial-gradient(300px circle at ${pos.x}px ${pos.y}px, ${popular ? "rgba(30,58,92,0.12)" : "rgba(30,58,92,0.06)"}, transparent 60%)`,
           opacity: hovering ? 1 : 0,
         }}
       />
@@ -119,7 +119,7 @@ export default function PremiumPricing() {
   const [annual, setAnnual] = useState(true)
 
   return (
-    <section id="pricing" className="relative px-6 py-28 bg-[#27374D]">
+    <section id="pricing" className="relative px-6 py-28 bg-[#FFF8F0]">
       <div className="absolute top-0 left-1/2 h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-[#526D82]/15 blur-[100px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -131,21 +131,21 @@ export default function PremiumPricing() {
           variants={blurFadeUp}
           className="text-center mb-14"
         >
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-[#9DB2BF]">Pricing</p>
-          <h2 className="mb-4 text-3xl font-bold text-[#DDE6ED] md:text-5xl">
+          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-black">Pricing</p>
+          <h2 className="mb-4 text-3xl font-bold text-black md:text-5xl">
             Invest in Your{" "}
-            <span className="bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A] text-black">
               Business Growth
             </span>
           </h2>
-          <p className="mx-auto max-w-lg text-[#9DB2BF]/90">
+          <p className="mx-auto max-w-lg text-black/90">
             Start free, upgrade when you&apos;re ready. Every plan includes core MSME registration & scheme eligibility check.
           </p>
         </motion.div>
 
         {/* toggle */}
         <div className="flex items-center justify-center gap-4 mb-14">
-          <span className={`text-sm transition-colors font-medium ${!annual ? "text-[#DDE6ED]" : "text-[#526D82]"}`}>Monthly</span>
+          <span className={`text-sm transition-colors font-medium ${!annual ? "text-black" : "text-black"}`}>Monthly</span>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -155,12 +155,12 @@ export default function PremiumPricing() {
             }`}
           >
             <motion.div
-              className="absolute top-0.5 left-0.5 h-6 w-6 rounded-full bg-[#27374D] shadow-lg"
+              className="absolute top-0.5 left-0.5 h-6 w-6 rounded-full bg-[#FFF8F0] shadow-lg"
               animate={{ x: annual ? 28 : 0 }}
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
             />
           </motion.button>
-          <span className={`text-sm transition-colors font-medium ${annual ? "text-[#DDE6ED]" : "text-[#526D82]"}`}>
+          <span className={`text-sm transition-colors font-medium ${annual ? "text-black" : "text-black"}`}>
             Annual
             <span className="ml-1.5 text-xs text-emerald-500 font-semibold">Save 17%</span>
           </span>
@@ -184,9 +184,9 @@ export default function PremiumPricing() {
                     whileHover={{ y: -10, transition: { type: "spring", stiffness: 280, damping: 18 } }}
                     className={`relative rounded-2xl border p-8 flex flex-col backdrop-blur-md h-full overflow-hidden
                       ${plan.popular
-                        ? "border-[#9DB2BF]/30 bg-gradient-to-b from-[#526D82]/45 to-[#27374D]/90 shadow-2xl shadow-[#9DB2BF]/15 ring-1 ring-[#9DB2BF]/10"
-                        : "border-[#526D82]/50 bg-[#27374D]/40 hover:bg-[#526D82]/20 hover:border-[#9DB2BF]/20 hover:shadow-xl hover:shadow-[#9DB2BF]/8"
-                      } transition-all duration-500 shadow-[inset_0_1px_0_rgba(157,178,191,0.06)]`}
+                        ? "border-[#1B4F8A]/60 bg-gradient-to-b from-[#1B4F8A] to-[#D0E8FF] shadow-2xl shadow-[#1B4F8A]/25 ring-1 ring-[#2E7DD9]/20"
+                        : "border-[#1B4F8A]/50 blue-card hover:bg-[#1B4F8A]/70 hover:border-[#1B4F8A]/80 hover:shadow-xl hover:shadow-[#1B4F8A]/20"
+                      } transition-all duration-500 shadow-[inset_0_1px_0_rgba(30,58,92,0.06)]`}
                   >
                     {/* Animated rotating gradient border for popular */}
                     {plan.popular && (
@@ -194,19 +194,19 @@ export default function PremiumPricing() {
                         <motion.div
                           className="absolute inset-0"
                           style={{
-                            background: "conic-gradient(from 0deg, #9DB2BF, #DDE6ED, #526D82, #9DB2BF)",
+                            background: "conic-gradient(from 0deg, #EBF4FF, #2E7DD9, #1B4F8A, #EBF4FF)",
                             filter: "blur(4px)",
                           }}
                           animate={{ rotate: [0, 360] }}
                           transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
                         />
-                        <div className="absolute inset-[1px] rounded-2xl bg-gradient-to-b from-[#526D82]/90 to-[#27374D]/95" />
+                        <div className="absolute inset-[1px] rounded-2xl bg-gradient-to-b from-[#1B4F8A] to-[#D0E8FF]" />
                       </div>
                     )}
 
                     {plan.popular && (
                       <motion.div
-                        className="absolute -top-3.5 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-gradient-to-r from-[#9DB2BF] to-[#DDE6ED] px-4 py-1 text-xs font-semibold text-[#27374D] shadow-lg"
+                        className="absolute -top-3.5 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-gradient-to-r from-[#1B4F8A] to-[#2E7DD9] px-4 py-1 text-xs font-semibold text-black shadow-lg"
                         animate={{ y: [0, -2, 0] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                       >
@@ -214,8 +214,8 @@ export default function PremiumPricing() {
                       </motion.div>
                     )}
 
-                    <h3 className="text-lg font-semibold text-[#DDE6ED] mb-1 relative z-10">{plan.name}</h3>
-                    <p className="mb-6 text-xs text-[#9DB2BF] relative z-10">{plan.tagline}</p>
+                    <h3 className="text-lg font-semibold text-black mb-1 relative z-10">{plan.name}</h3>
+                    <p className="mb-6 text-xs text-black/80 relative z-10">{plan.tagline}</p>
 
                     {/* price with animated transition */}
                     <div className="mb-8 relative z-10">
@@ -226,12 +226,12 @@ export default function PremiumPricing() {
                           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                           exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
                           transition={{ duration: 0.3 }}
-                          className="text-4xl font-bold text-[#DDE6ED]"
+                          className="text-4xl font-bold text-black"
                         >
                           {formatPrice(price)}
                         </motion.span>
                       </AnimatePresence>
-                      {price > 0 && <span className="ml-1 text-sm text-[#9DB2BF]">{period}</span>}
+                      {price > 0 && <span className="ml-1 text-sm text-black/80">{period}</span>}
                     </div>
 
                     {/* features with staggered checks */}
@@ -239,7 +239,7 @@ export default function PremiumPricing() {
                       {plan.features.map((f, fi) => (
                         <motion.li
                           key={f}
-                          className="flex items-start gap-2.5 text-sm text-[#9DB2BF] group/feat"
+                          className="flex items-start gap-2.5 text-sm text-black group/feat"
                           initial={{ opacity: 0, x: -8 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: true }}
@@ -252,11 +252,11 @@ export default function PremiumPricing() {
                             <Check
                               size={16}
                               className={`shrink-0 mt-0.5 transition-colors duration-200 ${
-                                plan.popular ? "text-[#DDE6ED] group-hover/feat:text-emerald-400" : "text-[#9DB2BF] group-hover/feat:text-[#DDE6ED]"
+                                plan.popular ? "text-black group-hover/feat:text-black" : "text-black group-hover/feat:text-black"
                               }`}
                             />
                           </motion.div>
-                          <span className="group-hover/feat:text-[#DDE6ED] transition-colors duration-200">{f}</span>
+                          <span className="group-hover/feat:text-black transition-colors duration-200">{f}</span>
                         </motion.li>
                       ))}
                     </ul>
@@ -267,8 +267,8 @@ export default function PremiumPricing() {
                         href={plan.name === "Enterprise" ? "/contact" : "/services"}
                         className={`group/cta flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold transition-all duration-300 overflow-hidden relative
                           ${plan.popular
-                            ? "bg-gradient-to-r from-[#9DB2BF] to-[#DDE6ED] text-[#27374D] hover:shadow-lg hover:shadow-[#9DB2BF]/20"
-                            : "border border-[#526D82] text-[#9DB2BF] hover:bg-[#526D82]/30 hover:text-[#DDE6ED] hover:border-[#9DB2BF]/20"
+                            ? "bg-gradient-to-r from-[#1B4F8A] to-[#2E7DD9] text-black hover:shadow-lg hover:shadow-[#1B4F8A]/20"
+                            : "border border-[#526D82] text-black hover:bg-[#526D82]/30 hover:text-black hover:border-[#9DB2BF]/20"
                           }`}
                       >
                         {/* Shimmer overlay for popular */}

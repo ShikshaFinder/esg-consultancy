@@ -22,12 +22,12 @@ export default function FundingMatch() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <motion.div className="max-w-7xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.06 }} variants={stagger}>
         <div className="text-center mb-14">
-          <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#F7F8F0] block mb-3">Compare & Choose</motion.span>
-          <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Compare & Choose</motion.span>
+          <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-black leading-tight">
             Find Your Perfect{" "}
-            <span style={{ background: "linear-gradient(90deg,#F7F8F0,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Funding Match</span>
+            <span style={{ background: "linear-gradient(90deg,#F7F8F0,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Funding Match</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-white/50 text-base mt-3 max-w-xl mx-auto">
+          <motion.p variants={fadeUp} className="text-black/50 text-base mt-3 max-w-xl mx-auto">
             Compare government schemes side-by-side to make an informed decision for your business.
           </motion.p>
         </div>
@@ -39,42 +39,42 @@ export default function FundingMatch() {
               whileHover={{ y: -4, borderColor: `${scheme.color}50` }}
             >
               {scheme.popular && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-bold tracking-wider text-white bg-gradient-to-r from-[#355872] to-[#7AAACE] px-4 py-1 rounded-full">{scheme.tag}</span>
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-bold tracking-wider text-black bg-gradient-to-r from-[#355872] to-[#7AAACE] px-4 py-1 rounded-full">{scheme.tag}</span>
               )}
               {!scheme.popular && (
                 <span className="text-[9px] font-bold tracking-widest px-2.5 py-0.5 rounded-full border self-start" style={{ color: scheme.color, backgroundColor: `${scheme.color}15`, borderColor: `${scheme.color}30` }}>{scheme.tag}</span>
               )}
               <div>
-                <h3 className="text-white font-bold text-lg mb-1">{scheme.label}</h3>
-                <p className="text-white/50 text-xs leading-relaxed">{scheme.fullName}</p>
+                <h3 className="text-black font-bold text-lg mb-1">{scheme.label}</h3>
+                <p className="text-black/50 text-xs leading-relaxed">{scheme.fullName}</p>
               </div>
               <p className="text-2xl font-black" style={{ color: scheme.color }}>{scheme.amount}</p>
               <div className="space-y-2 text-xs">
                 {Object.entries(scheme.details).map(([key, val]) => (
                   <div key={key} className="flex justify-between items-center">
-                    <span className="text-white/40 uppercase tracking-wider text-[10px]">{key}</span>
-                    <span className="text-white/70 font-medium">{val}</span>
+                    <span className="text-black/40 uppercase tracking-wider text-[10px]">{key}</span>
+                    <span className="text-black/70 font-medium">{val}</span>
                   </div>
                 ))}
               </div>
               <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-3">
-                <p className="text-[10px] text-white/35 uppercase tracking-wider mb-2">Eligibility</p>
+                <p className="text-[10px] text-black/35 uppercase tracking-wider mb-2">Eligibility</p>
                 <div className="space-y-1.5 text-xs">
-                  <p className="text-white/60"><span className="text-white/35">Age:</span> {scheme.eligibility.age}</p>
-                  <p className="text-white/60"><span className="text-white/35">Education:</span> {scheme.eligibility.education}</p>
-                  <p className="text-white/60"><span className="text-white/35">Type:</span> {scheme.eligibility.type}</p>
+                  <p className="text-black/60"><span className="text-black/35">Age:</span> {scheme.eligibility.age}</p>
+                  <p className="text-black/60"><span className="text-black/35">Education:</span> {scheme.eligibility.education}</p>
+                  <p className="text-black/60"><span className="text-black/35">Type:</span> {scheme.eligibility.type}</p>
                 </div>
               </div>
               <div>
                 <div className="flex justify-between text-xs mb-1.5">
-                  <span className="text-white/40">Success Rate</span>
+                  <span className="text-black/40">Success Rate</span>
                   <span className="font-bold" style={{ color: scheme.color }}>{scheme.successRate}%</span>
                 </div>
                 <div className="h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
                   <motion.div className="h-full rounded-full" style={{ backgroundColor: scheme.color }} initial={{ width: 0 }} whileInView={{ width: `${scheme.successRate}%` }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.3 + i * 0.1 }} />
                 </div>
               </div>
-              <Link href="/contact" className="mt-auto w-full py-3 rounded-xl text-sm font-semibold text-white text-center cursor-pointer transition-all block" style={{ background: `linear-gradient(135deg, ${scheme.color}, ${scheme.color}cc)` }}>
+              <Link href="/contact" className="mt-auto w-full py-3 rounded-xl text-sm font-semibold text-black text-center cursor-pointer transition-all block" style={{ background: `linear-gradient(135deg, ${scheme.color}, ${scheme.color}cc)` }}>
                 Check Eligibility
               </Link>
             </motion.div>
@@ -83,10 +83,10 @@ export default function FundingMatch() {
 
         <motion.div variants={fadeUp} className="mt-10 rounded-2xl border border-white/[0.08] bg-gradient-to-r from-[#F7F8F0]/[0.04] via-transparent to-[#355872]/[0.04] p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <p className="text-white font-bold text-lg mb-1">Confused About Which Scheme to Choose?</p>
-            <p className="text-white/50 text-sm">Our experts will analyse your business and recommend the best funding option within 24 hours.</p>
+            <p className="text-black font-bold text-lg mb-1">Confused About Which Scheme to Choose?</p>
+            <p className="text-black/50 text-sm">Our experts will analyse your business and recommend the best funding option within 24 hours.</p>
           </div>
-          <Link href="/contact" className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] px-7 py-3 text-sm font-semibold text-white shrink-0">
+          <Link href="/contact" className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] px-7 py-3 text-sm font-semibold text-black shrink-0">
             Get Expert Recommendation <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>

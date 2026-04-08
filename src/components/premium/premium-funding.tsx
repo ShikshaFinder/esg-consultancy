@@ -86,10 +86,10 @@ function ProgressRing({ value, size = 56 }: { value: number; size?: number }) {
 
   return (
     <svg width={size} height={size} className="transform -rotate-90">
-      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(82,109,130,0.3)" strokeWidth="4" />
+      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(10,22,40,0.3)" strokeWidth="4" />
       <motion.circle
         cx={size / 2} cy={size / 2} r={r}
-        fill="none" stroke="#9DB2BF" strokeWidth="4" strokeLinecap="round"
+        fill="none" stroke="#1B4F8A" strokeWidth="4" strokeLinecap="round"
         strokeDasharray={circumference}
         initial={{ strokeDashoffset: circumference }}
         whileInView={{ strokeDashoffset: offset }}
@@ -123,16 +123,16 @@ export default function PremiumFunding() {
           variants={stagger}
           className="text-center mb-14"
         >
-          <motion.p variants={blurFade} custom={0} className="text-xs font-bold uppercase tracking-[0.3em] text-[#9DB2BF] mb-3">
+          <motion.p variants={blurFade} custom={0} className="text-xs font-bold uppercase tracking-[0.3em] text-black mb-3">
             Compare & Choose
           </motion.p>
-          <motion.h2 variants={blurFade} custom={0.1} className="text-3xl md:text-5xl font-bold text-[#DDE6ED]">
+          <motion.h2 variants={blurFade} custom={0.1} className="text-3xl md:text-5xl font-bold text-black">
             Find Your Perfect{" "}
-            <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #DDE6ED, #9DB2BF)" }}>
+            <span className="text-black" style={{ backgroundImage: "linear-gradient(135deg, #EBF4FF, #2E7DD9)" }}>
               Funding Match
             </span>
           </motion.h2>
-          <motion.p variants={blurFade} custom={0.2} className="mt-4 text-[#9DB2BF]/80 max-w-md mx-auto">
+          <motion.p variants={blurFade} custom={0.2} className="mt-4 text-black/80 max-w-md mx-auto">
             Compare government schemes side-by-side to make an informed decision
           </motion.p>
         </motion.div>
@@ -150,11 +150,11 @@ export default function PremiumFunding() {
               variants={blurFade}
               custom={0.1 + i * 0.08}
               whileHover={{ y: -6 }}
-              className="group rounded-2xl border border-[#526D82]/50 bg-[#27374D]/50 backdrop-blur-md overflow-hidden
-                         hover:border-[#9DB2BF]/35 hover:shadow-xl hover:shadow-[#9DB2BF]/10 transition-all duration-500 flex flex-col"
+              className="group rounded-2xl border border-white/25 blue-card overflow-hidden
+                         hover:border-[#1B4F8A]/80 hover:shadow-xl hover:shadow-[#1B4F8A]/20 transition-all duration-500 flex flex-col"
             >
               {/* Card Header */}
-              <div className="p-5 bg-gradient-to-br from-[#526D82]/40 to-[#27374D]/60 relative overflow-hidden">
+              <div className="p-5 bg-[#1B4F8A]/50 relative overflow-hidden">
                 {/* Animated corner glow */}
                 <motion.div
                   className="absolute top-0 right-0 w-24 h-24 rounded-full bg-[#9DB2BF]/10 blur-[30px] pointer-events-none"
@@ -162,13 +162,13 @@ export default function PremiumFunding() {
                   transition={{ duration: 3, repeat: Infinity }}
                 />
                 {s.badge && (
-                  <span className="relative text-[10px] font-bold uppercase tracking-widest bg-[#9DB2BF]/15 text-[#DDE6ED] rounded-full px-3 py-1 mb-3 inline-block border border-[#526D82]/30">
+                  <span className="relative text-[10px] font-bold uppercase tracking-widest bg-[#9DB2BF]/15 text-black rounded-full px-3 py-1 mb-3 inline-block border border-white/25">
                     {s.badge}
                   </span>
                 )}
-                <h3 className="relative text-xl font-bold text-[#DDE6ED] leading-tight">{s.name}</h3>
-                <p className="relative text-[11px] text-[#9DB2BF] mt-0.5 leading-tight">{s.full}</p>
-                <p className="relative text-2xl font-black text-[#DDE6ED] mt-3">{s.range}</p>
+                <h3 className="relative text-xl font-bold text-black leading-tight">{s.name}</h3>
+                <p className="relative text-[11px] text-black mt-0.5 leading-tight">{s.full}</p>
+                <p className="relative text-2xl font-black text-black mt-3">{s.range}</p>
               </div>
 
               {/* Card Body */}
@@ -182,20 +182,20 @@ export default function PremiumFunding() {
                     { label: "Collateral", value: s.education },
                   ].map(({ label, value }) => (
                     <div key={label} className="flex justify-between items-center text-xs">
-                      <span className="text-[#526D82] font-semibold uppercase tracking-wider">{label}</span>
-                      <span className="font-bold text-[#DDE6ED] text-right">{value}</span>
+                      <span className="text-black font-semibold uppercase tracking-wider">{label}</span>
+                      <span className="font-bold text-black text-right">{value}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="border-t border-[#526D82]/30" />
+                <div className="border-t border-white/25" />
 
                 {/* Eligibility */}
                 <div>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-[#526D82] mb-2">Eligibility</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-black mb-2">Eligibility</p>
                   <ul className="space-y-1.5">
                     {s.eligibility.map((e) => (
-                      <li key={e} className="flex items-center gap-1.5 text-xs text-[#9DB2BF] font-medium">
+                      <li key={e} className="flex items-center gap-1.5 text-xs text-black font-medium">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#9DB2BF] shrink-0" />
                         {e}
                       </li>
@@ -203,12 +203,12 @@ export default function PremiumFunding() {
                   </ul>
                 </div>
 
-                <div className="border-t border-[#526D82]/30" />
+                <div className="border-t border-white/25" />
 
                 {/* Best For */}
                 <div>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-[#526D82] mb-1">Best For</p>
-                  <p className="text-xs text-[#9DB2BF] font-medium italic leading-relaxed">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-black mb-1">Best For</p>
+                  <p className="text-xs text-black font-medium italic leading-relaxed">
                     &ldquo;{s.bestFor}&rdquo;
                   </p>
                 </div>
@@ -216,8 +216,8 @@ export default function PremiumFunding() {
                 {/* Success Rate with ring */}
                 <div className="flex items-center justify-between mt-auto">
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-[#526D82]">Success Rate</p>
-                    <p className="text-2xl font-black text-[#9DB2BF]">{s.successRate}%</p>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-black">Success Rate</p>
+                    <p className="text-2xl font-black text-black">{s.successRate}%</p>
                   </div>
                   <ProgressRing value={s.successRate} />
                 </div>
@@ -225,8 +225,8 @@ export default function PremiumFunding() {
                 {/* CTA */}
                 <Link
                   href={`/funding/${s.slug}`}
-                  className="block w-full text-center rounded-xl py-2.5 text-sm font-semibold text-white
-                             bg-gradient-to-r from-[#526D82] to-[#9DB2BF] hover:from-[#9DB2BF] hover:to-[#526D82]
+                  className="block w-full text-center rounded-xl py-2.5 text-sm font-semibold text-black
+                             bg-gradient-to-r from-[#1B4F8A] to-[#2E7DD9] hover:from-[#9DB2BF] hover:to-[#526D82]
                              transition-all duration-300 mt-1"
                 >
                   Check Eligibility
@@ -241,18 +241,18 @@ export default function PremiumFunding() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-12 rounded-2xl border border-[#526D82]/40 bg-gradient-to-r from-[#27374D] to-[#526D82]/30 backdrop-blur-md p-6 flex flex-col md:flex-row items-center justify-between gap-4"
+          className="mt-12 rounded-2xl border border-white/25 blue-card p-6 flex flex-col md:flex-row items-center justify-between gap-4"
         >
           <div className="flex items-start gap-3">
-            <HelpCircle className="w-8 h-8 text-[#9DB2BF] shrink-0 mt-0.5" />
+            <HelpCircle className="w-8 h-8 text-black shrink-0 mt-0.5" />
             <div>
-              <h3 className="text-lg font-bold text-[#DDE6ED]">Confused About Which Scheme to Choose?</h3>
-              <p className="text-xs text-[#9DB2BF] mt-1">Our experts will analyze your business and recommend the best funding option</p>
+              <h3 className="text-lg font-bold text-black">Confused About Which Scheme to Choose?</h3>
+              <p className="text-xs text-black mt-1">Our experts will analyze your business and recommend the best funding option</p>
             </div>
           </div>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-[#DDE6ED] text-[#27374D] px-6 py-3 text-sm font-semibold hover:bg-white transition-colors shrink-0"
+            className="inline-flex items-center gap-2 rounded-full blue-card text-black px-6 py-3 text-sm font-semibold hover:bg-[#1548A0] transition-colors shrink-0"
           >
             Get Expert Recommendation
             <ArrowRight className="w-4 h-4" />

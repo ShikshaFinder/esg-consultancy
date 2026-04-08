@@ -568,7 +568,7 @@ const SphereImageGrid: React.FC<SphereImageGridProps> = ({
             />
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-2 right-2 w-8 h-8 bg-black bg-opacity-50 rounded-full text-white flex items-center justify-center hover:bg-opacity-70 transition-all cursor-pointer"
+              className="absolute top-2 right-2 w-8 h-8 bg-black bg-opacity-50 rounded-full text-black flex items-center justify-center hover:bg-opacity-70 transition-all cursor-pointer"
             >
               <X size={16} />
             </button>

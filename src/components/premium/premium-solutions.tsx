@@ -174,7 +174,7 @@ export default function PremiumSolutions() {
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-black">Solutions</p>
           <h2 className="text-3xl font-bold text-black md:text-5xl">
             Tailored for every{" "}
-            <span className="bg-gradient-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A] text-black">
+            <span className="bg-linear-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A] text-black">
               stage of growth
             </span>
           </h2>
@@ -225,7 +225,7 @@ export default function PremiumSolutions() {
             animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, y: -20, scale: 0.97, filter: "blur(4px)" }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className={`rounded-2xl border ${tab.border} bg-gradient-to-br ${tab.color} backdrop-blur-lg p-8 md:p-12
+            className={`rounded-2xl border ${tab.border} bg-linear-to-br ${tab.color} backdrop-blur-lg p-8 md:p-12
               shadow-[0_8px_40px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(30,58,92,0.08)]`}
           >
             <div className="grid md:grid-cols-2 gap-10">

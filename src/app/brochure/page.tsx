@@ -202,7 +202,7 @@ export default function BrochurePage() {
                   </ul>
                 </div>
 
-                <div className="rounded-2xl border border-[#355872]/10 bg-gradient-to-br from-[#355872]/5 to-[#7AAACE]/5 p-6 flex-1">
+                <div className="rounded-2xl border border-[#355872]/10 bg-linear-to-br from-[#355872]/5 to-[#7AAACE]/5 p-6 flex-1">
                   <Lightbulb className="w-8 h-8 text-black mb-3" />
                   <h3 className="text-black font-bold text-lg mb-1">Need Help Choosing?</h3>
                   <p className="text-black/50 text-sm mb-3">Not sure which service is right for you? Our experts can guide you in a free 15-minute consultation call.</p>
@@ -229,10 +229,10 @@ export default function BrochurePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {brochureHighlights.map((h, i) => (
                 <motion.div key={h.title} custom={i} variants={fadeUp}
-                  className="group rounded-2xl border border-[#355872]/[0.08] bg-[#F7F8F0] p-6 hover:border-[#355872]/20 hover:shadow-lg hover:bg-white transition-all duration-300"
+                  className="group rounded-2xl border border-[#355872]/8 bg-[#F7F8F0] p-6 hover:border-[#355872]/20 hover:shadow-lg hover:bg-white transition-all duration-300"
                   whileHover={{ y: -4 }}
                 >
-                  <div className="w-11 h-11 rounded-xl bg-[#355872]/[0.08] flex items-center justify-center mb-4 group-hover:bg-gradient-to-br group-hover:from-[#355872] group-hover:to-[#7AAACE] transition-all duration-300">
+                  <div className="w-11 h-11 rounded-xl bg-[#355872]/8 flex items-center justify-center mb-4 group-hover:bg-linear-to-br group-hover:from-[#355872] group-hover:to-[#7AAACE] transition-all duration-300">
                     <h.icon className="w-5 h-5 text-black group-hover:text-black transition-colors duration-300" />
                   </div>
                   <h3 className="text-black font-bold text-base mb-1.5">{h.title}</h3>
@@ -256,7 +256,7 @@ export default function BrochurePage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
               {servicesInBrochure.map((service, i) => (
-                <motion.div key={service} custom={i} variants={fadeUp} className="flex items-center gap-2.5 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3">
+                <motion.div key={service} custom={i} variants={fadeUp} className="flex items-center gap-2.5 rounded-xl border border-white/6 bg-white/[0.03] px-4 py-3">
                   <CheckCircle2 className="w-4 h-4 text-black shrink-0" />
                   <span className="text-black/70 text-xs font-medium">{service}</span>
                 </motion.div>
@@ -266,7 +266,7 @@ export default function BrochurePage() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 px-6 bg-gradient-to-r from-[#355872] to-[#7AAACE]">
+        <section className="py-20 px-6 bg-linear-to-r from-[#355872] to-[#7AAACE]">
           <motion.div className="max-w-3xl mx-auto text-center" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black mb-4">Ready to Transform Your Business?</motion.h2>
             <motion.p variants={fadeUp} className="text-black/70 text-base mb-8">

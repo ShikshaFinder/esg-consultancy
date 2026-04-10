@@ -100,7 +100,7 @@ export default function SchemesPage() {
       <main>
         {/* ── Hero ──────────────────────────────────────────────── */}
         <section className="relative pt-32 pb-24 px-6 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#27374D] via-[#27374D] to-[#1a2a3d]" />
+          <div className="absolute inset-0 bg-linear-to-b from-[#27374D] via-[#27374D] to-[#1a2a3d]" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(157,178,191,0.08)_0%,transparent_60%)] pointer-events-none" />
           <div className="absolute inset-0 z-[1] pointer-events-none opacity-20">
             <BouncingBalls numBalls={40} colors={["#526D82", "#9DB2BF", "#DDE6ED"]} opacity={0.2} minRadius={0.2} maxRadius={1} speed={0.12} interactive={false} />
@@ -112,7 +112,7 @@ export default function SchemesPage() {
             </motion.div>
             <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-bold text-[#DDE6ED] leading-tight mb-5">
               Discover{" "}
-              <span className="bg-gradient-to-r from-[#9DB2BF] to-[#DDE6ED] bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-[#9DB2BF] to-[#DDE6ED] bg-clip-text text-transparent">
                 19+ Funding Schemes
               </span>
               <br className="hidden md:block" />
@@ -153,7 +153,7 @@ export default function SchemesPage() {
                     onClick={() => setActiveCategory(cat)}
                     className={`inline-flex items-center gap-2 rounded-full border px-7 py-3 text-sm md:text-base font-semibold transition-all duration-300 ${
                       activeCategory === cat
-                        ? "border-[#33a7db] bg-gradient-to-r from-[#33a7db] to-[#49b8eb] text-white shadow-lg shadow-[#33a7db]/25"
+                        ? "border-[#33a7db] bg-linear-to-r from-[#33a7db] to-[#49b8eb] text-white shadow-lg shadow-[#33a7db]/25"
                         : "border-[#d8e1ea] bg-white text-[#40566f] hover:border-[#bfd1e0] hover:text-[#27374D] hover:shadow-md"
                     }`}
                   >
@@ -235,7 +235,7 @@ export default function SchemesPage() {
                   variants={fadeUp}
                   className="relative rounded-2xl border border-[#526D82]/15 bg-[#526D82]/5 p-7 text-center group hover:border-[#9DB2BF]/20 transition-all duration-300"
                 >
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mx-auto mb-5`}>
+                  <div className={`w-14 h-14 rounded-2xl bg-linear-to-br ${item.color} flex items-center justify-center mx-auto mb-5`}>
                     <item.icon className="w-6 h-6 text-[#DDE6ED]" />
                   </div>
                   <span className="text-[#9DB2BF]/30 text-xs font-bold tracking-widest">{item.step}</span>
@@ -250,7 +250,7 @@ export default function SchemesPage() {
         {/* ── CTA Banner ──────────────────────────────────────── */}
         <section className="relative py-20 px-6 overflow-hidden">
           {/* Gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1a8a9a] via-[#2ba5b5] to-[#45c3d3]" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#1a8a9a] via-[#2ba5b5] to-[#45c3d3]" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.08)_0%,transparent_70%)]" />
 
           <motion.div className="relative z-10 max-w-3xl mx-auto text-center" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
@@ -267,7 +267,7 @@ export default function SchemesPage() {
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 h-13 px-8 rounded-full bg-gradient-to-r from-[#3dd4e6] to-[#5be0ef] text-[#0a2a3a] font-bold text-base shadow-lg shadow-[#1a8a9a]/30 hover:shadow-xl hover:shadow-[#1a8a9a]/40 hover:scale-[1.03] transition-all duration-300"
+                className="inline-flex items-center gap-2 h-13 px-8 rounded-full bg-linear-to-r from-[#3dd4e6] to-[#5be0ef] text-[#0a2a3a] font-bold text-base shadow-lg shadow-[#1a8a9a]/30 hover:shadow-xl hover:shadow-[#1a8a9a]/40 hover:scale-[1.03] transition-all duration-300"
               >
                 Get Free Consultation <ArrowRight className="w-4 h-4" />
               </Link>
@@ -295,11 +295,11 @@ function SchemeCard({ scheme, index }: { scheme: Scheme; index: number }) {
     <motion.div custom={index} variants={fadeUp}>
       <Link href={`/funding/${scheme.slug}`} className="group block h-full">
         <div className={`relative h-full overflow-hidden rounded-[28px] border border-[#d9e3ea] bg-white p-6 shadow-[0_16px_50px_rgba(39,55,77,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-[#c7d6e3] hover:shadow-[0_22px_60px_rgba(39,55,77,0.12)] ${colors.glow}`}>
-          <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#33a7db] via-[#7cc8ef] to-[#d8eefc] opacity-80" />
+          <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-[#33a7db] via-[#7cc8ef] to-[#d8eefc] opacity-80" />
 
           <div className="mb-5 flex items-start justify-between gap-4">
             <div className="flex items-center gap-4">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#eef7fd] to-[#dbeefd] text-3xl shadow-inner" role="img">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-[#eef7fd] to-[#dbeefd] text-3xl shadow-inner" role="img">
                 {scheme.icon}
               </div>
               <div>

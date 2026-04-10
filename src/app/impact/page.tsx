@@ -135,10 +135,10 @@ export default function ImpactPage() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
               {heroStats.map((s, i) => (
                 <motion.div key={s.label} custom={i} variants={fadeUp}
-                  className="group rounded-2xl border border-[#355872]/[0.08] bg-white p-6 text-center hover:border-[#355872]/20 hover:shadow-lg transition-all duration-300"
+                  className="group rounded-2xl border border-[#355872]/8 bg-white p-6 text-center hover:border-[#355872]/20 hover:shadow-lg transition-all duration-300"
                   whileHover={{ y: -4 }}
                 >
-                  <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center bg-[#355872]/[0.08] group-hover:bg-gradient-to-br group-hover:from-[#355872] group-hover:to-[#7AAACE] transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center bg-[#355872]/8 group-hover:bg-linear-to-br group-hover:from-[#355872] group-hover:to-[#7AAACE] transition-all duration-300">
                     <s.icon className="w-5 h-5 text-black group-hover:text-black transition-colors duration-300" />
                   </div>
                   <p className="text-2xl md:text-3xl font-black text-black mb-1">{s.value}</p>
@@ -163,7 +163,7 @@ export default function ImpactPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {sectors.map((s, i) => (
-                <motion.div key={s.name} custom={i} variants={fadeUp} className="flex items-center gap-5 rounded-2xl border border-white/[0.06] bg-white/[0.03] p-5 hover:bg-white/[0.06] transition-all duration-300">
+                <motion.div key={s.name} custom={i} variants={fadeUp} className="flex items-center gap-5 rounded-2xl border border-white/6 bg-white/[0.03] p-5 hover:bg-white/6 transition-all duration-300">
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${s.color}20`, border: `1px solid ${s.color}35` }}>
                     <s.icon className="w-5 h-5" style={{ color: s.color }} />
                   </div>
@@ -172,7 +172,7 @@ export default function ImpactPage() {
                       <span className="text-black font-semibold text-sm">{s.name}</span>
                       <span className="text-black font-bold text-sm">{s.percent}%</span>
                     </div>
-                    <div className="w-full h-2 rounded-full bg-white/[0.08] overflow-hidden">
+                    <div className="w-full h-2 rounded-full bg-white/8 overflow-hidden">
                       <motion.div
                         className="h-full rounded-full"
                         style={{ background: `linear-gradient(90deg, ${s.color}, ${s.color}99)` }}
@@ -194,7 +194,7 @@ export default function ImpactPage() {
                 { label: "Fastest Growing", value: "Technology", sub: "3x growth in last 2 years" },
                 { label: "Highest Ticket", value: "Manufacturing", sub: "Avg ₹35L per business" },
               ].map((item) => (
-                <div key={item.label} className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4 text-center">
+                <div key={item.label} className="rounded-xl border border-white/6 bg-white/[0.03] p-4 text-center">
                   <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-black/30 mb-1">{item.label}</p>
                   <p className="text-black font-bold text-sm">{item.value}</p>
                   <p className="text-black/30 text-[11px] mt-0.5">{item.sub}</p>
@@ -247,9 +247,9 @@ export default function ImpactPage() {
                         <span className="text-black/60 font-medium">{item.state}</span>
                         <span className="text-black font-bold">{item.businesses}</span>
                       </div>
-                      <div className="w-full h-2 rounded-full bg-[#355872]/[0.08] overflow-hidden">
+                      <div className="w-full h-2 rounded-full bg-[#355872]/8 overflow-hidden">
                         <motion.div
-                          className="h-full rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE]"
+                          className="h-full rounded-full bg-linear-to-r from-[#355872] to-[#7AAACE]"
                           initial={{ width: 0 }}
                           whileInView={{ width: `${item.percentage}%` }}
                           viewport={{ once: true }}
@@ -276,7 +276,7 @@ export default function ImpactPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {impactStories.map((story, i) => (
                 <motion.div key={story.name} custom={i} variants={fadeUp}
-                  className="rounded-2xl border border-[#355872]/[0.08] bg-white p-6 hover:shadow-lg hover:border-[#355872]/15 transition-all duration-300"
+                  className="rounded-2xl border border-[#355872]/8 bg-white p-6 hover:shadow-lg hover:border-[#355872]/15 transition-all duration-300"
                   whileHover={{ y: -4 }}
                 >
                   <div className="flex items-center gap-2 mb-4">
@@ -284,7 +284,7 @@ export default function ImpactPage() {
                     <span className="text-[10px] font-bold tracking-wider uppercase text-black bg-[#355872]/10 px-2.5 py-0.5 rounded-full">{story.funding}</span>
                   </div>
                   <p className="text-black/60 text-sm leading-relaxed mb-5 italic">&ldquo;{story.quote}&rdquo;</p>
-                  <div className="border-t border-[#355872]/[0.06] pt-4">
+                  <div className="border-t border-[#355872]/6 pt-4">
                     <p className="text-black font-bold text-sm">{story.name}</p>
                     <p className="text-black/40 text-[11px]">{story.business} · {story.location}</p>
                   </div>
@@ -314,7 +314,7 @@ export default function ImpactPage() {
                 { name: "Sector Specific", desc: "FSSAI, ZED, BIS" },
               ].map((scheme, i) => (
                 <motion.div key={scheme.name} custom={i} variants={fadeUp}
-                  className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4 text-center hover:bg-white/[0.06] transition-all duration-300"
+                  className="rounded-xl border border-white/6 bg-white/[0.03] p-4 text-center hover:bg-white/6 transition-all duration-300"
                 >
                   <CheckCircle2 className="w-5 h-5 text-black mx-auto mb-2" />
                   <p className="text-black font-bold text-sm">{scheme.name}</p>
@@ -326,7 +326,7 @@ export default function ImpactPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 px-6 bg-gradient-to-r from-[#355872] to-[#7AAACE]">
+        <section className="py-20 px-6 bg-linear-to-r from-[#355872] to-[#7AAACE]">
           <motion.div className="max-w-3xl mx-auto text-center" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black mb-4">Become Our Next Success Story</motion.h2>
             <motion.p variants={fadeUp} className="text-black/70 text-base mb-8">

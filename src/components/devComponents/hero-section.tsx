@@ -69,7 +69,7 @@ export function HeroSection({
           )}
 
           {/* Title */}
-          <h1 className="relative z-10 inline-block animate-appear bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-4xl font-semibold leading-tight text-black drop-shadow-2xl sm:text-6xl sm:leading-tight md:text-8xl md:leading-tight">
+          <h1 className="relative z-10 inline-block animate-appear bg-linear-to-r from-foreground to-muted-foreground bg-clip-text text-4xl font-semibold leading-tight text-black drop-shadow-2xl sm:text-6xl sm:leading-tight md:text-8xl md:leading-tight">
             {title}
           </h1>
 
@@ -91,7 +91,7 @@ export function HeroSection({
                     size="lg"
                     className={cn(
                       isGlow &&
-                      "relative overflow-hidden bg-gradient-to-r from-primary to-primary/60 shadow-[0_0_30px_rgba(99,102,241,0.5)]"
+                      "relative overflow-hidden bg-linear-to-r from-primary to-primary/60 shadow-[0_0_30px_rgba(99,102,241,0.5)]"
                     )}
                     asChild
                   >

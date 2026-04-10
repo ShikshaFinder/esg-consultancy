@@ -51,9 +51,9 @@ export default function HeroSection() {
       className="relative min-h-screen bg-[#0a1628] overflow-hidden"
     >
       {/* Ambient blobs */}
-      <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-[#355872]/[0.06] blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] rounded-full bg-[#F7F8F0]/[0.04] blur-[130px] pointer-events-none" />
-      <div className="absolute top-2/3 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#9CD5FF]/[0.04] blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-[#355872]/6 blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] rounded-full bg-[#F7F8F0]/4 blur-[130px] pointer-events-none" />
+      <div className="absolute top-2/3 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#9CD5FF]/4 blur-[100px] pointer-events-none" />
 
       {/* 21st.dev BouncingBalls ambient particles */}
       <div className="absolute inset-0 z-[1] pointer-events-none opacity-40">
@@ -89,7 +89,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="mb-6"
             >
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#7AAACE]/30 bg-white/[0.05] backdrop-blur-md px-4 py-2 text-xs sm:text-sm text-black/80">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#7AAACE]/30 bg-white/5 backdrop-blur-md px-4 py-2 text-xs sm:text-sm text-black/80">
                 <span className="relative flex h-2 w-2 shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#9CD5FF] opacity-70" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#9CD5FF]" />
@@ -146,7 +146,7 @@ export default function HeroSection() {
               </motion.div>
               <Link
                 href="/contact"
-                className="flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] backdrop-blur-sm px-7 py-3 text-sm font-medium text-black hover:bg-white/10 transition-all"
+                className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm px-7 py-3 text-sm font-medium text-black hover:bg-white/10 transition-all"
               >
                 Book Free Consultation
               </Link>
@@ -165,7 +165,7 @@ export default function HeroSection() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.9 + i * 0.08 }}
-                  className="flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-[11px] text-black/60"
+                  className="flex items-center gap-1.5 rounded-full border border-white/8 bg-white/[0.03] px-3 py-1.5 text-[11px] text-black/60"
                 >
                   <span>{b.icon}</span>
                   {b.label}
@@ -205,10 +205,10 @@ export default function HeroSection() {
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: "url('/hero-growbridge.png')" }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/60 via-[#0a1628]/75 to-[#0a1628]/92" />
+                  <div className="absolute inset-0 bg-linear-to-b from-[#0a1628]/60 via-[#0a1628]/75 to-[#0a1628]/92" />
                   <div className="relative z-10 flex flex-col justify-between h-full p-6">
                     {/* Top badge */}
-                    <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.15] bg-white/[0.08] px-3 py-1.5 text-[11px] font-medium text-black/90 backdrop-blur-md w-fit">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.15] bg-white/8 px-3 py-1.5 text-[11px] font-medium text-black/90 backdrop-blur-md w-fit">
                       <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
                       Grow Bridge · Active Now
                     </span>
@@ -258,7 +258,7 @@ export default function HeroSection() {
                         { icon: "✓", label: "Pan India" },
                         { icon: "✓", label: "7+ Years" },
                       ].map((b) => (
-                        <span key={b.label} className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-[11px] text-black/75 backdrop-blur-sm">
+                        <span key={b.label} className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/6 px-3 py-1.5 text-[11px] text-black/75 backdrop-blur-sm">
                           <span className="text-black">{b.icon}</span> {b.label}
                         </span>
                       ))}
@@ -296,7 +296,7 @@ export default function HeroSection() {
                         <input type="tel" placeholder="10-digit mobile" className="w-full rounded-xl border border-slate-200 bg-white pl-10 pr-4 py-3 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400 focus:border-[#355872] focus:ring-4 focus:ring-[#355872]/10" />
                       </div>
                     </div>
-                    <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#355872] via-[#5a8fad] to-[#7AAACE] px-5 py-3.5 text-sm font-bold text-black shadow-[0_8px_24px_rgba(53,88,114,0.3)] cursor-pointer hover:shadow-[0_12px_32px_rgba(53,88,114,0.4)] hover:scale-[1.01] active:scale-[0.99] transition-all duration-200">
+                    <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#355872] via-[#5a8fad] to-[#7AAACE] px-5 py-3.5 text-sm font-bold text-black shadow-[0_8px_24px_rgba(53,88,114,0.3)] cursor-pointer hover:shadow-[0_12px_32px_rgba(53,88,114,0.4)] hover:scale-[1.01] active:scale-[0.99] transition-all duration-200">
                       Get Free Consultation
                       <ArrowRight className="h-4 w-4" />
                     </button>

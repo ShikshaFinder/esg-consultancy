@@ -56,7 +56,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#009b7d] to-[#0284c7] flex items-center justify-center">
+            <div className="w-9 h-9 rounded-lg bg-linear-to-br from-[#009b7d] to-[#0284c7] flex items-center justify-center">
               <span className="text-white font-bold text-sm">E</span>
             </div>
             <div>
@@ -78,7 +78,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/contact"
-              className="ml-4 px-5 py-2 text-sm font-medium bg-gradient-to-r from-[#009b7d] to-[#0284c7] text-white rounded-lg hover:opacity-90 transition-opacity"
+              className="ml-4 px-5 py-2 text-sm font-medium bg-linear-to-r from-[#009b7d] to-[#0284c7] text-white rounded-lg hover:opacity-90 transition-opacity"
             >
               Request Assessment
             </Link>
@@ -118,7 +118,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="mt-4 px-5 py-3 text-center font-medium bg-gradient-to-r from-[#009b7d] to-[#0284c7] text-white rounded-lg"
+                className="mt-4 px-5 py-3 text-center font-medium bg-linear-to-r from-[#009b7d] to-[#0284c7] text-white rounded-lg"
               >
                 Request Assessment
               </Link>

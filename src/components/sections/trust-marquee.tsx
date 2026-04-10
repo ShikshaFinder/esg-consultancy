@@ -15,9 +15,9 @@ const ITEMS = [
 
 export default function TrustMarquee() {
   return (
-    <div className="relative py-3 bg-[#0a1628] border-y border-white/[0.06] overflow-hidden">
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0a1628] to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0a1628] to-transparent z-10" />
+    <div className="relative py-3 bg-[#0a1628] border-y border-white/6 overflow-hidden">
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-linear-to-r from-[#0a1628] to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-linear-to-l from-[#0a1628] to-transparent z-10" />
       <Marquee pauseOnHover className="[--duration:30s] [--gap:2rem]">
         {ITEMS.map((item) => (
           <span key={item.text} className="flex items-center gap-2 text-xs text-black/40 whitespace-nowrap group">

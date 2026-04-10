@@ -135,7 +135,7 @@ export default function PremiumSchemes() {
   return (
     <section ref={sectionRef} className="relative py-24 overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1B4F8A]/10 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-[#1B4F8A]/10 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* ── Header ── */}
@@ -212,7 +212,7 @@ export default function PremiumSchemes() {
                          hover:border-[#1B4F8A]/80 hover:shadow-xl hover:shadow-[#1B4F8A]/20 transition-all duration-500 relative overflow-hidden"
             >
               {/* Hover glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#9DB2BF]/0 to-[#526D82]/0 group-hover:from-[#9DB2BF]/5 group-hover:to-[#526D82]/10 transition-all duration-500 rounded-2xl" />
+              <div className="absolute inset-0 bg-linear-to-br from-[#9DB2BF]/0 to-[#526D82]/0 group-hover:from-[#9DB2BF]/5 group-hover:to-[#526D82]/10 transition-all duration-500 rounded-2xl" />
 
               <div className="relative z-10 flex flex-col h-full">
                 {/* Icon */}

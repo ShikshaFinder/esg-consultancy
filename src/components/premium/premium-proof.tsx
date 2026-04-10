@@ -128,7 +128,7 @@ export default function PremiumProof() {
             </motion.span>
             <motion.h2 variants={blurFadeUp} custom={0.1} className="text-3xl font-bold tracking-tight text-black sm:text-4xl md:text-5xl">
               From Signup to Growth{" "}
-              <span className="text-black bg-gradient-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A]">in 7 Steps</span>
+              <span className="text-black bg-linear-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A]">in 7 Steps</span>
             </motion.h2>
           </div>
 
@@ -138,7 +138,7 @@ export default function PremiumProof() {
             <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2">
               <div className="absolute inset-0 bg-[#526D82]/30" />
               <motion.div
-                className="absolute top-0 left-0 right-0 bg-gradient-to-b from-[#9DB2BF] to-[#DDE6ED]"
+                className="absolute top-0 left-0 right-0 bg-linear-to-b from-[#9DB2BF] to-[#DDE6ED]"
                 style={{ height: lineHeight }}
               />
             </div>
@@ -158,7 +158,7 @@ export default function PremiumProof() {
 
                   {/* Icon with gradient + animated ring */}
                   <motion.div
-                    className={`relative w-11 h-11 rounded-xl bg-gradient-to-br ${s.gradient} flex items-center justify-center mb-5 shadow-md`}
+                    className={`relative w-11 h-11 rounded-xl bg-linear-to-br ${s.gradient} flex items-center justify-center mb-5 shadow-md`}
                     whileHover={{ rotate: -8, scale: 1.15 }}
                     transition={{ type: "spring", stiffness: 300, damping: 15 }}
                   >
@@ -182,7 +182,7 @@ export default function PremiumProof() {
                     viewport={{ once: true }}
                   >
                     <motion.div
-                      className={`h-full rounded-full bg-gradient-to-r ${s.gradient}`}
+                      className={`h-full rounded-full bg-linear-to-r ${s.gradient}`}
                       initial={{ width: "0%" }}
                       whileInView={{ width: "100%" }}
                       viewport={{ once: true }}
@@ -198,7 +198,7 @@ export default function PremiumProof() {
 
       {/* ━━━ SOCIAL PROOF / STATS ━━━ */}
       <section className="relative px-6 py-24 bg-[#DDE6ED]">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#9DB2BF]/10 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#9DB2BF]/10 to-transparent pointer-events-none" />
 
         <motion.div
           className="max-w-6xl mx-auto relative z-10"
@@ -237,7 +237,7 @@ export default function PremiumProof() {
           {/* Testimonials */}
           <div className="text-center mb-14">
             <motion.h2 variants={blurFadeUp} className="text-3xl sm:text-4xl font-bold text-black tracking-tight">
-              Loved by <span className="text-black bg-gradient-to-r from-[#526D82] to-[#FFF8F0]">Business Owners</span>
+              Loved by <span className="text-black bg-linear-to-r from-[#526D82] to-[#FFF8F0]">Business Owners</span>
             </motion.h2>
             <motion.p variants={blurFadeUp} className="mt-4 text-black text-base max-w-xl mx-auto">
               Real stories from real entrepreneurs who accelerated their growth with GrowBridge.
@@ -256,7 +256,7 @@ export default function PremiumProof() {
               >
                 {/* Hover gradient border top */}
                 <motion.div
-                  className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#526D82] to-transparent opacity-0 group-hover:opacity-100"
+                  className="absolute top-0 left-0 right-0 h-[2px] bg-linear-to-r from-transparent via-[#526D82] to-transparent opacity-0 group-hover:opacity-100"
                   initial={{ scaleX: 0 }}
                   whileHover={{ scaleX: 1 }}
                   transition={{ duration: 0.4 }}
@@ -301,7 +301,7 @@ export default function PremiumProof() {
                   transition={{ delay: 0.4 + i * 0.1 }}
                 >
                   <motion.div
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#FFF8F0] to-[#526D82] text-xs font-bold text-black"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-[#FFF8F0] to-[#526D82] text-xs font-bold text-black"
                     whileHover={{ scale: 1.15, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >

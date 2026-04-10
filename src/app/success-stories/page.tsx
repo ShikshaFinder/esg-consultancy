@@ -198,10 +198,10 @@ export default function SuccessStoriesPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
               {overallStats.map((s, i) => (
                 <motion.div key={s.label} custom={i} variants={fadeUp}
-                  className="group rounded-2xl border border-[#355872]/[0.08] bg-white p-6 text-center hover:border-[#355872]/20 hover:shadow-lg transition-all duration-300"
+                  className="group rounded-2xl border border-[#355872]/8 bg-white p-6 text-center hover:border-[#355872]/20 hover:shadow-lg transition-all duration-300"
                   whileHover={{ y: -4 }}
                 >
-                  <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center bg-[#355872]/[0.08] group-hover:bg-gradient-to-br group-hover:from-[#355872] group-hover:to-[#7AAACE] transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center bg-[#355872]/8 group-hover:bg-linear-to-br group-hover:from-[#355872] group-hover:to-[#7AAACE] transition-all duration-300">
                     <s.icon className="w-5 h-5 text-black group-hover:text-black transition-colors duration-300" />
                   </div>
                   <p className="text-2xl md:text-3xl font-black text-black mb-1">
@@ -229,12 +229,12 @@ export default function SuccessStoriesPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {successStories.map((story, i) => (
                 <motion.div key={story.id} custom={i} variants={fadeUp}
-                  className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-6 hover:bg-white/[0.06] hover:border-white/10 transition-all duration-300 flex flex-col"
+                  className="rounded-2xl border border-white/6 bg-white/[0.03] p-6 hover:bg-white/6 hover:border-white/10 transition-all duration-300 flex flex-col"
                   whileHover={{ y: -4 }}
                 >
                   {/* Header */}
                   <div className="flex items-start gap-3 mb-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${story.gradient} flex items-center justify-center text-xl shrink-0`}>
+                    <div className={`w-12 h-12 rounded-xl bg-linear-to-br ${story.gradient} flex items-center justify-center text-xl shrink-0`}>
                       {story.icon}
                     </div>
                     <div className="min-w-0 flex-1">
@@ -257,7 +257,7 @@ export default function SuccessStoriesPage() {
                   </div>
 
                   {/* Timeline */}
-                  <div className="flex items-center gap-2 mb-4 p-2.5 rounded-lg bg-white/[0.04] border border-white/[0.06]">
+                  <div className="flex items-center gap-2 mb-4 p-2.5 rounded-lg bg-white/4 border border-white/6">
                     <Clock className="w-3.5 h-3.5 text-black shrink-0" />
                     <span className="text-[11px] text-black/50 font-medium">{story.timeline}</span>
                   </div>
@@ -275,9 +275,9 @@ export default function SuccessStoriesPage() {
                   </div>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 pt-3 mt-auto border-t border-white/[0.06]">
+                  <div className="flex flex-wrap gap-1.5 pt-3 mt-auto border-t border-white/6">
                     {story.tags.map(tag => (
-                      <span key={tag} className="text-[9px] font-bold tracking-wider uppercase text-black/30 bg-white/[0.04] px-2 py-0.5 rounded">{tag}</span>
+                      <span key={tag} className="text-[9px] font-bold tracking-wider uppercase text-black/30 bg-white/4 px-2 py-0.5 rounded">{tag}</span>
                     ))}
                   </div>
                 </motion.div>
@@ -298,11 +298,11 @@ export default function SuccessStoriesPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {videoTestimonials.map((v, i) => (
                 <motion.div key={v.name} custom={i} variants={fadeUp}
-                  className="group rounded-2xl border border-[#355872]/[0.08] bg-white overflow-hidden hover:shadow-xl hover:border-[#355872]/20 transition-all duration-300"
+                  className="group rounded-2xl border border-[#355872]/8 bg-white overflow-hidden hover:shadow-xl hover:border-[#355872]/20 transition-all duration-300"
                   whileHover={{ y: -4 }}
                 >
                   {/* Video placeholder */}
-                  <div className="relative bg-gradient-to-br from-[#0a1628] to-[#355872] h-48 flex items-center justify-center">
+                  <div className="relative bg-linear-to-br from-[#0a1628] to-[#355872] h-48 flex items-center justify-center">
                     <span className="text-5xl opacity-20 absolute">{v.thumbnail}</span>
                     <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300 cursor-pointer z-10">
                       <Play className="w-6 h-6 text-black ml-1" />
@@ -324,7 +324,7 @@ export default function SuccessStoriesPage() {
         </section>
 
         {/* Consultation CTA */}
-        <section className="py-20 px-6 bg-gradient-to-r from-[#355872] to-[#7AAACE]">
+        <section className="py-20 px-6 bg-linear-to-r from-[#355872] to-[#7AAACE]">
           <motion.div className="max-w-3xl mx-auto text-center" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black mb-4">
               Become Our Next Success Story

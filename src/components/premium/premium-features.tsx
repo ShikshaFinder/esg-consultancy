@@ -207,7 +207,7 @@ export default function PremiumFeatures() {
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight"
           >
             Everything You Need{" "}
-            <span className="text-black bg-gradient-to-r from-[#FFF8F0] via-[#526D82] to-[#9DB2BF]">
+            <span className="text-black bg-linear-to-r from-[#FFF8F0] via-[#526D82] to-[#9DB2BF]">
               to Scale
             </span>
           </motion.h2>
@@ -227,10 +227,10 @@ export default function PremiumFeatures() {
                     hover:-translate-y-2`}
                 >
                   {/* Hover gradient overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${f.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`} />
+                  <div className={`absolute inset-0 bg-linear-to-br ${f.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`} />
 
                   {/* Glassmorphic inner glow */}
-                  <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-[#9DB2BF]/[0.08] opacity-0 group-hover:opacity-100 blur-3xl transition-opacity duration-700 pointer-events-none" />
+                  <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-[#9DB2BF]/8 opacity-0 group-hover:opacity-100 blur-3xl transition-opacity duration-700 pointer-events-none" />
 
                   {/* Animated border highlight on hover */}
                   <motion.div
@@ -273,7 +273,7 @@ export default function PremiumFeatures() {
                   </div>
 
                   {/* Corner glow */}
-                  <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-[#526D82]/[0.06] opacity-0 blur-2xl transition-opacity duration-500 pointer-events-none group-hover:opacity-100" />
+                  <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-[#526D82]/6 opacity-0 blur-2xl transition-opacity duration-500 pointer-events-none group-hover:opacity-100" />
                 </Link>
               </TiltCard>
             </motion.div>

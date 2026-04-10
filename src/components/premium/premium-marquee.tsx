@@ -51,8 +51,8 @@ export default function PremiumMarquee() {
       {/* Single scrollable row */}
       <div className="relative flex overflow-hidden group/marquee">
         {/* Gradient edge masks */}
-        <div className="absolute left-0 top-0 bottom-0 z-10 w-40 bg-gradient-to-r from-[#526D82] via-[#526D82]/95 to-transparent" />
-        <div className="absolute right-0 top-0 bottom-0 z-10 w-40 bg-gradient-to-l from-[#526D82] via-[#526D82]/95 to-transparent" />
+        <div className="absolute left-0 top-0 bottom-0 z-10 w-40 bg-linear-to-r from-[#526D82] via-[#526D82]/95 to-transparent" />
+        <div className="absolute right-0 top-0 bottom-0 z-10 w-40 bg-linear-to-l from-[#526D82] via-[#526D82]/95 to-transparent" />
 
         <motion.div
           className="flex gap-6 shrink-0 group-hover/marquee:[animation-play-state:paused]"
@@ -70,7 +70,7 @@ export default function PremiumMarquee() {
                          shadow-[inset_0_1px_0_rgba(30,58,92,0.08)]"
             >
               {/* Hover glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#9DB2BF]/0 via-[#9DB2BF]/5 to-[#9DB2BF]/0 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-linear-to-r from-[#9DB2BF]/0 via-[#9DB2BF]/5 to-[#9DB2BF]/0 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300" />
 
               {item.logo ? (
                 <div className="relative w-9 h-9 rounded-lg bg-white/90 flex items-center justify-center overflow-hidden p-1 shrink-0">
@@ -81,7 +81,7 @@ export default function PremiumMarquee() {
                   />
                 </div>
               ) : (
-                <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-[#9DB2BF]/25 to-[#526D82]/35 flex items-center justify-center
+                <div className="relative w-9 h-9 rounded-lg bg-linear-to-br from-[#9DB2BF]/25 to-[#526D82]/35 flex items-center justify-center
                                 text-[10px] font-bold text-black group-hover/logo:from-[#9DB2BF]/35 group-hover/logo:to-[#526D82]/45 transition-colors shrink-0">
                   {item.name.slice(0, 2).toUpperCase()}
                 </div>

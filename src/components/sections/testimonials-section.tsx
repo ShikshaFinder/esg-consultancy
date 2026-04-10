@@ -49,12 +49,12 @@ export default function TestimonialsSection() {
 
   return (
     <section id="results" className="py-24 px-6 bg-[#060e1a] relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(53,88,114,0.04)_0%,transparent_70%)] pointer-events-none" />
 
       <motion.div className="max-w-7xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.08 }} variants={stagger}>
         {/* Stats with Marquee */}
-        <motion.div variants={fadeUp} className="mb-20 overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+        <motion.div variants={fadeUp} className="mb-20 overflow-hidden rounded-2xl border border-white/6 bg-white/2">
           <Marquee pauseOnHover className="[--duration:25s] [--gap:0rem] py-2">
             {[
               { val: 110, suffix: "Cr+", prefix: "₹", label: "Total Funded", sub: "Across all schemes", color: "#355872" },
@@ -89,7 +89,7 @@ export default function TestimonialsSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
           {testimonials.map((t, i) => (
             <motion.div key={t.name} custom={i} variants={fadeUp}
-              className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 flex flex-col gap-4 group hover:border-[#355872]/20 transition-all duration-300"
+              className="rounded-2xl border border-white/8 bg-white/[0.03] p-6 flex flex-col gap-4 group hover:border-[#355872]/20 transition-all duration-300"
               whileHover={{ y: -4 }}
             >
               <div className="flex items-center justify-between">
@@ -99,8 +99,8 @@ export default function TestimonialsSection() {
                 <span className="text-[9px] font-bold text-black bg-[#F7F8F0]/10 border border-[#F7F8F0]/20 px-2 py-1 rounded-full">{t.scheme}</span>
               </div>
               <p className="text-black/80 text-sm leading-relaxed italic flex-1">&ldquo;{t.text}&rdquo;</p>
-              <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#355872] to-[#F7F8F0] flex items-center justify-center text-black font-bold text-sm shrink-0">{t.initials}</div>
+              <div className="flex items-center gap-3 pt-4 border-t border-white/6">
+                <div className="w-10 h-10 rounded-full bg-linear-to-br from-[#355872] to-[#F7F8F0] flex items-center justify-center text-black font-bold text-sm shrink-0">{t.initials}</div>
                 <div className="flex-1 min-w-0">
                   <p className="text-black font-semibold text-sm truncate">{t.name}</p>
                   <p className="text-black/40 text-[11px] truncate">{t.role} · {t.company}</p>

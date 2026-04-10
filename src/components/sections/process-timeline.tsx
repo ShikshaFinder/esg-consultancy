@@ -24,7 +24,7 @@ const steps = [
 export default function ProcessTimeline() {
   return (
     <section id="process" className="py-24 px-6 bg-[#0a1628] relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
       {/* 21st.dev BouncingBalls ambient decoration */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-25">
         <BouncingBalls
@@ -81,7 +81,7 @@ export default function ProcessTimeline() {
                     </div>
                   </div>
                   <div className={`flex-1 ${isRight ? "md:text-right md:mr-6" : "md:ml-6"} ml-0`}>
-                    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 group hover:border-[#355872]/25 transition-all duration-300">
+                    <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-5 group hover:border-[#355872]/25 transition-all duration-300">
                       <div className={`flex items-center gap-2 mb-2 ${isRight ? "md:flex-row-reverse md:justify-start" : ""}`}>
                         <span className="text-[9px] font-bold tracking-widest text-black bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-2 py-0.5 rounded-full">{step.tag}</span>
                         <span className="text-[10px] text-black/25">STEP {step.step}</span>

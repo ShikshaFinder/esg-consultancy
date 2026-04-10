@@ -88,7 +88,7 @@ export default function PremiumFooter() {
           >
             Your Growth Journey
             <br />
-            <span className="text-black bg-gradient-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A]">
+            <span className="text-black bg-linear-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A]">
               Starts Here
             </span>
           </motion.h2>
@@ -109,7 +109,7 @@ export default function PremiumFooter() {
                 href="/contact"
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full px-10 py-4.5 text-base font-semibold text-black shadow-[0_8px_40px_rgba(30,58,92,0.22)]"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82] bg-[length:200%_100%]" />
+                <div className="absolute inset-0 bg-linear-to-r from-[#DDE6ED] via-[#9DB2BF] to-[#526D82] bg-[length:200%_100%]" />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-300 bg-[radial-gradient(circle_at_50%_50%,rgba(0,0,0,0.3),transparent_70%)]" />
                 <span className="relative">Get Free Growth Assessment</span>
                 <ArrowRight className="relative w-4.5 h-4.5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -142,7 +142,7 @@ export default function PremiumFooter() {
       {/* ━━━ FOOTER ━━━ */}
       <footer className="relative border-t border-white/25 bg-[#FFF8F0]">
         {/* Subtle top glow line */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-[#9DB2BF]/30 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-linear-to-r from-transparent via-[#9DB2BF]/30 to-transparent" />
         <div className="max-w-7xl mx-auto px-6 pt-20 pb-10">
           {/* Top section */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-10 mb-16">

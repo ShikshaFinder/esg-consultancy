@@ -140,7 +140,7 @@ export default function FundingPage() {
         </section>
 
         {/* ─── Stats Ticker ─── */}
-        <section className="bg-[#0a1628] border-y border-white/[0.06] py-5 overflow-hidden">
+        <section className="bg-[#0a1628] border-y border-white/6 py-5 overflow-hidden">
           <div className="flex animate-[scroll_25s_linear_infinite] gap-12 px-6 w-max">
             {[...stats, ...stats].map((s, i) => (
               <div
@@ -228,7 +228,7 @@ export default function FundingPage() {
                 key={scheme.slug}
                 custom={i}
                 variants={fadeUp}
-                className="group rounded-2xl border border-[#355872]/[0.08] bg-white hover:border-[#355872]/20 hover:shadow-xl hover:shadow-[#355872]/5 transition-all duration-300 overflow-hidden flex flex-col"
+                className="group rounded-2xl border border-[#355872]/8 bg-white hover:border-[#355872]/20 hover:shadow-xl hover:shadow-[#355872]/5 transition-all duration-300 overflow-hidden flex flex-col"
               >
                 {/* Card Header */}
                 <div className="p-6 pb-4">
@@ -256,7 +256,7 @@ export default function FundingPage() {
 
                   {/* Highlight + Timeline */}
                   <div className="flex items-center gap-3 mb-1">
-                    <div className="flex-1 rounded-xl border border-[#355872]/[0.06] bg-[#F7F8F0] px-3 py-2.5 text-center">
+                    <div className="flex-1 rounded-xl border border-[#355872]/6 bg-[#F7F8F0] px-3 py-2.5 text-center">
                       <p className="text-black font-extrabold text-lg leading-none">
                         {scheme.highlight}
                       </p>
@@ -264,7 +264,7 @@ export default function FundingPage() {
                         {scheme.highlightLabel}
                       </p>
                     </div>
-                    <div className="flex-1 rounded-xl border border-[#355872]/[0.06] bg-[#F7F8F0] px-3 py-2.5 text-center">
+                    <div className="flex-1 rounded-xl border border-[#355872]/6 bg-[#F7F8F0] px-3 py-2.5 text-center">
                       <p className="text-black font-extrabold text-base leading-none flex items-center justify-center gap-1">
                         <Clock className="w-3.5 h-3.5 text-black" />
                         {scheme.timeline}
@@ -277,7 +277,7 @@ export default function FundingPage() {
                 </div>
 
                 {/* Card Footer */}
-                <div className="mt-auto border-t border-[#355872]/[0.06] px-6 py-4">
+                <div className="mt-auto border-t border-[#355872]/6 px-6 py-4">
                   <Link
                     href={`/funding/${scheme.slug}`}
                     className="inline-flex items-center gap-2 text-sm font-semibold text-black group-hover:text-black transition-colors"
@@ -310,7 +310,7 @@ export default function FundingPage() {
         </section>
 
         {/* ─── CTA ─── */}
-        <section className="py-20 px-6 bg-gradient-to-r from-[#355872] to-[#7AAACE]">
+        <section className="py-20 px-6 bg-linear-to-r from-[#355872] to-[#7AAACE]">
           <motion.div
             className="max-w-3xl mx-auto text-center"
             initial="hidden"

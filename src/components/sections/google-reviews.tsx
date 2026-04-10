@@ -73,12 +73,12 @@ export default function GoogleReviewsSection() {
 
         {/* Review cards with Marquee */}
         <div className="relative">
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-[#F7F8F0] to-transparent z-10" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-[#F7F8F0] to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-linear-to-r from-[#F7F8F0] to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-linear-to-l from-[#F7F8F0] to-transparent z-10" />
           <Marquee pauseOnHover className="[--duration:45s] [--gap:1.25rem]">
             {reviews.map((r, i) => (
               <div key={`${r.name}-${i}`}
-                className="rounded-2xl bg-white border border-[#355872]/[0.08] p-6 flex flex-col gap-4 group hover:border-[#355872]/20 hover:shadow-lg transition-all duration-300 min-w-[320px] max-w-[360px]"
+                className="rounded-2xl bg-white border border-[#355872]/8 p-6 flex flex-col gap-4 group hover:border-[#355872]/20 hover:shadow-lg transition-all duration-300 min-w-[320px] max-w-[360px]"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex gap-0.5">
@@ -94,8 +94,8 @@ export default function GoogleReviewsSection() {
                   <p className="text-black/70 text-sm leading-relaxed pl-5 line-clamp-4">{r.text}</p>
                 </div>
 
-                <div className="flex items-center gap-3 pt-4 border-t border-[#355872]/[0.06] mt-auto">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#355872] to-[#7AAACE] flex items-center justify-center text-black font-bold text-sm shrink-0">
+                <div className="flex items-center gap-3 pt-4 border-t border-[#355872]/6 mt-auto">
+                  <div className="w-10 h-10 rounded-full bg-linear-to-br from-[#355872] to-[#7AAACE] flex items-center justify-center text-black font-bold text-sm shrink-0">
                     {r.name.split(" ").map(n => n[0]).join("")}
                   </div>
                   <div className="flex-1 min-w-0">

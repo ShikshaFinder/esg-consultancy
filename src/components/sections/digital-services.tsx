@@ -22,7 +22,7 @@ const services = [
 export default function DigitalServices() {
   return (
     <section className="py-24 px-6 bg-[#0a1628] relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(122,170,206,0.04)_0%,transparent_60%)] pointer-events-none" />
 
       <motion.div className="max-w-7xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.04 }} variants={stagger}>
@@ -46,7 +46,7 @@ export default function DigitalServices() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {services.map((ds, i) => (
             <motion.div key={ds.title} custom={i} variants={fadeUp}
-              className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 flex flex-col gap-3 cursor-pointer group transition-all duration-300 relative overflow-hidden"
+              className="rounded-2xl border border-white/8 bg-white/[0.03] p-5 flex flex-col gap-3 cursor-pointer group transition-all duration-300 relative overflow-hidden"
               whileHover={{ y: -4, borderColor: `${ds.color}35` }}
             >
               <div className="flex items-start justify-between">
@@ -61,10 +61,10 @@ export default function DigitalServices() {
               <p className="text-black/50 text-xs leading-relaxed line-clamp-3">{ds.desc}</p>
               <div className="flex flex-wrap gap-1 mt-auto">
                 {ds.tags.map((t) => (
-                  <span key={t} className="text-[8px] font-semibold text-black/50 bg-white/[0.05] px-1.5 py-0.5 rounded border border-white/[0.06]">{t}</span>
+                  <span key={t} className="text-[8px] font-semibold text-black/50 bg-white/5 px-1.5 py-0.5 rounded border border-white/6">{t}</span>
                 ))}
               </div>
-              <button className="flex items-center gap-1 text-xs font-semibold transition-colors group/btn cursor-pointer pt-2 border-t border-white/[0.05]" style={{ color: ds.color }}>
+              <button className="flex items-center gap-1 text-xs font-semibold transition-colors group/btn cursor-pointer pt-2 border-t border-white/5" style={{ color: ds.color }}>
                 Learn More <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform duration-200" />
               </button>
               <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 blur-3xl transition-opacity duration-500 pointer-events-none" style={{ backgroundColor: `${ds.color}10` }} />

@@ -45,7 +45,7 @@ function LoadingScreen() {
         </motion.div>
         <div className="w-48 h-1 overflow-hidden rounded-full bg-[#526D82]">
           <motion.div
-            className="h-full rounded-full bg-gradient-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A]"
+            className="h-full rounded-full bg-linear-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A]"
             initial={{ width: "0%" }}
             animate={{ width: "100%" }}
             transition={{ duration: 1.5, ease: "easeInOut" }}

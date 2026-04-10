@@ -126,14 +126,14 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-0.5">
-          <Link href="/" className="px-4 py-2 rounded-lg text-sm font-semibold text-black hover:text-black hover:bg-[#1e3a5c]/[0.04] transition-all duration-200">Home</Link>
+          <Link href="/" className="px-4 py-2 rounded-lg text-sm font-semibold text-black hover:text-black hover:bg-[#1e3a5c]/4 transition-all duration-200">Home</Link>
 
           {/* Services Dropdown */}
           <div ref={dropdownRef} className="relative">
             <button
               onClick={() => setServicesOpen(!servicesOpen)}
               onMouseEnter={() => setServicesOpen(true)}
-              className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-semibold text-black hover:text-black hover:bg-[#1e3a5c]/[0.04] transition-all duration-200 cursor-pointer"
+              className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-semibold text-black hover:text-black hover:bg-[#1e3a5c]/4 transition-all duration-200 cursor-pointer"
             >
               Services
               <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`} />
@@ -159,7 +159,7 @@ export default function Navbar() {
                               key={item.href}
                               href={item.href}
                               onClick={() => setServicesOpen(false)}
-                              className="text-[12.5px] text-black/75 hover:text-black hover:bg-[#1e3a5c]/[0.04] rounded-md px-2 py-1.5 transition-all duration-150 leading-snug"
+                              className="text-[12.5px] text-black/75 hover:text-black hover:bg-[#1e3a5c]/4 rounded-md px-2 py-1.5 transition-all duration-150 leading-snug"
                             >
                               {item.title}
                             </Link>
@@ -168,8 +168,8 @@ export default function Navbar() {
                       </div>
                     ))}
                   </div>
-                  <div className="mt-4 pt-3 border-t border-[#1e3a5c]/[0.06]">
-                    <Link href="/services" onClick={() => setServicesOpen(false)} className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#1e3a5c]/[0.04] hover:bg-[#1e3a5c]/[0.08] text-black text-xs font-semibold transition-all">
+                  <div className="mt-4 pt-3 border-t border-[#1e3a5c]/6">
+                    <Link href="/services" onClick={() => setServicesOpen(false)} className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#1e3a5c]/4 hover:bg-[#1e3a5c]/8 text-black text-xs font-semibold transition-all">
                       View All Services <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
@@ -178,11 +178,11 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          <Link href="/blogs" className="px-4 py-2 rounded-lg text-sm font-semibold text-black hover:text-black hover:bg-[#1e3a5c]/[0.04] transition-all duration-200">Blogs</Link>
-          <Link href="/schemes" className="px-4 py-2 rounded-lg text-sm font-semibold text-black hover:text-black hover:bg-[#1e3a5c]/[0.04] transition-all duration-200">Schemes</Link>
-          <Link href="/success-stories" className="px-4 py-2 rounded-lg text-sm font-semibold text-black hover:text-black hover:bg-[#1e3a5c]/[0.04] transition-all duration-200">Success Stories</Link>
-          <Link href="/about" className="px-4 py-2 rounded-lg text-sm font-semibold text-black hover:text-black hover:bg-[#1e3a5c]/[0.04] transition-all duration-200">About Us</Link>
-          <Link href="/contact" className="px-4 py-2 rounded-lg text-sm font-semibold text-black hover:text-black hover:bg-[#1e3a5c]/[0.04] transition-all duration-200">Contact</Link>
+          <Link href="/blogs" className="px-4 py-2 rounded-lg text-sm font-semibold text-black hover:text-black hover:bg-[#1e3a5c]/4 transition-all duration-200">Blogs</Link>
+          <Link href="/schemes" className="px-4 py-2 rounded-lg text-sm font-semibold text-black hover:text-black hover:bg-[#1e3a5c]/4 transition-all duration-200">Schemes</Link>
+          <Link href="/success-stories" className="px-4 py-2 rounded-lg text-sm font-semibold text-black hover:text-black hover:bg-[#1e3a5c]/4 transition-all duration-200">Success Stories</Link>
+          <Link href="/about" className="px-4 py-2 rounded-lg text-sm font-semibold text-black hover:text-black hover:bg-[#1e3a5c]/4 transition-all duration-200">About Us</Link>
+          <Link href="/contact" className="px-4 py-2 rounded-lg text-sm font-semibold text-black hover:text-black hover:bg-[#1e3a5c]/4 transition-all duration-200">Contact</Link>
         </nav>
 
         {/* Right side — Hours + Icons */}
@@ -204,7 +204,7 @@ export default function Navbar() {
             </svg>
           </a>
           <a href="tel:+919998035607"
-            className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FFF8F0] to-[#7AAACE] flex items-center justify-center hover:scale-110 transition-transform shadow-md shadow-[#FFF8F0]/20"
+            className="w-10 h-10 rounded-full bg-linear-to-br from-[#FFF8F0] to-[#7AAACE] flex items-center justify-center hover:scale-110 transition-transform shadow-md shadow-[#FFF8F0]/20"
           >
             <PhoneIcon className="w-4.5 h-4.5 text-black" />
           </a>
@@ -212,7 +212,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="lg:hidden p-2 rounded-lg text-black hover:bg-[#1e3a5c]/[0.06] transition-all cursor-pointer"
+          className="lg:hidden p-2 rounded-lg text-black hover:bg-[#1e3a5c]/6 transition-all cursor-pointer"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle menu"
         >
@@ -227,13 +227,13 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden overflow-hidden border-t border-[#1e3a5c]/[0.08] bg-white/98 backdrop-blur-2xl"
+            className="lg:hidden overflow-hidden border-t border-[#1e3a5c]/8 bg-white/98 backdrop-blur-2xl"
           >
             <div className="px-6 py-4 flex flex-col gap-1">
-              <Link href="/" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-black hover:text-black border-b border-[#1e3a5c]/[0.05] transition-colors">Home</Link>
+              <Link href="/" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-black hover:text-black border-b border-[#1e3a5c]/5 transition-colors">Home</Link>
 
               {/* Mobile Services Accordion */}
-              <div className="border-b border-[#1e3a5c]/[0.05]">
+              <div className="border-b border-[#1e3a5c]/5">
                 <button
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                   className="flex items-center justify-between w-full py-3 text-sm font-semibold text-black hover:text-black transition-colors cursor-pointer"
@@ -273,7 +273,7 @@ export default function Navbar() {
                                         key={item.href}
                                         href={item.href}
                                         onClick={() => { setMobileOpen(false); setMobileServicesOpen(false); setMobileCatOpen(null) }}
-                                        className="text-[12px] text-black/55 hover:text-black rounded-md px-3 py-1.5 hover:bg-[#1e3a5c]/[0.04] transition-all"
+                                        className="text-[12px] text-black/55 hover:text-black rounded-md px-3 py-1.5 hover:bg-[#1e3a5c]/4 transition-all"
                                       >
                                         {item.title}
                                       </Link>
@@ -297,14 +297,14 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
 
-              <Link href="/blogs" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-black hover:text-black border-b border-[#1e3a5c]/[0.05] transition-colors">Blogs</Link>
-              <Link href="/schemes" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-black hover:text-black border-b border-[#1e3a5c]/[0.05] transition-colors">Schemes</Link>
-              <Link href="/success-stories" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-black hover:text-black border-b border-[#1e3a5c]/[0.05] transition-colors">Success Stories</Link>
-              <Link href="/about" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-black hover:text-black border-b border-[#1e3a5c]/[0.05] transition-colors">About Us</Link>
-              <Link href="/contact" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-black hover:text-black border-b border-[#1e3a5c]/[0.05] transition-colors">Contact</Link>
+              <Link href="/blogs" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-black hover:text-black border-b border-[#1e3a5c]/5 transition-colors">Blogs</Link>
+              <Link href="/schemes" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-black hover:text-black border-b border-[#1e3a5c]/5 transition-colors">Schemes</Link>
+              <Link href="/success-stories" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-black hover:text-black border-b border-[#1e3a5c]/5 transition-colors">Success Stories</Link>
+              <Link href="/about" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-black hover:text-black border-b border-[#1e3a5c]/5 transition-colors">About Us</Link>
+              <Link href="/contact" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-semibold text-black hover:text-black border-b border-[#1e3a5c]/5 transition-colors">Contact</Link>
 
               {/* Mobile contact row */}
-              <div className="flex items-center justify-between mt-3 pt-3 border-t border-[#1e3a5c]/[0.06]">
+              <div className="flex items-center justify-between mt-3 pt-3 border-t border-[#1e3a5c]/6">
                 <div className="flex items-center gap-2">
                   <Clock className="w-3.5 h-3.5 text-black" />
                   <div>
@@ -319,7 +319,7 @@ export default function Navbar() {
                       <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.553 4.125 1.52 5.86L0 24l6.335-1.463C8.07 23.48 9.98 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-1.875 0-3.653-.506-5.203-1.392l-.373-.222-3.862.893.96-3.51-.244-.388C2.284 15.57 1.75 13.836 1.75 12 1.75 6.34 6.34 1.75 12 1.75S22.25 6.34 22.25 12 17.66 21.75 12 21.75z"/>
                     </svg>
                   </a>
-                  <a href="tel:+919998035607" className="w-9 h-9 rounded-full bg-gradient-to-br from-[#FFF8F0] to-[#7AAACE] flex items-center justify-center shadow-sm">
+                  <a href="tel:+919998035607" className="w-9 h-9 rounded-full bg-linear-to-br from-[#FFF8F0] to-[#7AAACE] flex items-center justify-center shadow-sm">
                     <PhoneIcon className="w-4 h-4 text-black" />
                   </a>
                 </div>
@@ -328,7 +328,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="mt-3 py-3 rounded-full text-center text-sm font-semibold text-black bg-gradient-to-r from-[#1B4F8A] to-[#2E7DD9] shadow-md"
+                className="mt-3 py-3 rounded-full text-center text-sm font-semibold text-black bg-linear-to-r from-[#1B4F8A] to-[#2E7DD9] shadow-md"
               >
                 Free Consultation
               </Link>

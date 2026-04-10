@@ -30,7 +30,7 @@ export default function Footer() {
           </div>
           <Link
             href="/contact"
-            className="group flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-[#00d4aa] to-[#0ea5e9] text-[#0f172a] font-semibold rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap"
+            className="group flex items-center gap-2 px-8 py-3.5 bg-linear-to-r from-[#00d4aa] to-[#0ea5e9] text-[#0f172a] font-semibold rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap"
           >
             Schedule a Discussion <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
@@ -43,7 +43,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#00d4aa] to-[#0ea5e9] flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-linear-to-br from-[#00d4aa] to-[#0ea5e9] flex items-center justify-center">
                 <Anchor className="w-5 h-5 text-[#0f172a]" />
               </div>
               <div>

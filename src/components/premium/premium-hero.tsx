@@ -570,7 +570,7 @@ export default function PremiumHero() {
 
                   >
 
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A] bg-[length:200%_100%] group-hover:animate-[shimmer_2s_ease-in-out_infinite]" />
+                    <div className="absolute inset-0 bg-linear-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A] bg-[length:200%_100%] group-hover:animate-[shimmer_2s_ease-in-out_infinite]" />
 
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-300 bg-[radial-gradient(circle_at_50%_50%,rgba(0,0,0,0.4),transparent_70%)]" />
 
@@ -814,7 +814,7 @@ export default function PremiumHero() {
 
                       />
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#FFF8F0]/70 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-[#FFF8F0]/70 via-transparent to-transparent" />
 
                     </div>
 
@@ -1022,7 +1022,7 @@ export default function PremiumHero() {
 
                     >
 
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
+                      <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
 
                       <span className="flex items-center justify-center gap-2">
 
@@ -1294,7 +1294,7 @@ export default function PremiumHero() {
 
                             whileHover={{ filter: "brightness(1.3)", scale: 1.05 }}
 
-                            className="w-full rounded-md bg-gradient-to-t from-[#FFF8F0] to-[#e9edc9] cursor-pointer transition-all duration-200 relative origin-bottom"
+                            className="w-full rounded-md bg-linear-to-t from-[#FFF8F0] to-[#e9edc9] cursor-pointer transition-all duration-200 relative origin-bottom"
 
                           >
 
@@ -1448,7 +1448,7 @@ export default function PremiumHero() {
 
               >
 
-                <div className="absolute inset-0 bg-gradient-to-br from-[#e9edc9]/0 to-[#FFF8F0]/0 group-hover:from-[#e9edc9]/5 group-hover:to-[#FFF8F0]/10 transition-all duration-500 rounded-2xl" />
+                <div className="absolute inset-0 bg-linear-to-br from-[#e9edc9]/0 to-[#FFF8F0]/0 group-hover:from-[#e9edc9]/5 group-hover:to-[#FFF8F0]/10 transition-all duration-500 rounded-2xl" />
 
                 <s.icon className="absolute top-2 right-2 w-6 h-6 text-black/40 group-hover:text-black/50 transition-colors duration-500" />
 
@@ -1474,7 +1474,7 @@ export default function PremiumHero() {
 
       {/* Bottom gradient fade */}
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#FFF8F0] to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-[#FFF8F0] to-transparent pointer-events-none z-10" />
 
     </section>
 

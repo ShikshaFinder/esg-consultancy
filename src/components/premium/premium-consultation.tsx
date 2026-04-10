@@ -51,7 +51,7 @@ export default function PremiumConsultation() {
           </p>
           <h2 className="text-3xl font-bold text-black md:text-5xl">
             Talk to a{" "}
-            <span className="bg-gradient-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A] text-black">
+            <span className="bg-linear-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A] text-black">
               Growth Expert
             </span>
           </h2>
@@ -92,7 +92,7 @@ export default function PremiumConsultation() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 28vw"
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#FFF8F0]/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#FFF8F0]/70 via-transparent to-transparent" />
                 </div>
 
                 <div className="inline-flex items-center gap-2 bg-[#526D82]/25 rounded-full px-3.5 py-1.5 border border-white/25 mb-5 backdrop-blur-sm">
@@ -237,7 +237,7 @@ export default function PremiumConsultation() {
                     }}
                   >
                     {/* Hover shimmer overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
                     {submitting ? (
                       <div className="w-5 h-5 border-2 border-[#1e3a5c]/20/30 border-t-white rounded-full animate-spin mx-auto" />
                     ) : (

@@ -67,7 +67,7 @@ export default function BlogsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {featuredBlogs.map((post, i) => (
                   <motion.div key={post.slug} custom={i} variants={fadeUp}>
-                    <Link href={`/blogs/${post.slug}`} className="group block rounded-2xl border border-white/[0.06] bg-white/[0.03] p-8 hover:border-[#7AAACE]/30 hover:bg-white/[0.05] transition-all duration-300 h-full">
+                    <Link href={`/blogs/${post.slug}`} className="group block rounded-2xl border border-white/6 bg-white/[0.03] p-8 hover:border-[#7AAACE]/30 hover:bg-white/5 transition-all duration-300 h-full">
                       <div className="flex items-center gap-2 mb-4">
                         <span className="text-[10px] font-bold text-black bg-[#9CD5FF]/10 border border-[#9CD5FF]/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
                           Featured
@@ -133,7 +133,7 @@ export default function BlogsPage() {
                     onClick={() => setSelectedCategory(cat)}
                     className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                       selectedCategory === cat
-                        ? "bg-gradient-to-r from-[#355872] to-[#7AAACE] text-black shadow-md shadow-[#355872]/20"
+                        ? "bg-linear-to-r from-[#355872] to-[#7AAACE] text-black shadow-md shadow-[#355872]/20"
                         : "bg-white border border-[#355872]/10 text-black/60 hover:border-[#355872]/25 hover:text-black"
                     }`}
                   >
@@ -156,7 +156,7 @@ export default function BlogsPage() {
                 <motion.div key={post.slug} custom={i} variants={fadeUp}>
                   <Link
                     href={`/blogs/${post.slug}`}
-                    className="group block rounded-2xl border border-[#355872]/[0.08] bg-white p-6 hover:border-[#355872]/20 hover:shadow-xl hover:shadow-[#355872]/5 transition-all duration-300 h-full flex flex-col"
+                    className="group block rounded-2xl border border-[#355872]/8 bg-white p-6 hover:border-[#355872]/20 hover:shadow-xl hover:shadow-[#355872]/5 transition-all duration-300 h-full flex flex-col"
                   >
                     {/* Category Tag */}
                     <div className="flex items-center gap-2 mb-4">
@@ -184,14 +184,14 @@ export default function BlogsPage() {
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 mb-4">
                       {post.tags.map((tag) => (
-                        <span key={tag} className="text-[10px] text-black/60 bg-[#355872]/[0.05] px-2 py-0.5 rounded-md">
+                        <span key={tag} className="text-[10px] text-black/60 bg-[#355872]/5 px-2 py-0.5 rounded-md">
                           {tag}
                         </span>
                       ))}
                     </div>
 
                     {/* Footer */}
-                    <div className="flex items-center justify-between pt-4 border-t border-[#355872]/[0.06]">
+                    <div className="flex items-center justify-between pt-4 border-t border-[#355872]/6">
                       <div className="flex items-center gap-3 text-black/35 text-xs">
                         <span className="flex items-center gap-1">
                           <Calendar className="w-3.5 h-3.5" />
@@ -223,7 +223,7 @@ export default function BlogsPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 px-6 bg-gradient-to-r from-[#355872] to-[#7AAACE]">
+        <section className="py-20 px-6 bg-linear-to-r from-[#355872] to-[#7AAACE]">
           <motion.div className="max-w-3xl mx-auto text-center" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black mb-4">
               Need Personalized Guidance?

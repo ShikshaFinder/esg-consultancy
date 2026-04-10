@@ -128,7 +128,7 @@ export default function PremiumDigital() {
   return (
     <section ref={sectionRef} className="relative py-24 overflow-hidden">
       {/* Background accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#526D82]/10 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#526D82]/10 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* ── Header ── */}
@@ -173,7 +173,7 @@ export default function PremiumDigital() {
                          hover:border-[#1B4F8A]/80 hover:shadow-xl hover:shadow-[#1B4F8A]/20 transition-all duration-500 relative overflow-hidden"
             >
               {/* Hover gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#9DB2BF]/0 to-[#526D82]/0 group-hover:from-[#9DB2BF]/5 group-hover:to-[#526D82]/8 transition-all duration-500 rounded-2xl" />
+              <div className="absolute inset-0 bg-linear-to-br from-[#9DB2BF]/0 to-[#526D82]/0 group-hover:from-[#9DB2BF]/5 group-hover:to-[#526D82]/8 transition-all duration-500 rounded-2xl" />
 
               <div className="relative z-10 flex flex-col h-full">
                 {/* Top: Icon + Stat */}
@@ -223,7 +223,7 @@ export default function PremiumDigital() {
                 <Link
                   href={svc.href}
                   className="w-full flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold
-                             bg-gradient-to-r from-[#1B4F8A] to-[#2E7DD9] text-black
+                             bg-linear-to-r from-[#1B4F8A] to-[#2E7DD9] text-black
                              hover:from-[#9DB2BF] hover:to-[#526D82] transition-all duration-300"
                 >
                   LEARN MORE

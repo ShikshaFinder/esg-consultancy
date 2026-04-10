@@ -134,7 +134,7 @@ export default function PremiumPricing() {
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-black">Pricing</p>
           <h2 className="mb-4 text-3xl font-bold text-black md:text-5xl">
             Invest in Your{" "}
-            <span className="bg-gradient-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A] text-black">
+            <span className="bg-linear-to-r from-[#1B4F8A] via-[#2E7DD9] to-[#1B4F8A] text-black">
               Business Growth
             </span>
           </h2>
@@ -184,7 +184,7 @@ export default function PremiumPricing() {
                     whileHover={{ y: -10, transition: { type: "spring", stiffness: 280, damping: 18 } }}
                     className={`relative rounded-2xl border p-8 flex flex-col backdrop-blur-md h-full overflow-hidden
                       ${plan.popular
-                        ? "border-[#1B4F8A]/60 bg-gradient-to-b from-[#1B4F8A] to-[#D0E8FF] shadow-2xl shadow-[#1B4F8A]/25 ring-1 ring-[#2E7DD9]/20"
+                        ? "border-[#1B4F8A]/60 bg-linear-to-b from-[#1B4F8A] to-[#D0E8FF] shadow-2xl shadow-[#1B4F8A]/25 ring-1 ring-[#2E7DD9]/20"
                         : "border-[#1B4F8A]/50 blue-card hover:bg-[#1B4F8A]/70 hover:border-[#1B4F8A]/80 hover:shadow-xl hover:shadow-[#1B4F8A]/20"
                       } transition-all duration-500 shadow-[inset_0_1px_0_rgba(30,58,92,0.06)]`}
                   >
@@ -200,13 +200,13 @@ export default function PremiumPricing() {
                           animate={{ rotate: [0, 360] }}
                           transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
                         />
-                        <div className="absolute inset-[1px] rounded-2xl bg-gradient-to-b from-[#1B4F8A] to-[#D0E8FF]" />
+                        <div className="absolute inset-[1px] rounded-2xl bg-linear-to-b from-[#1B4F8A] to-[#D0E8FF]" />
                       </div>
                     )}
 
                     {plan.popular && (
                       <motion.div
-                        className="absolute -top-3.5 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-gradient-to-r from-[#1B4F8A] to-[#2E7DD9] px-4 py-1 text-xs font-semibold text-black shadow-lg"
+                        className="absolute -top-3.5 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-linear-to-r from-[#1B4F8A] to-[#2E7DD9] px-4 py-1 text-xs font-semibold text-black shadow-lg"
                         animate={{ y: [0, -2, 0] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                       >
@@ -267,13 +267,13 @@ export default function PremiumPricing() {
                         href={plan.name === "Enterprise" ? "/contact" : "/services"}
                         className={`group/cta flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold transition-all duration-300 overflow-hidden relative
                           ${plan.popular
-                            ? "bg-gradient-to-r from-[#1B4F8A] to-[#2E7DD9] text-black hover:shadow-lg hover:shadow-[#1B4F8A]/20"
+                            ? "bg-linear-to-r from-[#1B4F8A] to-[#2E7DD9] text-black hover:shadow-lg hover:shadow-[#1B4F8A]/20"
                             : "border border-[#526D82] text-black hover:bg-[#526D82]/30 hover:text-black hover:border-[#9DB2BF]/20"
                           }`}
                       >
                         {/* Shimmer overlay for popular */}
                         {plan.popular && (
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/cta:translate-x-full transition-transform duration-700" />
+                          <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/cta:translate-x-full transition-transform duration-700" />
                         )}
                         <span className="relative">{plan.cta}</span>
                         <ArrowRight size={14} className="relative group-hover/cta:translate-x-1 transition-transform duration-300" />

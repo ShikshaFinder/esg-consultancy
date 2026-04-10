@@ -2,7 +2,8 @@
 import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
 import {
-  Mail, Phone, MapPin, Send, ArrowRight, MessageCircle, Anchor
+  Phone, Mail, MapPin, ArrowRight, Clock, Send,
+  ChevronDown
 } from "lucide-react"
 import Navbar from "@/components/esg/navbar"
 import Footer from "@/components/esg/footer"
@@ -29,54 +30,53 @@ function AnimatedSection({ children, className = "" }: { children: React.ReactNo
 const contactMethods = [
   {
     icon: Phone,
-    title: "Phone",
-    value: "+91 9426550580",
-    sub: "+91 9974064066",
+    label: "Call Us",
+    value: "+91 9426550580 / +91 9974064066",
     href: "tel:+919426550580",
+    detail: "Mon–Sat, 9 AM – 6 PM IST",
   },
   {
     icon: Mail,
-    title: "Email",
+    label: "Email Us",
     value: "esgcatalyst@gmail.com",
-    sub: "Response within 24 hours",
     href: "mailto:esgcatalyst@gmail.com",
+    detail: "We reply within 24 hours",
   },
   {
     icon: MapPin,
-    title: "Location",
-    value: "Bhavnagar / Alang",
-    sub: "Gujarat, India",
-    href: "https://maps.google.com/?q=Alang+Gujarat",
+    label: "Visit Us",
+    value: "Bhavnagar & Alang, Gujarat, India",
+    href: "https://maps.google.com/?q=Bhavnagar+Gujarat+India",
+    detail: "Ship Recycling Hub of India",
   },
 ]
 
 const inquiryTypes = [
   "Compliance Assessment",
-  "HKC / EU SRR Readiness",
-  "GMB Inspection Support",
-  "HSE System Implementation",
-  "Training & Competency",
-  "Retainer Support",
+  "HKC / EU SRR",
+  "GMB Compliance",
+  "HSE Advisory",
+  "Training Programs",
+  "Retainer Engagement",
   "Other",
 ]
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    inquiryType: "",
-    message: "",
-  })
+  const [inquiryType, setInquiryType] = useState("")
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [company, setCompany] = useState("")
+  const [message, setMessage] = useState("")
+  const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    const subject = encodeURIComponent(`[ESG Catalyst Inquiry] ${formData.inquiryType || "General"} - ${formData.name}`)
+    const subject = encodeURIComponent(`[ESG Catalyst Inquiry] ${inquiryType || "General"}`)
     const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nCompany: ${formData.company}\nInquiry Type: ${formData.inquiryType}\n\nMessage:\n${formData.message}`
+      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nInquiry Type: ${inquiryType}\n\nMessage:\n${message}`
     )
     window.location.href = `mailto:esgcatalyst@gmail.com?subject=${subject}&body=${body}`
+    setSubmitted(true)
   }
 
   return (
@@ -84,179 +84,148 @@ export default function ContactPage() {
       <Navbar />
       <main className="overflow-x-hidden">
         {/* Hero */}
-        <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-          <div className="absolute inset-0 bg-[#0a1628]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,212,170,0.06)_0%,transparent_50%)]" />
-          <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+        <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-[#f8fafb]">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,155,125,0.06)_0%,transparent_50%)]" />
+          <div className="absolute inset-0 opacity-[0.4]" style={{
+            backgroundImage: "linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
           }} />
 
           <motion.div className="max-w-4xl mx-auto text-center relative z-10" initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#00d4aa] block mb-4">Contact</motion.span>
-            <motion.h1 variants={fadeUp} custom={1} className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
-              Request a<br />
-              <span className="bg-gradient-to-r from-[#00d4aa] to-[#0ea5e9] bg-clip-text text-transparent">Consultation</span>
+            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#009b7d] block mb-4">Get In Touch</motion.span>
+            <motion.h1 variants={fadeUp} custom={1} className="text-4xl md:text-6xl font-bold text-[#0f172a] leading-tight mb-6">
+              Let&apos;s Start a<br />
+              <span className="bg-linear-to-r from-[#009b7d] to-[#0284c7] bg-clip-text text-transparent">Conversation</span>
             </motion.h1>
-            <motion.p variants={fadeUp} custom={2} className="text-[#94a3b8] text-lg max-w-2xl mx-auto leading-relaxed">
-              Connect with ESG Catalyst for compliance assessment, safety system implementation, or ongoing retainer-based support.
+            <motion.p variants={fadeUp} custom={2} className="text-[#64748b] text-lg max-w-2xl mx-auto leading-relaxed">
+              Whether you need compliance support, HSE advisory, or training for your ship recycling operations — reach out and we&apos;ll respond within 24 hours.
             </motion.p>
           </motion.div>
         </section>
 
         {/* Contact Methods */}
-        <section className="py-12 px-6 border-b border-white/[0.06]">
+        <section className="py-20 px-6 bg-white">
           <AnimatedSection className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-3 gap-6">
               {contactMethods.map((method, i) => (
                 <motion.a
-                  key={method.title}
+                  key={method.label}
                   href={method.href}
-                  target={method.title === "Location" ? "_blank" : undefined}
-                  rel={method.title === "Location" ? "noopener noreferrer" : undefined}
+                  target={method.icon === MapPin ? "_blank" : undefined}
+                  rel={method.icon === MapPin ? "noopener noreferrer" : undefined}
                   variants={fadeUp}
                   custom={i}
-                  className="group flex items-start gap-4 p-6 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-[#00d4aa]/30 hover:bg-white/[0.04] transition-all"
+                  className="p-8 rounded-xl bg-[#f8fafb] border border-[#e2e8f0] hover:border-[#009b7d]/30 hover:shadow-lg transition-all group text-center"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#00d4aa]/10 flex items-center justify-center shrink-0 group-hover:bg-[#00d4aa]/20 transition-colors">
-                    <method.icon className="w-6 h-6 text-[#00d4aa]" />
+                  <div className="w-14 h-14 rounded-xl bg-[#009b7d]/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-[#009b7d]/15 transition-colors">
+                    <method.icon className="w-7 h-7 text-[#009b7d]" />
                   </div>
-                  <div>
-                    <p className="text-[10px] font-bold tracking-widest uppercase text-[#94a3b8] mb-1">{method.title}</p>
-                    <p className="text-white font-medium">{method.value}</p>
-                    <p className="text-[#94a3b8] text-sm mt-0.5">{method.sub}</p>
-                  </div>
+                  <h3 className="text-lg font-bold text-[#0f172a] mb-2">{method.label}</h3>
+                  <p className="text-[#0f172a] font-medium text-sm mb-1">{method.value}</p>
+                  <p className="text-[#94a3b8] text-xs flex items-center justify-center gap-1">
+                    <Clock className="w-3 h-3" /> {method.detail}
+                  </p>
                 </motion.a>
               ))}
             </div>
           </AnimatedSection>
         </section>
 
-        {/* Form Section */}
-        <section id="discussion" className="py-24 px-6">
-          <AnimatedSection className="max-w-5xl mx-auto">
-            <div className="grid lg:grid-cols-5 gap-16">
-              {/* Left info */}
-              <div className="lg:col-span-2">
-                <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#00d4aa] block mb-3">Get in Touch</motion.span>
-                <motion.h2 variants={fadeUp} custom={1} className="text-3xl font-bold text-white mb-6">
-                  Tell Us About Your Requirements
-                </motion.h2>
-                <motion.p variants={fadeUp} custom={2} className="text-[#94a3b8] leading-relaxed mb-8">
-                  Whether you need a full compliance implementation, targeted high-risk operations support, or retainer-based monitoring — we&apos;re here to help.
-                </motion.p>
+        {/* Form */}
+        <section className="py-24 px-6 bg-[#f4f7f9]">
+          <AnimatedSection className="max-w-3xl mx-auto">
+            <motion.div variants={fadeUp} className="text-center mb-12">
+              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#009b7d] block mb-3">Send Inquiry</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-4">Drop Us a Message</h2>
+              <p className="text-[#64748b] max-w-lg mx-auto">Fill out the form below and we&apos;ll get back to you promptly.</p>
+            </motion.div>
 
-                <motion.div variants={fadeUp} custom={3} className="p-6 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Anchor className="w-6 h-6 text-[#00d4aa]" />
-                    <h3 className="text-white font-semibold">ESG Catalyst</h3>
-                  </div>
-                  <p className="text-[#94a3b8] text-sm leading-relaxed">
-                    Bhavnagar / Alang, Gujarat<br />
-                    India
-                  </p>
-                  <div className="mt-4 pt-4 border-t border-white/[0.06] space-y-2 text-sm text-[#94a3b8]">
-                    <a href="tel:+919426550580" className="flex items-center gap-2 hover:text-[#00d4aa] transition-colors">
-                      <Phone className="w-4 h-4" /> +91 9426550580
-                    </a>
-                    <a href="tel:+919974064066" className="flex items-center gap-2 hover:text-[#00d4aa] transition-colors">
-                      <Phone className="w-4 h-4" /> +91 9974064066
-                    </a>
-                    <a href="mailto:esgcatalyst@gmail.com" className="flex items-center gap-2 hover:text-[#00d4aa] transition-colors">
-                      <Mail className="w-4 h-4" /> esgcatalyst@gmail.com
-                    </a>
-                  </div>
-                </motion.div>
-              </div>
-
-              {/* Form */}
-              <motion.div variants={fadeUp} custom={2} className="lg:col-span-3">
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-sm font-medium text-[#94a3b8] mb-2">Full Name *</label>
-                      <input
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-[#94a3b8]/50 focus:outline-none focus:border-[#00d4aa]/50 focus:ring-1 focus:ring-[#00d4aa]/30 transition-all"
-                        placeholder="Your name"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#94a3b8] mb-2">Email *</label>
-                      <input
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-[#94a3b8]/50 focus:outline-none focus:border-[#00d4aa]/50 focus:ring-1 focus:ring-[#00d4aa]/30 transition-all"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-sm font-medium text-[#94a3b8] mb-2">Phone</label>
-                      <input
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-4 py-3 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-[#94a3b8]/50 focus:outline-none focus:border-[#00d4aa]/50 focus:ring-1 focus:ring-[#00d4aa]/30 transition-all"
-                        placeholder="+91 XXXXXXXXXX"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#94a3b8] mb-2">Company / Yard</label>
-                      <input
-                        type="text"
-                        value={formData.company}
-                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="w-full px-4 py-3 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-[#94a3b8]/50 focus:outline-none focus:border-[#00d4aa]/50 focus:ring-1 focus:ring-[#00d4aa]/30 transition-all"
-                        placeholder="Organization name"
-                      />
-                    </div>
-                  </div>
-
+            {submitted ? (
+              <motion.div variants={fadeUp} className="text-center py-16 rounded-xl bg-white border border-[#e2e8f0]">
+                <div className="w-16 h-16 rounded-full bg-[#009b7d]/10 flex items-center justify-center mx-auto mb-6">
+                  <Send className="w-8 h-8 text-[#009b7d]" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#0f172a] mb-2">Thank You!</h3>
+                <p className="text-[#64748b]">Your email client should have opened. Send the email to complete your inquiry.</p>
+              </motion.div>
+            ) : (
+              <motion.form
+                variants={fadeUp}
+                onSubmit={handleSubmit}
+                className="p-8 md:p-10 rounded-xl bg-white border border-[#e2e8f0] shadow-sm space-y-6"
+              >
+                <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-[#94a3b8] mb-2">Inquiry Type</label>
-                    <select
-                      value={formData.inquiryType}
-                      onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white focus:outline-none focus:border-[#00d4aa]/50 focus:ring-1 focus:ring-[#00d4aa]/30 transition-all appearance-none"
-                    >
-                      <option value="" className="bg-[#0a1628]">Select inquiry type</option>
-                      {inquiryTypes.map((type) => (
-                        <option key={type} value={type} className="bg-[#0a1628]">{type}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-[#94a3b8] mb-2">Message *</label>
-                    <textarea
+                    <label className="text-sm font-medium text-[#0f172a] block mb-2">Full Name *</label>
+                    <input
                       required
-                      rows={5}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-[#94a3b8]/50 focus:outline-none focus:border-[#00d4aa]/50 focus:ring-1 focus:ring-[#00d4aa]/30 transition-all resize-none"
-                      placeholder="Describe your compliance or safety requirements..."
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full px-4 py-3 rounded-lg bg-[#f8fafb] border border-[#e2e8f0] text-[#0f172a] placeholder-[#94a3b8] focus:border-[#009b7d] focus:ring-1 focus:ring-[#009b7d] outline-none transition-colors text-sm"
+                      placeholder="Your name"
                     />
                   </div>
+                  <div>
+                    <label className="text-sm font-medium text-[#0f172a] block mb-2">Email *</label>
+                    <input
+                      required
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full px-4 py-3 rounded-lg bg-[#f8fafb] border border-[#e2e8f0] text-[#0f172a] placeholder-[#94a3b8] focus:border-[#009b7d] focus:ring-1 focus:ring-[#009b7d] outline-none transition-colors text-sm"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
 
-                  <button
-                    type="submit"
-                    className="group w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 bg-gradient-to-r from-[#00d4aa] to-[#0ea5e9] text-[#0a1628] font-semibold rounded-lg hover:opacity-90 transition-opacity"
-                  >
-                    <Send className="w-4 h-4" />
-                    Send Inquiry
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </form>
-              </motion.div>
-            </div>
+                <div>
+                  <label className="text-sm font-medium text-[#0f172a] block mb-2">Company / Yard</label>
+                  <input
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                    className="w-full px-4 py-3 rounded-lg bg-[#f8fafb] border border-[#e2e8f0] text-[#0f172a] placeholder-[#94a3b8] focus:border-[#009b7d] focus:ring-1 focus:ring-[#009b7d] outline-none transition-colors text-sm"
+                    placeholder="Company or yard name"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium text-[#0f172a] block mb-2">Inquiry Type *</label>
+                  <div className="relative">
+                    <select
+                      required
+                      value={inquiryType}
+                      onChange={(e) => setInquiryType(e.target.value)}
+                      className="w-full px-4 py-3 rounded-lg bg-[#f8fafb] border border-[#e2e8f0] text-[#0f172a] focus:border-[#009b7d] focus:ring-1 focus:ring-[#009b7d] outline-none transition-colors text-sm appearance-none"
+                    >
+                      <option value="">Select inquiry type</option>
+                      {inquiryTypes.map((type) => (
+                        <option key={type} value={type}>{type}</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94a3b8] pointer-events-none" />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium text-[#0f172a] block mb-2">Message *</label>
+                  <textarea
+                    required
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    rows={5}
+                    className="w-full px-4 py-3 rounded-lg bg-[#f8fafb] border border-[#e2e8f0] text-[#0f172a] placeholder-[#94a3b8] focus:border-[#009b7d] focus:ring-1 focus:ring-[#009b7d] outline-none transition-colors text-sm resize-none"
+                    placeholder="Tell us about your requirements..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-4 bg-linear-to-r from-[#009b7d] to-[#0284c7] text-white font-semibold rounded-lg hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#009b7d]/20"
+                >
+                  Send Inquiry <ArrowRight className="w-4 h-4" />
+                </button>
+              </motion.form>
+            )}
           </AnimatedSection>
         </section>
       </main>

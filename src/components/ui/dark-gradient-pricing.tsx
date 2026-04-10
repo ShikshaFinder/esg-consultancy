@@ -52,8 +52,8 @@ export const PricingCard = ({
       <Card
         className={cn(
           "relative h-full w-full overflow-hidden border",
-          "dark:border-zinc-700 dark:bg-gradient-to-br dark:from-zinc-950/50 dark:to-zinc-900/80",
-          "border-zinc-200 bg-gradient-to-br from-zinc-50/50 to-zinc-100/80",
+          "dark:border-zinc-700 dark:bg-linear-to-br dark:from-zinc-950/50 dark:to-zinc-900/80",
+          "border-zinc-200 bg-linear-to-br from-zinc-50/50 to-zinc-100/80",
           "p-6",
           className,
         )}
@@ -65,7 +65,7 @@ export const PricingCard = ({
           <span className="mb-3 inline-block text-4xl font-medium">
             {price}
           </span>
-          <span className="dark:bg-gradient-to-br dark:from-zinc-200 dark:to-zinc-500 bg-gradient-to-br from-zinc-700 to-zinc-900 bg-clip-text text-center text-black">
+          <span className="dark:bg-linear-to-br dark:from-zinc-200 dark:to-zinc-500 bg-linear-to-br from-zinc-700 to-zinc-900 bg-clip-text text-center text-black">
             {bestFor}
           </span>
         </div>

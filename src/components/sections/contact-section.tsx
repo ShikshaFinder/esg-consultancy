@@ -19,7 +19,7 @@ const contactCards = [
 export default function ContactSection() {
   return (
     <section id="contact" className="py-24 px-6 bg-[#060e1a] relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(53,88,114,0.06)_0%,transparent_60%)] pointer-events-none" />
 
       <motion.div className="max-w-7xl mx-auto relative z-10" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.08 }} variants={stagger}>
@@ -39,7 +39,7 @@ export default function ContactSection() {
         <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14">
           {contactCards.map((c, i) => (
             <a key={c.title} href={c.href} target={c.title === "Visit Us" ? "_blank" : undefined} rel="noopener noreferrer"
-              className="group rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 flex items-start gap-4 hover:border-white/15 transition-all duration-300"
+              className="group rounded-2xl border border-white/8 bg-white/[0.03] p-6 flex items-start gap-4 hover:border-white/15 transition-all duration-300"
             >
               <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${c.color}15`, border: `1px solid ${c.color}25` }}>
                 <c.icon className="w-5 h-5" style={{ color: c.color }} />
@@ -56,28 +56,28 @@ export default function ContactSection() {
         {/* Form + side */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
           {/* Form */}
-          <motion.div variants={fadeUp} className="lg:col-span-3 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8">
+          <motion.div variants={fadeUp} className="lg:col-span-3 rounded-2xl border border-white/8 bg-white/[0.03] p-8">
             <h3 className="text-black font-bold text-xl mb-1">Request a Callback</h3>
             <p className="text-black/40 text-sm mb-6">Fill in your details and our experts will reach out within 30 minutes during business hours.</p>
             <form className="grid grid-cols-1 sm:grid-cols-2 gap-4" onSubmit={(e) => { e.preventDefault(); window.open("https://wa.me/919998035607", "_blank") }}>
               <div>
                 <label className="text-black/60 text-xs font-medium mb-1.5 block">Full Name *</label>
                 <input type="text" required placeholder="Rahul Sharma"
-                  className="w-full h-11 px-4 rounded-xl border border-white/[0.08] bg-white/[0.04] text-black text-sm placeholder:text-black/20 focus:border-[#355872]/40 focus:ring-1 focus:ring-[#355872]/30 outline-none transition-all" />
+                  className="w-full h-11 px-4 rounded-xl border border-white/8 bg-white/4 text-black text-sm placeholder:text-black/20 focus:border-[#355872]/40 focus:ring-1 focus:ring-[#355872]/30 outline-none transition-all" />
               </div>
               <div>
                 <label className="text-black/60 text-xs font-medium mb-1.5 block">Phone Number *</label>
                 <input type="tel" required placeholder="+91 9876543210"
-                  className="w-full h-11 px-4 rounded-xl border border-white/[0.08] bg-white/[0.04] text-black text-sm placeholder:text-black/20 focus:border-[#355872]/40 focus:ring-1 focus:ring-[#355872]/30 outline-none transition-all" />
+                  className="w-full h-11 px-4 rounded-xl border border-white/8 bg-white/4 text-black text-sm placeholder:text-black/20 focus:border-[#355872]/40 focus:ring-1 focus:ring-[#355872]/30 outline-none transition-all" />
               </div>
               <div>
                 <label className="text-black/60 text-xs font-medium mb-1.5 block">Email</label>
                 <input type="email" placeholder="rahul@example.com"
-                  className="w-full h-11 px-4 rounded-xl border border-white/[0.08] bg-white/[0.04] text-black text-sm placeholder:text-black/20 focus:border-[#355872]/40 focus:ring-1 focus:ring-[#355872]/30 outline-none transition-all" />
+                  className="w-full h-11 px-4 rounded-xl border border-white/8 bg-white/4 text-black text-sm placeholder:text-black/20 focus:border-[#355872]/40 focus:ring-1 focus:ring-[#355872]/30 outline-none transition-all" />
               </div>
               <div>
                 <label className="text-black/60 text-xs font-medium mb-1.5 block">Interested Service</label>
-                <select className="w-full h-11 px-4 rounded-xl border border-white/[0.08] bg-white/[0.04] text-black text-sm focus:border-[#355872]/40 focus:ring-1 focus:ring-[#355872]/30 outline-none transition-all appearance-none">
+                <select className="w-full h-11 px-4 rounded-xl border border-white/8 bg-white/4 text-black text-sm focus:border-[#355872]/40 focus:ring-1 focus:ring-[#355872]/30 outline-none transition-all appearance-none">
                   <option value="" className="bg-[#0a1628]">Select a service</option>
                   <option value="pmegp" className="bg-[#0a1628]">PMEGP Loan</option>
                   <option value="mudra" className="bg-[#0a1628]">MUDRA Yojana</option>
@@ -92,7 +92,7 @@ export default function ContactSection() {
               <div className="sm:col-span-2">
                 <label className="text-black/60 text-xs font-medium mb-1.5 block">Brief Description</label>
                 <textarea rows={3} placeholder="Tell us about your business and what you need help with..."
-                  className="w-full px-4 py-3 rounded-xl border border-white/[0.08] bg-white/[0.04] text-black text-sm placeholder:text-black/20 focus:border-[#355872]/40 focus:ring-1 focus:ring-[#355872]/30 outline-none transition-all resize-none" />
+                  className="w-full px-4 py-3 rounded-xl border border-white/8 bg-white/4 text-black text-sm placeholder:text-black/20 focus:border-[#355872]/40 focus:ring-1 focus:ring-[#355872]/30 outline-none transition-all resize-none" />
               </div>
               <div className="sm:col-span-2 flex flex-col sm:flex-row gap-3 pt-2">
                 <MetalButton variant="primary" type="submit">
@@ -111,7 +111,7 @@ export default function ContactSection() {
 
           {/* Side info */}
           <motion.div variants={fadeUp} className="lg:col-span-2 flex flex-col gap-5">
-            <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6">
+            <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-6">
               <div className="flex items-center gap-3 mb-4">
                 <Clock className="w-5 h-5 text-black" />
                 <h4 className="text-black font-semibold">Business Hours</h4>
@@ -130,7 +130,7 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-[#355872]/20 bg-gradient-to-br from-[#355872]/10 to-[#7AAACE]/10 p-6 flex-1">
+            <div className="rounded-2xl border border-[#355872]/20 bg-linear-to-br from-[#355872]/10 to-[#7AAACE]/10 p-6 flex-1">
               <Calendar className="w-8 h-8 text-black mb-3" />
               <h4 className="text-black font-bold text-lg mb-1">Free Consultation</h4>
               <p className="text-black/50 text-sm mb-5">Schedule a 30-minute free call with our funding experts to discuss your business goals.</p>
@@ -141,10 +141,10 @@ export default function ContactSection() {
               </Link>
             </div>
 
-            <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6">
+            <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-6">
               <div className="flex items-center gap-2 mb-2">
                 {[...Array(5)].map((_, i) => (
-                  <div key={i} className="w-7 h-7 rounded-full border-2 border-[#060e1a] bg-gradient-to-br from-[#355872] to-[#7AAACE] -ml-2 first:ml-0 flex items-center justify-center text-[8px] text-black font-bold">
+                  <div key={i} className="w-7 h-7 rounded-full border-2 border-[#060e1a] bg-linear-to-br from-[#355872] to-[#7AAACE] -ml-2 first:ml-0 flex items-center justify-center text-[8px] text-black font-bold">
                     {["RK", "PS", "AP", "VK", "SN"][i]}
                   </div>
                 ))}

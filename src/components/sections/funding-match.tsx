@@ -19,7 +19,7 @@ const cards = [
 export default function FundingMatch() {
   return (
     <section className="py-24 px-6 bg-[#060e1a] relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
       <motion.div className="max-w-7xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.06 }} variants={stagger}>
         <div className="text-center mb-14">
           <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Compare & Choose</motion.span>
@@ -35,11 +35,11 @@ export default function FundingMatch() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
           {cards.map((scheme, i) => (
             <motion.div key={scheme.label} custom={i} variants={fadeUp}
-              className={`rounded-2xl border bg-white/[0.03] backdrop-blur-sm p-6 flex flex-col gap-4 group cursor-pointer transition-all duration-300 relative ${scheme.popular ? "border-[#355872]/40" : "border-white/[0.08]"}`}
+              className={`rounded-2xl border bg-white/[0.03] backdrop-blur-sm p-6 flex flex-col gap-4 group cursor-pointer transition-all duration-300 relative ${scheme.popular ? "border-[#355872]/40" : "border-white/8"}`}
               whileHover={{ y: -4, borderColor: `${scheme.color}50` }}
             >
               {scheme.popular && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-bold tracking-wider text-black bg-gradient-to-r from-[#355872] to-[#7AAACE] px-4 py-1 rounded-full">{scheme.tag}</span>
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-bold tracking-wider text-black bg-linear-to-r from-[#355872] to-[#7AAACE] px-4 py-1 rounded-full">{scheme.tag}</span>
               )}
               {!scheme.popular && (
                 <span className="text-[9px] font-bold tracking-widest px-2.5 py-0.5 rounded-full border self-start" style={{ color: scheme.color, backgroundColor: `${scheme.color}15`, borderColor: `${scheme.color}30` }}>{scheme.tag}</span>
@@ -57,7 +57,7 @@ export default function FundingMatch() {
                   </div>
                 ))}
               </div>
-              <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-3">
+              <div className="rounded-xl bg-white/[0.03] border border-white/6 p-3">
                 <p className="text-[10px] text-black/35 uppercase tracking-wider mb-2">Eligibility</p>
                 <div className="space-y-1.5 text-xs">
                   <p className="text-black/60"><span className="text-black/35">Age:</span> {scheme.eligibility.age}</p>
@@ -70,7 +70,7 @@ export default function FundingMatch() {
                   <span className="text-black/40">Success Rate</span>
                   <span className="font-bold" style={{ color: scheme.color }}>{scheme.successRate}%</span>
                 </div>
-                <div className="h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+                <div className="h-1.5 rounded-full bg-white/6 overflow-hidden">
                   <motion.div className="h-full rounded-full" style={{ backgroundColor: scheme.color }} initial={{ width: 0 }} whileInView={{ width: `${scheme.successRate}%` }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.3 + i * 0.1 }} />
                 </div>
               </div>
@@ -81,12 +81,12 @@ export default function FundingMatch() {
           ))}
         </div>
 
-        <motion.div variants={fadeUp} className="mt-10 rounded-2xl border border-white/[0.08] bg-gradient-to-r from-[#F7F8F0]/[0.04] via-transparent to-[#355872]/[0.04] p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <motion.div variants={fadeUp} className="mt-10 rounded-2xl border border-white/8 bg-linear-to-r from-[#F7F8F0]/4 via-transparent to-[#355872]/4 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <p className="text-black font-bold text-lg mb-1">Confused About Which Scheme to Choose?</p>
             <p className="text-black/50 text-sm">Our experts will analyse your business and recommend the best funding option within 24 hours.</p>
           </div>
-          <Link href="/contact" className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] px-7 py-3 text-sm font-semibold text-black shrink-0">
+          <Link href="/contact" className="flex items-center gap-2 rounded-full bg-linear-to-r from-[#355872] to-[#7AAACE] px-7 py-3 text-sm font-semibold text-black shrink-0">
             Get Expert Recommendation <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>

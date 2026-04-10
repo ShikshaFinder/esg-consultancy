@@ -3,7 +3,7 @@ import { ArrowRight, MapPin, Mail, Phone } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="bg-[#FFF8F0] border-t border-[#1e3a5c]/20/[0.06] pt-16 pb-8 px-6">
+    <footer className="bg-[#FFF8F0] border-t border-[#1e3a5c]/20/6 pt-16 pb-8 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
           {/* Brand */}
@@ -24,7 +24,7 @@ export default function Footer() {
                 <a
                   key={s.label}
                   href="#"
-                  className="w-8 h-8 rounded-lg bg-white/[0.05] border border-[#1e3a5c]/20/[0.08] flex items-center justify-center text-black/55 hover:text-black hover:bg-white/10 transition-all text-[10px] font-bold"
+                  className="w-8 h-8 rounded-lg bg-white/5 border border-[#1e3a5c]/20/8 flex items-center justify-center text-black/55 hover:text-black hover:bg-white/10 transition-all text-[10px] font-bold"
                   aria-label={s.label}
                 >
                   {s.icon}
@@ -132,7 +132,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-[#1e3a5c]/20/[0.06] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="border-t border-[#1e3a5c]/20/6 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-black/50 text-xs">
             © 2026 Grow Bridge Services. All rights reserved.
           </p>

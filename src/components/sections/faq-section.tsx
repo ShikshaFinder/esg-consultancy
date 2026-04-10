@@ -52,7 +52,7 @@ function AccordionItem({ faq, index, isOpen, onToggle }: { faq: typeof faqs[0]; 
       className={`rounded-2xl border transition-all duration-300 ${
         isOpen
           ? "border-[#355872]/20 bg-white shadow-lg shadow-[#355872]/5"
-          : "border-[#355872]/[0.08] bg-white/60 hover:border-[#355872]/15 hover:bg-white"
+          : "border-[#355872]/8 bg-white/60 hover:border-[#355872]/15 hover:bg-white"
       }`}
     >
       <button
@@ -77,7 +77,7 @@ function AccordionItem({ faq, index, isOpen, onToggle }: { faq: typeof faqs[0]; 
             exit={{ height: 0, opacity: 0, transition: { height: { duration: 0.3, delay: 0.05 }, opacity: { duration: 0.2 } } }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-6 text-black/60 text-sm leading-relaxed border-t border-[#355872]/[0.06] pt-4 ml-[60px]">
+            <div className="px-6 pb-6 text-black/60 text-sm leading-relaxed border-t border-[#355872]/6 pt-4 ml-[60px]">
               {faq.a}
             </div>
           </motion.div>
@@ -125,7 +125,7 @@ export default function FAQSection() {
 
         {/* CTA */}
         <motion.div variants={fadeUp} className="mt-12 text-center">
-          <div className="rounded-2xl border border-[#355872]/10 bg-gradient-to-r from-[#355872]/5 to-[#7AAACE]/5 p-8">
+          <div className="rounded-2xl border border-[#355872]/10 bg-linear-to-r from-[#355872]/5 to-[#7AAACE]/5 p-8">
             <p className="text-black font-semibold text-lg mb-2">Still have questions?</p>
             <p className="text-black/50 text-sm mb-5">Our experts are always happy to help. Get in touch for a free consultation.</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">

@@ -38,7 +38,7 @@ export type ServicePageData = {
 
 function FAQItem({ faq, index, isOpen, onToggle }: { faq: { q: string; a: string }; index: number; isOpen: boolean; onToggle: () => void }) {
   return (
-    <div className={`rounded-2xl border transition-all duration-300 ${isOpen ? "border-[#355872]/20 bg-white shadow-lg shadow-[#355872]/5" : "border-[#355872]/[0.08] bg-white/60 hover:border-[#355872]/15 hover:bg-white"}`}>
+    <div className={`rounded-2xl border transition-all duration-300 ${isOpen ? "border-[#355872]/20 bg-white shadow-lg shadow-[#355872]/5" : "border-[#355872]/8 bg-white/60 hover:border-[#355872]/15 hover:bg-white"}`}>
       <button onClick={onToggle} className="w-full flex items-center gap-4 p-5 text-left cursor-pointer">
         <span className="text-xs font-bold text-black bg-[#7AAACE]/10 border border-[#7AAACE]/20 w-7 h-7 rounded-full flex items-center justify-center shrink-0">
           {index + 1}
@@ -56,7 +56,7 @@ function FAQItem({ faq, index, isOpen, onToggle }: { faq: { q: string; a: string
             exit={{ height: 0, opacity: 0, transition: { height: { duration: 0.3 }, opacity: { duration: 0.2 } } }}
             className="overflow-hidden"
           >
-            <div className="px-5 pb-5 text-black/60 text-sm leading-relaxed border-t border-[#355872]/[0.06] pt-4 ml-11">
+            <div className="px-5 pb-5 text-black/60 text-sm leading-relaxed border-t border-[#355872]/6 pt-4 ml-11">
               {faq.a}
             </div>
           </motion.div>
@@ -101,7 +101,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
                 {/* Stats */}
                 <motion.div variants={fadeUp} className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
                   {data.heroStats.map((s) => (
-                    <div key={s.label} className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-3 text-center">
+                    <div key={s.label} className="rounded-xl border border-white/8 bg-white/[0.03] p-3 text-center">
                       <p className="text-lg font-black text-black">{s.value}</p>
                       <p className="text-[10px] text-black/40 font-medium uppercase tracking-wide">{s.label}</p>
                     </div>
@@ -110,7 +110,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
 
                 {/* CTAs */}
                 <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
-                  <Link href="/contact" className="inline-flex items-center gap-2 h-12 px-7 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] text-black font-semibold text-sm hover:shadow-lg hover:shadow-[#355872]/25 transition-all">
+                  <Link href="/contact" className="inline-flex items-center gap-2 h-12 px-7 rounded-full bg-linear-to-r from-[#355872] to-[#7AAACE] text-black font-semibold text-sm hover:shadow-lg hover:shadow-[#355872]/25 transition-all">
                     Get Started <ArrowRight className="w-4 h-4" />
                   </Link>
                   <a href="tel:+919998035607" className="inline-flex items-center gap-2 h-12 px-7 rounded-full border border-white/15 text-black/80 font-medium text-sm hover:bg-white/5 transition-all">
@@ -123,12 +123,12 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
               <motion.div variants={fadeUp} className="hidden lg:flex items-center justify-center">
                 <div className="relative group">
                   {/* Animated glow ring */}
-                  <div className="absolute -inset-3 rounded-2xl bg-gradient-to-tr from-[#355872] via-[#9CD5FF] to-[#7AAACE] opacity-40 blur-xl group-hover:opacity-60 transition-opacity duration-700 animate-pulse" />
-                  <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-tr from-[#355872] via-[#9CD5FF] to-[#7AAACE] opacity-30" />
+                  <div className="absolute -inset-3 rounded-2xl bg-linear-to-tr from-[#355872] via-[#9CD5FF] to-[#7AAACE] opacity-40 blur-xl group-hover:opacity-60 transition-opacity duration-700 animate-pulse" />
+                  <div className="absolute -inset-1.5 rounded-2xl bg-linear-to-tr from-[#355872] via-[#9CD5FF] to-[#7AAACE] opacity-30" />
                   {/* Square image */}
-                  <div className="relative w-[480px] h-[480px] rounded-2xl overflow-hidden border-2 border-white/[0.12] shadow-2xl shadow-[#9CD5FF]/20">
+                  <div className="relative w-[480px] h-[480px] rounded-2xl overflow-hidden border-2 border-white/12 shadow-2xl shadow-[#9CD5FF]/20">
                     <img src={data.heroImage} alt={data.breadcrumbLabel} className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/30 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-[#0a1628]/30 via-transparent to-transparent" />
                   </div>
                 </div>
               </motion.div>
@@ -147,7 +147,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {data.services.map((s, i) => (
                 <motion.div key={s.title} custom={i} variants={fadeUp}
-                  className="group rounded-2xl border border-[#355872]/[0.08] bg-white p-6 hover:border-[#355872]/20 hover:shadow-xl hover:shadow-[#355872]/5 transition-all duration-300"
+                  className="group rounded-2xl border border-[#355872]/8 bg-white p-6 hover:border-[#355872]/20 hover:shadow-xl hover:shadow-[#355872]/5 transition-all duration-300"
                   whileHover={{ y: -4 }}
                 >
                   <div className="flex items-center justify-between mb-4">
@@ -180,7 +180,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
             </motion.div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {data.whyChooseUs.map((item, i) => (
-                <motion.div key={i} custom={i} variants={fadeUp} className="flex items-start gap-3 rounded-xl border border-white/[0.06] bg-white/[0.03] p-4">
+                <motion.div key={i} custom={i} variants={fadeUp} className="flex items-start gap-3 rounded-xl border border-white/6 bg-white/[0.03] p-4">
                   <CheckCircle2 className="w-5 h-5 text-black shrink-0 mt-0.5" />
                   <span className="text-black/80 text-sm">{item}</span>
                 </motion.div>
@@ -198,8 +198,8 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
             </motion.div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {data.process.map((p, i) => (
-                <motion.div key={p.step} custom={i} variants={fadeUp} className="relative rounded-2xl border border-[#355872]/[0.08] bg-white p-6 text-center">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#355872] to-[#7AAACE] flex items-center justify-center text-black font-bold text-sm mx-auto mb-4">
+                <motion.div key={p.step} custom={i} variants={fadeUp} className="relative rounded-2xl border border-[#355872]/8 bg-white p-6 text-center">
+                  <div className="w-10 h-10 rounded-full bg-linear-to-br from-[#355872] to-[#7AAACE] flex items-center justify-center text-black font-bold text-sm mx-auto mb-4">
                     {p.step}
                   </div>
                   <h3 className="text-black font-bold text-base mb-2">{p.title}</h3>
@@ -225,7 +225,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         </section>
 
         {/* CTA */}
-        <section className="py-20 px-6 bg-gradient-to-r from-[#355872] to-[#7AAACE]">
+        <section className="py-20 px-6 bg-linear-to-r from-[#355872] to-[#7AAACE]">
           <motion.div className="max-w-3xl mx-auto text-center" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black mb-4">
               Ready to Get Started?

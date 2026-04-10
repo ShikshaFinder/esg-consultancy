@@ -226,7 +226,7 @@ export default function PremiumFunding() {
                 <Link
                   href={`/funding/${s.slug}`}
                   className="block w-full text-center rounded-xl py-2.5 text-sm font-semibold text-black
-                             bg-gradient-to-r from-[#1B4F8A] to-[#2E7DD9] hover:from-[#9DB2BF] hover:to-[#526D82]
+                             bg-linear-to-r from-[#1B4F8A] to-[#2E7DD9] hover:from-[#9DB2BF] hover:to-[#526D82]
                              transition-all duration-300 mt-1"
                 >
                   Check Eligibility

@@ -80,7 +80,7 @@ export default function WhyGrowBridge() {
           {features.map((f, i) => (
             <motion.div key={f.title} custom={i} variants={fadeUp}
               className={cn(
-                "flex flex-col py-8 px-7 relative group/feature border-[#355872]/[0.06]",
+                "flex flex-col py-8 px-7 relative group/feature border-[#355872]/6",
                 i % 4 === 0 && "lg:border-l",
                 "lg:border-r",
                 i < 4 && "lg:border-b",
@@ -88,14 +88,14 @@ export default function WhyGrowBridge() {
             >
               {/* Gradient hover overlay (21st.dev feature hover pattern) */}
               {i < 4 ? (
-                <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-t from-[#355872]/[0.06] to-transparent pointer-events-none" />
+                <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-linear-to-t from-[#355872]/6 to-transparent pointer-events-none" />
               ) : (
-                <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-b from-[#355872]/[0.06] to-transparent pointer-events-none" />
+                <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-linear-to-b from-[#355872]/6 to-transparent pointer-events-none" />
               )}
 
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-5">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${f.gradient} flex items-center justify-center group-hover/feature:scale-110 transition-transform duration-300`}>
+                  <div className={`w-12 h-12 rounded-xl bg-linear-to-br ${f.gradient} flex items-center justify-center group-hover/feature:scale-110 transition-transform duration-300`}>
                     <f.icon className="w-6 h-6 text-black" />
                   </div>
                   <div className="text-right">

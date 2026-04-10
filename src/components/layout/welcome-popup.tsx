@@ -115,7 +115,7 @@ export default function WelcomePopup() {
                   <button
                     type="button"
                     onClick={(e) => { e.stopPropagation(); setOpen(false) }}
-                    className="w-7 h-7 rounded-full flex items-center justify-center text-black/45 hover:text-black/80 hover:bg-white/[0.07] transition-all border border-[#1e3a5c]/20/[0.06] cursor-pointer shrink-0"
+                    className="w-7 h-7 rounded-full flex items-center justify-center text-black/45 hover:text-black/80 hover:bg-white/[0.07] transition-all border border-[#1e3a5c]/20/6 cursor-pointer shrink-0"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -295,13 +295,13 @@ export default function WelcomePopup() {
                       border: "1px solid rgba(122,170,206,0.16)",
                     }}
                   >
-                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/[0.08] to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-linear-to-r from-transparent via-white/8 to-transparent pointer-events-none" />
                     <div className="relative z-10">
                       <p className="text-black font-bold text-[13px] leading-none mb-0.5">Not sure where to start?</p>
                       <p style={{ color: "rgba(30,58,92,0.5)", fontSize: "10px" }}>Talk to an expert Â· Free</p>
                     </div>
                     <div
-                      className="relative z-10 flex items-center gap-1.5 rounded-xl px-3 py-2 transition-colors duration-200 group-hover:bg-white/[0.12]"
+                      className="relative z-10 flex items-center gap-1.5 rounded-xl px-3 py-2 transition-colors duration-200 group-hover:bg-white/12"
                       style={{ background: "rgba(0,0,0,0.07)", border: "1px solid rgba(0,0,0,0.08)" }}
                     >
                       <span className="text-black text-[11px] font-bold">Get Help</span>

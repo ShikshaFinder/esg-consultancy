@@ -21,7 +21,7 @@ const solutions = [
 export default function SolutionsSection() {
   return (
     <section id="solutions" className="py-24 px-6 bg-[#0a1628] relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
       <motion.div className="max-w-7xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.06 }} variants={stagger}>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
@@ -41,12 +41,12 @@ export default function SolutionsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {solutions.map((sol, i) => (
             <motion.div key={sol.title} custom={i} variants={fadeUp}
-              className={`rounded-2xl border border-white/[0.08] bg-white/[0.03] overflow-hidden group cursor-pointer transition-all duration-300 ${sol.large ? "lg:row-span-2" : ""}`}
+              className={`rounded-2xl border border-white/8 bg-white/[0.03] overflow-hidden group cursor-pointer transition-all duration-300 ${sol.large ? "lg:row-span-2" : ""}`}
               whileHover={{ y: -4, borderColor: `${sol.color}35` }}
             >
               <div className={`relative overflow-hidden ${sol.large ? "h-52" : "h-36"}`}>
                 <img src={sol.image} alt={sol.title} className="w-full h-full object-cover opacity-40 group-hover:opacity-55 group-hover:scale-105 transition-all duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/40 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-[#0a1628] via-[#0a1628]/40 to-transparent" />
                 <div className="absolute top-3 left-3 flex items-center gap-2">
                   <span className="text-xl">{sol.icon}</span>
                   <span className="text-[9px] font-bold tracking-widest px-2 py-0.5 rounded-full border" style={{ color: sol.color, backgroundColor: `${sol.color}18`, borderColor: `${sol.color}30` }}>{sol.tag}</span>
@@ -61,7 +61,7 @@ export default function SolutionsSection() {
                 <p className="text-black/55 text-xs leading-relaxed mb-4">{sol.desc}</p>
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {sol.tags.map((t) => (
-                    <span key={t} className="text-[9px] font-semibold text-black/55 bg-white/[0.05] px-2 py-0.5 rounded-full border border-white/[0.08]">{t}</span>
+                    <span key={t} className="text-[9px] font-semibold text-black/55 bg-white/5 px-2 py-0.5 rounded-full border border-white/8">{t}</span>
                   ))}
                 </div>
                 <Link href="/services" className="flex items-center gap-1 text-xs font-semibold transition-colors group/btn" style={{ color: sol.color }}>
@@ -72,12 +72,12 @@ export default function SolutionsSection() {
           ))}
         </div>
 
-        <motion.div variants={fadeUp} className="mt-12 rounded-2xl border border-white/[0.08] bg-gradient-to-r from-[#355872]/[0.06] via-transparent to-[#F7F8F0]/[0.04] p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <motion.div variants={fadeUp} className="mt-12 rounded-2xl border border-white/8 bg-linear-to-r from-[#355872]/6 via-transparent to-[#F7F8F0]/4 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <p className="text-black font-semibold text-base mb-1">Need Help Choosing the Right Solution?</p>
             <p className="text-black/50 text-sm">Our experts will guide you to the best option for your business stage and goals.</p>
           </div>
-          <Link href="/contact" className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#355872] to-[#7AAACE] px-6 py-3 text-sm font-semibold text-black shrink-0">
+          <Link href="/contact" className="flex items-center gap-2 rounded-full bg-linear-to-r from-[#355872] to-[#7AAACE] px-6 py-3 text-sm font-semibold text-black shrink-0">
             🎯 Get Free Consultation <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>

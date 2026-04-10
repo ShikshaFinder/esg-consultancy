@@ -35,8 +35,8 @@ const ticker = [
 export default function SchemesSection() {
   return (
     <section id="schemes" className="py-24 px-6 bg-[#0a1628] relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#355872]/[0.04] blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#355872]/4 blur-[120px] pointer-events-none" />
 
       <motion.div className="max-w-7xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.08 }} variants={stagger}>
         {/* Header */}
@@ -56,17 +56,17 @@ export default function SchemesSection() {
             </motion.p>
           </div>
           <motion.div variants={fadeUp}>
-            <Link href="/schemes" className="flex items-center gap-2 rounded-full border border-[#355872]/25 bg-[#355872]/[0.06] px-5 py-2.5 text-sm text-black hover:bg-[#355872]/[0.12] transition-all shrink-0 w-fit">
+            <Link href="/schemes" className="flex items-center gap-2 rounded-full border border-[#355872]/25 bg-[#355872]/6 px-5 py-2.5 text-sm text-black hover:bg-[#355872]/12 transition-all shrink-0 w-fit">
               View All Schemes <ExternalLink className="w-3.5 h-3.5" />
             </Link>
           </motion.div>
         </div>
 
         {/* Ticker with Marquee */}
-        <motion.div variants={fadeUp} className="mb-10 rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden">
+        <motion.div variants={fadeUp} className="mb-10 rounded-2xl border border-white/6 bg-white/2 overflow-hidden">
           <Marquee pauseOnHover className="[--duration:22s] [--gap:0rem]">
             {ticker.map((t) => (
-              <div key={t.label} className="flex flex-col items-center py-4 px-8 gap-1 border-r border-white/[0.06]">
+              <div key={t.label} className="flex flex-col items-center py-4 px-8 gap-1 border-r border-white/6">
                 <span className="text-lg">{t.icon}</span>
                 <p className="text-black font-bold text-sm whitespace-nowrap">{t.val}</p>
                 <p className="text-black/40 text-[10px] text-center leading-snug whitespace-nowrap">{t.label}</p>
@@ -80,7 +80,7 @@ export default function SchemesSection() {
           {schemes.map((s, i) => (
             <motion.div
               key={s.label} custom={i} variants={fadeUp}
-              className="min-w-[240px] snap-start rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm p-5 flex flex-col gap-3 cursor-pointer group transition-all duration-300"
+              className="min-w-[240px] snap-start rounded-2xl border border-white/8 bg-white/[0.03] backdrop-blur-sm p-5 flex flex-col gap-3 cursor-pointer group transition-all duration-300"
               whileHover={{ y: -5, borderColor: `${s.color}44` }}
             >
               <div className="flex items-start justify-between">
@@ -93,7 +93,7 @@ export default function SchemesSection() {
                 <p className="text-black font-bold text-sm mb-1">{s.label}</p>
                 <p className="text-black/50 text-xs leading-relaxed">{s.title}</p>
               </div>
-              <div className="mt-auto pt-3 border-t border-white/[0.06] flex items-end justify-between">
+              <div className="mt-auto pt-3 border-t border-white/6 flex items-end justify-between">
                 <div>
                   <p className="font-black text-xl" style={{ color: s.color }}>{s.amount}</p>
                   <p className="text-black/40 text-[10px] uppercase tracking-wider mt-0.5">{s.amountLabel}</p>

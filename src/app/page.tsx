@@ -6,7 +6,8 @@ import Image from "next/image"
 import {
   Anchor, Shield, FileCheck, AlertTriangle, BarChart3, Wrench,
   ArrowRight, CheckCircle2, ChevronRight, Cpu, Eye, Zap,
-  ClipboardCheck, HardHat, BookOpen, FileText, Headphones
+  ClipboardCheck, HardHat, BookOpen, FileText, Headphones,
+  MapPin, Award, Users
 } from "lucide-react"
 import Navbar from "@/components/esg/navbar"
 import Footer from "@/components/esg/footer"
@@ -35,6 +36,33 @@ function AnimatedSection({ children, className = "" }: { children: React.ReactNo
       {children}
     </motion.div>
   )
+}
+
+/* ─── Animated Counter ─── */
+function AnimatedCounter({ value, suffix = "" }: { value: number; suffix?: string }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!isInView) return
+    const duration = 2000
+    const steps = 60
+    const increment = value / steps
+    let current = 0
+    const timer = setInterval(() => {
+      current += increment
+      if (current >= value) {
+        setCount(value)
+        clearInterval(timer)
+      } else {
+        setCount(Math.floor(current))
+      }
+    }, duration / steps)
+    return () => clearInterval(timer)
+  }, [isInView, value])
+
+  return <span ref={ref}>{count}{suffix}</span>
 }
 
 /* ─── Hero Image Data ─── */
@@ -102,32 +130,40 @@ export default function Home() {
 
         {/* ═══════════════════════ HERO ═══════════════════════ */}
         <section className="relative min-h-[88vh] flex items-center overflow-hidden">
-          {/* Background layers */}
-          <div className="absolute inset-0 bg-[#f8fafb]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,155,125,0.07)_0%,transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(2,132,199,0.05)_0%,transparent_50%)]" />
+          {/* Background layers — all pointer-events-none so buttons work */}
+          <div className="absolute inset-0 bg-[#f8fafb] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,155,125,0.07)_0%,transparent_50%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(2,132,199,0.05)_0%,transparent_50%)] pointer-events-none" />
           {/* Grid pattern */}
-          <div className="absolute inset-0 opacity-[0.4]" style={{
+          <div className="absolute inset-0 opacity-[0.4] pointer-events-none" style={{
             backgroundImage: "linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
           }} />
-          {/* Animated accent line */}
-          <motion.div
-            className="absolute top-0 left-[20%] w-px h-32 bg-linear-to-b from-[#009b7d] to-transparent"
-            initial={{ opacity: 0, scaleY: 0 }}
-            animate={{ opacity: 1, scaleY: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            style={{ transformOrigin: "top" }}
-          />
+          {/* Animated accent line with pulsing dot */}
+          <div className="absolute top-0 left-[20%] pointer-events-none">
+            <motion.div
+              className="w-px h-32 bg-linear-to-b from-[#009b7d] to-transparent"
+              initial={{ opacity: 0, scaleY: 0 }}
+              animate={{ opacity: 1, scaleY: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              style={{ transformOrigin: "top" }}
+            />
+            <motion.div
+              className="w-2 h-2 rounded-full bg-[#009b7d] -ml-[3px]"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: [0, 1, 0.4, 1], scale: [0, 1.2, 0.8, 1] }}
+              transition={{ duration: 2, delay: 1.5, repeat: Infinity, repeatDelay: 3 }}
+            />
+          </div>
 
           <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               {/* ─── Left: Text Content ─── */}
-              <motion.div initial="hidden" animate="show" variants={stagger} className="py-10 lg:py-0">
+              <motion.div initial="hidden" animate="show" variants={stagger} className="relative z-20 py-10 lg:py-0">
                 {/* Tags */}
                 <motion.div variants={fadeUp} className="flex flex-wrap gap-2 mb-5">
                   {heroTags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 text-[11px] font-medium tracking-wide uppercase rounded-full border border-[#009b7d]/20 text-[#009b7d] bg-[#009b7d]/6">
+                    <span key={tag} className="px-3 py-1 text-[11px] font-medium tracking-wide uppercase rounded-full border border-[#009b7d]/20 text-[#009b7d] bg-[#009b7d]/6 hover:bg-[#009b7d]/12 hover:border-[#009b7d]/40 transition-all cursor-default">
                       {tag}
                     </span>
                   ))}
@@ -154,13 +190,17 @@ export default function Home() {
                 <motion.div variants={fadeUp} custom={4} className="flex flex-col sm:flex-row items-start gap-4">
                   <Link
                     href="/contact"
-                    className="group flex items-center gap-2 px-8 py-3.5 bg-linear-to-r from-[#009b7d] to-[#0284c7] text-white font-semibold rounded-lg hover:opacity-90 transition-opacity text-sm shadow-lg shadow-[#009b7d]/20"
+                    className="group relative flex items-center gap-2 px-8 py-3.5 bg-linear-to-r from-[#009b7d] to-[#0284c7] text-white font-semibold rounded-lg text-sm shadow-lg shadow-[#009b7d]/20 overflow-hidden transition-all hover:shadow-xl hover:shadow-[#009b7d]/30 hover:scale-[1.02] active:scale-[0.98]"
                   >
-                    Request a Compliance Assessment <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <span className="relative z-10 flex items-center gap-2">
+                      Request a Compliance Assessment <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    {/* Shimmer effect */}
+                    <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                   </Link>
                   <Link
                     href="/contact#discussion"
-                    className="flex items-center gap-2 px-8 py-3.5 border border-[#cbd5e1] text-[#0f172a] rounded-lg hover:bg-[#f1f5f9] transition-colors text-sm"
+                    className="flex items-center gap-2 px-8 py-3.5 border border-[#cbd5e1] text-[#0f172a] rounded-lg hover:bg-[#f1f5f9] hover:border-[#009b7d]/30 transition-all text-sm hover:scale-[1.02] active:scale-[0.98]"
                   >
                     Schedule a Discussion
                   </Link>
@@ -198,7 +238,7 @@ export default function Home() {
                   </AnimatePresence>
 
                   {/* Gradient overlay at bottom for caption */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#0f172a]/80 via-[#0f172a]/30 to-transparent z-10" />
+                  <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#0f172a]/80 via-[#0f172a]/30 to-transparent z-10 pointer-events-none" />
 
                   {/* Caption & controls */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
@@ -221,7 +261,7 @@ export default function Home() {
                         <button
                           key={i}
                           onClick={() => setCurrentImage(i)}
-                          className="relative h-1 rounded-full overflow-hidden transition-all duration-300"
+                          className="relative h-1 rounded-full overflow-hidden transition-all duration-300 cursor-pointer"
                           style={{ width: i === currentImage ? "2rem" : "0.75rem" }}
                           aria-label={`Go to image ${i + 1}`}
                         >
@@ -241,8 +281,8 @@ export default function Home() {
                   </div>
 
                   {/* Decorative corner accents */}
-                  <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-white/30 rounded-tl-lg z-10" />
-                  <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-white/30 rounded-tr-lg z-10" />
+                  <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-white/30 rounded-tl-lg z-10 pointer-events-none" />
+                  <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-white/30 rounded-tr-lg z-10 pointer-events-none" />
                 </div>
 
                 {/* Floating stat badges */}
@@ -281,13 +321,13 @@ export default function Home() {
                 </motion.div>
 
                 {/* Decorative background blur circle */}
-                <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-br from-[#009b7d]/8 to-[#0284c7]/8 rounded-full blur-3xl" />
+                <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-br from-[#009b7d]/8 to-[#0284c7]/8 rounded-full blur-3xl pointer-events-none" />
               </motion.div>
             </div>
           </div>
 
           {/* Mobile hero image (visible only on small screens) */}
-          <div className="absolute inset-0 lg:hidden">
+          <div className="absolute inset-0 lg:hidden pointer-events-none">
             <div className="absolute inset-0 z-[1]">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -310,8 +350,39 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Bottom fade */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-white to-transparent z-20" />
+          {/* Bottom fade — pointer-events-none so it doesn't block buttons */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-white to-transparent pointer-events-none" />
+        </section>
+
+        {/* ═══════════════════════ TRUST METRICS STRIP ═══════════════════════ */}
+        <section className="relative py-10 px-6 bg-white border-b border-[#e2e8f0]">
+          <AnimatedSection className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {[
+                { icon: Anchor, value: 50, suffix: "+", label: "Ships Processed", color: "from-[#009b7d] to-[#00b894]" },
+                { icon: Award, value: 100, suffix: "%", label: "Audit Pass Rate", color: "from-[#0284c7] to-[#38bdf8]" },
+                { icon: MapPin, value: 8, suffix: "+", label: "Yards Covered", color: "from-[#7c3aed] to-[#a78bfa]" },
+                { icon: Users, value: 15, suffix: "+", label: "Years Experience", color: "from-[#d97706] to-[#fbbf24]" },
+              ].map((metric, i) => (
+                <motion.div
+                  key={metric.label}
+                  variants={fadeUp}
+                  custom={i}
+                  className="flex items-center gap-4 group"
+                >
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${metric.color} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-[#0f172a]/5`}>
+                    <metric.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-[#0f172a]">
+                      <AnimatedCounter value={metric.value} suffix={metric.suffix} />
+                    </div>
+                    <div className="text-xs text-[#94a3b8] font-medium">{metric.label}</div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </AnimatedSection>
         </section>
 
         {/* ═══════════════════════ WHAT YOU GET ═══════════════════════ */}
@@ -342,7 +413,7 @@ export default function Home() {
                   key={i}
                   variants={fadeUp}
                   custom={i}
-                  className="group grid grid-cols-1 md:grid-cols-3 gap-4 p-6 rounded-xl bg-[#f8fafb] border border-[#e2e8f0] hover:border-[#009b7d]/30 hover:bg-white hover:shadow-md transition-all"
+                  className="group grid grid-cols-1 md:grid-cols-3 gap-4 p-6 rounded-xl bg-[#f8fafb] border border-[#e2e8f0] hover:border-[#009b7d]/30 hover:bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-default"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-[#009b7d]/10 flex items-center justify-center shrink-0">
@@ -430,7 +501,7 @@ export default function Home() {
                   key={svc.title}
                   variants={fadeUp}
                   custom={i}
-                  className="group relative p-7 rounded-xl bg-[#f8fafb] border border-[#e2e8f0] hover:border-[#009b7d]/30 hover:bg-white hover:shadow-lg transition-all"
+                  className="group relative p-7 rounded-xl bg-[#f8fafb] border border-[#e2e8f0] hover:border-[#009b7d]/30 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#009b7d]/15 to-[#0284c7]/10 flex items-center justify-center">
@@ -480,7 +551,7 @@ export default function Home() {
                   {i < 3 && (
                     <div className="hidden md:block absolute top-10 left-full w-full h-px bg-linear-to-r from-[#009b7d]/30 to-transparent z-0" />
                   )}
-                  <div className="relative p-6 rounded-xl bg-white border border-[#e2e8f0] hover:border-[#009b7d]/30 hover:shadow-md transition-all">
+                  <div className="relative p-6 rounded-xl bg-white border border-[#e2e8f0] hover:border-[#009b7d]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <span className="text-4xl font-bold text-[#009b7d]/15 group-hover:text-[#009b7d]/30 transition-colors">{step.num}</span>
                     <h3 className="text-lg font-semibold text-[#0f172a] mt-2 mb-2">{step.title}</h3>
                     <p className="text-[#64748b] text-sm leading-relaxed">{step.desc}</p>
@@ -527,6 +598,17 @@ export default function Home() {
 
         {/* ═══════════════════════ CTA ═══════════════════════ */}
         <section className="relative py-28 px-6 overflow-hidden bg-linear-to-br from-[#f0fdf9] via-[#f4f7f9] to-[#f0f9ff]">
+          {/* Animated background orbs */}
+          <motion.div
+            animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 left-20 w-64 h-64 bg-[#009b7d]/5 rounded-full blur-3xl pointer-events-none"
+          />
+          <motion.div
+            animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-20 right-20 w-80 h-80 bg-[#0284c7]/5 rounded-full blur-3xl pointer-events-none"
+          />
           <AnimatedSection className="relative z-10 max-w-3xl mx-auto text-center">
             <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#009b7d] block mb-3">Get Started</motion.span>
             <motion.h2 variants={fadeUp} custom={1} className="text-3xl md:text-5xl font-bold text-[#0f172a] mb-6">
@@ -538,13 +620,16 @@ export default function Home() {
             <motion.div variants={fadeUp} custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/contact"
-                className="group flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#009b7d] to-[#0284c7] text-white font-semibold rounded-lg hover:opacity-90 transition-opacity shadow-lg shadow-[#009b7d]/20"
+                className="group relative flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#009b7d] to-[#0284c7] text-white font-semibold rounded-lg shadow-lg shadow-[#009b7d]/20 overflow-hidden transition-all hover:shadow-xl hover:shadow-[#009b7d]/30 hover:scale-[1.02] active:scale-[0.98]"
               >
-                Request a Compliance Assessment <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <span className="relative z-10 flex items-center gap-2">
+                  Request a Compliance Assessment <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               </Link>
               <Link
                 href="/contact#discussion"
-                className="flex items-center gap-2 px-8 py-4 border border-[#cbd5e1] text-[#0f172a] rounded-lg hover:bg-white transition-colors"
+                className="flex items-center gap-2 px-8 py-4 border border-[#cbd5e1] text-[#0f172a] rounded-lg hover:bg-white hover:border-[#009b7d]/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 Schedule a Discussion
               </Link>

@@ -1,7 +1,5 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
-import ClientPopupWrapper from "@/components/layout/client-popup-wrapper"
-import SiteAnimations from "@/components/layout/site-animations"
 import "./globals.css"
 
 const geistSans = localFont({
@@ -17,9 +15,9 @@ const geistMono = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "Grow Bridge — Where Business Growth Begins",
+  title: "ESG Catalyst — Ship Recycling Compliance & HSE Advisory",
   description:
-    "India's trusted MSME growth platform. Government funding, business registration, compliance support, and digital transformation — serving entrepreneurs across 28+ states.",
+    "Structured compliance, safety frameworks, and ESG traceability for ship recycling operations at Alang. HKC, EU SRR, GMB readiness.",
 }
 
 export default function RootLayout({
@@ -30,10 +28,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased noise-overlay bg-white text-black`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-[#0f172a]`}
       >
-        <ClientPopupWrapper />
-        <SiteAnimations />
         <div className="relative z-10">{children}</div>
       </body>
     </html>

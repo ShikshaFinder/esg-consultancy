@@ -1,203 +1,407 @@
 "use client"
-import { motion, type Variants } from "framer-motion"
-import { Target, Eye, Heart, Lightbulb, Users, TrendingUp, Award, Shield, ArrowRight, CheckCircle2 } from "lucide-react"
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
+import {
+  Shield, Target, Eye, Users, Anchor, CheckCircle2,
+  Award, Crosshair, BarChart3, ArrowRight
+} from "lucide-react"
 import Link from "next/link"
-import Navbar from "@/components/layout/navbar"
-import Footer from "@/components/layout/footer"
-import WhatsAppFAB from "@/components/layout/whatsapp-fab"
-import { BouncingBalls } from "@/components/devComponents/bouncing-balls"
-import { MetalButton } from "@/components/devComponents/liquid-glass-button"
-import PremiumConsultation from "@/components/premium/premium-consultation"
-import { cn } from "@/lib/utils"
+import Navbar from "@/components/esg/navbar"
+import Footer from "@/components/esg/footer"
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  show: (i: number = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.55, delay: i * 0.07, ease: [0.25, 0.1, 0.25, 1] } }),
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: (i: number = 0) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.6, delay: i * 0.1 }
+  }),
 }
-const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
 
-const values = [
-  { icon: Heart, title: "Empathy First", desc: "We understand the struggles of MSMEs. Every interaction is rooted in genuine care for your success." },
-  { icon: Shield, title: "Trust & Transparency", desc: "No hidden charges, no misleading promises. Our success-based model means we only win when you win." },
-  { icon: Lightbulb, title: "Innovation", desc: "AI-powered eligibility matching, real-time tracking, and digital-first approach to legacy processes." },
-  { icon: Users, title: "Partnership", desc: "We don't just process paperwork — we become your growth partner, invested in your long-term success." },
+function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-80px" })
+  return (
+    <motion.div ref={ref} initial="hidden" animate={isInView ? "show" : "hidden"} variants={stagger} className={className}>
+      {children}
+    </motion.div>
+  )
+}
+
+const approach = [
+  { icon: Target, title: "Practical & Field-Oriented", desc: "Solutions rooted in actual ship recycling operations, not theoretical frameworks." },
+  { icon: Shield, title: "System-Driven & Structured", desc: "Processes that function independent of individual personnel for consistent outcomes." },
+  { icon: Eye, title: "Audit Readiness & Traceability", desc: "Every system is designed with verification and documentation at its core." },
+  { icon: BarChart3, title: "Continuous Improvement", desc: "Ongoing monitoring, performance tracking, and system strengthening." },
 ]
 
-const strengths = [
-  { stat: "500+", label: "Businesses Funded", desc: "Across 18+ states in India" },
-  { stat: "₹110Cr+", label: "Funding Secured", desc: "Through government schemes" },
-  { stat: "95%", label: "Success Rate", desc: "Industry-leading approval rate" },
-  { stat: "30+", label: "Schemes Covered", desc: "State and central government" },
+const experience = [
+  "Experience across HKC-aligned ship recycling operations",
+  "Implementation of HSE systems in high-risk dismantling environments",
+  "Hazardous material and compliance management",
+  "Multi-yard operational exposure",
 ]
 
 export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="overflow-x-hidden">
         {/* Hero */}
-        <section className="relative pt-32 pb-20 px-6 bg-[#060e1a] overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(53,88,114,0.15)_0%,transparent_60%)] pointer-events-none" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(156,213,255,0.06)_0%,transparent_50%)] pointer-events-none" />
-          {/* 21st.dev BouncingBalls ambient particles */}
-          <div className="absolute inset-0 z-[1] pointer-events-none opacity-30">
-            <BouncingBalls
-              numBalls={50}
-              colors={["#355872", "#7AAACE", "#9CD5FF"]}
-              opacity={0.25}
-              minRadius={0.2}
-              maxRadius={1.2}
-              speed={0.15}
-              interactive={false}
-            />
-          </div>
+        <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-[#f8fafb]">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,155,125,0.06)_0%,transparent_50%)]" />
+          <div className="absolute inset-0 opacity-[0.4]" style={{
+            backgroundImage: "linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }} />
 
           <motion.div className="max-w-4xl mx-auto text-center relative z-10" initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-4">About Us</motion.span>
-            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-bold text-black leading-tight mb-6">
-              Where Business Growth{" "}
-              <span style={{ background: "linear-gradient(90deg,#9CD5FF,#355872)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Truly Begins</span>
+            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#009b7d] block mb-4">About ESG Catalyst</motion.span>
+            <motion.h1 variants={fadeUp} custom={1} className="text-4xl md:text-6xl font-bold text-[#0f172a] leading-tight mb-6">
+              Specialized Compliance &<br />
+              <span className="bg-gradient-to-r from-[#009b7d] to-[#0284c7] bg-clip-text text-transparent">HSE Advisory</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-black/50 text-lg max-w-2xl mx-auto leading-relaxed">
-              Founded in 2019, Grow Bridge was born from a simple observation — thousands of deserving businesses miss out on government schemes simply because the process feels too complex. We changed that.
+            <motion.p variants={fadeUp} custom={2} className="text-[#64748b] text-lg max-w-2xl mx-auto leading-relaxed">
+              Focused on ship recycling operations, delivering structured systems aligned with HKC, GMB, and evolving regulatory requirements.
             </motion.p>
           </motion.div>
         </section>
 
-        {/* Origin Story */}
-        <section className="py-20 px-6 bg-[#F7F8F0]">
-          <motion.div className="max-w-5xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        {/* Who We Are + Expertise */}
+        <section className="py-24 px-6 bg-white">
+          <AnimatedSection className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16">
               <div>
-                <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.18em] uppercase text-black block mb-3">Our Story</motion.span>
-                <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black leading-tight mb-5">
-                  From Frustration to{" "}
-                  <span style={{ background: "linear-gradient(90deg,#355872,#7AAACE)", WebkitBackgroundClip: "text", WebkitTextFillColor: "#000000", backgroundClip: "text" }}>Innovation</span>
+                <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#009b7d] block mb-3">Who We Are</motion.span>
+                <motion.h2 variants={fadeUp} custom={1} className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-6 leading-tight">
+                  A Specialized Practice for Ship Recycling
                 </motion.h2>
-                <motion.div variants={fadeUp} className="space-y-4 text-black/60 text-sm leading-relaxed">
-                  <p>Our founder, Abhay, witnessed first-hand how small business owners struggled with the labyrinth of government paperwork. Brilliant entrepreneurs with viable businesses were losing months — sometimes years — navigating bureaucratic processes alone.</p>
-                  <p>Grow Bridge was created to bridge that gap. We built a team of scheme experts, banking liaisons, and technology specialists who together simplify what was once overwhelming.</p>
-                  <p>Today, we&apos;re proud to have helped 500+ businesses across India secure over ₹110 Crore in government funding — and we&apos;re just getting started.</p>
+                <motion.p variants={fadeUp} custom={2} className="text-[#64748b] text-lg leading-relaxed mb-6">
+                  ESG Catalyst is a specialized compliance and HSE advisory practice focused on ship recycling operations, delivering structured systems aligned with HKC, GMB, and evolving regulatory requirements.
+                </motion.p>
+                <motion.p variants={fadeUp} custom={3} className="text-[#64748b] leading-relaxed">
+                  Core focus remains on ship recycling, with methodologies derived from high-risk operations and aligned with regulatory and classification expectations.
+                </motion.p>
+              </div>
+
+              <div>
+                <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#009b7d] block mb-3">Expertise</motion.span>
+                <motion.div variants={fadeUp} custom={1} className="p-8 rounded-xl bg-[#f8fafb] border border-[#e2e8f0]">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#009b7d]/15 to-[#0284c7]/10 flex items-center justify-center">
+                      <Award className="w-6 h-6 text-[#009b7d]" />
+                    </div>
+                    <div>
+                      <h3 className="text-[#0f172a] font-semibold">Certified Professional</h3>
+                      <p className="text-[#64748b] text-sm">NEBOSH IGC | IMS Lead Auditor</p>
+                    </div>
+                  </div>
+                  <p className="text-[#64748b] leading-relaxed mb-4">
+                    Led by a NEBOSH IGC-certified professional and IMS Lead Auditor with hands-on experience in Alang ship recycling.
+                  </p>
+                  <div className="space-y-2">
+                    {["Hazardous material handling", "Confined space operations", "Dismantling safety control"].map((item) => (
+                      <div key={item} className="flex items-center gap-2 text-sm text-[#475569]">
+                        <CheckCircle2 className="w-4 h-4 text-[#009b7d] shrink-0" />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
                 </motion.div>
               </div>
-              <motion.div variants={fadeUp} className="rounded-2xl border border-[#355872]/10 bg-white p-8 shadow-sm">
-                <div className="grid grid-cols-2 gap-6">
-                  {strengths.map(s => (
-                    <div key={s.label} className="text-center">
-                      <p className="text-2xl md:text-3xl font-black text-black">{s.stat}</p>
-                      <p className="text-sm font-semibold text-black mt-1">{s.label}</p>
-                      <p className="text-[11px] text-black/40 mt-0.5">{s.desc}</p>
-                    </div>
+            </div>
+          </AnimatedSection>
+        </section>
+
+        {/* Operating Model */}
+        <section className="py-24 px-6 bg-[#f4f7f9]">
+          <AnimatedSection className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <motion.div variants={fadeUp}>
+                <div className="p-10 rounded-2xl bg-white border border-[#e2e8f0] shadow-sm">
+                  <Users className="w-12 h-12 text-[#009b7d] mb-6" />
+                  <h3 className="text-2xl font-bold text-[#0f172a] mb-4">Operating Model</h3>
+                  <p className="text-[#64748b] leading-relaxed mb-6">
+                    ESG Catalyst operates as a founder-led professional practice, supported by qualified safety professionals engaged based on project requirements.
+                  </p>
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      { label: "Consistent Quality", icon: Shield },
+                      { label: "Scalable Delivery", icon: BarChart3 },
+                      { label: "Founder-Led", icon: Crosshair },
+                      { label: "Project-Based", icon: Anchor },
+                    ].map((item) => (
+                      <div key={item.label} className="flex items-center gap-2 text-sm text-[#475569]">
+                        <item.icon className="w-4 h-4 text-[#009b7d] shrink-0" />
+                        {item.label}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              <div>
+                <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#009b7d] block mb-3">Our Approach</motion.span>
+                <motion.h2 variants={fadeUp} custom={1} className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-8">
+                  How We Deliver Results
+                </motion.h2>
+                <div className="space-y-5">
+                  {approach.map((item, i) => (
+                    <motion.div key={item.title} variants={fadeUp} custom={i} className="flex items-start gap-4 group">
+                      <div className="w-10 h-10 rounded-lg bg-[#009b7d]/10 flex items-center justify-center shrink-0 group-hover:bg-[#009b7d]/20 transition-colors">
+                        <item.icon className="w-5 h-5 text-[#009b7d]" />
+                      </div>
+                      <div>
+                        <h4 className="text-[#0f172a] font-semibold mb-1">{item.title}</h4>
+                        <p className="text-[#64748b] text-sm leading-relaxed">{item.desc}</p>
+                      </div>
+                    </motion.div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </AnimatedSection>
         </section>
 
-        {/* Vision & Mission */}
-        <section className="py-20 px-6 bg-[#060e1a]">
-          <motion.div className="max-w-5xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <motion.div variants={fadeUp} className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#355872] to-[#7AAACE] flex items-center justify-center mb-5">
-                  <Eye className="w-6 h-6 text-black" />
-                </div>
-                <h3 className="text-black font-bold text-xl mb-3">Our Vision</h3>
-                <p className="text-black/50 text-sm leading-relaxed">
-                  To become India&apos;s most trusted MSME growth platform — where every deserving business, regardless of size or location, has equal access to government support and funding opportunities.
-                </p>
-              </motion.div>
-              <motion.div variants={fadeUp} className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#9CD5FF] to-[#355872] flex items-center justify-center mb-5">
-                  <Target className="w-6 h-6 text-black" />
-                </div>
-                <h3 className="text-black font-bold text-xl mb-3">Our Mission</h3>
-                <p className="text-black/50 text-sm leading-relaxed">
-                  Simplify every step of the business funding journey — from eligibility check to disbursement — through technology, expertise, and genuine partnership. We exist to make government schemes accessible.
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* Values */}
-        <section className="py-20 px-6 bg-[#F7F8F0]">
-          <motion.div className="max-w-5xl mx-auto" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black text-center mb-12">Our Core Values</motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 relative z-10">
-              {values.map((v, i) => (
-                <motion.div key={v.title} custom={i} variants={fadeUp}
-                  className={cn(
-                    "flex items-start gap-4 p-6 relative group/feature border-[#355872]/[0.06]",
-                    (i === 0 || i === 2) && "md:border-l",
-                    "md:border-r",
-                    i < 2 && "md:border-b",
-                  )}
+        {/* Experience */}
+        <section className="py-24 px-6 bg-white">
+          <AnimatedSection className="max-w-5xl mx-auto">
+            <motion.div variants={fadeUp} className="text-center mb-12">
+              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#009b7d] block mb-3">Experience</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-4">Proven Track Record</h2>
+            </motion.div>
+            <div className="grid md:grid-cols-2 gap-5">
+              {experience.map((item, i) => (
+                <motion.div
+                  key={item}
+                  variants={fadeUp}
+                  custom={i}
+                  className="p-6 rounded-xl bg-[#f8fafb] border border-[#e2e8f0] flex items-start gap-4 hover:border-[#009b7d]/30 hover:shadow-md transition-all"
                 >
-                  {/* 21st.dev feature hover gradient */}
-                  <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-t from-[#355872]/[0.06] to-transparent pointer-events-none" />
-                  <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-10 w-1 rounded-tr-full rounded-br-full bg-[#355872]/15 group-hover/feature:bg-[#7AAACE] transition-all duration-300 origin-center top-1/2 -translate-y-1/2" />
-                  <div className="w-10 h-10 rounded-xl bg-[#355872]/10 flex items-center justify-center shrink-0 group-hover/feature:scale-110 transition-transform duration-300">
-                    <v.icon className="w-5 h-5 text-black" />
+                  <div className="w-8 h-8 rounded-lg bg-[#009b7d]/10 flex items-center justify-center shrink-0">
+                    <CheckCircle2 className="w-4 h-4 text-[#009b7d]" />
                   </div>
-                  <div className="relative z-10">
-                    <h3 className="text-black font-bold text-base mb-1 group-hover/feature:translate-x-1 transition duration-200">{v.title}</h3>
-                    <p className="text-black/50 text-sm leading-relaxed">{v.desc}</p>
-                  </div>
+                  <span className="text-[#475569] leading-relaxed">{item}</span>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
-        </section>
 
-        {/* Approach */}
-        <section className="py-20 px-6 bg-white">
-          <motion.div className="max-w-4xl mx-auto text-center" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black mb-8">Our Approach</motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                { step: "01", title: "Discover", desc: "We analyze your business, understand your goals, and identify every scheme you qualify for using our AI engine." },
-                { step: "02", title: "Execute", desc: "Your dedicated case manager handles all documentation, bank liaison, and government submissions." },
-                { step: "03", title: "Deliver", desc: "From approval to disbursement, we track every milestone and ensure timely completion." },
-              ].map((s, i) => (
-                <motion.div key={s.step} custom={i} variants={fadeUp} className="text-center">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#355872] to-[#7AAACE] flex items-center justify-center mx-auto mb-4 text-black font-bold text-lg">{s.step}</div>
-                  <h3 className="text-black font-bold text-lg mb-2">{s.title}</h3>
-                  <p className="text-black/50 text-sm leading-relaxed">{s.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-20 px-6 bg-gradient-to-r from-[#355872] to-[#7AAACE]">
-          <motion.div className="max-w-3xl mx-auto text-center" initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black mb-4">Ready to Grow Your Business?</motion.h2>
-            <motion.p variants={fadeUp} className="text-black/70 text-base mb-8">
-              Join 500+ businesses who trusted Grow Bridge to navigate their funding journey.
-            </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/contact">
-                <MetalButton variant="default">
-                  <span className="flex items-center gap-2">
-                    Get Free Consultation <ArrowRight className="w-4 h-4" />
-                  </span>
-                </MetalButton>
-              </Link>
-              <Link href="/schemes"
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full border border-white/30 text-black font-semibold text-sm hover:bg-white/10 transition-all"
+            <motion.div variants={fadeUp} className="text-center mt-14">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-[#009b7d] to-[#0284c7] text-white font-semibold rounded-lg hover:opacity-90 transition-opacity shadow-lg shadow-[#009b7d]/20"
               >
-                Explore Schemes
+                Schedule a Consultation <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
-          </motion.div>
+          </AnimatedSection>
         </section>
       </main>
-      <PremiumConsultation />
       <Footer />
-      <WhatsAppFAB />
+    </>
+  )
+}
+"use client"
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
+import {
+  Shield, Target, Eye, Users, Anchor, CheckCircle2,
+  Award, Crosshair, BarChart3, ArrowRight
+} from "lucide-react"
+import Link from "next/link"
+import Navbar from "@/components/esg/navbar"
+import Footer from "@/components/esg/footer"
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: (i: number = 0) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.6, delay: i * 0.1 }
+  }),
+}
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
+
+function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-80px" })
+  return (
+    <motion.div ref={ref} initial="hidden" animate={isInView ? "show" : "hidden"} variants={stagger} className={className}>
+      {children}
+    </motion.div>
+  )
+}
+
+const approach = [
+  { icon: Target, title: "Practical & Field-Oriented", desc: "Solutions rooted in actual ship recycling operations, not theoretical frameworks." },
+  { icon: Shield, title: "System-Driven & Structured", desc: "Processes that function independent of individual personnel for consistent outcomes." },
+  { icon: Eye, title: "Audit Readiness & Traceability", desc: "Every system is designed with verification and documentation at its core." },
+  { icon: BarChart3, title: "Continuous Improvement", desc: "Ongoing monitoring, performance tracking, and system strengthening." },
+]
+
+const experience = [
+  "Experience across HKC-aligned ship recycling operations",
+  "Implementation of HSE systems in high-risk dismantling environments",
+  "Hazardous material and compliance management",
+  "Multi-yard operational exposure",
+]
+
+export default function AboutPage() {
+  return (
+    <>
+      <Navbar />
+      <main className="overflow-x-hidden">
+        {/* Hero */}
+        <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+          <div className="absolute inset-0 bg-[#0a1628]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,212,170,0.06)_0%,transparent_50%)]" />
+          <div className="absolute inset-0 opacity-[0.03]" style={{
+            backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }} />
+
+          <motion.div className="max-w-4xl mx-auto text-center relative z-10" initial="hidden" animate="show" variants={stagger}>
+            <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#00d4aa] block mb-4">About ESG Catalyst</motion.span>
+            <motion.h1 variants={fadeUp} custom={1} className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+              Specialized Compliance &<br />
+              <span className="bg-gradient-to-r from-[#00d4aa] to-[#0ea5e9] bg-clip-text text-transparent">HSE Advisory</span>
+            </motion.h1>
+            <motion.p variants={fadeUp} custom={2} className="text-[#94a3b8] text-lg max-w-2xl mx-auto leading-relaxed">
+              Focused on ship recycling operations, delivering structured systems aligned with HKC, GMB, and evolving regulatory requirements.
+            </motion.p>
+          </motion.div>
+        </section>
+
+        {/* Who We Are + Expertise */}
+        <section className="py-24 px-6">
+          <AnimatedSection className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16">
+              <div>
+                <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#00d4aa] block mb-3">Who We Are</motion.span>
+                <motion.h2 variants={fadeUp} custom={1} className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                  A Specialized Practice for Ship Recycling
+                </motion.h2>
+                <motion.p variants={fadeUp} custom={2} className="text-[#94a3b8] text-lg leading-relaxed mb-6">
+                  ESG Catalyst is a specialized compliance and HSE advisory practice focused on ship recycling operations, delivering structured systems aligned with HKC, GMB, and evolving regulatory requirements.
+                </motion.p>
+                <motion.p variants={fadeUp} custom={3} className="text-[#94a3b8] leading-relaxed">
+                  Core focus remains on ship recycling, with methodologies derived from high-risk operations and aligned with regulatory and classification expectations.
+                </motion.p>
+              </div>
+
+              <div>
+                <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#00d4aa] block mb-3">Expertise</motion.span>
+                <motion.div variants={fadeUp} custom={1} className="p-8 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#00d4aa]/20 to-[#0ea5e9]/10 flex items-center justify-center">
+                      <Award className="w-6 h-6 text-[#00d4aa]" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-semibold">Certified Professional</h3>
+                      <p className="text-[#94a3b8] text-sm">NEBOSH IGC | IMS Lead Auditor</p>
+                    </div>
+                  </div>
+                  <p className="text-[#94a3b8] leading-relaxed mb-4">
+                    Led by a NEBOSH IGC-certified professional and IMS Lead Auditor with hands-on experience in Alang ship recycling.
+                  </p>
+                  <div className="space-y-2">
+                    {["Hazardous material handling", "Confined space operations", "Dismantling safety control"].map((item) => (
+                      <div key={item} className="flex items-center gap-2 text-sm text-[#c8d6e5]">
+                        <CheckCircle2 className="w-4 h-4 text-[#00d4aa] shrink-0" />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </AnimatedSection>
+        </section>
+
+        {/* Operating Model */}
+        <section className="py-24 px-6 bg-[#060e1a]">
+          <AnimatedSection className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <motion.div variants={fadeUp}>
+                <div className="p-10 rounded-2xl bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/[0.06]">
+                  <Users className="w-12 h-12 text-[#00d4aa] mb-6" />
+                  <h3 className="text-2xl font-bold text-white mb-4">Operating Model</h3>
+                  <p className="text-[#94a3b8] leading-relaxed mb-6">
+                    ESG Catalyst operates as a founder-led professional practice, supported by qualified safety professionals engaged based on project requirements.
+                  </p>
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      { label: "Consistent Quality", icon: Shield },
+                      { label: "Scalable Delivery", icon: BarChart3 },
+                      { label: "Founder-Led", icon: Crosshair },
+                      { label: "Project-Based", icon: Anchor },
+                    ].map((item) => (
+                      <div key={item.label} className="flex items-center gap-2 text-sm text-[#c8d6e5]">
+                        <item.icon className="w-4 h-4 text-[#00d4aa] shrink-0" />
+                        {item.label}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              <div>
+                <motion.span variants={fadeUp} className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#00d4aa] block mb-3">Our Approach</motion.span>
+                <motion.h2 variants={fadeUp} custom={1} className="text-3xl md:text-4xl font-bold text-white mb-8">
+                  How We Deliver Results
+                </motion.h2>
+                <div className="space-y-5">
+                  {approach.map((item, i) => (
+                    <motion.div key={item.title} variants={fadeUp} custom={i} className="flex items-start gap-4 group">
+                      <div className="w-10 h-10 rounded-lg bg-[#00d4aa]/10 flex items-center justify-center shrink-0 group-hover:bg-[#00d4aa]/20 transition-colors">
+                        <item.icon className="w-5 h-5 text-[#00d4aa]" />
+                      </div>
+                      <div>
+                        <h4 className="text-white font-semibold mb-1">{item.title}</h4>
+                        <p className="text-[#94a3b8] text-sm leading-relaxed">{item.desc}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+        </section>
+
+        {/* Experience */}
+        <section className="py-24 px-6">
+          <AnimatedSection className="max-w-5xl mx-auto">
+            <motion.div variants={fadeUp} className="text-center mb-12">
+              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#00d4aa] block mb-3">Experience</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Proven Track Record</h2>
+            </motion.div>
+            <div className="grid md:grid-cols-2 gap-5">
+              {experience.map((item, i) => (
+                <motion.div
+                  key={item}
+                  variants={fadeUp}
+                  custom={i}
+                  className="p-6 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-start gap-4 hover:border-[#00d4aa]/20 transition-colors"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-[#00d4aa]/10 flex items-center justify-center shrink-0">
+                    <CheckCircle2 className="w-4 h-4 text-[#00d4aa]" />
+                  </div>
+                  <span className="text-[#c8d6e5] leading-relaxed">{item}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div variants={fadeUp} className="text-center mt-14">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-[#00d4aa] to-[#0ea5e9] text-[#0a1628] font-semibold rounded-lg hover:opacity-90 transition-opacity"
+              >
+                Schedule a Consultation <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.div>
+          </AnimatedSection>
+        </section>
+      </main>
+      <Footer />
     </>
   )
 }
